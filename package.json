@@ -1,0 +1,77 @@
+{
+  "name": "vite-demo",
+  "version": "0.0.0",
+  "scripts": {
+    "dev": "vite",
+    "build": "vue-tsc --noEmit && vite build",
+    "serve": "vite preview",
+    "lint": "yarn lint:js && yarn lint:style && yarn lint:prettier",
+    "lint:js": "eslint --fix src/**/*.{js,jsx,ts,tsx,vue}",
+    "lint:prettier": "prettier --write src/**/*.{js,jsx,ts,tsx,css,less,scss,vue,html,md,json}",
+    "lint:style": "stylelint --fix src/**/*.{html,vue,css,sass,scss,less}",
+    "commit": "git-cz",
+    "release": "standard-version"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged",
+      "commit-msg": "commitlint -e $GIT_PARAMS"
+    }
+  },
+  "lint-staged": {
+    "src/**/*.{js,jsx,ts,tsx,vue}": [
+      "eslint --fix",
+      "git add"
+    ],
+    "src/**/*.{html,vue,css,sass,scss,less}": [
+      "stylelint --fix",
+      "git add"
+    ],
+    "src/**/*.{js,jsx,ts,tsx,css,less,scss,vue,html,md,json}": [
+      "prettier --write",
+      "git add"
+    ]
+  },
+  "dependencies": {
+    "vue": "^3.0.5",
+    "vue-router": "4",
+    "vuex": "^4.0.0"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^12.1.1",
+    "@commitlint/config-conventional": "^12.1.1",
+    "@types/node": "^15.0.1",
+    "@typescript-eslint/eslint-plugin": "^4.22.0",
+    "@typescript-eslint/parser": "^4.22.0",
+    "@vitejs/plugin-vue": "^1.2.2",
+    "@vue/compiler-sfc": "^3.0.11",
+    "autoprefixer": "^10.2.5",
+    "commitizen": "^4.2.3",
+    "cz-conventional-changelog": "^3.3.0",
+    "eslint": "^7.25.0",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-prettier": "^3.4.0",
+    "eslint-plugin-vue": "^7.9.0",
+    "husky": "4.3.8",
+    "lint-staged": "^10.5.4",
+    "postcss": "^8.2.13",
+    "prettier": "^2.2.1",
+    "sass": "^1.32.11",
+    "standard-version": "^9.2.0",
+    "stylelint": "^13.13.0",
+    "stylelint-config-prettier": "^8.0.2",
+    "stylelint-config-rational-order": "^0.1.2",
+    "stylelint-config-standard": "^22.0.0",
+    "stylelint-order": "^4.1.0",
+    "stylelint-scss": "^3.19.0",
+    "tailwindcss": "^2.1.2",
+    "typescript": "^4.2.4",
+    "vite": "^2.2.3",
+    "vue-tsc": "^0.0.25"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  }
+}
