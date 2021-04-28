@@ -5406,7 +5406,7 @@ style-search@^0.1.0:
 
 stylelint-config-prettier@^8.0.2:
   version "8.0.2"
-  resolved "https://registry.npm.taobao.org/stylelint-config-prettier/download/stylelint-config-prettier-8.0.2.tgz"
+  resolved "https://registry.npm.taobao.org/stylelint-config-prettier/download/stylelint-config-prettier-8.0.2.tgz#da9de33da4c56893cbe7e26df239a7374045e14e"
   integrity sha1-2p3jPaTFaJPL5+Jt8jmnN0BF4U4=
 
 stylelint-config-rational-order@^0.1.2:
@@ -5446,6 +5446,13 @@ stylelint-order@^4.1.0:
     lodash "^4.17.15"
     postcss "^7.0.31"
     postcss-sorting "^5.0.1"
+
+stylelint-prettier@^1.2.0:
+  version "1.2.0"
+  resolved "https://registry.npm.taobao.org/stylelint-prettier/download/stylelint-prettier-1.2.0.tgz#a133d75c794ba820ee47136fc4bf8c72ea185427"
+  integrity sha1-oTPXXHlLqCDuRxNvxL+McuoYVCc=
+  dependencies:
+    prettier-linter-helpers "^1.0.0"
 
 stylelint-scss@^3.19.0:
   version "3.19.0"
