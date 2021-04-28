@@ -8,7 +8,6 @@ module.exports = {
   extends: [
     'plugin:vue/vue3-recommended',
     'plugin:@typescript-eslint/recommended',
-    'prettier',
     'plugin:prettier/recommended'
   ],
   parser: 'vue-eslint-parser',
@@ -22,7 +21,6 @@ module.exports = {
   },
   plugins: ['vue', '@typescript-eslint'],
   rules: {
-    'prettier/prettier': 'error',
     '@typescript-eslint/no-explicit-any': 'off',
     '@typescript-eslint/ban-types': 'off',
     'no-console': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
