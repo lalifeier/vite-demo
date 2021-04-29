@@ -1,8 +1,11 @@
+import 'tailwindcss/tailwind.css'
 import { createApp } from 'vue'
 import App from './App.vue'
-import router from './router'
-import store from './store'
+import { setupStore } from './store'
+;async () => {
+  const app = createApp(App)
 
-import 'tailwindcss/tailwind.css'
+  setupStore(app)
 
-createApp(App).use(router).use(store).mount('#app')
+  app.mount('#app')
+}
