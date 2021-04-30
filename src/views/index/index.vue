@@ -1,7 +1,14 @@
-<template>222</template>
+<template>
+  <div></div>
+</template>
 
 <script>
-export default {}
+import { defineComponent } from 'vue'
+
+export default defineComponent({
+  name: 'Index',
+  setup() {},
+})
 </script>
 
 <style></style>

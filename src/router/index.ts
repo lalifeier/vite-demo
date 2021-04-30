@@ -1,16 +1,26 @@
-import { createRouter, createWebHashHistory, RouteRecordRaw } from 'vue-router'
+import type { App } from 'vue'
+import { createRouter, createWebHashHistory } from 'vue-router'
+import { constantRoutes } from './routes'
 
-const routes: Array<RouteRecordRaw> = [
-  {
-    path: '/',
-    name: 'index',
-    component: () => import('@/views/index/index.vue'),
-  },
-]
-
+// import.meta.env.VITE_PUBLIC_PATH
 const router = createRouter({
   history: createWebHashHistory(),
-  routes,
+  routes: constantRoutes,
+  strict: true,
+  scrollBehavior: () => ({ left: 0, top: 0 }),
 })
+
+export function resetRouter() {
+  router.getRoutes().forEach((route) => {
+    const { name } = route
+    if (name) {
+      router.hasRoute(name) && router.removeRoute(name)
+    }
+  })
+}
+
+export function setupRouter(app: App<Element>) {
+  app.use(router)
+}
 
 export default router

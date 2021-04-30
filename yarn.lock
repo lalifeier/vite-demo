@@ -4519,7 +4519,7 @@ postcss@^7.0.0, postcss@^7.0.1, postcss@^7.0.13, postcss@^7.0.14, postcss@^7.0.1
 
 postcss@^8.1.10, postcss@^8.1.6, postcss@^8.2.1, postcss@^8.2.13:
   version "8.2.13"
-  resolved "https://registry.nlark.com/postcss/download/postcss-8.2.13.tgz?cache=0&sync_timestamp=1619440092393&other_urls=https%3A%2F%2Fregistry.nlark.com%2Fpostcss%2Fdownload%2Fpostcss-8.2.13.tgz"
+  resolved "https://registry.nlark.com/postcss/download/postcss-8.2.13.tgz?cache=0&sync_timestamp=1619440092393&other_urls=https%3A%2F%2Fregistry.nlark.com%2Fpostcss%2Fdownload%2Fpostcss-8.2.13.tgz#dbe043e26e3c068e45113b1ed6375d2d37e2129f"
   integrity sha1-2+BD4m48Bo5FETse1jddLTfiEp8=
   dependencies:
     colorette "^1.2.2"
@@ -6085,9 +6085,9 @@ vue-eslint-parser@^7.6.0:
     esquery "^1.4.0"
     lodash "^4.17.15"
 
-vue-router@4:
+vue-router@^4.0.6:
   version "4.0.6"
-  resolved "https://registry.nlark.com/vue-router/download/vue-router-4.0.6.tgz"
+  resolved "https://registry.nlark.com/vue-router/download/vue-router-4.0.6.tgz#91750db507d26642f225b0ec6064568e5fe448d6"
   integrity sha1-kXUNtQfSZkLyJbDsYGRWjl/kSNY=
 
 vue-tsc@^0.0.25:
@@ -6105,11 +6105,6 @@ vue@^3.0.5:
     "@vue/compiler-dom" "3.0.11"
     "@vue/runtime-dom" "3.0.11"
     "@vue/shared" "3.0.11"
-
-vuex@^4.0.0:
-  version "4.0.0"
-  resolved "https://registry.npm.taobao.org/vuex/download/vuex-4.0.0.tgz"
-  integrity sha1-rId6p2qcRTaMl5Rx5GG1INOObPU=
 
 which-pm-runs@^1.0.0:
   version "1.0.0"
