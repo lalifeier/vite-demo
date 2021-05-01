@@ -1,5 +1,5 @@
-import { store } from '@/store'
 import { defineStore } from 'pinia'
+import { store } from '../index'
 
 interface UserState {
   accessToken?: string
