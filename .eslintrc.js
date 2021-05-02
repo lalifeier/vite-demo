@@ -1,15 +1,14 @@
 module.exports = {
-  root: true,
   env: {
     browser: true,
+    es2021: true,
     node: true,
-    es6: true,
   },
-  extends: ['plugin:vue/vue3-recommended', 'plugin:@typescript-eslint/recommended', 'plugin:prettier/recommended'],
+  extends: ['plugin:vue/vue3-recommended', 'plugin:@typescript-eslint/recommended', 'airbnb-base', 'plugin:prettier/recommended'],
   parser: 'vue-eslint-parser',
   parserOptions: {
+    ecmaVersion: 12,
     parser: '@typescript-eslint/parser',
-    ecmaVersion: 6,
     sourceType: 'module',
     ecmaFeatures: {
       jsx: true,
