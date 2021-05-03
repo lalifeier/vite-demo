@@ -4,6 +4,7 @@ export default {
   mounted(el: Element, binding: DirectiveBinding<any>) {
     checkPermission(el, binding)
   },
+
   updated(el: Element, binding: DirectiveBinding<any>) {
     checkPermission(el, binding)
   },

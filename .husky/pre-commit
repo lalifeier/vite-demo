@@ -4,4 +4,4 @@
 
 [ -n "$CI" ] && exit 0
 
-yarn prepare
+lint-staged
