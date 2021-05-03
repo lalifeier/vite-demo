@@ -12,7 +12,8 @@
     "lint:style": "stylelint --fix src/**/*.{html,vue,css,sass,scss,less}",
     "commit": "git-cz",
     "release": "standard-version",
-    "prepare": "is-ci || husky install"
+    "prepare": "is-ci || husky install",
+    "pre-commit-lint": "yarn lint-staged"
   },
   "lint-staged": {
     "src/**/*.{js,jsx,ts,tsx,vue}": [
