@@ -1,16 +1,27 @@
-import vue from '@vitejs/plugin-vue'
-import path from 'path'
-import { defineConfig } from 'vite'
+import vue from '@vitejs/plugin-vue';
+import path from 'path';
+import { defineConfig } from 'vite';
 
+const pathResolve = (dir: string) => path.resolve(__dirname, dir)
 
-const pathResolve = (dir: string) => path.join(__dirname, dir)
+console.log(pathResolve('src'));
+
 
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [vue()],
   base: './',
   resolve: {
-    alias: [{ find: '@', replacement: pathResolve('src') }],
+    alias: [
+      {
+        find: '/@',
+        replacement: pathResolve('src')
+      },
+      {
+        find: '/#',
+        replacement: pathResolve('types'),
+      },
+    ],
   },
   css: {
     preprocessorOptions: {

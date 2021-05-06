@@ -36,7 +36,13 @@ export const constantRoutes: Array<RouteRecordRaw> = [
     path: '/index',
     name: 'index',
     meta: { title: '首页' },
-    component: () => import('@/views/index/index.vue'),
+    component: () => import('/@/views/index/index.vue'),
+  },
+  {
+    path: '/composition',
+    name: 'composition',
+    meta: { title: '首页' },
+    component: () => import('/@/views/composition/index.vue'),
   },
   // {
   //   path: '/login',

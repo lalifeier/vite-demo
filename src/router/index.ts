@@ -6,7 +6,7 @@ import { constantRoutes } from './routes'
 const router = createRouter({
   history: createWebHashHistory(),
   routes: constantRoutes,
-  strict: true,
+  strict: import.meta.env.NODE_ENV !== 'production',
   scrollBehavior: () => ({ left: 0, top: 0 }),
 })
 
