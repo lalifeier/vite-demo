@@ -35,7 +35,6 @@
     "axios": "^0.21.1",
     "dayjs": "^1.10.4",
     "lodash-es": "^4.17.21",
-    "normalize.css": "^8.0.1",
     "nprogress": "^0.2.0",
     "pinia": "^2.0.0-alpha.13",
     "postcss": "^8.2.13",

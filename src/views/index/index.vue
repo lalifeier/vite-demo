@@ -1,5 +1,5 @@
 <template>
-  <div>demo</div>
+  <div class="text-blue-500">TailwindCSS setup</div>
 </template>
 
 <script>
