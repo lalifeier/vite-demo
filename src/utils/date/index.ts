@@ -1,3 +1,16 @@
+import dayjs from 'dayjs'
+
+export const DATE_TIME_FORMAT = 'YYYY-MM-DD HH:mm:ss'
+export const DATE_FORMAT = 'YYYY-MM-DD '
+
+export function formatToDateTime(date: dayjs.ConfigType, format = DATE_TIME_FORMAT): string {
+  return dayjs(date).format(format)
+}
+
+export function formatToDate(date: dayjs.ConfigType, format = DATE_FORMAT): string {
+  return dayjs(date).format(format)
+}
+
 export function formatDate(date: Date = new Date(), fmt = 'yyyy-MM-dd hh:mm:ss') {
   const o = {
     'M+': date.getMonth() + 1,

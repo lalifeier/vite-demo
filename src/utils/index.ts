@@ -1,4 +1,4 @@
-export function typeOf(obj) {
+export function typeOf(obj: unknown) {
   const { toString } = Object.prototype
   const map = {
     '[object Boolean]': 'boolean',
@@ -28,8 +28,8 @@ export function deepClone(data) {
   }
 
   if (t === 'array') {
-    for (let i = 0; i < data.length; i++) {
-      o.push(deepClone(data[i]))
+    for (const item of data) {
+      o.push(deepClone(item))
     }
   } else if (t === 'object') {
     for (const key in data) {
@@ -37,4 +37,14 @@ export function deepClone(data) {
     }
   }
   return o
+}
+
+export function openWindow(url: string, opt?: { target?: string; noopener?: boolean; noreferrer?: boolean }) {
+  const { target = '__blank', noopener = true, noreferrer = true } = opt || {}
+  const features: string[] = []
+
+  noopener && features.push('noopener=yes')
+  noreferrer && features.push('noreferrer=yes')
+
+  window.open(url, target, features.join(','))
 }
