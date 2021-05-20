@@ -1,3 +1,5 @@
+import jQuery from 'jquery'
+
 export function hasClass(ele: Element, cls: string) {
   return ele.className.match(new RegExp('(\\s|^)' + cls + '(\\s|$)'))
 }
