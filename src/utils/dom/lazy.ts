@@ -13,8 +13,12 @@ export function lazyInit(el: Element, fn: Function, options?: any) {
     }, options)
     ob.observe(el)
   } else {
+    let lazyloadThrottleTimeout: any
     const lazyload = () => {
-      const lazyloadThrottleTimeout = setTimeout(() => {
+      if (lazyloadThrottleTimeout) {
+        clearTimeout(lazyloadThrottleTimeout)
+      }
+      lazyloadThrottleTimeout = setTimeout(() => {
         if (el.offsetTop < window.innerHeight + window.pageYOffset) {
           fn()
         }
@@ -24,9 +28,6 @@ export function lazyInit(el: Element, fn: Function, options?: any) {
           window.removeEventListener('orientationChange', lazyload)
         }
       }, 20)
-      if (lazyloadThrottleTimeout) {
-        clearTimeout(lazyloadThrottleTimeout)
-      }
     }
     document.addEventListener('scroll', lazyload)
     window.addEventListener('resize', lazyload)
