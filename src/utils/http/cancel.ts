@@ -16,15 +16,15 @@ export function addPendingRequest(config) {
 export function removePendingRequest(config) {
   const requestKey = generateReqKey(config)
   if (pendingRequest.has(requestKey)) {
-    const cancelToken = pendingRequest.get(requestKey)
-    cancelToken(requestKey)
+    const cancel = pendingRequest.get(requestKey)
+    cancel(requestKey)
     pendingRequest.delete(requestKey)
   }
 }
 
 export function removeAllPendingRequest() {
-  pendingRequest.forEach((cancelToken) => {
-    cancelToken()
+  pendingRequest.forEach((cancel) => {
+    cancel()
   })
   pendingRequest.clear()
 }
