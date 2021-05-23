@@ -1,0 +1,20 @@
+ls:
+  src/*:
+    .js: kebab-case
+    .ts: camelCase
+    .tsx: camelCase
+    .vue: PascalCase | regex:^index
+    .d.ts: kebab-case
+    .mock.ts: kebab-case
+    .config.js: lowercase
+    .test-d.ts: kebab-case
+    .spec.ts: camelCase
+  types:
+    .d.ts: kebab-case
+
+ignore:
+  - node_modules
+  - .git
+  - .github
+  - .vscode
+  - .idea

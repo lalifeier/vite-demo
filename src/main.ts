@@ -1,10 +1,11 @@
+import 'virtual:windi-devtools'
+import 'virtual:windi.css'
 import { createApp } from 'vue'
 import App from './App.vue'
 import { setupDirective } from './directive'
 import router, { setupRouter } from './router'
 import { setupRouterGuard } from './router/guard'
 import { setupStore } from './store'
-import './styles/tailwind.css'
 ;(async () => {
   const app = createApp(App)
 

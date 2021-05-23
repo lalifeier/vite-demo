@@ -1,4 +1,4 @@
-export function lazyInit(el: Element, fn: Function, options?: any) {
+export function lazyInit(el: any, fn: Function, options?: any) {
   if ('IntersectionObserver' in window) {
     // const options = {
     //     root: null,
@@ -37,7 +37,7 @@ export function lazyInit(el: Element, fn: Function, options?: any) {
 
 // <img  data-src="" class="data-lazyload">
 export function lazyLoadImage() {
-  document.querySelectorAll('img[data-lazyload]').forEach((img) => {
+  document.querySelectorAll('img[data-lazyload]').forEach((img: any) => {
     lazyInit(img, () => {
       img.src = img.dataset.src
       img.classList.remove('data-lazyload')

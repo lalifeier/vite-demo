@@ -1,5 +1,3 @@
-import jQuery from 'jquery'
-
 export function hasClass(ele: Element, cls: string) {
   return ele.className.match(new RegExp('(\\s|^)' + cls + '(\\s|$)'))
 }
@@ -37,7 +35,7 @@ export function scollPostion() {
 }
 
 export function isElementViewport(el: Element) {
-  if (typeof jQuery !== 'undefined' && el instanceof jQuery) el = el[0]
+  // if (typeof jQuery !== 'undefined' && el instanceof jQuery) el = el[0]
 
   const rect = el.getBoundingClientRect()
   const windowHeight = window.innerHeight || document.documentElement.clientHeight

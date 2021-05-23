@@ -12,7 +12,7 @@ export function formatToDate(date: dayjs.ConfigType, format = DATE_FORMAT): stri
 }
 
 export function formatDate(date: Date = new Date(), fmt = 'yyyy-MM-dd hh:mm:ss') {
-  const o = {
+  const o: any = {
     'M+': date.getMonth() + 1,
     'd+': date.getDate(),
     'h+': date.getHours(),
