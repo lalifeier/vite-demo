@@ -1,3 +1,5 @@
+@import './color.scss';
+
 html {
   box-sizing: border-box;
   height: 100%;
@@ -44,4 +46,8 @@ a:hover {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+}
+
+#nprogress .bar {
+  background: $--color-primary !important;
 }

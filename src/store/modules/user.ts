@@ -1,18 +1,41 @@
 import { defineStore } from 'pinia'
-import { store } from '../index'
-
+import type { UserInfo } from '../types'
 interface UserState {
+  userInfo: Nullable<UserInfo>
+  roleList: []
   accessToken?: string
   refreshToken?: string
 }
 
 export const useUserStore = defineStore({
   id: 'user',
-  state: (): UserState => ({}),
-  getters: {},
-  actions: {},
-})
+  state: (): UserState => ({
+    userInfo: null,
+    accessToken: '',
+    refreshToken: '',
+    roleList: [],
+  }),
+  getters: {
+    // getUserInfo(): UserInfo {
+    //   return this.userInfo
+    // }
+    getToken() {
+      return this.accessToken
+    },
+  },
+  actions: {
+    setUserInfo() {},
+    setToken() {},
+    setRoleList() {},
+    resetState() {
+      this.userInfo = null
+      this.accessToken = ''
+      this.refreshToken = ''
+      this.roleList = []
+    },
 
-export function useUserStoreWidthOut() {
-  return useUserStore(store)
-}
+    login() {},
+    getUserInfo() {},
+    logout() {},
+  },
+})

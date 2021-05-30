@@ -2,6 +2,11 @@
 # yarn lockfile v1
 
 
+"@antfu/utils@^0.1.6":
+  version "0.1.6"
+  resolved "https://registry.nlark.com/@antfu/utils/download/@antfu/utils-0.1.6.tgz#a9e801f103fd14a59785dd0485fec06b6dc34d94"
+  integrity sha1-qegB8QP9FKWXhd0Ehf7Aa23DTZQ=
+
 "@babel/code-frame@7.12.11", "@babel/code-frame@^7.0.0":
   version "7.12.11"
   resolved "https://registry.npm.taobao.org/@babel/code-frame/download/@babel/code-frame-7.12.11.tgz?cache=0&sync_timestamp=1612314620252&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2F%40babel%2Fcode-frame%2Fdownload%2F%40babel%2Fcode-frame-7.12.11.tgz"
@@ -1360,10 +1365,10 @@
   dependencies:
     cross-fetch "^3.0.6"
 
-"@iconify/json@^1.1.347":
-  version "1.1.347"
-  resolved "https://registry.nlark.com/@iconify/json/download/@iconify/json-1.1.347.tgz#88eb12657b005d59420dd0971e23ae409b0fa42f"
-  integrity sha1-iOsSZXsAXVlCDdCXHiOuQJsPpC8=
+"@iconify/json@^1.1.350":
+  version "1.1.350"
+  resolved "https://registry.nlark.com/@iconify/json/download/@iconify/json-1.1.350.tgz#abd66f4ef1250306f7ce088dac637ea0d781e694"
+  integrity sha1-q9ZvTvElAwb3zgiNrGN+oNeB5pQ=
 
 "@iconify/types@^1.0.6":
   version "1.0.6"
@@ -1736,15 +1741,15 @@
   resolved "https://registry.npm.taobao.org/@types/node/download/@types/node-14.14.41.tgz?cache=0&sync_timestamp=1618543947232&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2F%40types%2Fnode%2Fdownload%2F%40types%2Fnode-14.14.41.tgz"
   integrity sha1-0Lk52Uwde9U9BIJK9F8RObjEVhU=
 
-"@types/node@^14.14.37":
-  version "14.17.0"
-  resolved "https://registry.nlark.com/@types/node/download/@types/node-14.17.0.tgz#3ba770047723b3eeb8dc9fca02cce8a7fb6378da"
-  integrity sha1-O6dwBHcjs+643J/KAszop/tjeNo=
+"@types/node@^14.17.1":
+  version "14.17.1"
+  resolved "https://registry.nlark.com/@types/node/download/@types/node-14.17.1.tgz?cache=0&sync_timestamp=1621901244878&other_urls=https%3A%2F%2Fregistry.nlark.com%2F%40types%2Fnode%2Fdownload%2F%40types%2Fnode-14.17.1.tgz#5e07e0cb2ff793aa7a1b41deae76221e6166049f"
+  integrity sha1-Xgfgyy/3k6p6G0HernYiHmFmBJ8=
 
-"@types/node@^15.6.0":
-  version "15.6.0"
-  resolved "https://registry.nlark.com/@types/node/download/@types/node-15.6.0.tgz#f0ddca5a61e52627c9dcb771a6039d44694597bc"
-  integrity sha1-8N3KWmHlJifJ3LdxpgOdRGlFl7w=
+"@types/node@^15.6.1":
+  version "15.6.1"
+  resolved "https://registry.nlark.com/@types/node/download/@types/node-15.6.1.tgz?cache=0&sync_timestamp=1621901244878&other_urls=https%3A%2F%2Fregistry.nlark.com%2F%40types%2Fnode%2Fdownload%2F%40types%2Fnode-15.6.1.tgz#32d43390d5c62c5b6ec486a9bc9c59544de39a08"
+  integrity sha1-MtQzkNXGLFtuxIapvJxZVE3jmgg=
 
 "@types/normalize-package-data@^2.4.0":
   version "2.4.0"
@@ -1768,10 +1773,15 @@
   dependencies:
     "@types/node" "*"
 
-"@types/svgo@^1", "@types/svgo@^1.3.5":
+"@types/svgo@^1":
   version "1.3.5"
   resolved "https://registry.nlark.com/@types/svgo/download/@types/svgo-1.3.5.tgz?cache=0&sync_timestamp=1621243778102&other_urls=https%3A%2F%2Fregistry.nlark.com%2F%40types%2Fsvgo%2Fdownload%2F%40types%2Fsvgo-1.3.5.tgz#18a0166fbcdfbfc7f17d0491da2ea07ee397d3f9"
   integrity sha1-GKAWb7zfv8fxfQSR2i6gfuOX0/k=
+
+"@types/svgo@^2.3.0":
+  version "2.3.0"
+  resolved "https://registry.nlark.com/@types/svgo/download/@types/svgo-2.3.0.tgz?cache=0&sync_timestamp=1621243778102&other_urls=https%3A%2F%2Fregistry.nlark.com%2F%40types%2Fsvgo%2Fdownload%2F%40types%2Fsvgo-2.3.0.tgz#16723e04f9892b20368ff6f43396557ab86a1f39"
+  integrity sha1-FnI+BPmJKyA2j/b0M5ZVerhqHzk=
 
 "@types/tinycolor2@^1.4.2":
   version "1.4.2"
@@ -1799,13 +1809,13 @@
     "@types/unist" "*"
     "@types/vfile-message" "*"
 
-"@typescript-eslint/eslint-plugin@^4.24.0":
-  version "4.24.0"
-  resolved "https://registry.nlark.com/@typescript-eslint/eslint-plugin/download/@typescript-eslint/eslint-plugin-4.24.0.tgz#03801ffc25b2af9d08f3dc9bccfc0b7ce3780d0f"
-  integrity sha1-A4Af/CWyr50I89ybzPwLfON4DQ8=
+"@typescript-eslint/eslint-plugin@^4.25.0":
+  version "4.25.0"
+  resolved "https://registry.nlark.com/@typescript-eslint/eslint-plugin/download/@typescript-eslint/eslint-plugin-4.25.0.tgz?cache=0&sync_timestamp=1622246889675&other_urls=https%3A%2F%2Fregistry.nlark.com%2F%40typescript-eslint%2Feslint-plugin%2Fdownload%2F%40typescript-eslint%2Feslint-plugin-4.25.0.tgz#d82657b6ab4caa4c3f888ff923175fadc2f31f2a"
+  integrity sha1-2CZXtqtMqkw/iI/5IxdfrcLzHyo=
   dependencies:
-    "@typescript-eslint/experimental-utils" "4.24.0"
-    "@typescript-eslint/scope-manager" "4.24.0"
+    "@typescript-eslint/experimental-utils" "4.25.0"
+    "@typescript-eslint/scope-manager" "4.25.0"
     debug "^4.1.1"
     functional-red-black-tree "^1.0.1"
     lodash "^4.17.15"
@@ -1813,60 +1823,60 @@
     semver "^7.3.2"
     tsutils "^3.17.1"
 
-"@typescript-eslint/experimental-utils@4.24.0":
-  version "4.24.0"
-  resolved "https://registry.nlark.com/@typescript-eslint/experimental-utils/download/@typescript-eslint/experimental-utils-4.24.0.tgz?cache=0&sync_timestamp=1621571529170&other_urls=https%3A%2F%2Fregistry.nlark.com%2F%40typescript-eslint%2Fexperimental-utils%2Fdownload%2F%40typescript-eslint%2Fexperimental-utils-4.24.0.tgz#c23ead9de44b99c3a5fd925c33a106b00165e172"
-  integrity sha1-wj6tneRLmcOl/ZJcM6EGsAFl4XI=
+"@typescript-eslint/experimental-utils@4.25.0":
+  version "4.25.0"
+  resolved "https://registry.nlark.com/@typescript-eslint/experimental-utils/download/@typescript-eslint/experimental-utils-4.25.0.tgz?cache=0&sync_timestamp=1622246782700&other_urls=https%3A%2F%2Fregistry.nlark.com%2F%40typescript-eslint%2Fexperimental-utils%2Fdownload%2F%40typescript-eslint%2Fexperimental-utils-4.25.0.tgz#b2febcfa715d2c1806fd5f0335193a6cd270df54"
+  integrity sha1-sv68+nFdLBgG/V8DNRk6bNJw31Q=
   dependencies:
     "@types/json-schema" "^7.0.3"
-    "@typescript-eslint/scope-manager" "4.24.0"
-    "@typescript-eslint/types" "4.24.0"
-    "@typescript-eslint/typescript-estree" "4.24.0"
+    "@typescript-eslint/scope-manager" "4.25.0"
+    "@typescript-eslint/types" "4.25.0"
+    "@typescript-eslint/typescript-estree" "4.25.0"
     eslint-scope "^5.0.0"
     eslint-utils "^2.0.0"
 
-"@typescript-eslint/parser@^4.24.0":
-  version "4.24.0"
-  resolved "https://registry.nlark.com/@typescript-eslint/parser/download/@typescript-eslint/parser-4.24.0.tgz?cache=0&other_urls=https%3A%2F%2Fregistry.nlark.com%2F%40typescript-eslint%2Fparser%2Fdownload%2F%40typescript-eslint%2Fparser-4.24.0.tgz#2e5f1cc78ffefe43bfac7e5659309a92b09a51bd"
-  integrity sha1-Ll8cx4/+/kO/rH5WWTCakrCaUb0=
+"@typescript-eslint/parser@^4.25.0":
+  version "4.25.0"
+  resolved "https://registry.nlark.com/@typescript-eslint/parser/download/@typescript-eslint/parser-4.25.0.tgz#6b2cb6285aa3d55bfb263c650739091b0f19aceb"
+  integrity sha1-ayy2KFqj1Vv7JjxlBzkJGw8ZrOs=
   dependencies:
-    "@typescript-eslint/scope-manager" "4.24.0"
-    "@typescript-eslint/types" "4.24.0"
-    "@typescript-eslint/typescript-estree" "4.24.0"
+    "@typescript-eslint/scope-manager" "4.25.0"
+    "@typescript-eslint/types" "4.25.0"
+    "@typescript-eslint/typescript-estree" "4.25.0"
     debug "^4.1.1"
 
-"@typescript-eslint/scope-manager@4.24.0":
-  version "4.24.0"
-  resolved "https://registry.nlark.com/@typescript-eslint/scope-manager/download/@typescript-eslint/scope-manager-4.24.0.tgz?cache=0&sync_timestamp=1621572186297&other_urls=https%3A%2F%2Fregistry.nlark.com%2F%40typescript-eslint%2Fscope-manager%2Fdownload%2F%40typescript-eslint%2Fscope-manager-4.24.0.tgz#38088216f0eaf235fa30ed8cabf6948ec734f359"
-  integrity sha1-OAiCFvDq8jX6MO2Mq/aUjsc081k=
+"@typescript-eslint/scope-manager@4.25.0":
+  version "4.25.0"
+  resolved "https://registry.nlark.com/@typescript-eslint/scope-manager/download/@typescript-eslint/scope-manager-4.25.0.tgz#9d86a5bcc46ef40acd03d85ad4e908e5aab8d4ca"
+  integrity sha1-nYalvMRu9ArNA9ha1OkI5aq41Mo=
   dependencies:
-    "@typescript-eslint/types" "4.24.0"
-    "@typescript-eslint/visitor-keys" "4.24.0"
+    "@typescript-eslint/types" "4.25.0"
+    "@typescript-eslint/visitor-keys" "4.25.0"
 
-"@typescript-eslint/types@4.24.0":
-  version "4.24.0"
-  resolved "https://registry.nlark.com/@typescript-eslint/types/download/@typescript-eslint/types-4.24.0.tgz?cache=0&sync_timestamp=1621571337244&other_urls=https%3A%2F%2Fregistry.nlark.com%2F%40typescript-eslint%2Ftypes%2Fdownload%2F%40typescript-eslint%2Ftypes-4.24.0.tgz#6d0cca2048cbda4e265e0c4db9c2a62aaad8228c"
-  integrity sha1-bQzKIEjL2k4mXgxNucKmKqrYIow=
+"@typescript-eslint/types@4.25.0":
+  version "4.25.0"
+  resolved "https://registry.nlark.com/@typescript-eslint/types/download/@typescript-eslint/types-4.25.0.tgz?cache=0&sync_timestamp=1622248436205&other_urls=https%3A%2F%2Fregistry.nlark.com%2F%40typescript-eslint%2Ftypes%2Fdownload%2F%40typescript-eslint%2Ftypes-4.25.0.tgz#0e444a5c5e3c22d7ffa5e16e0e60510b3de5af87"
+  integrity sha1-DkRKXF48Itf/peFuDmBRCz3lr4c=
 
-"@typescript-eslint/typescript-estree@4.24.0":
-  version "4.24.0"
-  resolved "https://registry.nlark.com/@typescript-eslint/typescript-estree/download/@typescript-eslint/typescript-estree-4.24.0.tgz?cache=0&sync_timestamp=1621572534865&other_urls=https%3A%2F%2Fregistry.nlark.com%2F%40typescript-eslint%2Ftypescript-estree%2Fdownload%2F%40typescript-eslint%2Ftypescript-estree-4.24.0.tgz#b49249679a98014d8b03e8d4b70864b950e3c90f"
-  integrity sha1-tJJJZ5qYAU2LA+jUtwhkuVDjyQ8=
+"@typescript-eslint/typescript-estree@4.25.0":
+  version "4.25.0"
+  resolved "https://registry.nlark.com/@typescript-eslint/typescript-estree/download/@typescript-eslint/typescript-estree-4.25.0.tgz#942e4e25888736bff5b360d9b0b61e013d0cfa25"
+  integrity sha1-lC5OJYiHNr/1s2DZsLYeAT0M+iU=
   dependencies:
-    "@typescript-eslint/types" "4.24.0"
-    "@typescript-eslint/visitor-keys" "4.24.0"
+    "@typescript-eslint/types" "4.25.0"
+    "@typescript-eslint/visitor-keys" "4.25.0"
     debug "^4.1.1"
     globby "^11.0.1"
     is-glob "^4.0.1"
     semver "^7.3.2"
     tsutils "^3.17.1"
 
-"@typescript-eslint/visitor-keys@4.24.0":
-  version "4.24.0"
-  resolved "https://registry.nlark.com/@typescript-eslint/visitor-keys/download/@typescript-eslint/visitor-keys-4.24.0.tgz#a8fafdc76cad4e04a681a945fbbac4e35e98e297"
-  integrity sha1-qPr9x2ytTgSmgalF+7rE416Y4pc=
+"@typescript-eslint/visitor-keys@4.25.0":
+  version "4.25.0"
+  resolved "https://registry.nlark.com/@typescript-eslint/visitor-keys/download/@typescript-eslint/visitor-keys-4.25.0.tgz?cache=0&sync_timestamp=1622248450752&other_urls=https%3A%2F%2Fregistry.nlark.com%2F%40typescript-eslint%2Fvisitor-keys%2Fdownload%2F%40typescript-eslint%2Fvisitor-keys-4.25.0.tgz#863e7ed23da4287c5b469b13223255d0fde6aaa7"
+  integrity sha1-hj5+0j2kKHxbRpsTIjJV0P3mqqc=
   dependencies:
-    "@typescript-eslint/types" "4.24.0"
+    "@typescript-eslint/types" "4.25.0"
     eslint-visitor-keys "^2.0.0"
 
 "@vitejs/plugin-legacy@^1.4.0":
@@ -1914,6 +1924,14 @@
     domhandler "^4.2.0"
     htmlparser2 "^6.1.0"
     pug "^3.0.2"
+
+"@volar/shared@^0.25.14":
+  version "0.25.14"
+  resolved "https://registry.nlark.com/@volar/shared/download/@volar/shared-0.25.14.tgz#64f66d09708a85d25ab66003d2664c61c4ee8c2b"
+  integrity sha1-ZPZtCXCKhdJatmAD0mZMYcTujCs=
+  dependencies:
+    upath "^2.0.1"
+    vscode-languageserver "^7.1.0-next.4"
 
 "@volar/shared@^0.25.4":
   version "0.25.4"
@@ -2035,33 +2053,33 @@
   resolved "https://registry.nlark.com/@vue/shared/download/@vue/shared-3.0.11.tgz"
   integrity sha1-INIt0Np9NYuyHBf5vehigVJkLHc=
 
-"@vueuse/core@^4.11.0":
-  version "4.11.0"
-  resolved "https://registry.nlark.com/@vueuse/core/download/@vueuse/core-4.11.0.tgz#2fbfdbeafe7d0a975a901cb56de76226fc4bdf10"
-  integrity sha1-L7/b6v59CpdakBy1bediJvxL3xA=
+"@vueuse/core@^4.11.2":
+  version "4.11.2"
+  resolved "https://registry.nlark.com/@vueuse/core/download/@vueuse/core-4.11.2.tgz#d4f54bd38e7c289c6f6357992c02423774cb26d9"
+  integrity sha1-1PVL0458KJxvY1eZLAJCN3TLJtk=
   dependencies:
-    "@vueuse/shared" "4.11.0"
+    "@vueuse/shared" "4.11.2"
     vue-demi "*"
 
-"@vueuse/shared@4.11.0":
-  version "4.11.0"
-  resolved "https://registry.nlark.com/@vueuse/shared/download/@vueuse/shared-4.11.0.tgz#d5c453ac1c15e513d625f8035ec22c7562fd8441"
-  integrity sha1-1cRTrBwV5RPWJfgDXsIsdWL9hEE=
+"@vueuse/shared@4.11.2":
+  version "4.11.2"
+  resolved "https://registry.nlark.com/@vueuse/shared/download/@vueuse/shared-4.11.2.tgz#1d56e08937600e3e65abf76f27cb4a1bc182adfd"
+  integrity sha1-HVbgiTdgDj5lq/dvJ8tKG8GCrf0=
   dependencies:
     vue-demi "*"
 
-"@windicss/plugin-utils@0.15.10":
-  version "0.15.10"
-  resolved "https://registry.nlark.com/@windicss/plugin-utils/download/@windicss/plugin-utils-0.15.10.tgz#93dde1823da8f89c660fba9467b61723bb2a836c"
-  integrity sha1-k93hgj2o+JxmD7qUZ7YXI7sqg2w=
+"@windicss/plugin-utils@0.16.7":
+  version "0.16.7"
+  resolved "https://registry.nlark.com/@windicss/plugin-utils/download/@windicss/plugin-utils-0.16.7.tgz#54cd31841515e849f116a6d89e625da368f7de23"
+  integrity sha1-VM0xhBUV6EnxFqbYnmJdo2j33iM=
   dependencies:
+    "@antfu/utils" "^0.1.6"
     debug "^4.3.2"
     fast-glob "^3.2.5"
+    jiti "^1.9.2"
     magic-string "^0.25.7"
     micromatch "^4.0.4"
-    pirates "^4.0.1"
-    sucrase "^3.18.1"
-    windicss "^2.5.14"
+    windicss "^3.0.12"
 
 JSONStream@^1.0.4:
   version "1.3.5"
@@ -2181,11 +2199,6 @@ ansi-styles@^4.0.0, ansi-styles@^4.1.0:
   integrity sha1-7dgDYornHATIWuegkG7a00tkiTc=
   dependencies:
     color-convert "^2.0.1"
-
-any-promise@^1.0.0:
-  version "1.3.0"
-  resolved "https://registry.npm.taobao.org/any-promise/download/any-promise-1.3.0.tgz#abc6afeedcea52e809cdc0376aed3ce39635d17f"
-  integrity sha1-q8av7tzqUugJzcA3au0845Y10X8=
 
 anymatch@~3.1.1:
   version "3.1.2"
@@ -3026,11 +3039,6 @@ commander@^2.20.0, commander@^2.8.1:
   resolved "https://registry.npm.taobao.org/commander/download/commander-2.20.3.tgz?cache=0&sync_timestamp=1616363849438&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fcommander%2Fdownload%2Fcommander-2.20.3.tgz#fd485e84c03eb4881c20722ba48035e8531aeb33"
   integrity sha1-/UhehMA+tIgcIHIrpIA16FMa6zM=
 
-commander@^4.0.0:
-  version "4.1.1"
-  resolved "https://registry.npm.taobao.org/commander/download/commander-4.1.1.tgz?cache=0&sync_timestamp=1616363849438&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fcommander%2Fdownload%2Fcommander-4.1.1.tgz#9fd602bd936294e9e9ef46a3f4d6964044b18068"
-  integrity sha1-n9YCvZNilOnp70aj9NaWQESxgGg=
-
 commander@^7.1.0, commander@^7.2.0:
   version "7.2.0"
   resolved "https://registry.npm.taobao.org/commander/download/commander-7.2.0.tgz?cache=0&sync_timestamp=1616363849438&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fcommander%2Fdownload%2Fcommander-7.2.0.tgz#a36cb57d0b501ce108e4d20559a150a391d97ab7"
@@ -3381,6 +3389,14 @@ core-util-is@~1.0.0:
   resolved "https://registry.npm.taobao.org/core-util-is/download/core-util-is-1.0.2.tgz"
   integrity sha1-tf1UIgqivFq1eqtxQMlAdUUDwac=
 
+cors@^2.8.5:
+  version "2.8.5"
+  resolved "https://registry.npm.taobao.org/cors/download/cors-2.8.5.tgz#eac11da51592dd86b9f06f6e7ac293b3df875d29"
+  integrity sha1-6sEdpRWS3Ya58G9uesKTs9+HXSk=
+  dependencies:
+    object-assign "^4"
+    vary "^1"
+
 cosmiconfig@^5.0.0:
   version "5.2.1"
   resolved "https://registry.npm.taobao.org/cosmiconfig/download/cosmiconfig-5.2.1.tgz?cache=0&sync_timestamp=1596321756664&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fcosmiconfig%2Fdownload%2Fcosmiconfig-5.2.1.tgz"
@@ -3583,10 +3599,10 @@ dateformat@^3.0.0:
   resolved "https://registry.npm.taobao.org/dateformat/download/dateformat-3.0.3.tgz?cache=0&sync_timestamp=1612519746567&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fdateformat%2Fdownload%2Fdateformat-3.0.3.tgz"
   integrity sha1-puN0maTZqc+F71hyBE1ikByYia4=
 
-dayjs@^1.10.4:
-  version "1.10.4"
-  resolved "https://registry.npm.taobao.org/dayjs/download/dayjs-1.10.4.tgz?cache=0&sync_timestamp=1611310021152&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fdayjs%2Fdownload%2Fdayjs-1.10.4.tgz#8e544a9b8683f61783f570980a8a80eaf54ab1e2"
-  integrity sha1-jlRKm4aD9heD9XCYCoqA6vVKseI=
+dayjs@^1.10.5:
+  version "1.10.5"
+  resolved "https://registry.nlark.com/dayjs/download/dayjs-1.10.5.tgz?cache=0&sync_timestamp=1622012259636&other_urls=https%3A%2F%2Fregistry.nlark.com%2Fdayjs%2Fdownload%2Fdayjs-1.10.5.tgz#5600df4548fc2453b3f163ebb2abbe965ccfb986"
+  integrity sha1-VgDfRUj8JFOz8WPrsqu+llzPuYY=
 
 debug@^2.2.0, debug@^2.3.3, debug@^2.6.9:
   version "2.6.9"
@@ -4034,7 +4050,7 @@ esbuild-plugin-alias@^0.1.2:
   resolved "https://registry.npm.taobao.org/esbuild-plugin-alias/download/esbuild-plugin-alias-0.1.2.tgz#1232fbde807c0c8ad44c44ec859819eb492e12a8"
   integrity sha1-EjL73oB8DIrUTETshZgZ60kuEqg=
 
-esbuild-register@^2.2.0:
+esbuild-register@^2.5.0:
   version "2.5.0"
   resolved "https://registry.npm.taobao.org/esbuild-register/download/esbuild-register-2.5.0.tgz#b855d8cfa963835a16866146e310691bd8afa4f5"
   integrity sha1-uFXYz6ljg1oWhmFG4xBpG9ivpPU=
@@ -4042,15 +4058,15 @@ esbuild-register@^2.2.0:
     esbuild "^0.11.5"
     jsonc-parser "^3.0.0"
 
-esbuild@^0.11.20, esbuild@^0.11.23, esbuild@^0.11.5, esbuild@^0.11.6:
+esbuild@^0.11.20, esbuild@^0.11.23, esbuild@^0.11.5:
   version "0.11.23"
   resolved "https://registry.nlark.com/esbuild/download/esbuild-0.11.23.tgz?cache=0&sync_timestamp=1621409302003&other_urls=https%3A%2F%2Fregistry.nlark.com%2Fesbuild%2Fdownload%2Fesbuild-0.11.23.tgz#c42534f632e165120671d64db67883634333b4b8"
   integrity sha1-xCU09jLhZRIGcdZNtniDY0MztLg=
 
-esbuild@^0.9.2:
-  version "0.9.7"
-  resolved "https://registry.nlark.com/esbuild/download/esbuild-0.9.7.tgz?cache=0&sync_timestamp=1621409302003&other_urls=https%3A%2F%2Fregistry.nlark.com%2Fesbuild%2Fdownload%2Fesbuild-0.9.7.tgz#ea0d639cbe4b88ec25fbed4d6ff00c8d788ef70b"
-  integrity sha1-6g1jnL5LiOwl++1Nb/AMjXiO9ws=
+esbuild@^0.12.5:
+  version "0.12.5"
+  resolved "https://registry.nlark.com/esbuild/download/esbuild-0.12.5.tgz?cache=0&sync_timestamp=1622164632679&other_urls=https%3A%2F%2Fregistry.nlark.com%2Fesbuild%2Fdownload%2Fesbuild-0.12.5.tgz#36076a6bc1966ba2741981d30512e95e8aaff495"
+  integrity sha1-Ngdqa8GWa6J0GYHTBRLpXoqv9JU=
 
 escalade@^3.1.1:
   version "3.1.1"
@@ -4097,10 +4113,10 @@ eslint-module-utils@^2.6.1:
     debug "^3.2.7"
     pkg-dir "^2.0.0"
 
-eslint-plugin-import@^2.23.3:
-  version "2.23.3"
-  resolved "https://registry.nlark.com/eslint-plugin-import/download/eslint-plugin-import-2.23.3.tgz?cache=0&other_urls=https%3A%2F%2Fregistry.nlark.com%2Feslint-plugin-import%2Fdownload%2Feslint-plugin-import-2.23.3.tgz#8a1b073289fff03c4af0f04b6df956b7d463e191"
-  integrity sha1-ihsHMon/8DxK8PBLbflWt9Rj4ZE=
+eslint-plugin-import@^2.23.4:
+  version "2.23.4"
+  resolved "https://registry.nlark.com/eslint-plugin-import/download/eslint-plugin-import-2.23.4.tgz#8dceb1ed6b73e46e50ec9a5bb2411b645e7d3d97"
+  integrity sha1-jc6x7Wtz5G5Q7JpbskEbZF59PZc=
   dependencies:
     array-includes "^3.1.3"
     array.prototype.flat "^1.2.4"
@@ -4125,10 +4141,10 @@ eslint-plugin-prettier@^3.4.0:
   dependencies:
     prettier-linter-helpers "^1.0.0"
 
-eslint-plugin-vue@^7.9.0:
-  version "7.9.0"
-  resolved "https://registry.npm.taobao.org/eslint-plugin-vue/download/eslint-plugin-vue-7.9.0.tgz?cache=0&sync_timestamp=1618213545245&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Feslint-plugin-vue%2Fdownload%2Feslint-plugin-vue-7.9.0.tgz"
-  integrity sha1-+Og6KpCPTEP8gwT1QB1P9nHz1WA=
+eslint-plugin-vue@^7.10.0:
+  version "7.10.0"
+  resolved "https://registry.nlark.com/eslint-plugin-vue/download/eslint-plugin-vue-7.10.0.tgz#251749aa99e089e085275f011042c6e74189f89a"
+  integrity sha1-JRdJqpngieCFJ18BEELG50GJ+Jo=
   dependencies:
     eslint-utils "^2.1.0"
     natural-compare "^1.4.0"
@@ -4205,13 +4221,14 @@ eslint@^7.27.0:
     text-table "^0.2.0"
     v8-compile-cache "^2.0.3"
 
-esno@^0.5.0:
-  version "0.5.0"
-  resolved "https://registry.npm.taobao.org/esno/download/esno-0.5.0.tgz#49849227d5cecc29b0fc1705fc575721af8485b2"
-  integrity sha1-SYSSJ9XOzCmw/BcF/FdXIa+EhbI=
+esno@^0.6.0:
+  version "0.6.0"
+  resolved "https://registry.nlark.com/esno/download/esno-0.6.0.tgz#9e00c314840f314fcb92f7ef89258ed1be37471d"
+  integrity sha1-ngDDFIQPMU/LkvfviSWO0b43Rx0=
   dependencies:
-    esbuild "^0.9.2"
-    esbuild-register "^2.2.0"
+    cross-spawn "^7.0.3"
+    esbuild "^0.12.5"
+    esbuild-register "^2.5.0"
 
 espree@^6.2.1:
   version "6.2.1"
@@ -5013,7 +5030,7 @@ glob@7.1.4:
     once "^1.3.0"
     path-is-absolute "^1.0.0"
 
-glob@7.1.6, glob@^7.0.0, glob@^7.0.3, glob@^7.1.3:
+glob@^7.0.0, glob@^7.0.3, glob@^7.1.3:
   version "7.1.6"
   resolved "https://registry.npm.taobao.org/glob/download/glob-7.1.6.tgz?cache=0&sync_timestamp=1599054256752&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fglob%2Fdownload%2Fglob-7.1.6.tgz"
   integrity sha1-FB8zuBp8JJLhJVlDB0gMRmeSeKY=
@@ -6160,6 +6177,11 @@ jest-worker@^26.2.1:
     merge-stream "^2.0.0"
     supports-color "^7.0.0"
 
+jiti@^1.9.2:
+  version "1.10.1"
+  resolved "https://registry.nlark.com/jiti/download/jiti-1.10.1.tgz#bc2a175b9435274dc8659d3d9a121a91c6b3a1af"
+  integrity sha1-vCoXW5Q1J03IZZ09mhIakcazoa8=
+
 jquery@^3.6.0:
   version "3.6.0"
   resolved "https://registry.npm.taobao.org/jquery/download/jquery-3.6.0.tgz#c72a09f15c1bdce142f49dbf1170bdf8adac2470"
@@ -7008,15 +7030,6 @@ mute-stream@0.0.7:
   resolved "https://registry.npm.taobao.org/mute-stream/download/mute-stream-0.0.7.tgz"
   integrity sha1-MHXOk7whuPq0PhvE2n6BFe0ee6s=
 
-mz@^2.7.0:
-  version "2.7.0"
-  resolved "https://registry.npm.taobao.org/mz/download/mz-2.7.0.tgz#95008057a56cafadc2bc63dde7f9ff6955948e32"
-  integrity sha1-lQCAV6Vsr63CvGPd5/n/aVWUjjI=
-  dependencies:
-    any-promise "^1.0.0"
-    object-assign "^4.0.1"
-    thenify-all "^1.0.0"
-
 nanoid@^3.1.22:
   version "3.1.22"
   resolved "https://registry.npm.taobao.org/nanoid/download/nanoid-3.1.22.tgz?cache=0&sync_timestamp=1615820420384&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fnanoid%2Fdownload%2Fnanoid-3.1.22.tgz"
@@ -7071,11 +7084,6 @@ node-fetch@2.6.1:
   version "2.6.1"
   resolved "https://registry.npm.taobao.org/node-fetch/download/node-fetch-2.6.1.tgz?cache=0&sync_timestamp=1599309179354&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fnode-fetch%2Fdownload%2Fnode-fetch-2.6.1.tgz#045bd323631f76ed2e2b55573394416b639a0052"
   integrity sha1-BFvTI2Mfdu0uK1VXM5RBa2OaAFI=
-
-node-modules-regexp@^1.0.0:
-  version "1.0.0"
-  resolved "https://registry.npm.taobao.org/node-modules-regexp/download/node-modules-regexp-1.0.0.tgz#8d9dbe28964a4ac5712e9131642107c71e90ec40"
-  integrity sha1-jZ2+KJZKSsVxLpExZCEHxx6Q7EA=
 
 node-releases@^1.1.71:
   version "1.1.71"
@@ -7196,7 +7204,7 @@ num2fraction@^1.2.2:
   resolved "https://registry.npm.taobao.org/num2fraction/download/num2fraction-1.2.2.tgz"
   integrity sha1-b2gragJ6Tp3fpFZM0lidHU5mnt4=
 
-object-assign@^4.0.1, object-assign@^4.1.0, object-assign@^4.1.1:
+object-assign@^4, object-assign@^4.0.1, object-assign@^4.1.0, object-assign@^4.1.1:
   version "4.1.1"
   resolved "https://registry.npm.taobao.org/object-assign/download/object-assign-4.1.1.tgz"
   integrity sha1-IQmtx5ZYh8/AXLvUQsrIv7s2CGM=
@@ -7697,13 +7705,6 @@ pinkie@^2.0.0:
   version "2.0.4"
   resolved "https://registry.npm.taobao.org/pinkie/download/pinkie-2.0.4.tgz"
   integrity sha1-clVrgM+g1IqXToDnckjoDtT3+HA=
-
-pirates@^4.0.1:
-  version "4.0.1"
-  resolved "https://registry.npm.taobao.org/pirates/download/pirates-4.0.1.tgz#643a92caf894566f91b2b986d2c66950a8e2fb87"
-  integrity sha1-ZDqSyviUVm+RsrmG0sZpUKji+4c=
-  dependencies:
-    node-modules-regexp "^1.0.0"
 
 pkg-dir@^2.0.0:
   version "2.0.0"
@@ -9517,18 +9518,6 @@ stylelint@^9.10.1:
     svg-tags "^1.0.0"
     table "^5.0.0"
 
-sucrase@^3.18.1:
-  version "3.18.1"
-  resolved "https://registry.npm.taobao.org/sucrase/download/sucrase-3.18.1.tgz#7c699d5148734b1105542ca4ea2aa69bcab7f728"
-  integrity sha1-fGmdUUhzSxEFVCyk6iqmm8q39yg=
-  dependencies:
-    commander "^4.0.0"
-    glob "7.1.6"
-    lines-and-columns "^1.1.6"
-    mz "^2.7.0"
-    pirates "^4.0.1"
-    ts-interface-checker "^0.1.9"
-
 sugarss@^2.0.0:
   version "2.0.0"
   resolved "https://registry.npm.taobao.org/sugarss/download/sugarss-2.0.0.tgz?cache=0&sync_timestamp=1604592612773&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fsugarss%2Fdownload%2Fsugarss-2.0.0.tgz"
@@ -9732,20 +9721,6 @@ text-table@^0.2.0:
   resolved "https://registry.npm.taobao.org/text-table/download/text-table-0.2.0.tgz"
   integrity sha1-f17oI66AUgfACvLfSoTsP8+lcLQ=
 
-thenify-all@^1.0.0:
-  version "1.6.0"
-  resolved "https://registry.npm.taobao.org/thenify-all/download/thenify-all-1.6.0.tgz#1a1918d402d8fc3f98fbf234db0bcc8cc10e9726"
-  integrity sha1-GhkY1ALY/D+Y+/I02wvMjMEOlyY=
-  dependencies:
-    thenify ">= 3.1.0 < 4"
-
-"thenify@>= 3.1.0 < 4":
-  version "3.3.1"
-  resolved "https://registry.npm.taobao.org/thenify/download/thenify-3.3.1.tgz#8932e686a4066038a016dd9e2ca46add9838a95f"
-  integrity sha1-iTLmhqQGYDigFt2eLKRq3Zg4qV8=
-  dependencies:
-    any-promise "^1.0.0"
-
 through2@^2.0.0:
   version "2.0.5"
   resolved "https://registry.npm.taobao.org/through2/download/through2-2.0.5.tgz?cache=0&sync_timestamp=1593478752640&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fthrough2%2Fdownload%2Fthrough2-2.0.5.tgz"
@@ -9905,11 +9880,6 @@ trough@^1.0.0:
   resolved "https://registry.npm.taobao.org/trough/download/trough-1.0.5.tgz"
   integrity sha1-uLY5zvrX0LsqvTfUM/+Ck++l9AY=
 
-ts-interface-checker@^0.1.9:
-  version "0.1.13"
-  resolved "https://registry.npm.taobao.org/ts-interface-checker/download/ts-interface-checker-0.1.13.tgz?cache=0&sync_timestamp=1618382089263&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fts-interface-checker%2Fdownload%2Fts-interface-checker-0.1.13.tgz#784fd3d679722bc103b1b4b8030bcddb5db2a699"
-  integrity sha1-eE/T1nlyK8EDsbS4AwvN212yppk=
-
 ts-mock-generator@^1.0.11:
   version "1.0.11"
   resolved "https://registry.nlark.com/ts-mock-generator/download/ts-mock-generator-1.0.11.tgz#cdee7254a27577960230ab01cfbcc341e2c80ab8"
@@ -10020,10 +9990,15 @@ typescript-vscode-sh-plugin@^0.6.14:
   resolved "https://registry.nlark.com/typescript-vscode-sh-plugin/download/typescript-vscode-sh-plugin-0.6.14.tgz#a81031b502f6346a26ea49ce082438c3e353bb38"
   integrity sha1-qBAxtQL2NGom6knOCCQ4w+NTuzg=
 
-typescript@^4.2.3, typescript@^4.2.4:
+typescript@^4.2.3:
   version "4.2.4"
   resolved "https://registry.nlark.com/typescript/download/typescript-4.2.4.tgz#8610b59747de028fda898a8aef0e103f156d0961"
   integrity sha1-hhC1l0feAo/aiYqK7w4QPxVtCWE=
+
+typescript@^4.3.2:
+  version "4.3.2"
+  resolved "https://registry.nlark.com/typescript/download/typescript-4.3.2.tgz#399ab18aac45802d6f2498de5054fcbbe716a805"
+  integrity sha1-OZqxiqxFgC1vJJjeUFT8u+cWqAU=
 
 uglify-js@^3.1.4:
   version "3.13.4"
@@ -10384,6 +10359,11 @@ validate-npm-package-license@^3.0.1:
     spdx-correct "^3.0.0"
     spdx-expression-parse "^3.0.0"
 
+vary@^1:
+  version "1.1.2"
+  resolved "https://registry.npm.taobao.org/vary/download/vary-1.1.2.tgz#2299f02c6ded30d4a5961b0b9f74524a18f634fc"
+  integrity sha1-IpnwLG3tMNSllhsLn3RSShj2NPw=
+
 vfile-location@^2.0.0:
   version "2.0.6"
   resolved "https://registry.npm.taobao.org/vfile-location/download/vfile-location-2.0.6.tgz?cache=0&sync_timestamp=1604222120041&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fvfile-location%2Fdownload%2Fvfile-location-2.0.6.tgz"
@@ -10525,10 +10505,10 @@ vite-plugin-pwa@^0.7.3:
     workbox-build "^6.1.5"
     workbox-window "^6.1.5"
 
-vite-plugin-style-import@^0.10.0:
-  version "0.10.0"
-  resolved "https://registry.nlark.com/vite-plugin-style-import/download/vite-plugin-style-import-0.10.0.tgz#f348ca95b72cdaa212a98c2d4da0dfbf70584165"
-  integrity sha1-80jKlbcs2qISqYwtTaDfv3BYQWU=
+vite-plugin-style-import@^0.10.1:
+  version "0.10.1"
+  resolved "https://registry.nlark.com/vite-plugin-style-import/download/vite-plugin-style-import-0.10.1.tgz#8732d2c04c92b7e13a7afddcb8e4a34f289fc17c"
+  integrity sha1-hzLSwEySt+E6ev3cuOSjTyifwXw=
   dependencies:
     "@rollup/pluginutils" "^4.1.0"
     change-case "^4.1.2"
@@ -10536,46 +10516,47 @@ vite-plugin-style-import@^0.10.0:
     es-module-lexer "^0.4.1"
     magic-string "^0.25.7"
 
-vite-plugin-svg-icons@^0.5.0:
-  version "0.5.0"
-  resolved "https://registry.nlark.com/vite-plugin-svg-icons/download/vite-plugin-svg-icons-0.5.0.tgz#7e73b736fa7f7b1628f915e03713c734e45c3f5d"
-  integrity sha1-fnO3Nvp/exYo+RXgNxPHNORcP10=
+vite-plugin-svg-icons@^0.6.2:
+  version "0.6.2"
+  resolved "https://registry.nlark.com/vite-plugin-svg-icons/download/vite-plugin-svg-icons-0.6.2.tgz#000ce707778dcd6d555a5f5c830de9a766a00fd7"
+  integrity sha1-AAznB3eNzW1VWl9cgw3pp2agD9c=
   dependencies:
-    "@types/svgo" "^1.3.5"
+    "@types/svgo" "^2.3.0"
+    cors "^2.8.5"
     debug "^4.3.2"
     etag "^1.8.1"
-    fs-extra "^9.1.0"
+    fs-extra "^10.0.0"
     svg-baker "1.7.0"
     svgo "^2.3.0"
 
-vite-plugin-theme@^0.7.1:
-  version "0.7.1"
-  resolved "https://registry.npm.taobao.org/vite-plugin-theme/download/vite-plugin-theme-0.7.1.tgz#046ae8a0eba016ea75c327ad6f99a0191592de0b"
-  integrity sha1-BGrooOugFup1wyetb5mgGRWS3gs=
+vite-plugin-theme@^0.8.1:
+  version "0.8.1"
+  resolved "https://registry.nlark.com/vite-plugin-theme/download/vite-plugin-theme-0.8.1.tgz#9008256a58a57dca81004ffa1de63ce9f60bf9eb"
+  integrity sha1-kAglalilfcqBAE/6HeY86fYL+es=
   dependencies:
-    "@types/node" "^14.14.37"
+    "@types/node" "^14.17.1"
     "@types/tinycolor2" "^1.4.2"
-    chalk "^4.1.0"
+    chalk "^4.1.1"
     clean-css "^5.1.2"
     debug "^4.3.2"
-    esbuild "^0.11.6"
+    esbuild "^0.11.23"
     esbuild-plugin-alias "^0.1.2"
     tinycolor2 "^1.4.2"
 
-vite-plugin-windicss@^0.15.10:
-  version "0.15.10"
-  resolved "https://registry.nlark.com/vite-plugin-windicss/download/vite-plugin-windicss-0.15.10.tgz#903dd926acd210cd57de29f85daa33ff5555819f"
-  integrity sha1-kD3ZJqzSEM1X3in4Xaoz/1VVgZ8=
+vite-plugin-windicss@^0.16.7:
+  version "0.16.7"
+  resolved "https://registry.nlark.com/vite-plugin-windicss/download/vite-plugin-windicss-0.16.7.tgz?cache=0&other_urls=https%3A%2F%2Fregistry.nlark.com%2Fvite-plugin-windicss%2Fdownload%2Fvite-plugin-windicss-0.16.7.tgz#5e6b849a607139ce769f7a757cc3b56b9d5349df"
+  integrity sha1-XmuEmmBxOc52n3p1fMO1a51TSd8=
   dependencies:
-    "@windicss/plugin-utils" "0.15.10"
-    chalk "^4.1.0"
+    "@windicss/plugin-utils" "0.16.7"
+    chalk "^4.1.1"
     debug "^4.3.2"
-    windicss "^2.5.14"
+    windicss "^3.0.12"
 
-vite@^2.3.3:
-  version "2.3.3"
-  resolved "https://registry.nlark.com/vite/download/vite-2.3.3.tgz?cache=0&sync_timestamp=1621261032477&other_urls=https%3A%2F%2Fregistry.nlark.com%2Fvite%2Fdownload%2Fvite-2.3.3.tgz#7e88a71abd03985c647789938d784cce0ee3b0fd"
-  integrity sha1-foinGr0DmFxkd4mTjXhMzg7jsP0=
+vite@^2.3.4:
+  version "2.3.4"
+  resolved "https://registry.nlark.com/vite/download/vite-2.3.4.tgz?cache=0&sync_timestamp=1621932554383&other_urls=https%3A%2F%2Fregistry.nlark.com%2Fvite%2Fdownload%2Fvite-2.3.4.tgz#370118e0334725b898ff754ea43d5db4c5e120e3"
+  integrity sha1-NwEY4DNHJbiY/3VOpD1dtMXhIOM=
   dependencies:
     esbuild "^0.11.23"
     postcss "^8.2.10"
@@ -10687,13 +10668,14 @@ vscode-pug-languageservice@^0.25.4:
     pug-parser "^6.0.0"
     vscode-languageserver "^7.1.0-next.4"
 
-vscode-typescript-languageservice@^0.25.4:
-  version "0.25.4"
-  resolved "https://registry.nlark.com/vscode-typescript-languageservice/download/vscode-typescript-languageservice-0.25.4.tgz#fce08a7adc18ac339b678ad939129b644f541e0d"
-  integrity sha1-/OCKetwYrDObZ4rZORKbZE9UHg0=
+vscode-typescript-languageservice@^0.25.12:
+  version "0.25.14"
+  resolved "https://registry.nlark.com/vscode-typescript-languageservice/download/vscode-typescript-languageservice-0.25.14.tgz#3ca261124051870a7a5874ecdaba7033deb5432b"
+  integrity sha1-PKJhEkBRhwp6WHTs2rpwM961Qys=
   dependencies:
-    "@volar/shared" "^0.25.4"
+    "@volar/shared" "^0.25.14"
     typescript-vscode-sh-plugin "^0.6.14"
+    upath "^2.0.1"
     vscode-languageserver "^7.1.0-next.4"
     vscode-languageserver-textdocument "^1.0.1"
 
@@ -10707,10 +10689,10 @@ vscode-uri@^3.0.2:
   resolved "https://registry.nlark.com/vscode-uri/download/vscode-uri-3.0.2.tgz#ecfd1d066cb8ef4c3a208decdbab9a8c23d055d0"
   integrity sha1-7P0dBmy470w6II3s26uajCPQVdA=
 
-vscode-vue-languageservice@0.25.6:
-  version "0.25.6"
-  resolved "https://registry.nlark.com/vscode-vue-languageservice/download/vscode-vue-languageservice-0.25.6.tgz#acca46be01b2c9426d617feebe87669e373dae32"
-  integrity sha1-rMpGvgGyyUJtYX/uvodmnjc9rjI=
+vscode-vue-languageservice@0.25.12:
+  version "0.25.12"
+  resolved "https://registry.nlark.com/vscode-vue-languageservice/download/vscode-vue-languageservice-0.25.12.tgz#b19524fd169d94192e156e7c007667e72febc68f"
+  integrity sha1-sZUk/RadlBkuFW58AHZn5y/rxo8=
   dependencies:
     "@starptech/prettyhtml" "^0.10.0"
     "@volar/code-gen" "^0.25.4"
@@ -10732,7 +10714,7 @@ vscode-vue-languageservice@0.25.6:
     vscode-languageserver "^7.1.0-next.4"
     vscode-languageserver-textdocument "^1.0.1"
     vscode-pug-languageservice "^0.25.4"
-    vscode-typescript-languageservice "^0.25.4"
+    vscode-typescript-languageservice "^0.25.12"
 
 vue-demi@*:
   version "0.7.5"
@@ -10756,12 +10738,12 @@ vue-router@^4.0.6:
   resolved "https://registry.nlark.com/vue-router/download/vue-router-4.0.6.tgz#91750db507d26642f225b0ec6064568e5fe448d6"
   integrity sha1-kXUNtQfSZkLyJbDsYGRWjl/kSNY=
 
-vue-tsc@^0.1.4:
-  version "0.1.4"
-  resolved "https://registry.nlark.com/vue-tsc/download/vue-tsc-0.1.4.tgz#c26a6e9f286c36bc870cff9b5e802262ac2c9c98"
-  integrity sha1-wmpunyhsNryHDP+bXoAiYqwsnJg=
+vue-tsc@^0.1.6:
+  version "0.1.6"
+  resolved "https://registry.nlark.com/vue-tsc/download/vue-tsc-0.1.6.tgz#7e1bd4e6cc5085d51706f00062331765d3ad640c"
+  integrity sha1-fhvU5sxQhdUXBvAAYjMXZdOtZAw=
   dependencies:
-    vscode-vue-languageservice "0.25.6"
+    vscode-vue-languageservice "0.25.12"
 
 vue@^3.0.5:
   version "3.0.11"
@@ -10818,15 +10800,10 @@ widest-line@^2.0.0:
   dependencies:
     string-width "^2.1.1"
 
-windicss@^2.5.14:
-  version "2.5.14"
-  resolved "https://registry.nlark.com/windicss/download/windicss-2.5.14.tgz#41236ccc2517c0947e1adb69e0d5e8aa9bed9c1e"
-  integrity sha1-QSNszCUXwJR+Gttp4NXoqpvtnB4=
-
-windicss@^3.0.9:
-  version "3.0.9"
-  resolved "https://registry.nlark.com/windicss/download/windicss-3.0.9.tgz#bc71e6fac60f779f9f3c4b4680565156623911d3"
-  integrity sha1-vHHm+sYPd5+fPEtGgFZRVmI5EdM=
+windicss@^3.0.12:
+  version "3.0.12"
+  resolved "https://registry.nlark.com/windicss/download/windicss-3.0.12.tgz#4354aaa48faaac6fd02f3119a62587da2c46b018"
+  integrity sha1-Q1SqpI+qrG/QLzEZpiWH2ixGsBg=
 
 with@^7.0.0:
   version "7.0.2"
