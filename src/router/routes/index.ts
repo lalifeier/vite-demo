@@ -44,10 +44,9 @@ export const constantRoutes: Array<RouteRecordRaw> = [
     meta: { title: '首页' },
     component: () => import('/@/views/composition/index.vue'),
   },
-  // {
-  //   path: '/login',
-  //   name: 'login',
-  //   hidden: true,
-  //   component: () => import('@/views/login/index.vue'),
-  // },
+  {
+    path: '/login',
+    name: 'login',
+    component: () => import('/@/views/login/index.vue'),
+  },
 ]
