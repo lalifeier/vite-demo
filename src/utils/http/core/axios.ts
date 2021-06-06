@@ -2,11 +2,14 @@ import type { AxiosInstance, AxiosRequestConfig, AxiosResponse } from 'axios'
 import axios from 'axios'
 import qs from 'qs'
 import { isFunction } from '../../is'
-import { ContentType } from '../emum'
-import type { HttpOptions, RequestOptions, Result, UploadFileParams } from '../types'
-import { AxiosCanceler } from './cancel'
+import { ContentType } from '../enum'
+import type { HttpOptions, RequestOptions, UploadFileParams } from '../types'
+import { getCacheRequest, setCacheRequest } from './cacheRequest'
+import { AxiosCanceler } from './cancelRepeatRequest'
+import { closeLoading, showLoading } from './loadingRequest'
+import { retryRequest } from './retryRequest'
 
-export class Request {
+export class HttpRequest {
   private instance: AxiosInstance
 
   private readonly options: HttpOptions
@@ -18,48 +21,80 @@ export class Request {
     this.setupInterceptors()
   }
 
-  // getInstance() {
-  //   this.instance || this.instance = new Request()
-  //   return this.instance
-  // }
+  getInstance() {
+    return this.instance || new HttpRequest({})
+  }
 
   setupInterceptors() {
-    const { interceptor, requestOptions = {} } = this.options
-    if (!interceptor) {
-      return
-    }
+    const { interceptor = {} } = this.options
 
     const axiosCanceler = new AxiosCanceler()
 
-    const { ignoreCancel } = requestOptions
-
     const { requestInterceptors, requestInterceptorsCatch, responseInterceptors, responseInterceptorsCatch } =
       interceptor
-    this.instance.interceptors.request.use((config: AxiosRequestConfig) => {
-      ignoreCancel && axiosCanceler.addPending(config)
+    this.instance.interceptors.request.use(
+      (config: AxiosRequestConfig) => {
+        const { cancelRepeatRequest, loading, cache } = config['requestOptions'] || {}
 
-      if (requestInterceptors && isFunction(requestInterceptors)) {
-        config = requestInterceptors(config)
+        if (cancelRepeatRequest) {
+          axiosCanceler.removePending(config)
+          axiosCanceler.addPending(config)
+        }
+
+        cache && getCacheRequest(config)
+
+        loading && showLoading()
+
+        if (requestInterceptors && isFunction(requestInterceptors)) {
+          config = requestInterceptors(config)
+        }
+        return config
+      },
+      (error) => {
+        return Promise.reject(error)
       }
-      return config
-    }, undefined)
+    )
 
     requestInterceptorsCatch &&
       isFunction(requestInterceptorsCatch) &&
       this.instance.interceptors.request.use(undefined, requestInterceptorsCatch)
 
-    this.instance.interceptors.response.use((res: AxiosResponse<any>) => {
-      ignoreCancel && axiosCanceler.removePending(res.config)
+    this.instance.interceptors.response.use(
+      (res: AxiosResponse<any>) => {
+        const requestOptions = res.config['requestOptions'] || {}
+        const { cancelRepeatRequest, loading, cache } = requestOptions
 
-      if (responseInterceptors && isFunction(responseInterceptors)) {
-        res = responseInterceptors(res)
+        cancelRepeatRequest && res.config && axiosCanceler.removePending(res.config)
+
+        cache && res && setCacheRequest(res, requestOptions.expire)
+
+        if (responseInterceptors && isFunction(responseInterceptors)) {
+          res = responseInterceptors(res)
+        }
+
+        loading && closeLoading()
+
+        return res
+      },
+      (error) => {
+        const { config = {}, data } = error.message || {}
+
+        const { cancelRepeatRequest, loading, cache } = config.requestOptions || {}
+
+        cancelRepeatRequest && config && axiosCanceler.removePending(config)
+
+        !axios.isCancel(error) && retryRequest(this.instance, error)
+
+        if (cache && axios.isCancel(error) && data) {
+          console.log('获取缓存')
+          return Promise.resolve(data.data)
+        }
+
+        responseInterceptorsCatch && isFunction(responseInterceptorsCatch) && responseInterceptorsCatch(error)
+
+        loading && closeLoading()
       }
-      return res
-    }, undefined)
-
-    responseInterceptorsCatch &&
-      isFunction(responseInterceptorsCatch) &&
-      this.instance.interceptors.response.use(undefined, responseInterceptorsCatch)
+    )
   }
 
   transformRequest(config: AxiosRequestConfig) {
@@ -75,34 +110,11 @@ export class Request {
   }
 
   request<T = any>(config: AxiosRequestConfig, options?: RequestOptions): Promise<T> {
-    const { transform = {}, requestOptions } = this.options
-    const { transformRequest, transformResponse } = transform
-    const option: RequestOptions = Object.assign({}, requestOptions, options)
+    const option: any = Object.assign({}, config, { requestOptions: options })
 
-    if (transformRequest && isFunction(transformRequest)) {
-      config = transformRequest(config, option)
-    }
+    this.transformRequest(option)
 
-    this.transformRequest(config)
-
-    return new Promise((resolve, reject) => {
-      this.instance
-        .request(config)
-        .then((res: AxiosResponse<Result>) => {
-          if (transformResponse && isFunction(transformResponse)) {
-            try {
-              resolve(transformResponse(res, option))
-            } catch (err) {
-              reject(err)
-            }
-            return
-          }
-          resolve(res as unknown as Promise<T>)
-        })
-        .catch((err) => {
-          reject(err)
-        })
-    })
+    return this.instance.request(option)
   }
 
   get<T = any>(config: AxiosRequestConfig, options?: RequestOptions): Promise<T> {

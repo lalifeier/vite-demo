@@ -1,31 +1,25 @@
-import type { AxiosResponse } from 'axios'
-import axios from 'axios'
+import { AxiosResponse } from 'axios'
 import { isString, isUrl } from '../is'
-import { cacheAdapterEnhancer } from './adapters/cache'
-import { retryAdapterEnhancer } from './adapters/retry'
-import { Request } from './core/axios'
+import { HttpRequest } from './core/axios'
+import { checkStatus } from './core/checkStatus'
 import { AxiosInterceptor } from './core/interceptor'
-import { AxiosTransform } from './core/transform'
-import { ContentType } from './emum'
-import { HttpOptions, Result } from './types'
+import { refreshTokenRequest } from './core/refreshTokenRequest'
+import { ContentType } from './enum'
+import { HttpOptions } from './types'
 
 const interceptor: AxiosInterceptor = {
   requestInterceptors: (config) => {
-    // if (store.getters.access_token) {
-    //   config.headers.Authorization = cookies.get(ACCESS_TOKEN)
-    // }
-    return config
-  },
+    if (typeof window !== 'undefined') {
+      config.headers.Authorization = ''
+    }
 
-  responseInterceptorsCatch: (error) => {
-    return Promise.reject(error)
-  },
-}
+    let { params = {} } = config
+    const url = config.url || ''
+    const { apiUrl, joinTime } = config['requestOptions']
 
-const transform: AxiosTransform = {
-  transformRequest: (config, options) => {
-    const { url = '', params = {} } = config
-    const { apiUrl } = options
+    if (joinTime) {
+      params = Object.assign(params, { _t: new Date().getTime() })
+    }
 
     if (!isUrl(url) && apiUrl && isString(apiUrl)) {
       config.url = `${apiUrl}${url}`
@@ -43,37 +37,70 @@ const transform: AxiosTransform = {
       config.data = params
       config.params = undefined
     }
+
     return config
   },
 
-  transformResponse(res: AxiosResponse<Result>) {
-    const { data } = res.data
-    return data
+  responseInterceptors: (res: AxiosResponse<any>) => {
+    const { nativeResponse, transformResponse } = res.config['requestOptions'] || {}
+    if (nativeResponse) {
+      return res
+    }
+    if (!transformResponse) {
+      return res.data
+    }
+
+    const { code, data } = res.data
+    if (code === 401) {
+      return refreshTokenRequest(res.config)
+    }
+    if (code === 0) {
+      return data
+    }
+    return Promise.reject(res)
+  },
+
+  responseInterceptorsCatch: (error: any) => {
+    const { response, code, message } = error || {}
+    const msg: string = response?.data?.error?.message ?? ''
+    const err: string = error?.toString?.() ?? ''
+
+    if (code === 'ECONNABORTED' && message.indexOf('timeout') !== -1) {
+      console.log('接口请求超时')
+      return
+    }
+    if (err?.includes('Network Error')) {
+      console.log('网络异常')
+      return
+    }
+
+    checkStatus(error?.response?.status, msg)
+
+    return Promise.reject(error)
   },
 }
 
 function createHttp(opt?: HttpOptions) {
-  return new Request({
+  return new HttpRequest({
     timeout: 3 * 1000,
     // baseURL: '',
     headers: { 'Content-Type': ContentType.JSON },
-    adapter: retryAdapterEnhancer(
-      cacheAdapterEnhancer(axios.defaults.adapter, {
-        enabledByDefault: false,
-        cacheFlag: 'cache',
-        maxAge: 5000,
-      }),
-      {
-        times: 4,
-        delay: 300,
-      }
-    ),
-    transform,
     interceptor,
     requestOptions: {
-      apiUrl: 'http://api.xxx.dev',
-      joinPrefix: true,
-      ignoreCancel: false,
+      // apiUrl: 'http://api.xxx.dev',
+      // joinPrefix: true,
+
+      joinTime: true,
+
+      loading: false,
+      cancelRepeatRequest: false,
+      retryTimes: 3,
+      retryDelay: 300,
+      cache: false,
+      expire: 2 * 60 * 60 * 1000,
+
+      nativeResponse: false,
+      transformResponse: true,
     },
     ...opt,
   })

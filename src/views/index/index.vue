@@ -10,13 +10,19 @@ import { http } from '/@/utils/http'
 export default defineComponent({
   name: 'Index',
   setup() {
-    function handleHttp() {
-      http.get(
+    async function handleHttp() {
+      const res = await http.post(
         {
-          url: 'http://localhost:3000/#/index',
+          url: '/user/login',
         },
-        {}
+        {
+          cancelRepeatRequest: true,
+          retryTimes: 5,
+          cache: true,
+          expire: 3 * 1000,
+        }
       )
+      console.log(res)
     }
     return { handleHttp }
   },

@@ -1,17 +1,24 @@
 import type { AxiosRequestConfig } from 'axios'
-import { AxiosTransform } from './axiosTransform'
 import { AxiosInterceptor } from './core/interceptor'
 
 export interface HttpOptions extends AxiosRequestConfig {
   interceptor?: AxiosInterceptor
-  transform?: AxiosTransform
   requestOptions?: RequestOptions
 }
 export interface RequestOptions {
   apiUrl?: string
   joinPrefix?: boolean
   joinTime?: boolean
-  ignoreCancel?: boolean
+
+  loading?: boolean
+  cancelRepeatRequest?: boolean
+  retryTimes?: number
+  retryDelay?: number
+  cache?: boolean
+  expire?: number
+
+  nativeResponse?: boolean
+  transformResponse?: boolean
 }
 export interface Result<T = any> {
   code: number
