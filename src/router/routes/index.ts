@@ -49,4 +49,14 @@ export const constantRoutes: Array<RouteRecordRaw> = [
     name: 'login',
     component: () => import('/@/views/login/index.vue'),
   },
+  {
+    path: '/demo/table',
+    name: 'table',
+    component: () => import('/@/views/demo/table.vue'),
+  },
+  {
+    path: '/demo/lazy',
+    name: 'lazy',
+    component: () => import('/@/views/demo/lazy.vue'),
+  },
 ]

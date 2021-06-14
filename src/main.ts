@@ -17,6 +17,8 @@ if (process.env.NODE_ENV === 'development') {
 ;(async () => {
   const app = createApp(App)
 
+  // app.config.globalProperties.$emitter = mitt
+
   setupStore(app)
 
   setupComponent(app)

@@ -51,6 +51,10 @@ export function isWindow(val: any): val is Window {
   return typeof window !== 'undefined' && is(val, 'Window')
 }
 
+export function inBrowser() {
+  return typeof window !== 'undefined' && window !== null
+}
+
 export function isElement(val: unknown): val is Element {
   return isObject(val) && !!val.tagName
 }
@@ -59,6 +63,14 @@ export function isUrl(url: string): boolean {
   const reg =
     /(((^https?:(?:\/\/)?)(?:[-;:&=\+\$,\w]+@)?[A-Za-z0-9.-]+(?::\d+)?|(?:www.|[-;:&=\+\$,\w]+@)[A-Za-z0-9.-]+)((?:\/[\+~%\/.\w-_]*)?\??(?:[-\+=&;%@.\w_]*)#?(?:[\w]*))?)$/
   return reg.test(url)
+}
+
+export function isPrimitive(val: any): boolean {
+  return typeof val === 'object' ? val === null : typeof val !== 'function'
+}
+
+export function isValidKey(key: any): boolean {
+  return key !== '__proto__' && key !== 'constructor' && key !== 'prototype'
 }
 
 export function isEmpty<T = unknown>(val: T): val is T {

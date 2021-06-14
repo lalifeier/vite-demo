@@ -1,3 +1,5 @@
+import { isObject } from './is'
+
 export function typeOf(obj: unknown) {
   const { toString } = Object.prototype
   const map: any = {
@@ -37,6 +39,14 @@ export function deepClone(data: any) {
     }
   }
   return o
+}
+
+export function deepMerge<T = any>(src: any = {}, target: any = {}): T {
+  let key: string
+  for (key in target) {
+    src[key] = isObject(src[key]) ? deepMerge(src[key], target[key]) : (src[key] = target[key])
+  }
+  return src
 }
 
 export function openWindow(url: string, opt?: { target?: string; noopener?: boolean; noreferrer?: boolean }) {
