@@ -1,3 +1,4 @@
+import Clipboard from 'clipboard'
 import { isObject } from './is'
 
 export function typeOf(obj: unknown) {
@@ -57,4 +58,19 @@ export function openWindow(url: string, opt?: { target?: string; noopener?: bool
   noreferrer && features.push('noreferrer=yes')
 
   window.open(url, target, features.join(','))
+}
+
+export const copy = (text: string, event: Event) => {
+  const el = event.target as Element
+  const clipboard = new Clipboard(el, {
+    text: () => text,
+  })
+  clipboard.on('success', () => {
+    clipboard.destroy()
+  })
+  clipboard.on('error', (err) => {
+    console.log(err)
+    clipboard.destroy()
+  })
+  ;(clipboard as any).onClick(event)
 }

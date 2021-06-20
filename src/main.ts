@@ -5,10 +5,12 @@ import { worker } from '../mock/browser'
 import App from './App.vue'
 import { setupComponent } from './components'
 import { setupDirective } from './directive'
+import { setupPlugin } from './plugins'
 import router, { setupRouter } from './router'
 import { setupRouterGuard } from './router/guard'
 import { setupStore } from './store'
 import './styles/index.scss'
+import { setupErrorHandle } from './utils/error-handle'
 
 if (process.env.NODE_ENV === 'development') {
   worker.start()
@@ -27,7 +29,11 @@ if (process.env.NODE_ENV === 'development') {
 
   setupRouterGuard()
 
+  setupPlugin(app)
+
   setupDirective(app)
+
+  setupErrorHandle(app)
 
   await router.isReady()
 

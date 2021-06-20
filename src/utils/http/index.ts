@@ -80,6 +80,17 @@ const interceptor: AxiosInterceptor = {
   },
 }
 
+// export const paramsSerializer = (params: Record<string, unknown>) => {
+//   const data: Record<string, unknown> = {}
+//   for (const k in params) {
+//     const value = params[k]
+//     if (value !== '' && value !== null && value !== undefined) {
+//       data[k] = value
+//     }
+//   }
+//   return qs.stringify(data)
+// }
+
 function createHttp(opt?: HttpOptions) {
   return new HttpRequest({
     timeout: 3 * 1000,
