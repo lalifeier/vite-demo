@@ -2,6 +2,7 @@ import type { AxiosRequestConfig } from 'axios'
 import { AxiosInterceptor } from './core/interceptor'
 
 export interface HttpOptions extends AxiosRequestConfig {
+  authenticationScheme?: string
   interceptor?: AxiosInterceptor
   requestOptions?: RequestOptions
 }
@@ -19,6 +20,8 @@ export interface RequestOptions {
 
   nativeResponse?: boolean
   transformResponse?: boolean
+
+  filterNull?: boolean
 }
 export interface Result<T = any> {
   code: number

@@ -52,7 +52,8 @@
     "pinia": "^2.0.0-alpha.13",
     "qs": "^6.10.1",
     "vue": "^3.0.5",
-    "vue-router": "^4.0.6"
+    "vue-router": "^4.0.6",
+    "xlsx": "^0.17.0"
   },
   "devDependencies": {
     "@commitlint/cli": "^12.1.4",

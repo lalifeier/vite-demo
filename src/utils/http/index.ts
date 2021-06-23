@@ -10,12 +10,18 @@ import { HttpOptions } from './types'
 const interceptor: AxiosInterceptor = {
   requestInterceptors: (config) => {
     if (typeof window !== 'undefined') {
-      config.headers.Authorization = ''
+      // config.headers.Authorization = config.authenticationScheme
+      // ? `${config.authenticationScheme} ${token}`
+      // : token;
     }
 
     let { params = {} } = config
     const url = config.url || ''
-    const { apiUrl, joinTime } = config['requestOptions']
+    const { apiUrl, joinTime, filterNull } = config['requestOptions']
+
+    if (filterNull) {
+      params = paramsSerializer(params)
+    }
 
     if (joinTime) {
       params = Object.assign(params, { _t: new Date().getTime() })
@@ -80,21 +86,22 @@ const interceptor: AxiosInterceptor = {
   },
 }
 
-// export const paramsSerializer = (params: Record<string, unknown>) => {
-//   const data: Record<string, unknown> = {}
-//   for (const k in params) {
-//     const value = params[k]
-//     if (value !== '' && value !== null && value !== undefined) {
-//       data[k] = value
-//     }
-//   }
-//   return qs.stringify(data)
-// }
+export const paramsSerializer = (params: Record<string, unknown>) => {
+  const data: Record<string, unknown> = {}
+  for (const k in params) {
+    const value = params[k]
+    if (value !== '' && value !== null && value !== undefined) {
+      data[k] = value
+    }
+  }
+  return data
+}
 
 function createHttp(opt?: HttpOptions) {
   return new HttpRequest({
     timeout: 3 * 1000,
     // baseURL: '',
+    authenticationScheme: 'Bearer',
     headers: { 'Content-Type': ContentType.JSON },
     interceptor,
     requestOptions: {
@@ -112,6 +119,8 @@ function createHttp(opt?: HttpOptions) {
 
       nativeResponse: false,
       transformResponse: true,
+
+      filterNull: true,
     },
     ...opt,
   })
