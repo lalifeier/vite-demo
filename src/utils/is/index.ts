@@ -55,6 +55,10 @@ export function inBrowser() {
   return typeof window !== 'undefined' && window !== null
 }
 
+export const isServer = typeof window === 'undefined'
+
+export const isClient = !isServer
+
 export function isElement(val: unknown): val is Element {
   return isObject(val) && !!val.tagName
 }
