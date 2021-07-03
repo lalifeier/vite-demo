@@ -7,6 +7,8 @@ import { defineComponent } from 'vue'
 
 import { http } from '/@/utils/http'
 
+import { multiThreadDownload } from '/@/utils/file/download'
+
 export default defineComponent({
   name: 'Index',
   setup() {
@@ -23,6 +25,10 @@ export default defineComponent({
         }
       )
       console.log(res)
+
+      window.aa.b
+
+      multiThreadDownload('https://www.runoob.com/try/demo_source/movie.mp4')
     }
     return { handleHttp }
   },

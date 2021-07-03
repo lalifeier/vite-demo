@@ -17,10 +17,10 @@ const interceptor: AxiosInterceptor = {
 
     let { params = {} } = config
     const url = config.url || ''
-    const { apiUrl, joinTime, filterNull } = config['requestOptions']
+    const { apiUrl, joinTime, filterParams } = config['requestOptions']
 
-    if (filterNull) {
-      params = paramsSerializer(params)
+    if (filterParams) {
+      params = filterParams(params)
     }
 
     if (joinTime) {
@@ -86,7 +86,7 @@ const interceptor: AxiosInterceptor = {
   },
 }
 
-export const paramsSerializer = (params: Record<string, unknown>) => {
+export const filterParams = (params: Record<string, unknown>) => {
   const data: Record<string, unknown> = {}
   for (const k in params) {
     const value = params[k]
@@ -120,7 +120,7 @@ function createHttp(opt?: HttpOptions) {
       nativeResponse: false,
       transformResponse: true,
 
-      filterNull: true,
+      filterParams: true,
     },
     ...opt,
   })

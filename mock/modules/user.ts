@@ -1,6 +1,6 @@
 import { rest } from 'msw'
 export default [
-  rest.post('/user/login', (req, res, ctx) => {
+  rest.post('/user/login', (_req, res, ctx) => {
     return res(
       ctx.delay(300),
       ctx.status(500),
@@ -15,7 +15,7 @@ export default [
     )
   }),
 
-  rest.post('/user/getUserInfo', (req, res, ctx) => {
+  rest.post('/user/getUserInfo', (_req, res, ctx) => {
     return res(
       ctx.status(200),
       ctx.json({

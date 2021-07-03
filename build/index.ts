@@ -7,13 +7,14 @@ import { configBannerPlugin } from './plugins/banner'
 import { configCompressPlugin } from './plugins/compress'
 import { configImageminPlugin } from './plugins/imagemin'
 import { configPWAPlugin } from './plugins/pwa'
+import { configSentryPlugin } from './plugins/sentry'
 import { configStyleImportPlugin } from './plugins/styleImport'
 import { configSvgIconsPlugin } from './plugins/svgIcons'
 import { configThemePlugin } from './plugins/theme'
 import { configVisualizerPlugin } from './plugins/visualizer'
 import { configWindiCSSPlugin } from './plugins/windicss'
 
-const { NODE_ENV, VITE_LEGACY, VITE_IMAGEMIN } = process.env
+const { NODE_ENV = '', VITE_LEGACY, VITE_IMAGEMIN } = process.env
 
 export const IS_PROD = ['production', 'prod'].includes(NODE_ENV)
 
@@ -40,6 +41,8 @@ export function createPlugins() {
     plugins.push(configCompressPlugin())
 
     plugins.push(configPWAPlugin())
+
+    plugins.push(configSentryPlugin())
   }
 
   plugins.push(configSvgIconsPlugin())

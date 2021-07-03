@@ -43,7 +43,9 @@ export default ({ mode }: ConfigEnv): UserConfig => {
       },
       cors: true,
     },
-    build: {},
+    build: {
+      sourcemap: true
+    },
     define: {},
     optimizeDeps: {
       include: [],

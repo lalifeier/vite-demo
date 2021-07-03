@@ -10,7 +10,6 @@ import router, { setupRouter } from './router'
 import { setupRouterGuard } from './router/guard'
 import { setupStore } from './store'
 import './styles/index.scss'
-import { setupErrorHandle } from './utils/error-handle'
 
 if (process.env.NODE_ENV === 'development') {
   worker.start()
@@ -33,7 +32,8 @@ if (process.env.NODE_ENV === 'development') {
 
   setupDirective(app)
 
-  setupErrorHandle(app)
+  // Performance.init()
+  // app.mixin(Performance.record(router))
 
   await router.isReady()
 

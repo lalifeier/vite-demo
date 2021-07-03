@@ -5,7 +5,7 @@ const routerWhiteList = ['/login']
 
 export function createPermissionGuard(router: Router) {
   const userStore = useUserStore()
-  router.beforeEach(async (to, from, next) => {
+  router.beforeEach(async (to, _from, next) => {
     if (routerWhiteList.includes(to.path)) {
     }
 

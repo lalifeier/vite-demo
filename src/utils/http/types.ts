@@ -21,7 +21,7 @@ export interface RequestOptions {
   nativeResponse?: boolean
   transformResponse?: boolean
 
-  filterNull?: boolean
+  filterParams?: boolean
 }
 export interface Result<T = any> {
   code: number

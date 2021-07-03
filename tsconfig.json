@@ -4,9 +4,14 @@
     "module": "esnext",
     "moduleResolution": "node",
     "strict": true,
+    "forceConsistentCasingInFileNames": true,
+    "allowSyntheticDefaultImports": true,
+    "strictFunctionTypes": false,
     "jsx": "preserve",
     "allowJs": true,
     "sourceMap": true,
+    "inlineSources": true,
+    "sourceRoot": "/",
     "resolveJsonModule": true,
     "esModuleInterop": true,
     "lib": ["esnext", "dom"],
@@ -19,7 +24,9 @@
     "paths": {
       "/@/*": ["src/*"],
       "/#/*": ["types/*"]
-    }
+    },
+    "noUnusedLocals": true,
+    "noUnusedParameters": true
   },
   "include": [
     "src/**/*.ts",
