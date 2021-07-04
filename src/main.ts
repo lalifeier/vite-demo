@@ -10,8 +10,9 @@ import router, { setupRouter } from './router'
 import { setupRouterGuard } from './router/guard'
 import { setupStore } from './store'
 import './styles/index.scss'
+import { isDev } from './utils/env'
 
-if (process.env.NODE_ENV === 'development') {
+if (isDev) {
   worker.start()
 }
 

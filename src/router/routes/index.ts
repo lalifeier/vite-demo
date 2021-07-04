@@ -59,4 +59,14 @@ export const constantRoutes: Array<RouteRecordRaw> = [
     name: 'lazy',
     component: () => import('/@/views/demo/lazy.vue'),
   },
+  {
+    path: '/demo/lazyScroll',
+    name: 'lazyScroll',
+    component: () => import('/@/views/demo/lazyScroll.vue'),
+  },
+  {
+    path: '/demo/virtualScroll',
+    name: 'virtualScroll',
+    component: () => import('/@/views/demo/virtualScroll.vue'),
+  },
 ]

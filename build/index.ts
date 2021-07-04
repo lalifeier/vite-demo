@@ -14,11 +14,11 @@ import { configThemePlugin } from './plugins/theme'
 import { configVisualizerPlugin } from './plugins/visualizer'
 import { configWindiCSSPlugin } from './plugins/windicss'
 
-const { NODE_ENV = '', VITE_LEGACY, VITE_IMAGEMIN } = process.env
+export function createPlugins(viteEnv: ViteEnv, mode: string) {
+  const isProd = mode === 'production'
 
-export const IS_PROD = ['production', 'prod'].includes(NODE_ENV)
+  const { VITE_IMAGEMIN, VITE_LEGACY, VITE_COMPRESS, VITE_COMPRESS_DELETE_ORIGIN_FILE, VITE_PWA } = viteEnv
 
-export function createPlugins() {
   const plugins: (Plugin | Plugin[])[] = [vue(), vueJsx()]
 
   VITE_LEGACY && plugins.push(legacy())
@@ -33,16 +33,16 @@ export function createPlugins() {
 
   plugins.push(configThemePlugin())
 
-  plugins.push(configWindiCSSPlugin());
+  plugins.push(configWindiCSSPlugin())
 
-  if (IS_PROD) {
+  if (isProd) {
     VITE_IMAGEMIN && plugins.push(configImageminPlugin())
 
-    plugins.push(configCompressPlugin())
+    plugins.push(configCompressPlugin(VITE_COMPRESS, VITE_COMPRESS_DELETE_ORIGIN_FILE))
 
-    plugins.push(configPWAPlugin())
+    VITE_PWA && plugins.push(configPWAPlugin())
 
-    plugins.push(configSentryPlugin())
+    plugins.push(configSentryPlugin(mode))
   }
 
   plugins.push(configSvgIconsPlugin())

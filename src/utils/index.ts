@@ -74,3 +74,33 @@ export const copy = (text: string, event: Event) => {
   })
   ;(clipboard as any).onClick(event)
 }
+
+export function debounce(func: Function, wait: number, immediate: boolean) {
+  let timer
+  return function (this, ...args) {
+    if (timer) clearTimeout(timer)
+    if (immediate) {
+      const callNow = !timer
+      timer = setTimeout(() => {
+        timer = null
+      }, wait)
+      if (callNow) func.apply(this, args)
+    } else {
+      timer = setTimeout(() => {
+        func.apply(this, args)
+      }, wait)
+    }
+  }
+}
+
+export function throttle(func: Function, wait: number) {
+  let timer
+  return function (this, ...args) {
+    if (!timer) {
+      timer = setTimeout(() => {
+        timer = null
+        func.apply(this, args)
+      }, wait)
+    }
+  }
+}
