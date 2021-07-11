@@ -12,7 +12,7 @@ export class Memory {
     this.data[key] = {
       value,
       time: new Date().getTime(),
-      expire,
+      expire
     }
   }
 
@@ -37,3 +37,5 @@ export class Memory {
     this.data = {}
   }
 }
+
+export const memory = new Memory()

@@ -22,5 +22,5 @@ export const createLocalStorage = (opt: Options = {}) => {
   return createWebStorage(createOptions(localStorage, opt))
 }
 
-export const session = createSessionStorage()
-export const local = createLocalStorage()
+export const sessionStorage = createSessionStorage()
+export const localStorage = createLocalStorage()
