@@ -1,4 +1,4 @@
-export interface StorageOption {
+export interface WebStorageOption {
   storage: Storage
   prefixKey: string
   timeout: number
@@ -9,7 +9,7 @@ export class WebStorage {
   private prefixKey: string
   private timeout: number
 
-  constructor(opt?: StorageOption) {
+  constructor(opt?: WebStorageOption) {
     const { storage = sessionStorage, prefixKey = '', timeout = 0 } = opt || {}
     this.storage = storage
     this.prefixKey = prefixKey
@@ -25,7 +25,7 @@ export class WebStorage {
     const data = JSON.stringify({
       value,
       time: new Date().getTime(),
-      expire,
+      expire
     })
     this.storage.setItem(this.generateKey(key), data)
   }
@@ -56,4 +56,8 @@ export class WebStorage {
   clear() {
     this.storage.clear()
   }
+}
+
+export const createWebStorage = (option: WebStorageOption) => {
+  return new WebStorage(option)
 }

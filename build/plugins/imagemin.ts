@@ -22,10 +22,11 @@ export function configImageminPlugin() {
     svgo: {
       plugins: [
         {
-          removeViewBox: false,
+          name: 'removeViewBox',
         },
         {
-          removeEmptyAttrs: false,
+          name: 'removeEmptyAttrs',
+              active: false,
         },
       ],
     },

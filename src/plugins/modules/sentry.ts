@@ -6,12 +6,15 @@ import { getMode } from '/@/utils/env'
 
 export default {
   install(app: App<Element>) {
+    if (!import.meta.env.VITE_SENTRY) {
+      return
+    }
     Sentry.init({
       dsn: import.meta.env.VITE_SENTRY_DSN,
       environment: getMode(),
       release,
       integrations: [new Integrations.BrowserTracing()],
-      tracesSampleRate: 1.0,
+      tracesSampleRate: 1.0
     })
     app.config.errorHandler = (err) => {
       console.log(event)
@@ -27,5 +30,5 @@ export default {
       console.log(event)
       Sentry.captureException(event)
     })
-  },
+  }
 }

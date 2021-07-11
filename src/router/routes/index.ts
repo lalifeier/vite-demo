@@ -1,72 +1,64 @@
-import type { RouteRecordRaw } from 'vue-router'
+import type { AppRouteRecordRaw } from '/@/router/types'
 
 const modules = import.meta.globEager('./modules/**/*.ts')
 
-const moduleRouters: RouteRecordRaw[] = []
+const moduleRouters: AppRouteRecordRaw[] = []
 Object.keys(modules).forEach((key) => {
   const mod = modules[key].default || {}
   const modList = Array.isArray(mod) ? [...mod] : [mod]
   moduleRouters.push(...modList)
 })
 
-export const asyncRoutes: Array<RouteRecordRaw> = moduleRouters
+const notFoundPageRouter: AppRouteRecordRaw = {
+  path: '/:path(.*)*',
+  name: 'Not Found Page',
+  meta: { title: '404' },
+  redirect: '/404'
+}
 
-export const constantRoutes: Array<RouteRecordRaw> = [
-  // {
-  //   path: '/',
-  //   name: 'Home',
-  //   redirect: '/index',
-  //   children: [
-  //     {
-  //       path: 'index',
-  //       name: 'index',
-  //       meta: { title: '首页'},
-  //       component: () => import('../../views/index/index.vue'),
-  //     },
-  //   ],
-  // },
+export const asyncRoutes: Array<AppRouteRecordRaw> = [notFoundPageRouter, ...moduleRouters]
 
+export const constantRoutes: Array<AppRouteRecordRaw> = [
   {
     path: '/',
     name: 'Home',
     meta: { title: '首页' },
-    redirect: 'index',
+    redirect: '/dashboard'
   },
   {
-    path: '/index',
-    name: 'index',
-    meta: { title: '首页' },
-    component: () => import('/@/views/index/index.vue'),
-  },
-  {
-    path: '/composition',
-    name: 'composition',
-    meta: { title: '首页' },
-    component: () => import('/@/views/composition/index.vue'),
+    path: '/dashboard',
+    name: 'Dashboard',
+    meta: {
+      title: 'Dashboard'
+    },
+    component: () => import('/@/views/dashboard/index.vue')
   },
   {
     path: '/login',
-    name: 'login',
-    component: () => import('/@/views/login/index.vue'),
+    name: 'Login',
+    meta: { title: '登录' },
+    component: () => import('/@/views/login/index.vue')
   },
+  // 页面重定向 必须保留
   {
-    path: '/demo/table',
-    name: 'table',
-    component: () => import('/@/views/demo/table.vue'),
+    path: '/redirect/:path(.*)',
+    name: 'redirect',
+    hidden: true,
+    component: {
+      beforeRouteEnter(_to, from, next) {
+        next((vm) => vm.$router.replace(JSON.parse(from.params.route)))
+      }
+    }
   },
+  // 刷新页面 必须保留
   {
-    path: '/demo/lazy',
-    name: 'lazy',
-    component: () => import('/@/views/demo/lazy.vue'),
-  },
-  {
-    path: '/demo/lazyScroll',
-    name: 'lazyScroll',
-    component: () => import('/@/views/demo/lazyScroll.vue'),
-  },
-  {
-    path: '/demo/virtualScroll',
-    name: 'virtualScroll',
-    component: () => import('/@/views/demo/virtualScroll.vue'),
-  },
+    path: '/refresh',
+    name: 'refresh',
+    hidden: true,
+    component: {
+      beforeRouteEnter(_to, from, next) {
+        next((vm) => vm.$router.replace(from.fullPath))
+      }
+    }
+  }
 ]

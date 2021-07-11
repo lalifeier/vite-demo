@@ -1,6 +1,8 @@
 export function getCookie(name: string) {
   if (document) {
-    const list = document.cookie.match(new RegExp('(?:^| )' + encodeURIComponent(name) + '=([^;]+)'))
+    const list = document.cookie.match(
+      new RegExp('(?:^| )' + encodeURIComponent(name) + '=([^;]+)')
+    )
     return list && decodeURIComponent(list[1])
   } else {
     return ''
@@ -44,9 +46,11 @@ export class Cookie {
 
   remove(key: string) {
     this.set(key, '', {
-      expires: -1,
+      expires: -1
     })
   }
 
   clear() {}
 }
+
+export const cookie = new Cookie()

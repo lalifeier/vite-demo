@@ -7,5 +7,7 @@ export const usePermissionStore = defineStore({
   id: 'permission',
   state: (): PermissionState => ({}),
   getters: {},
-  actions: {},
+  actions: {
+    generateRoutes() {}
+  }
 })

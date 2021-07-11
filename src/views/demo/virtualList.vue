@@ -1,4 +1,4 @@
-<template>
+<!-- <template>
   <div ref="list" class="infinite-list-container" @scroll="handleScroll($event)">
     <div class="infinite-list-phantom" :style="{ height: listHeight + 'px' }"></div>
     <div class="infinite-list" :style="{ transform: getTransform }">
@@ -107,4 +107,4 @@ export default defineComponent({
   color: #555;
   border-bottom: 1px solid #999;
 }
-</style>
+</style> -->

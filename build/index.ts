@@ -17,7 +17,14 @@ import { configWindiCSSPlugin } from './plugins/windicss'
 export function createPlugins(viteEnv: ViteEnv, mode: string) {
   const isProd = mode === 'production'
 
-  const { VITE_IMAGEMIN, VITE_LEGACY, VITE_COMPRESS, VITE_COMPRESS_DELETE_ORIGIN_FILE, VITE_PWA } = viteEnv
+  const {
+    VITE_IMAGEMIN,
+    VITE_LEGACY,
+    VITE_COMPRESS,
+    VITE_COMPRESS_DELETE_ORIGIN_FILE,
+    VITE_PWA,
+    VITE_SENTRY
+  } = viteEnv
 
   const plugins: (Plugin | Plugin[])[] = [vue(), vueJsx()]
 
@@ -42,7 +49,7 @@ export function createPlugins(viteEnv: ViteEnv, mode: string) {
 
     VITE_PWA && plugins.push(configPWAPlugin())
 
-    plugins.push(configSentryPlugin(mode))
+    VITE_SENTRY && plugins.push(configSentryPlugin(mode))
   }
 
   plugins.push(configSvgIconsPlugin())

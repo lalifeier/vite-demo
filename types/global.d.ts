@@ -28,6 +28,7 @@ declare global {
     VITE_COMPRESS: 'gzip' | 'brotli' | 'none'
     VITE_COMPRESS_DELETE_ORIGIN_FILE: boolean
     VITE_IMAGEMIN: boolean
+    VITE_SENTRY: boolean
     VITE_SENTRY_DSN: string
   }
 }
