@@ -2,10 +2,11 @@ import { UserInfoResponse, UserResponse } from './model/resp/user'
 import { http } from '/@/utils/http'
 
 enum Api {
-  Login = '/login',
-  Register = '/register',
-  Logout = '/logout',
-  GetUserInfo = '/getUserInfo'
+  Login = '/user/login',
+  Register = '/user/register',
+  Logout = '/user/logout',
+  GetUserInfo = '/user/getUserInfo',
+  Refresh = '/user/refresh'
 }
 
 export function register(params) {
@@ -31,5 +32,12 @@ export function getUserInfo() {
 export function logout() {
   return http.get({
     url: Api.Logout
+  })
+}
+
+export function refresh(params) {
+  return http.get({
+    url: Api.Refresh,
+    params
   })
 }

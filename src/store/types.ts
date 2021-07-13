@@ -1,5 +1,5 @@
 export interface UserInfo {
-  userId: string | number
+  user_id: string | number
   username: string
   avatar: string
 }

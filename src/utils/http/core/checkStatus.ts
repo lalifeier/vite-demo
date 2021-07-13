@@ -14,16 +14,19 @@ export function checkStatus(status: number, msg?: string): void {
 
   switch (status) {
     case 401:
-      console.log('没有权限')
+      console.log('身份认证失败')
       break
     case 403:
       console.log('禁止访问')
       break
     case 404:
-      console.log('未找到该资源')
+      console.log('接口不存在')
+      break
+    case 429:
+      console.log('操作太频繁')
       break
     case 500:
-      console.log('服务器错误')
+      console.log('服务器内部错误')
       break
     default:
   }

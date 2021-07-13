@@ -1,25 +1,27 @@
 import { defineStore } from 'pinia'
+import { RoleEnum } from '../enum'
 import type { UserInfo } from '../types'
 import { UserInfoResponse } from '/@/api/model/resp/user'
-import { getUserInfo, login, logout } from '/@/api/user'
-import { ACCESS_TOKEN_KEY, REFRESH_TOKEN_KEY, ROLES_KEY, USER_INFO_KEY } from '/@/enums/cache'
+import { getUserInfo, login, logout, refresh } from '/@/api/user'
+import {
+  ACCESS_TOKEN_KEY,
+  REFRESH_TOKEN_KEY,
+  ROLES_KEY,
+  ROLE_KEY,
+  USER_INFO_KEY
+} from '/@/enums/cache'
 interface UserState {
   userInfo: Nullable<UserInfo>
-  roleList: []
+  role: []
   accessToken: string
   refreshToken: string
-}
-
-export enum RoleEnum {
-  ADMIN = 'admin',
-  TEST = 'test'
 }
 
 function getCache<T>(key) {
   return localStorage.get(key) as T
 }
 
-export function setCache(key, value) {
+function setCache(key, value) {
   localStorage.get(key, value)
 }
 
@@ -29,17 +31,20 @@ export const useUserStore = defineStore({
     userInfo: null,
     accessToken: '',
     refreshToken: '',
-    roleList: []
+    role: []
   }),
   getters: {
     getUserInfo(): UserInfo {
       return this.userInfo || getCache<UserInfo>(USER_INFO_KEY)
     },
-    getToken(): string {
+    getAccessToken(): string {
       return this.accessToken || getCache(ACCESS_TOKEN_KEY)
     },
-    getRoleList(): RoleEnum[] {
-      return this.roleList.length > 0 ? this.roleList : getCache<RoleEnum[]>(ROLES_KEY)
+    getRefreshToken(): string {
+      return this.accessToken || getCache(REFRESH_TOKEN_KEY)
+    },
+    getRole(): RoleEnum[] {
+      return this.role.length > 0 ? this.role : getCache<RoleEnum[]>(ROLE_KEY)
     }
   },
   actions: {
@@ -53,21 +58,21 @@ export const useUserStore = defineStore({
       setCache(ACCESS_TOKEN_KEY, accessToken)
       setCache(REFRESH_TOKEN_KEY, refreshToken)
     },
-    setRoleList(roleList) {
-      this.roleList = roleList
-      setCache(ROLES_KEY, roleList)
+    setRole(role) {
+      this.role = role
+      setCache(ROLES_KEY, role)
     },
     resetState() {
       this.userInfo = null
       this.accessToken = ''
       this.refreshToken = ''
-      this.roleList = []
+      this.role = []
     },
     async login(params): Promise<UserInfoResponse> {
       try {
         const data = await login(params)
-        const { accessToken, refreshToken } = data
-        this.setToken(accessToken, refreshToken)
+        const { access_token, refresh_token } = data
+        this.setToken(access_token, refresh_token)
         const userInfo = await this.getUserInfo()
         return userInfo
       } catch (error) {
@@ -76,10 +81,9 @@ export const useUserStore = defineStore({
     },
     async getUserInfo() {
       const userInfo = await getUserInfo()
-      const { roles } = userInfo
-      const roleList = roles.map((item) => item.value) as RoleEnum[]
+      const { role } = userInfo
       this.setUserInfo(userInfo)
-      this.setRoleList(roleList)
+      this.setRole(role)
       return userInfo
     },
     async logout() {
@@ -90,6 +94,16 @@ export const useUserStore = defineStore({
       }
       this.setToken(undefined, undefined)
       window.location.reload()
+    },
+    async refresh() {
+      try {
+        const data = await refresh(this.getRefreshToken)
+        const { access_token, refresh_token } = data
+        this.setToken(access_token, refresh_token)
+        return access_token
+      } catch (error) {
+        return Promise.reject(error)
+      }
     }
   }
 })

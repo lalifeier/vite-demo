@@ -1,23 +1,30 @@
 import axios from 'axios'
+import { useUserStore } from '/@/store/modules/user'
 
 let isRefreshing = false
 let requests: Array<Function> = []
 
-export function refreshTokenRequest(config) {
+export async function refreshTokenRequest(config) {
   if (!isRefreshing) {
     isRefreshing = true
-
-    try {
-      config.headers.Authorization = ''
-      config.baseURL = ''
-      requests.forEach((cb: Function) => cb(''))
-      requests = []
-      isRefreshing = false
-      return axios(config)
-    } catch (error) {
-      isRefreshing = false
-      return Promise.reject(new Error(error.message))
-    }
+    const userStore = useUserStore()
+    return userStore
+      .refresh()
+      .then((token) => {
+        config.headers.Authorization = token
+        config.baseURL = ''
+        requests.forEach((cb: Function) => cb(token))
+        requests = []
+        return axios(config)
+      })
+      .catch((err) => {
+        userStore.setToken(undefined, undefined)
+        window.location.reload()
+        return Promise.reject(err)
+      })
+      .finally(() => {
+        isRefreshing = false
+      })
   }
   return new Promise((resolve) => {
     requests.push((token) => {

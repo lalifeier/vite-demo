@@ -1,20 +1,14 @@
-export interface RoleInfo {
-  roleName: string
-  value: string
-}
-
 export interface UserResponse {
-  userId: string | number
-  accessToken: string
-  refreshToken: string
-  role: RoleInfo
+  user_id: string | number
+  access_token: string
+  refresh_token: string
+  role: []
 }
 
 export interface UserInfoResponse {
-  roles: RoleInfo[]
-  userId: string | number
+  user_id: string | number
   username: string
-  realName: string
   avatar: string
   desc?: string
+  role: []
 }

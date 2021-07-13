@@ -3,4 +3,4 @@ export const REFRESH_TOKEN_KEY = 'REFRESH_TOKEN'
 
 export const USER_INFO_KEY = 'USER_INFO'
 
-export const ROLES_KEY = 'ROLES'
+export const ROLE_KEY = 'ROLE'
