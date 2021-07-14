@@ -12,7 +12,7 @@ export function createPermissionGuard(router: Router) {
       return
     }
 
-    const token = userStore.getToken
+    const token = userStore.getAccessToken
     if (!token) {
       next({ name: 'login', query: { redirect: to.fullPath } })
       return

@@ -6,7 +6,7 @@ services:
     #   context: ./
     #   dockerfile: ./Dockerfile
     image: nginx:stable-alpine
-    container_name: vite-demo
+    container_name: admin-pro
     privileged: true
     restart: always
     ports:

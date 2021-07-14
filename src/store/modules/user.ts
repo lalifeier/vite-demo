@@ -3,13 +3,7 @@ import { RoleEnum } from '../enum'
 import type { UserInfo } from '../types'
 import { UserInfoResponse } from '/@/api/model/resp/user'
 import { getUserInfo, login, logout, refresh } from '/@/api/user'
-import {
-  ACCESS_TOKEN_KEY,
-  REFRESH_TOKEN_KEY,
-  ROLES_KEY,
-  ROLE_KEY,
-  USER_INFO_KEY
-} from '/@/enums/cache'
+import { ACCESS_TOKEN_KEY, REFRESH_TOKEN_KEY, ROLE_KEY, USER_INFO_KEY } from '/@/enums/cache'
 interface UserState {
   userInfo: Nullable<UserInfo>
   role: []
@@ -60,7 +54,7 @@ export const useUserStore = defineStore({
     },
     setRole(role) {
       this.role = role
-      setCache(ROLES_KEY, role)
+      setCache(ROLE_KEY, role)
     },
     resetState() {
       this.userInfo = null

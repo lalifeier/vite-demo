@@ -25,6 +25,6 @@ git commit -m 'deploy'
 # 部署到 https://<USERNAME>.github.io/<REPO>
 # git push -f git@github.com:<USERNAME>/<REPO>.git master:gh-pages
 
-git push -f git@github.com:lalifeier/vite-demo.git master:gh-pages
+git push -f git@github.com:lalifeier/admin-pro.git master:gh-pages
 
 cd -
