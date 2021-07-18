@@ -1,19 +1,58 @@
 import { defineComponent } from 'vue'
 import type { RouteMeta, RouteRecordRaw } from 'vue-router'
+import { RoleEnum } from '../store/enum'
 
 export type Component<T extends any = any> =
   | ReturnType<typeof defineComponent>
   | (() => Promise<typeof import('*.vue')>)
   | (() => Promise<T>)
 
+export interface AppRouteMeta extends RouteMeta {
+  roles?: RoleEnum[]
+  orderNo?: number
+}
+
 // @ts-ignore
 export interface AppRouteRecordRaw extends Omit<RouteRecordRaw, 'meta'> {
   name: string
-  meta?: RouteMeta
+  meta?: AppRouteMeta
   component?: Component | string
   children?: AppRouteRecordRaw[]
   props?: Recordable
   hidden?: boolean
+}
+export interface MenuTag {
+  type?: 'primary' | 'error' | 'warn' | 'success'
+  content?: string
+  dot?: boolean
+}
+export interface Menu {
+  name: string
+
+  icon?: string
+
+  path: string
+
+  paramPath?: string
+
+  disabled?: boolean
+
+  children?: Menu[]
+
+  orderNo?: number
+
+  roles?: RoleEnum[]
+
+  meta?: Partial<RouteMeta>
+
+  tag?: MenuTag
+
+  hideMenu?: boolean
+}
+
+export interface MenuModule {
+  orderNo?: number
+  menu: Menu
 }
 
 export type AppRouteModule = AppRouteRecordRaw

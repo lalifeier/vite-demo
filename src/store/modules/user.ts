@@ -3,20 +3,13 @@ import { RoleEnum } from '../enum'
 import type { UserInfo } from '../types'
 import { UserInfoResponse } from '/@/api/model/resp/user'
 import { getUserInfo, login, logout, refresh } from '/@/api/user'
-import { ACCESS_TOKEN_KEY, REFRESH_TOKEN_KEY, ROLE_KEY, USER_INFO_KEY } from '/@/enums/cache'
+import { ACCESS_TOKEN_KEY, REFRESH_TOKEN_KEY, ROLE_LIST_KEY, USER_INFO_KEY } from '/@/enums/cache'
+import { _localStorage } from '/@/utils/cache'
 interface UserState {
   userInfo: Nullable<UserInfo>
-  role: []
+  roleList: []
   accessToken: string
   refreshToken: string
-}
-
-function getCache<T>(key) {
-  return localStorage.get(key) as T
-}
-
-function setCache(key, value) {
-  localStorage.get(key, value)
 }
 
 export const useUserStore = defineStore({
@@ -25,42 +18,42 @@ export const useUserStore = defineStore({
     userInfo: null,
     accessToken: '',
     refreshToken: '',
-    role: []
+    roleList: []
   }),
   getters: {
     getUserInfo(): UserInfo {
-      return this.userInfo || getCache<UserInfo>(USER_INFO_KEY)
+      return this.userInfo || _localStorage.get(USER_INFO_KEY)
     },
     getAccessToken(): string {
-      return this.accessToken || getCache(ACCESS_TOKEN_KEY)
+      return this.accessToken || _localStorage.get(ACCESS_TOKEN_KEY)
     },
     getRefreshToken(): string {
-      return this.accessToken || getCache(REFRESH_TOKEN_KEY)
+      return this.accessToken || _localStorage.get(REFRESH_TOKEN_KEY)
     },
-    getRole(): RoleEnum[] {
-      return this.role.length > 0 ? this.role : getCache<RoleEnum[]>(ROLE_KEY)
+    getRoleList(): RoleEnum[] {
+      return this.roleList.length > 0 ? this.roleList : _localStorage.get(ROLE_LIST_KEY)
     }
   },
   actions: {
     setUserInfo(info: UserInfo) {
       this.userInfo = info
-      setCache(USER_INFO_KEY, info)
+      _localStorage.set(USER_INFO_KEY, info)
     },
     setToken(accessToken, refreshToken) {
       this.accessToken = accessToken
       this.refreshToken = refreshToken
-      setCache(ACCESS_TOKEN_KEY, accessToken)
-      setCache(REFRESH_TOKEN_KEY, refreshToken)
+      _localStorage.set(ACCESS_TOKEN_KEY, accessToken)
+      _localStorage.set(REFRESH_TOKEN_KEY, refreshToken)
     },
-    setRole(role) {
-      this.role = role
-      setCache(ROLE_KEY, role)
+    setRoleList(roleList) {
+      this.roleList = roleList
+      _localStorage.set(ROLE_LIST_KEY, roleList)
     },
     resetState() {
       this.userInfo = null
       this.accessToken = ''
       this.refreshToken = ''
-      this.role = []
+      this.roleList = []
     },
     async login(params): Promise<UserInfoResponse> {
       try {
@@ -77,7 +70,7 @@ export const useUserStore = defineStore({
       const userInfo = await getUserInfo()
       const { role } = userInfo
       this.setUserInfo(userInfo)
-      this.setRole(role)
+      this.setRoleList(role)
       return userInfo
     },
     async logout() {

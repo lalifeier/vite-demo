@@ -9,14 +9,16 @@ Object.keys(modules).forEach((key) => {
   moduleRouters.push(...modList)
 })
 
-const notFoundPageRouter: AppRouteRecordRaw = {
+export const PAGE_NOT_FOUND_ROUTE: AppRouteRecordRaw = {
   path: '/:path(.*)*',
   name: 'Not Found Page',
   meta: { title: '404' },
   redirect: '/404'
 }
 
-export const asyncRoutes: Array<AppRouteRecordRaw> = [notFoundPageRouter, ...moduleRouters]
+export const LAYOUT = () => import('/@/layouts/default/index.vue')
+
+export const asyncRoutes: Array<AppRouteRecordRaw> = [PAGE_NOT_FOUND_ROUTE, ...moduleRouters]
 
 export const constantRoutes: Array<AppRouteRecordRaw> = [
   {
@@ -24,14 +26,6 @@ export const constantRoutes: Array<AppRouteRecordRaw> = [
     name: 'Home',
     meta: { title: '首页' },
     redirect: '/dashboard'
-  },
-  {
-    path: '/dashboard',
-    name: 'Dashboard',
-    meta: {
-      title: 'Dashboard'
-    },
-    component: () => import('/@/views/dashboard/index.vue')
   },
   {
     path: '/login',

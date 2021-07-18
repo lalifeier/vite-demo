@@ -45,10 +45,18 @@ export function removeClass(ele: Element, cls: string) {
   }
 }
 
+export function toggleClass(ele: Element, cls: string, flag: boolean) {
+  if (flag) {
+    addClass(ele, cls)
+  } else {
+    removeClass(ele, cls)
+  }
+}
+
 export function getViewportOffset() {
   return {
     w: getWindowWidth(),
-    h: getWindowHeight(),
+    h: getWindowHeight()
   }
 }
 
@@ -56,12 +64,12 @@ export function getScrollOffset() {
   if (window.pageXOffset) {
     return {
       x: window.pageXOffset,
-      y: window.pageYOffset,
+      y: window.pageYOffset
     }
   } else {
     return {
       x: document.body.scrollLeft + document.documentElement.scrollLeft,
-      y: document.body.scrollTop + document.documentElement.scrollTop,
+      y: document.body.scrollTop + document.documentElement.scrollTop
     }
   }
 }
@@ -100,7 +108,14 @@ export function getXPath(element) {
   for (const sibling of siblings) {
     if (sibling == element) {
       // 确定了当前元素在兄弟节点中的索引后, 向上查找
-      return getXPath(element.parentNode) + '/' + element.tagName.toLowerCase() + '[' + currentIndex + ']'
+      return (
+        getXPath(element.parentNode) +
+        '/' +
+        element.tagName.toLowerCase() +
+        '[' +
+        currentIndex +
+        ']'
+      )
     } else if (sibling.nodeType == 1 && sibling.tagName == element.tagName) {
       // 继续寻找当前元素在兄弟节点中的索引
       currentIndex++

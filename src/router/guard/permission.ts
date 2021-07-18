@@ -1,24 +1,30 @@
 import type { Router, RouteRecordRaw } from 'vue-router'
-import { asyncRoutes } from '../routes'
-import { useUserStore } from '/@/store/modules/user'
+import { usePermissionStore } from '/@/store/modules/permission'
 
-const whiteRouterList = ['/dashboard', '/login']
+const whiteRouterList = ['/login']
 
 export function createPermissionGuard(router: Router) {
-  const userStore = useUserStore()
+  // const userStore = useUserStore()
+  const permissionStore = usePermissionStore()
   router.beforeEach(async (to, _from, next) => {
     if (whiteRouterList.includes(to.path)) {
       next()
       return
     }
 
-    const token = userStore.getAccessToken
-    if (!token) {
-      next({ name: 'login', query: { redirect: to.fullPath } })
+    // const token = userStore.getAccessToken
+
+    // if (!token) {
+    //   next({ name: 'login', query: { redirect: to.fullPath } })
+    //   return
+    // }
+    if (permissionStore.getIsDynamicRoutes) {
+      next()
       return
     }
+    const routes = await permissionStore.generateRoutes()
+    permissionStore.setIsDynamicRoutes(true)
 
-    const routes = asyncRoutes
     routes.forEach((route) => {
       router.addRoute(route as unknown as RouteRecordRaw)
     })

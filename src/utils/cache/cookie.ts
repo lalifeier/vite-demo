@@ -53,4 +53,4 @@ export class Cookie {
   clear() {}
 }
 
-export const cookie = new Cookie()
+export const _cookie = new Cookie()

@@ -12,7 +12,6 @@ import { configStyleImportPlugin } from './plugins/styleImport'
 import { configSvgIconsPlugin } from './plugins/svgIcons'
 import { configThemePlugin } from './plugins/theme'
 import { configVisualizerPlugin } from './plugins/visualizer'
-import { configWindiCSSPlugin } from './plugins/windicss'
 
 export function createPlugins(viteEnv: ViteEnv, mode: string) {
   const isProd = mode === 'production'
@@ -40,7 +39,7 @@ export function createPlugins(viteEnv: ViteEnv, mode: string) {
 
   plugins.push(configThemePlugin())
 
-  plugins.push(configWindiCSSPlugin())
+  // plugins.push(configWindiCSSPlugin())
 
   if (isProd) {
     VITE_IMAGEMIN && plugins.push(configImageminPlugin())

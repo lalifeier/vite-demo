@@ -56,6 +56,10 @@ export class WebStorage {
   clear() {
     this.storage.clear()
   }
+
+  size(): number {
+    return this.storage.length
+  }
 }
 
 export const createWebStorage = (option: WebStorageOption) => {

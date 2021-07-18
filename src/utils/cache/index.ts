@@ -22,5 +22,10 @@ export const createLocalStorage = (opt: Options = {}) => {
   return createWebStorage(createOptions(localStorage, opt))
 }
 
-export const sessionStorage = createSessionStorage()
-export const localStorage = createLocalStorage()
+export const _sessionStorage = createSessionStorage()
+export const _localStorage = createLocalStorage()
+
+export const clearWebStorage = () => {
+  _localStorage.clear()
+  _sessionStorage.clear()
+}

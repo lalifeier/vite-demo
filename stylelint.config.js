@@ -19,6 +19,13 @@ module.exports = {
       true,
       {
         ignoreAtRules: [
+          "tailwind",
+          "layer",
+          "apply",
+          "variants",
+          "responsive",
+          "screen",
+
           'extend',
           'at-root',
           'debug',
@@ -44,6 +51,7 @@ module.exports = {
       },
     ],
     'no-empty-source': null,
+    // "declaration-block-trailing-semicolon": null,
     'no-descending-specificity': null,
   },
 }
