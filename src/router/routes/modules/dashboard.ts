@@ -1,6 +1,5 @@
-import type { AppRouteModule } from '/@/router/types'
-
 const LAYOUT = () => import('/@/layouts/default/index.vue')
+import type { AppRouteModule } from '/@/router/types'
 
 const dashboard: AppRouteModule = {
   path: '/dashboard',

@@ -1,57 +1,35 @@
 <template>
   <v-app dark>
     <v-navigation-drawer v-model="drawer" app>
-      <v-list>
-        <v-list-item>
-          <v-list-item-icon>
-            <v-icon>mdi-home</v-icon>
-          </v-list-item-icon>
+      <!-- <v-list-item>
+        <v-list-item-content>
+          <v-list-item-title class="text-h6"> Application </v-list-item-title>
+          <v-list-item-subtitle> subtext </v-list-item-subtitle>
+        </v-list-item-content>
+      </v-list-item> -->
 
-          <v-list-item-title>Home</v-list-item-title>
-        </v-list-item>
+      <v-divider></v-divider>
 
-        <v-list-group :value="true" prepend-icon="mdi-account-circle">
-          <template #activator>
-            <v-list-item-title>Users</v-list-item-title>
-          </template>
-
-          <v-list-group :value="true" no-action sub-group>
-            <template #activator>
-              <v-list-item-content>
-                <v-list-item-title>Admin</v-list-item-title>
-              </v-list-item-content>
-            </template>
-
-            <v-list-item v-for="([title, icon], i) in admins" :key="i" link>
-              <v-list-item-title>{{ title }}</v-list-item-title>
-
-              <v-list-item-icon>
-                <v-icon v-text="icon"></v-icon>
-              </v-list-item-icon>
-            </v-list-item>
-          </v-list-group>
-
-          <v-list-group no-action sub-group>
-            <template #activator>
-              <v-list-item-content>
-                <v-list-item-title>Actions</v-list-item-title>
-              </v-list-item-content>
-            </template>
-
-            <v-list-item v-for="([title, icon], i) in cruds" :key="i" link>
-              <v-list-item-title>{{ title }}</v-list-item-title>
-
-              <v-list-item-icon>
-                <v-icon v-text="icon"></v-icon>
-              </v-list-item-icon>
-            </v-list-item>
-          </v-list-group>
-        </v-list-group>
-      </v-list>
+      <!-- <v-list>
+        <v-list-item-group v-model="model">
+          <v-list-item v-for="(item, i) in items" :key="i">
+            <v-list-item-icon>
+              <v-icon v-text="item.icon"></v-icon>
+            </v-list-item-icon>
+            <v-list-item-content>
+              <v-list-item-title v-text="item.text"></v-list-item-title>
+            </v-list-item-content>
+          </v-list-item>
+        </v-list-item-group>
+      </v-list> -->
     </v-navigation-drawer>
     <v-app-bar clipped-left app>
       <v-app-bar-nav-icon @click.stop="drawer = !drawer" />
-      <v-toolbar-title>hi</v-toolbar-title>
+
+      <v-btn icon @click.stop="miniVariant = !miniVariant">
+        <v-icon>mdi-{{ `chevron-${miniVariant ? 'right' : 'left'}` }}</v-icon>
+      </v-btn>
+      <!-- <v-toolbar-title>hi</v-toolbar-title> -->
       <v-spacer />
     </v-app-bar>
     <v-main>
@@ -69,35 +47,24 @@
   export default {
     data() {
       return {
-        clipped: false,
         drawer: false,
-        fixed: false,
+        miniVariant: false,
+
         items: [
           {
-            icon: 'mdi-apps',
-            title: 'Welcome',
-            to: '/'
+            icon: 'mdi-wifi',
+            text: 'Wifi'
           },
           {
-            icon: 'mdi-chart-bubble',
-            title: 'Inspire',
-            to: '/inspire'
+            icon: 'mdi-bluetooth',
+            text: 'Bluetooth'
+          },
+          {
+            icon: 'mdi-chart-donut',
+            text: 'Data Usage'
           }
         ],
-        miniVariant: false,
-        right: true,
-        rightDrawer: false,
-        title: 'Vuetify.js',
-        admins: [
-          ['Management', 'mdi-account-multiple-outline'],
-          ['Settings', 'mdi-cog-outline']
-        ],
-        cruds: [
-          ['Create', 'mdi-plus-outline'],
-          ['Read', 'mdi-file-outline'],
-          ['Update', 'mdi-update'],
-          ['Delete', 'mdi-delete']
-        ]
+        model: 1
       }
     }
   }

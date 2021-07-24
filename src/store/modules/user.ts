@@ -1,5 +1,5 @@
 import { defineStore } from 'pinia'
-import { RoleEnum } from '../enum'
+import { Role } from '../enum'
 import type { UserInfo } from '../types'
 import { UserInfoResponse } from '/@/api/model/resp/user'
 import { getUserInfo, login, logout, refresh } from '/@/api/user'
@@ -30,7 +30,7 @@ export const useUserStore = defineStore({
     getRefreshToken(): string {
       return this.accessToken || _localStorage.get(REFRESH_TOKEN_KEY)
     },
-    getRoleList(): RoleEnum[] {
+    getRoleList(): Role[] {
       return this.roleList.length > 0 ? this.roleList : _localStorage.get(ROLE_LIST_KEY)
     }
   },

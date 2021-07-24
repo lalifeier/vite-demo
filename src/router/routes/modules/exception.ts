@@ -1,49 +1,52 @@
-// import { AppRouteModule } from '../../types'
+import { AppRouteModule } from '../../types'
+import { EXCEPTION_STATUS } from '/@/enums/exception'
+const LAYOUT = () => import('/@/layouts/default/index.vue')
+const EXCEPTION_PAGE = () => import('/@/views/exception/index.vue')
+const exception: AppRouteModule = {
+  path: '/exception',
+  name: 'ExceptionPage',
+  meta: {
+    title: '异常页面'
+  },
+  component: LAYOUT,
+  children: [
+    {
+      path: '403',
+      name: '403',
+      component: EXCEPTION_PAGE,
+      meta: { title: '403' },
+      props: {
+        status: EXCEPTION_STATUS.NOT_ACCESS
+      }
+    },
+    {
+      path: '404',
+      name: '404',
+      component: EXCEPTION_PAGE,
+      meta: { title: '404' },
+      props: {
+        status: EXCEPTION_STATUS.NOT_FOUND
+      }
+    },
+    {
+      path: '500',
+      name: '500',
+      component: EXCEPTION_PAGE,
+      meta: { title: '500' },
+      props: {
+        status: EXCEPTION_STATUS.ERROR
+      }
+    },
+    {
+      path: 'network-error',
+      name: 'NetworkError',
+      component: EXCEPTION_PAGE,
+      meta: { title: '网络错误' },
+      props: {
+        status: EXCEPTION_STATUS.NETWORK_ERROR
+      }
+    }
+  ]
+}
 
-// const exception: AppRouteModule = {
-//   path: '/exception',
-//   name: 'ExceptionPage',
-//   meta: {
-//     title: '异常页面'
-//   },
-//   children: [
-//     {
-//       path: '/403',
-//       name: '403',
-//       component: () => import('/@/views/exception/403.vue'),
-//       meta: { title: '403' },
-//       props: {
-//         status: 403
-//       }
-//     },
-//     {
-//       path: '/404',
-//       name: '404',
-//       component: () => import('/@/views/exception/404.vue'),
-//       meta: { title: '404' },
-//       props: {
-//         status: 404
-//       }
-//     },
-//     {
-//       path: '/500',
-//       name: '500',
-//       component: () => import('/@/views/exception/500.vue'),
-//       meta: { title: '500' },
-//       props: {
-//         status: 500
-//       }
-//     },
-//     {
-//       path: '/network-error',
-//       name: 'NetworkError',
-//       component: () => import('/@/views/exception/network-error.vue'),
-//       meta: { title: '网络错误' },
-//       props: {
-//         status: 'NetworkError'
-//       }
-//     }
-//   ]
-// }
-
-// export default exception
+export default exception

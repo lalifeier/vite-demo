@@ -1,4 +1,5 @@
 import { AppRouteModule } from '/@/router/types'
+const LAYOUT = () => import('/@/layouts/default/index.vue')
 
 export const demo: AppRouteModule = {
   path: '/demo',
@@ -6,6 +7,7 @@ export const demo: AppRouteModule = {
   meta: {
     title: 'Demo'
   },
+  component: LAYOUT,
   children: [
     {
       path: 'table',
@@ -13,7 +15,7 @@ export const demo: AppRouteModule = {
       component: () => import('/@/views/demo/table.vue')
     },
     {
-      path: '/lazy',
+      path: 'lazy',
       name: 'lazy',
       component: () => import('/@/views/demo/lazy.vue')
     },

@@ -1,6 +1,6 @@
 import { defineComponent } from 'vue'
 import type { RouteMeta, RouteRecordRaw } from 'vue-router'
-import { RoleEnum } from '../store/enum'
+import { Role } from '../store/enum'
 
 export type Component<T extends any = any> =
   | ReturnType<typeof defineComponent>
@@ -8,7 +8,7 @@ export type Component<T extends any = any> =
   | (() => Promise<T>)
 
 export interface AppRouteMeta extends RouteMeta {
-  roles?: RoleEnum[]
+  roles?: Role[]
   orderNo?: number
 }
 
@@ -41,7 +41,7 @@ export interface Menu {
 
   orderNo?: number
 
-  roles?: RoleEnum[]
+  roles?: Role[]
 
   meta?: Partial<RouteMeta>
 

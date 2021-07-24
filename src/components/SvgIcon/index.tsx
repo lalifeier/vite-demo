@@ -1,5 +1,5 @@
-import { computed, defineComponent } from '@vue/runtime-core'
 import type { CSSProperties } from 'vue'
+import { computed, defineComponent } from 'vue'
 import './index.scss'
 
 export default defineComponent({
@@ -7,22 +7,20 @@ export default defineComponent({
   props: {
     iconClass: {
       type: String,
-      required: true,
+      required: true
     },
     className: {
       type: String,
-      default: '',
+      default: ''
     },
     size: {
       type: [Number, String],
-      default: 16,
-    },
+      default: 16
+    }
   },
   setup(props) {
     const iconName = computed(() => `#icon-${props.iconClass}`)
-    const svgClass = computed(() => {
-      props.className ? `svg-icon ${props.className}` : 'svg-icon'
-    })
+    const svgClass = computed(() => (props.className ? `svg-icon ${props.className}` : 'svg-icon'))
 
     const getStyle = computed((): CSSProperties => {
       const { size } = props
@@ -30,7 +28,7 @@ export default defineComponent({
       s = `${s.replace('px', '')}px`
       return {
         width: s,
-        height: s,
+        height: s
       }
     })
     return () => {
@@ -38,5 +36,5 @@ export default defineComponent({
         <use xlinkHref={iconName.value} />
       </svg>
     }
-  },
+  }
 })

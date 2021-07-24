@@ -1,5 +1,5 @@
 import type { DirectiveBinding } from 'vue'
-import { RoleEnum } from '/@/store/enum'
+import { Role } from '/@/store/enum'
 import { useUserStore } from '/@/store/modules/user'
 import { isArray } from '/@/utils/is'
 
@@ -13,9 +13,9 @@ export default {
   }
 }
 
-function hasPermission(permissionRoles: RoleEnum | RoleEnum[], roles: RoleEnum[]) {
+function hasPermission(permissionRoles: Role | Role[], roles: Role[]) {
   if (!isArray(permissionRoles)) {
-    return roles.includes(permissionRoles as RoleEnum)
+    return roles.includes(permissionRoles as Role)
   }
   const hasPermission = roles.some((role) => {
     return permissionRoles.includes(role)

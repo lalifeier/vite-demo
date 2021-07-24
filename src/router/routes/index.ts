@@ -1,5 +1,7 @@
 import type { AppRouteRecordRaw } from '/@/router/types'
 
+export const EXCEPTION_PAGE = () => import('/@/views/exception/index.vue')
+
 const modules = import.meta.globEager('./modules/**/*.ts')
 
 const moduleRouters: AppRouteRecordRaw[] = []
@@ -12,11 +14,9 @@ Object.keys(modules).forEach((key) => {
 export const PAGE_NOT_FOUND_ROUTE: AppRouteRecordRaw = {
   path: '/:path(.*)*',
   name: 'Not Found Page',
-  meta: { title: '404' },
-  redirect: '/404'
+  meta: { title: 'Not Found Page' },
+  redirect: '/exception/404'
 }
-
-export const LAYOUT = () => import('/@/layouts/default/index.vue')
 
 export const asyncRoutes: Array<AppRouteRecordRaw> = [PAGE_NOT_FOUND_ROUTE, ...moduleRouters]
 
@@ -36,7 +36,7 @@ export const constantRoutes: Array<AppRouteRecordRaw> = [
   // 页面重定向 必须保留
   {
     path: '/redirect/:path(.*)',
-    name: 'redirect',
+    name: 'Redirect',
     hidden: true,
     component: {
       beforeRouteEnter(_to, from, next) {
@@ -47,7 +47,7 @@ export const constantRoutes: Array<AppRouteRecordRaw> = [
   // 刷新页面 必须保留
   {
     path: '/refresh',
-    name: 'refresh',
+    name: 'Refresh',
     hidden: true,
     component: {
       beforeRouteEnter(_to, from, next) {
