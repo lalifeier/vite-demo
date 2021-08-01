@@ -17,6 +17,7 @@ const createInstance = (el, binding) => {
       text,
       spinner,
       background,
+      absolute: !fullscreen,
       loading: !!binding.value
     },
     target

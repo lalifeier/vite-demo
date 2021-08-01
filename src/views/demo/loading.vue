@@ -1,5 +1,5 @@
 <template>
-  <div v-loading="loadingRef" loading-text="加载中...">
+  <div loading-text="加载中...">
     <div ref="wrapEl">
       <v-alert text color="info">组件方式</v-alert>
       <v-btn color="primary" @click="openFullLoading">全屏 Loading</v-btn>
@@ -18,7 +18,9 @@
 
     <div>
       <v-alert text color="info">指令方式</v-alert>
-      <v-btn color="primary" @click="openDirectiveLoading">指令 Loading</v-btn>
+      <v-btn v-loading="loadingRef" color="primary" @click="openDirectiveLoading"
+        >指令 Loading</v-btn
+      >
     </div>
   </div>
 </template>
@@ -50,7 +52,7 @@
     componentState.absolute = absolute
     componentState.loading = true
     setTimeout(() => {
-      componentState.loading = false
+      // componentState.loading = false
     }, 2000)
   }
 
@@ -81,7 +83,7 @@
   function openDirectiveLoading() {
     loadingRef.value = true
     setTimeout(() => {
-      // loadingRef.value = false
+      loadingRef.value = false
     }, 2000)
   }
 
