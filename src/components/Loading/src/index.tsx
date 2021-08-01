@@ -41,12 +41,14 @@ export default defineComponent({
         return svg
       }
       return (
-        <span class="ant-spin-dot ant-spin-dot-spin">
-          <i></i>
-          <i></i>
-          <i></i>
-          <i></i>
-        </span>
+        <div class="loading-spin">
+          <span class="spin-dot spin-dot-spin">
+            <i></i>
+            <i></i>
+            <i></i>
+            <i></i>
+          </span>
+        </div>
       )
     })
 

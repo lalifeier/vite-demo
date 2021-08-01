@@ -19,11 +19,10 @@
   flex-direction: column;
 }
 
-.loading-wrapper .loading-dots {
+.loading-wrapper .loading-spin {
   display: flex;
   align-items: center;
   justify-content: center;
-  /* padding: 98px; */
 }
 
 .loading-wrapper .loading-logo {
@@ -42,21 +41,53 @@
   align-items: center;
 }
 
-.dot {
+.spin-dot {
   position: relative;
   display: inline-block;
-  width: 48px;
-  height: 48px;
-  font-size: 48px;
+  font-size: 20px;
+  width: 1em;
+  height: 1em;
+}
+
+.loading-spin-sm .ant-spin-dot {
+  font-size: 14px
+}
+
+.loading-spin-sm .spin-dot i {
+  width: 6px;
+  height: 6px
+}
+
+.loading-spin-lg .spin-dot {
+  font-size: 32px;
+}
+
+.loading-spin-lg .spin-dot i {
+  width: 14px;
+  height: 14px
+}
+
+.loading-spin-xl .spin-dot {
+  width: 46px;
+  height: 46px;
+  font-size: 46px;
+}
+
+.loading-spin-xl .spin-dot i {
+  width: 20px;
+  height: 20px;
+}
+
+.spin-dot-spin {
   transform: rotate(45deg);
   animation: antRotate 1.2s infinite linear;
 }
 
-.dot i {
+.spin-dot i {
   position: absolute;
   display: block;
-  width: 20px;
-  height: 20px;
+  width: 9px;
+  height: 9px;
   background-color: #1890ff;
   border-radius: 100%;
   transform: scale(0.75);
@@ -65,28 +96,30 @@
   animation: antSpinMove 1s infinite linear alternate;
 }
 
-.dot i:nth-child(1) {
+.spin-dot i:nth-child(1) {
   top: 0;
   left: 0;
 }
 
-.dot i:nth-child(2) {
+.spin-dot i:nth-child(2) {
   top: 0;
   right: 0;
   animation-delay: 0.4s;
 }
 
-.dot i:nth-child(3) {
+.spin-dot i:nth-child(3) {
   right: 0;
   bottom: 0;
   animation-delay: 0.8s;
 }
 
-.dot i:nth-child(4) {
+.spin-dot i:nth-child(4) {
   bottom: 0;
   left: 0;
   animation-delay: 1.2s;
 }
+
+
 
 @keyframes antRotate {
   to {
