@@ -68,8 +68,6 @@
   }
 
   const { title, subTitle, icon, btnText, handleClick } = exceptionMap[props.status]
-
-  console.log(exceptionMap[status])
 </script>
 
 <style lang="scss" scoped></style>

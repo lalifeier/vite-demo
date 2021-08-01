@@ -62,6 +62,7 @@
     "print-js": "^1.6.0",
     "qs": "^6.10.1",
     "roboto-fontface": "*",
+    "spinkit": "^2.0.1",
     "vite-plugin-sentry": "^1.0.9",
     "vue": "^3.0.5",
     "vue-router": "^4.0.6",

@@ -23,6 +23,11 @@ export const demo: AppRouteModule = {
       path: 'virtualScroll',
       name: 'virtualScroll',
       component: () => import('/@/views/demo/virtualScroll.vue')
+    },
+    {
+      path: 'loading',
+      name: 'loading',
+      component: () => import('/@/views/demo/loading.vue')
     }
   ]
 }

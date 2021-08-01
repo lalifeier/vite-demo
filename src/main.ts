@@ -1,3 +1,5 @@
+import 'animate.css'
+import 'spinkit/spinkit.css'
 import { createApp } from 'vue'
 import { worker } from '../mock/browser'
 import App from './App.vue'

@@ -5,7 +5,6 @@ import { useUserStore } from './user'
 import { PermissionMode } from '/@/enums/setting'
 import { asyncRoutes } from '/@/router/routes'
 import { AppRouteRecordRaw, Menu } from '/@/router/types'
-import { flatMultiLevelRoutes, transformRouteToMenu } from '/@/router/utils'
 interface PermissionState {
   permissionCodeList: string[] | number[]
   isDynamicRoutes: boolean
@@ -119,14 +118,6 @@ export const usePermissionStore = defineStore({
           routes = filterAsyncRoutes(asyncRoutes, roleList)
 
           console.log(routes)
-
-          routes = flatMultiLevelRoutes(routes)
-
-          console.log(routes)
-
-          const menuList = transformRouteToMenu(routes)
-
-          console.log(menuList)
         // menuList.sort((a, b) => {
         //   return (a.meta?.orderNo || 0) - (b.meta?.orderNo || 0)
         // })
