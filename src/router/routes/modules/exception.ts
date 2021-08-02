@@ -1,7 +1,7 @@
 import { AppRouteModule } from '../../types'
 import { EXCEPTION_STATUS } from '/@/enums/exception'
-const LAYOUT = () => import('/@/layouts/default/index.vue')
-const EXCEPTION_PAGE = () => import('/@/views/exception/index.vue')
+import { EXCEPTION_PAGE, LAYOUT } from '/@/router/routes/constant'
+
 const exception: AppRouteModule = {
   path: '/exception',
   name: 'ExceptionPage',

@@ -1,4 +1,4 @@
-const LAYOUT = () => import('/@/layouts/default/index.vue')
+import { LAYOUT } from '/@/router/routes/constant'
 import type { AppRouteModule } from '/@/router/types'
 
 const dashboard: AppRouteModule = {

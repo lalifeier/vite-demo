@@ -1,5 +1,5 @@
+import { LAYOUT } from '/@/router/routes/constant'
 import { AppRouteModule } from '/@/router/types'
-const LAYOUT = () => import('/@/layouts/default/index.vue')
 
 export const demo: AppRouteModule = {
   path: '/demo',

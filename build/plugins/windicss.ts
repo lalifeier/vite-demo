@@ -1,5 +1,5 @@
-import WindiCSS from 'vite-plugin-windicss'
+// import WindiCSS from 'vite-plugin-windicss'
 
-export function configWindiCSSPlugin() {
-  return WindiCSS()
-}
+// export function configWindiCSSPlugin() {
+//   return WindiCSS()
+// }
