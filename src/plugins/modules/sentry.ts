@@ -6,7 +6,7 @@ import { getMode } from '/@/utils/env'
 
 export default {
   install(app: App<Element>) {
-    if (!import.meta.env.VITE_SENTRY) {
+    if (import.meta.env.VITE_SENTRY === 'false') {
       return
     }
     Sentry.init({

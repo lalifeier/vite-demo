@@ -1,16 +1,9 @@
 <template>
-  <div>
+  <v-app>
     <router-view />
-  </div>
+  </v-app>
 </template>
 
-<script lang="ts">
-import { defineComponent } from 'vue'
+<script setup lang="ts"></script>
 
-export default defineComponent({
-  name: 'App',
-  setup() {},
-})
-</script>
-
-<style></style>
+<style scoped></style>

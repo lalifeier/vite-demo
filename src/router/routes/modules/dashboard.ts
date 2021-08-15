@@ -1,13 +1,13 @@
-import { LAYOUT } from '/@/router/routes/constant'
+import { DEFAULT_LAYOUT } from '../constant'
 import type { AppRouteModule } from '/@/router/types'
 
-const dashboard: AppRouteModule = {
+export const dashboard: AppRouteModule = {
   path: '/dashboard',
   name: 'Dashboard',
   meta: {
     title: 'Dashboard'
   },
-  component: LAYOUT,
+  component: DEFAULT_LAYOUT,
   redirect: '/dashboard/index',
   children: [
     {

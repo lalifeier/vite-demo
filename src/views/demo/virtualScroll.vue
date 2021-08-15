@@ -1,5 +1,5 @@
 <template>
-  <div class="virtual-list-demo">
+  <div class="virtual-list-demo virtual-list-demo-1">
     <VirtualList style="height: 100vh" :data="data" :item-size="40" :buffer-size="0">
       <template #default="{ item }">
         <div class="virtual-list-demo-item">{{ item }}</div>

@@ -45,13 +45,17 @@ export function listToTree<T = any>(data: any[]): T[] {
 export function flatToTree<T = any>(data: any[], { idKey = 'id', pidkey = 'pid' }): T[] {
   const result: T[] = []
   const map = {}
+
+  for (const item of data) {
+    const { [idKey]: id } = item
+    map[id] = { ...item, children: map[id]?.children || [] }
+  }
+
   for (const item of data) {
     const { [idKey]: id, [pidkey]: pid } = item
 
-    map[item[id]] = { ...item, children: map[item[id]]?.children || [] }
-
-    const parent = map[item[pid]]
-    ;(parent ? parent.children : result).push(map[item[id]])
+    const parent = map[pid]
+    ;(parent ? parent.children : result).push(map[id])
   }
   return result
 }

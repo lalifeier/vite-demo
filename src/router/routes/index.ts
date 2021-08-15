@@ -1,7 +1,5 @@
 import type { AppRouteRecordRaw } from '/@/router/types'
 
-export const EXCEPTION_PAGE = () => import('/@/views/exception/index.vue')
-
 const modules = import.meta.globEager('./modules/**/*.ts')
 
 const moduleRouters: AppRouteRecordRaw[] = []
@@ -26,12 +24,6 @@ export const constantRoutes: Array<AppRouteRecordRaw> = [
     name: 'Home',
     meta: { title: '首页' },
     redirect: '/dashboard'
-  },
-  {
-    path: '/login',
-    name: 'Login',
-    meta: { title: '登录' },
-    component: () => import('/@/views/login/index.vue')
   },
   // 页面重定向 必须保留
   {

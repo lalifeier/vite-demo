@@ -1,14 +1,5 @@
 import { useEventListener } from '@vueuse/core'
-import {
-  computed,
-  CSSProperties,
-  defineComponent,
-  nextTick,
-  onMounted,
-  reactive,
-  ref,
-  unref
-} from 'vue'
+import { computed, CSSProperties, defineComponent, onMounted, reactive, ref, unref } from 'vue'
 import './index.scss'
 
 const props = {
@@ -63,22 +54,16 @@ export default defineComponent({
     })
 
     onMounted(() => {
-      nextTick(() => {
-        const el = unref(elRef)
-        if (!el) {
-          return
-        }
-        useEventListener(el, 'scroll', onScroll)
-        updateVisibleData()
-      })
-    })
-
-    function onScroll(_event) {
       const el = unref(elRef)
       if (!el) {
         return
       }
-      const scrollTop = el.scrollTop
+      useEventListener(el, 'scroll', onScroll)
+      updateVisibleData()
+    })
+
+    function onScroll(_event) {
+      const scrollTop = elRef.value?.scrollTop || 0
       updateVisibleData(scrollTop)
     }
 

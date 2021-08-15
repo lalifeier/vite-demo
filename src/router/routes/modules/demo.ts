@@ -1,4 +1,4 @@
-import { LAYOUT } from '/@/router/routes/constant'
+import { DEFAULT_LAYOUT } from '/@/router/routes/constant'
 import { AppRouteModule } from '/@/router/types'
 
 export const demo: AppRouteModule = {
@@ -7,7 +7,7 @@ export const demo: AppRouteModule = {
   meta: {
     title: 'Demo'
   },
-  component: LAYOUT,
+  component: DEFAULT_LAYOUT,
   children: [
     {
       path: 'table',

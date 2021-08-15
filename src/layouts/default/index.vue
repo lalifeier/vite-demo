@@ -1,71 +1,42 @@
 <template>
-  <v-app dark>
+  <div>
     <v-navigation-drawer v-model="drawer" app>
-      <!-- <v-list-item>
-        <v-list-item-content>
-          <v-list-item-title class="text-h6"> Application </v-list-item-title>
-          <v-list-item-subtitle> subtext </v-list-item-subtitle>
-        </v-list-item-content>
-      </v-list-item> -->
-
       <v-divider></v-divider>
-
-      <!-- <v-list>
-        <v-list-item-group v-model="model">
-          <v-list-item v-for="(item, i) in items" :key="i">
-            <v-list-item-icon>
-              <v-icon v-text="item.icon"></v-icon>
-            </v-list-item-icon>
-            <v-list-item-content>
-              <v-list-item-title v-text="item.text"></v-list-item-title>
-            </v-list-item-content>
-          </v-list-item>
-        </v-list-item-group>
-      </v-list> -->
     </v-navigation-drawer>
-    <v-app-bar clipped-left app>
-      <v-app-bar-nav-icon @click.stop="drawer = !drawer" />
 
-      <v-btn icon @click.stop="miniVariant = !miniVariant">
-        <v-icon>mdi-{{ `chevron-${miniVariant ? 'right' : 'left'}` }}</v-icon>
-      </v-btn>
-      <!-- <v-toolbar-title>hi</v-toolbar-title> -->
-      <v-spacer />
+    <v-app-bar app>
+      <v-card>
+        <v-app-bar-nav-icon @click.stop="drawer = !drawer" />
+
+        <v-btn icon @click.stop="miniVariant = !miniVariant">
+          <v-icon>mdi-{{ `chevron-${miniVariant ? 'right' : 'left'}` }}</v-icon>
+        </v-btn>
+        <!-- <v-toolbar-title>hi</v-toolbar-title> -->
+        <v-spacer />
+      </v-card>
     </v-app-bar>
+
     <v-main>
-      <v-container>
+      <v-container class="fill-height">
+        <!-- <v-layout> -->
         <router-view></router-view>
+        <!-- </v-layout> -->
       </v-container>
     </v-main>
+
     <v-footer app>
-      <span>copy</span>
+      <div class="text-center text-body-2 font-weight-bold secondary--text text--lighten-2">
+        Admin Pro © All Rights Reserved
+      </div>
     </v-footer>
-  </v-app>
+  </div>
+
+  <Backtop> </Backtop>
 </template>
+<script setup lang="ts">
+  import Backtop from '/@/components/Backtop'
 
-<script>
-  export default {
-    data() {
-      return {
-        drawer: false,
-        miniVariant: false,
-
-        items: [
-          {
-            icon: 'mdi-wifi',
-            text: 'Wifi'
-          },
-          {
-            icon: 'mdi-bluetooth',
-            text: 'Bluetooth'
-          },
-          {
-            icon: 'mdi-chart-donut',
-            text: 'Data Usage'
-          }
-        ],
-        model: 1
-      }
-    }
-  }
+  import { ref } from 'vue'
+  const drawer = ref(false)
+  const miniVariant = ref(false)
 </script>
