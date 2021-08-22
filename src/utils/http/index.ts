@@ -83,7 +83,7 @@ const interceptor: AxiosInterceptor = {
     checkStatus(error?.response?.status, msg)
 
     return Promise.reject(error)
-  },
+  }
 }
 
 export const filterParams = (params: Record<string, unknown>) => {
@@ -120,9 +120,9 @@ function createHttp(opt?: HttpOptions) {
       nativeResponse: false,
       transformResponse: true,
 
-      filterParams: true,
+      filterParams: true
     },
-    ...opt,
+    ...opt
   })
 }
 

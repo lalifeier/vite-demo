@@ -11,7 +11,7 @@ function setUpVueErrorHandler(app: App): void {
       name,
       file: path,
       stack: processStackMsg(err),
-      message: err.message,
+      message: err.message
     })
   }
 }
@@ -20,7 +20,7 @@ function formatComponentName(vm: any) {
   if (vm.$root === vm) {
     return {
       name: 'root',
-      path: 'root',
+      path: 'root'
     }
   }
 
@@ -28,13 +28,13 @@ function formatComponentName(vm: any) {
   if (!options) {
     return {
       name: 'anonymous',
-      path: 'anonymous',
+      path: 'anonymous'
     }
   }
   const name = options.name || options._componentTag
   return {
     name: name,
-    path: options.__file,
+    path: options.__file
   }
 }
 
@@ -58,7 +58,13 @@ function processStackMsg(error: Error) {
 }
 
 function setupScriptErrorHandler() {
-  window.onerror = (event: Event | string, source?: string, lineno?: number, colno?: number, error?: Error) => {
+  window.onerror = (
+    event: Event | string,
+    source?: string,
+    lineno?: number,
+    colno?: number,
+    error?: Error
+  ) => {
     if (event === 'Script error.' && !source) {
       return false
     }
@@ -70,10 +76,10 @@ function setupScriptErrorHandler() {
       file: source,
       detail: JSON.stringify({
         lineno,
-        colno,
+        colno
       }),
       stack: error?.stack,
-      message: event,
+      message: event
     })
   }
 }
@@ -89,7 +95,7 @@ function setupPromiseErrorHandler() {
         file: '',
         detail: '',
         stack: '',
-        message: event.reason,
+        message: event.reason
       })
     },
     true
@@ -109,10 +115,10 @@ function setupResourceErrorHandle() {
         detail: JSON.stringify({
           tagName: target.localName,
           html: target.outerHTML,
-          type: event.type,
+          type: event.type
         }),
         stack: '',
-        message: (event.target || ({} as any)).localName + ' is load error',
+        message: (event.target || ({} as any)).localName + ' is load error'
       })
     },
     true

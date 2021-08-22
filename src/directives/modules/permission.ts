@@ -1,5 +1,5 @@
 import type { DirectiveBinding } from 'vue'
-import { Role } from '/@/store/enum'
+import { Role } from '/@/enums/role'
 import { useUserStore } from '/@/store/modules/user'
 import { isArray } from '/@/utils/is'
 

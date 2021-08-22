@@ -30,8 +30,12 @@ export class HttpRequest {
 
     const axiosCanceler = new AxiosCanceler()
 
-    const { requestInterceptors, requestInterceptorsCatch, responseInterceptors, responseInterceptorsCatch } =
-      interceptor
+    const {
+      requestInterceptors,
+      requestInterceptorsCatch,
+      responseInterceptors,
+      responseInterceptorsCatch
+    } = interceptor
     this.instance.interceptors.request.use(
       (config: AxiosRequestConfig) => {
         const { cancelRepeatRequest, loading, cache } = config['requestOptions'] || {}
@@ -90,7 +94,9 @@ export class HttpRequest {
           return Promise.resolve(data.data)
         }
 
-        responseInterceptorsCatch && isFunction(responseInterceptorsCatch) && responseInterceptorsCatch(error)
+        responseInterceptorsCatch &&
+          isFunction(responseInterceptorsCatch) &&
+          responseInterceptorsCatch(error)
 
         loading && closeLoading()
       }
@@ -161,7 +167,7 @@ export class HttpRequest {
       ...config,
       method: 'POST',
       data: formData,
-      headers: { 'Content-Type': ContentType.FORM_DATA },
+      headers: { 'Content-Type': ContentType.FORM_DATA }
     })
   }
 }

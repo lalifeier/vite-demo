@@ -1,7 +1,5 @@
 import { createWebStorage, WebStorageOption } from './storage'
-
-export const DEFAULT_EXPIRE_TIME = 60 * 60 * 24 * 7
-export const DEFAULT_PREFIX_KEY = 'admin_pro_'
+import { DEFAULT_EXPIRE_TIME, DEFAULT_PREFIX_KEY } from '/@/configs/cache'
 
 export type Options = Partial<WebStorageOption>
 

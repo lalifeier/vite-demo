@@ -3,25 +3,25 @@
 </template>
 
 <script>
-import { reactive, computed } from 'vue'
+  import { reactive, computed } from 'vue'
 
-export default {
-  setup() {
-    const state = reactive({
-      count: 0,
-      double: computed(() => state.count * 2),
-    })
+  export default {
+    setup() {
+      const state = reactive({
+        count: 0,
+        double: computed(() => state.count * 2)
+      })
 
-    function increment() {
-      state.count += 1
+      function increment() {
+        state.count += 1
+      }
+
+      return {
+        state,
+        increment
+      }
     }
-
-    return {
-      state,
-      increment,
-    }
-  },
-}
+  }
 </script>
 
 <style></style>

@@ -15,7 +15,7 @@ function checkIntersectionObserver() {
       Object.defineProperty(window.IntersectionObserverEntry.prototype, 'isIntersecting', {
         get: function () {
           return this.intersectionRatio > 0
-        },
+        }
       })
     }
     return true

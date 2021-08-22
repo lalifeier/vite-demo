@@ -2,7 +2,12 @@ export function paddingNumber(num: number, length: number): string {
   return (Array(length).join('0') + num).slice(-length)
 }
 
-export function formatNumber(number: number | string, decimals = 2, dec_point = '.', thousands_sep = ','): string {
+export function formatNumber(
+  number: number | string,
+  decimals = 2,
+  dec_point = '.',
+  thousands_sep = ','
+): string {
   number = (number + '').replace(/[^0-9+\-Ee.]/g, '')
   const n = !isFinite(+number) ? 0 : +number
   const prec = !isFinite(+decimals) ? 0 : Math.abs(decimals)

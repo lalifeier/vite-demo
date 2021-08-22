@@ -1,8 +1,8 @@
 import { defineStore } from 'pinia'
-import { Role } from '../enum'
 import { useAppStore } from './app'
 import { useUserStore } from './user'
-import { PermissionMode } from '/@/enums/setting'
+import { PermissionMode } from '/@/enums/app'
+import { Role } from '/@/enums/role'
 import { asyncRoutes } from '/@/router/routes'
 import { AppRouteRecordRaw, Menu } from '/@/router/types'
 interface PermissionState {

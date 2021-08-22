@@ -24,12 +24,14 @@ export function cacheAdapterEnhancer(adapter, options) {
     maxAge,
     enabledByDefault = true,
     cacheFlag = 'cache',
-    defaultCache = new LRUCache({ maxAge: FIVE_MINUTES, max: CAPACITY }),
+    defaultCache = new LRUCache({ maxAge: FIVE_MINUTES, max: CAPACITY })
   } = options
   return (config) => {
     const { method, forceUpdate } = config
     const useCache =
-      config[cacheFlag] !== undefined && config[cacheFlag] !== null ? config[cacheFlag] : enabledByDefault
+      config[cacheFlag] !== undefined && config[cacheFlag] !== null
+        ? config[cacheFlag]
+        : enabledByDefault
     if (method === 'get' && useCache) {
       const cache = isCacheLike(useCache) ? useCache : defaultCache
       const requestKey = generateReqKey(config)

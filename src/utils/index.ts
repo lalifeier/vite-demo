@@ -13,7 +13,7 @@ export function typeOf(obj: unknown) {
     '[object RegExp]': 'regExp',
     '[object Undefined]': 'undefined',
     '[object Null]': 'null',
-    '[object Object]': 'object',
+    '[object Object]': 'object'
   }
   return map[toString.call(obj)]
 }
@@ -50,7 +50,10 @@ export function deepMerge<T = any>(src: any = {}, target: any = {}): T {
   return src
 }
 
-export function openWindow(url: string, opt?: { target?: string; noopener?: boolean; noreferrer?: boolean }) {
+export function openWindow(
+  url: string,
+  opt?: { target?: string; noopener?: boolean; noreferrer?: boolean }
+) {
   const { target = '__blank', noopener = true, noreferrer = true } = opt || {}
   const features: string[] = []
 
@@ -63,7 +66,7 @@ export function openWindow(url: string, opt?: { target?: string; noopener?: bool
 export const copy = (text: string, event: Event) => {
   const el = event.target as Element
   const clipboard = new Clipboard(el, {
-    text: () => text,
+    text: () => text
   })
   clipboard.on('success', () => {
     clipboard.destroy()
@@ -104,3 +107,21 @@ export function throttle(func: Function, wait: number) {
     }
   }
 }
+
+export const memoize = (fn) =>
+  new Proxy(fn, {
+    // @ts-ignore
+    cache: new Map(),
+    apply(target, thisArg, argsList) {
+      const cacheKey = argsList.toString()
+      const currentCache = (this as any).cache
+      if (!currentCache.has(cacheKey)) currentCache.set(cacheKey, target.apply(thisArg, argsList))
+      return currentCache.get(cacheKey)
+    }
+  })
+
+const fibonacci = (n) => (n <= 1 ? 1 : fibonacci(n - 1) + fibonacci(n - 2))
+const memoizedFibonacci = memoize(fibonacci)
+
+for (let i = 0; i < 100; i++) fibonacci(30)
+for (let i = 0; i < 100; i++) memoizedFibonacci(30)

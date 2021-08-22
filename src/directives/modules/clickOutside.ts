@@ -19,5 +19,5 @@ export default {
 
     document.removeEventListener('click', el._clickOutside, true)
     delete el._clickOutside
-  },
+  }
 }

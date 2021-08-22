@@ -8,12 +8,20 @@ import { hasIntersectionObserver, isInViewport, scrollParent } from './utils'
 const DEFAULT_OBSERVER_OPTIONS = {
   // root: null,
   rootMargin: '0px',
-  threshold: 0,
+  threshold: 0
 }
 
 const DEFAULT_URL = 'data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7'
 
-const DEFAULT_EVENTS = ['scroll', 'wheel', 'mousewheel', 'resize', 'animationend', 'transitionend', 'touchmove']
+const DEFAULT_EVENTS = [
+  'scroll',
+  'wheel',
+  'mousewheel',
+  'resize',
+  'animationend',
+  'transitionend',
+  'touchmove'
+]
 
 export default class Lazy {
   options: LazyOptions = {
@@ -22,7 +30,7 @@ export default class Lazy {
     observerOptions: DEFAULT_OBSERVER_OPTIONS,
     throttleDelay: 300,
     preLoad: 1.3,
-    listenEvents: DEFAULT_EVENTS,
+    listenEvents: DEFAULT_EVENTS
   }
   observer!: IntersectionObserver
 
@@ -49,7 +57,7 @@ export default class Lazy {
       parent,
       src,
       loading,
-      error,
+      error
     })
     this.listenerQueue.push(listener)
 
@@ -108,7 +116,7 @@ export default class Lazy {
     if (!target) {
       target = {
         el,
-        ref: 1,
+        ref: 1
       }
       this.targetQueue!.push(target)
       this.addListener(el)
@@ -135,7 +143,7 @@ export default class Lazy {
     this.options.listenEvents.forEach((event) =>
       el.addEventListener(event, this.throttleLazyHandler as EventListenerOrEventListenerObject, {
         passive: true,
-        capture: false,
+        capture: false
       })
     )
   }

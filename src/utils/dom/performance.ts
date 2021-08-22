@@ -30,7 +30,7 @@ export class Performance {
       ppdt: this.getParsePureDomTime(),
       dclt: this.getDomContentLoadTime(),
       fpt: this.getFirstPaintTime(),
-      load: this.getLoadTime(),
+      load: this.getLoadTime()
     }
   }
 
@@ -50,7 +50,7 @@ export class Performance {
         } else {
           setFPT()
         }
-      },
+      }
     }
   }
 

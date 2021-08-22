@@ -86,7 +86,7 @@ function getBinaryContent(url, start, end, i) {
       xhr.onload = function () {
         resolve({
           index: i,
-          buffer: xhr.response,
+          buffer: xhr.response
         })
       }
       xhr.send()

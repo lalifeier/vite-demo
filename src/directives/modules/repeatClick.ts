@@ -21,5 +21,5 @@ export default {
       interval && clearInterval(interval)
       interval = setInterval(handler, 100)
     })
-  },
+  }
 }

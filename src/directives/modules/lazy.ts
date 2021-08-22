@@ -12,5 +12,5 @@ export default {
   },
   unmounted(el: HTMLElement) {
     lazy.remove(el)
-  },
+  }
 }

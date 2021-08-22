@@ -15,7 +15,7 @@ export default class AES {
     opt: Option = {
       iv: '',
       mode: CryptoJS.mode.CBC,
-      padding: CryptoJS.pad.Pkcs7,
+      padding: CryptoJS.pad.Pkcs7
     }
   ) {
     this.key = CryptoJS.enc.Utf8.parse(key)

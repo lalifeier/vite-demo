@@ -1,10 +1,10 @@
-import { APP_CONFIG_KEY } from '../../enums/cache'
-import { AppConfig } from '../../settings/types'
-import { useAppStore } from '../../store/modules/app'
-import { deepMerge } from '../../utils'
-import { _localStorage } from '../../utils/cache'
-import { ThemeMode } from '/@/enums/setting'
-import setting from '/@/settings'
+import { AppConfig } from '/#/config'
+import app from '/@/configs/app'
+import { ThemeMode } from '/@/enums/app'
+import { APP_CONFIG_KEY } from '/@/enums/cache'
+import { useAppStore } from '/@/store/modules/app'
+import { deepMerge } from '/@/utils'
+import { _localStorage } from '/@/utils/cache'
 import { toggleClass } from '/@/utils/dom'
 
 export function updateThemeMode(mode: ThemeMode = ThemeMode.LIGHT) {
@@ -23,12 +23,12 @@ export function setupAppConfig() {
   const appStore = useAppStore()
   let appConfig: AppConfig = _localStorage.get(APP_CONFIG_KEY) as AppConfig
 
-  appConfig = deepMerge(setting, appConfig || {})
+  appConfig = deepMerge(app, appConfig || {})
   appStore.setAppConfig(appConfig)
 
-  const { grayMode, colorWeak, theme } = appConfig
+  const { grayMode, colorWeak, themeMode } = appConfig.theme
   grayMode && updateGrayMode(grayMode)
   colorWeak && updateColorWeak(colorWeak)
 
-  updateThemeMode(theme.mode)
+  updateThemeMode(themeMode)
 }

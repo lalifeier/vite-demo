@@ -8,7 +8,7 @@ export function exportJsonToExcel<T = any>({
   header,
   filename = 'excel.xlsx',
   json2SheetOpts = {},
-  writeOptions = { bookType: 'xlsx' },
+  writeOptions = { bookType: 'xlsx' }
 }: JsonToSheet<T>) {
   const arrData = [...data]
   if (header) {
@@ -28,7 +28,7 @@ export function exportAoAToExcel<T = any>({
   data,
   header,
   filename = 'excel.xlsx',
-  writeOptions = { bookType: 'xlsx' },
+  writeOptions = { bookType: 'xlsx' }
 }: AoAToSheet<T>) {
   const arrData = [...data]
   if (header) {

@@ -65,7 +65,7 @@ export class BaseTrack {
         trackId: TrackStorage.getTraceId(),
         url: location.href,
         userId: getCookie('userId'),
-        ...params,
+        ...params
       })
       if (store) {
         const uniqueEventId = `${uuidv4()}_${eventId}`

@@ -1,7 +1,7 @@
 import path from 'path'
 import type { ConfigEnv, UserConfig } from 'vite'
 import { loadEnv } from 'vite'
-import { createPlugins } from './build'
+import { createPlugins } from './build/index'
 import { createProxy, wrapperEnv } from './build/utils'
 
 const pathResolve = (dir: string) => path.resolve(__dirname, dir)

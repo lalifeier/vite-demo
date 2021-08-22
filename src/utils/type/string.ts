@@ -1,3 +1,5 @@
+export const escapeRegExp = (str) => str.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')
+
 export function escapeString(str: string): string {
   if (!str) return ''
   // eslint-disable-next-line no-control-regex

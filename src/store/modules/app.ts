@@ -1,8 +1,8 @@
 import { defineStore } from 'pinia'
+import { AppConfig } from '/#/config'
+import { ThemeMode } from '/@/enums/app'
 import { APP_CONFIG_KEY } from '/@/enums/cache'
-import { ThemeMode } from '/@/enums/setting'
 import { resetRouter } from '/@/router'
-import { AppConfig } from '/@/settings/types'
 import { deepMerge } from '/@/utils'
 import { clearWebStorage, _localStorage } from '/@/utils/cache'
 
@@ -25,7 +25,7 @@ export const useAppStore = defineStore({
       return this.appConfig
     },
     getThemeMode(): ThemeMode {
-      return this.appConfig.theme.mode
+      return this.appConfig.theme.themeMode
     }
   },
   actions: {
@@ -37,7 +37,7 @@ export const useAppStore = defineStore({
       _localStorage.set(APP_CONFIG_KEY, this.appConfig)
     },
     setThemeMode(mode: ThemeMode): void {
-      this.appConfig.theme.mode = mode
+      this.appConfig.theme.themeMode = mode
     },
     async resetState() {
       resetRouter()

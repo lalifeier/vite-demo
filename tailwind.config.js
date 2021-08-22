@@ -4,7 +4,7 @@ module.exports = {
     enable: process.env.NODE_ENV === 'production',
     content: ['./index.html', './src/**/*.{vue,js,ts,jsx,tsx}']
   },
-  // darkMode: false,
+  darkMode: false,
   theme: {
     extend: {
       screens: {
@@ -20,5 +20,5 @@ module.exports = {
   variants: {
     extend: {}
   },
-  plugins: []
+  plugins: [],
 }
