@@ -16,10 +16,12 @@
     "preview:dist": "vite preview",
     "report": "cross-env REPORT=true yarn build",
     "type:check": "vue-tsc --noEmit --skipLibCheck",
-    "lint": "yarn lint:js && yarn lint:style && yarn lint:prettier",
-    "lint:js": "eslint --fix src/**/*.{js,jsx,ts,tsx,vue}",
+    "lint": "yarn lint:eslint && yarn lint:stylelint && yarn lint:prettier",
+    "lint:eslint": "eslint --cache --max-warnings 0 --fix src/**/*.{js,jsx,ts,tsx,vue}",
     "lint:prettier": "prettier --write src/**/*.{js,jsx,ts,tsx,css,less,scss,vue,html,md,json}",
-    "lint:style": "stylelint --fix src/**/*.{html,vue,css,sass,scss,less}",
+    "lint:stylelint": "stylelint --cache --fix src/**/*.{html,vue,css,sass,scss,less}",
+    "lint:lint-staged": "lint-staged -c ./.husky/lintstagedrc.js",
+    "lint:pretty": "pretty-quick --staged",
     "commit": "git-cz",
     "release": "standard-version",
     "prepare": "is-ci || husky install",
@@ -31,20 +33,6 @@
     "clean:lib": "rimraf node_modules",
     "clean:sourcemap": "rimraf dist/**/*.js.map",
     "reinstall": "rimraf yarn.lock && rimraf package.lock.json && rimraf node_modules && yarn install"
-  },
-  "lint-staged": {
-    "src/**/*.{js,jsx,ts,tsx,vue}": [
-      "eslint --fix",
-      "git add"
-    ],
-    "src/**/*.{html,vue,css,sass,scss,less}": [
-      "stylelint --fix",
-      "git add"
-    ],
-    "src/**/*.{js,jsx,ts,tsx,css,less,scss,vue,html,md,json}": [
-      "prettier --write",
-      "git add"
-    ]
   },
   "dependencies": {
     "@iconify/iconify": "^2.0.4",
@@ -60,7 +48,6 @@
     "crypto-js": "^4.1.1",
     "dayjs": "^1.10.6",
     "echarts": "^5.1.2",
-    "jquery": "^3.6.0",
     "lodash-es": "^4.17.21",
     "mitt": "^3.0.0",
     "nprogress": "^0.2.0",
@@ -73,7 +60,9 @@
     "vue": "^3.2.2",
     "vue-router": "^4.0.11",
     "vuetify": "^3.0.0-alpha.10",
-    "xlsx": "^0.17.1"
+    "xlsx": "^0.17.1",
+    "tinymce": "^5.8.2",
+    "resize-observer-polyfill": "^1.5.1"
   },
   "devDependencies": {
     "@commitlint/cli": "^13.1.0",
@@ -105,6 +94,7 @@
     "msw": "^0.34.0",
     "postcss": "^8.3.6",
     "prettier": "^2.3.2",
+    "pretty-quick": "^3.1.1",
     "rimraf": "^3.0.2",
     "rollup-plugin-visualizer": "^5.5.2",
     "sass": "^1.38.0",

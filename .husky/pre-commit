@@ -4,4 +4,6 @@
 
 [ -n "$CI" ] && exit 0
 
-npx lint-staged
+yarn lint:lint-staged
+
+yarn lint:pretty

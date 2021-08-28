@@ -125,3 +125,8 @@ const memoizedFibonacci = memoize(fibonacci)
 
 for (let i = 0; i < 100; i++) fibonacci(30)
 for (let i = 0; i < 100; i++) memoizedFibonacci(30)
+
+export const clearTimer = (timer: Ref<TimeoutHandle>) => {
+  clearTimeout(timer.value)
+  timer.value = null
+}

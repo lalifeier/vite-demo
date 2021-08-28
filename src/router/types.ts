@@ -10,16 +10,20 @@ export type Component<T extends any = any> =
 export interface AppRouteMeta extends RouteMeta {
   roles?: Role[]
   orderNo?: number
+  frameSrc?: string
+  ignoreKeepAlive?: boolean
+  affix?: boolean
+  icon?: string
+  hidden?: boolean
 }
 
 // @ts-ignore
 export interface AppRouteRecordRaw extends Omit<RouteRecordRaw, 'meta'> {
   name: string
-  meta?: AppRouteMeta
+  meta: AppRouteMeta
   component?: Component | string
   children?: AppRouteRecordRaw[]
   props?: Recordable
-  hidden?: boolean
 }
 export interface MenuTag {
   type?: 'primary' | 'error' | 'warn' | 'success'

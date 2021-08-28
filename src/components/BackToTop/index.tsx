@@ -1,6 +1,7 @@
 import { useEventListener } from '@vueuse/core'
 import { throttle } from 'lodash-es'
-import { computed, defineComponent, onMounted, ref, unref } from 'vue'
+import { computed, CSSProperties, defineComponent, onMounted, ref, unref } from 'vue'
+import { scrollToTop } from '/@/utils/dom'
 
 const props = {
   target: {
@@ -9,7 +10,7 @@ const props = {
   },
   visibilityHeight: {
     type: Number,
-    default: 200
+    default: 400
   },
   right: {
     type: Number,
@@ -22,13 +23,13 @@ const props = {
 }
 
 export default defineComponent({
-  name: 'Backtop',
+  name: 'BackToTop',
   props,
   setup(props, { slots, emit }) {
     const el = ref<HTMLElement | null>(null)
     const visible = ref(false)
 
-    const getStyle = computed(() => {
+    const getWrapStyle = computed((): CSSProperties => {
       const bottom = `${props.bottom}px`
       const right = `${props.right}px`
 
@@ -40,7 +41,7 @@ export default defineComponent({
       }
     })
 
-    const throttledScrollHandler = throttle(onScroll, 300)
+    const throttledScrollHandler = throttle(handleScroll, 300)
 
     onMounted(() => {
       const { target } = props
@@ -59,41 +60,43 @@ export default defineComponent({
       useEventListener(container, 'scroll', throttledScrollHandler)
     })
 
-    function onScroll() {
+    function handleScroll() {
       const scrollTop = el.value?.scrollTop || 0
       visible.value = scrollTop >= props.visibilityHeight
     }
 
     function handleClick(event) {
-      scrollToTop()
-      emit('click', event)
-    }
-
-    function scrollToTop() {
       if (!el.value) {
         return
       }
-      el.value.scrollTop = 0
+
+      scrollToTop(el.value)
+
+      emit('click', event)
     }
 
     return () => (
-      <v-fab-transition>
-        <v-btn
-          v-show={visible.value}
-          aria-label="滚动页面至顶部"
-          title="滚动页面至顶部"
-          class="transition-swing"
-          style={unref(getStyle)}
-          color="primary"
-          icon
-          fixed
-          bottom
-          right
-          onClick={handleClick}
-        >
-          {slots.default ? slots.default() : <v-icon>mdi-chevron-up</v-icon>}
-        </v-btn>
-      </v-fab-transition>
+      <div style={unref(getWrapStyle)} onClick={handleClick}>
+        <v-fab-transition>
+          {slots.default ? (
+            slots.default()
+          ) : (
+            <v-btn
+              v-show={visible.value}
+              aria-label="滚动页面至顶部"
+              title="滚动页面至顶部"
+              class="transition-swing"
+              color="primary"
+              icon
+              fixed
+              bottom
+              right
+            >
+              <v-icon>mdi-chevron-up</v-icon>
+            </v-btn>
+          )}
+        </v-fab-transition>
+      </div>
     )
   }
 })

@@ -69,7 +69,8 @@
     </div>
   </v-footer>
 
-  <Backtop />
+  <BackToTop />
+
   <Setting />
 </template>
 <script setup lang="ts">
@@ -77,7 +78,7 @@
   import Setting from './setting/index.vue'
   import ToolbarNotifications from './toolbar/ToolbarNotifications.vue'
   import ToolbarUser from './toolbar/ToolbarUser.vue'
-  import Backtop from '/@/components/Backtop'
+  import BackToTop from '/@/components/BackToTop'
   import Menu from '/@/layouts/default/menu/index.vue'
 
   const drawer = ref(true)

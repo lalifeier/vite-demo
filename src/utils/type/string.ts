@@ -1,4 +1,5 @@
-export const escapeRegExp = (str) => str.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')
+export const escapeRegexpString = (value = ''): string =>
+  String(value).replace(/[|\\{}()[\]^$+*?.]/g, '\\$&')
 
 export function escapeString(str: string): string {
   if (!str) return ''

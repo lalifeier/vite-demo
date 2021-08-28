@@ -93,6 +93,14 @@ export function isEmpty<T = unknown>(val: T): val is T {
   return false
 }
 
+export function isIE11(): boolean {
+  return !!window.MSInputMethodContext && !!document.documentMode
+}
+
+export function isIE(): boolean {
+  return !isNaN(Number(document.documentMode))
+}
+
 export function isEdge() {
   return navigator.userAgent.indexOf('Edge') > -1
 }

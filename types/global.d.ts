@@ -6,6 +6,10 @@ declare namespace NodeJS {
 
 import type { PropType as VuePropType } from 'vue'
 declare global {
+  interface Document {
+    documentMode?: any
+  }
+
   declare type Nullable<T> = T | null
 
   declare type PropType<T> = VuePropType<T>
@@ -16,11 +20,11 @@ declare global {
   declare type Recordable<T = any> = Record<string, T>
 
   declare type DeepPartial<T> = {
-    [P in keyof T]?: DeepPartial<T[P]>;
-  };
+    [P in keyof T]?: DeepPartial<T[P]>
+  }
 
   interface ImportMetaEnv extends ViteEnv {
-    __: unknown;
+    __: unknown
   }
   declare interface ViteEnv {
     VITE_PORT: number
