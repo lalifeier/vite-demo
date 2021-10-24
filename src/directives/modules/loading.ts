@@ -1,4 +1,4 @@
-import { createLoading } from '/@/components/Loading'
+import { createLoading } from '@/components/Loading'
 
 const createInstance = (el, binding) => {
   const svg = el.getAttribute('loading-svg')

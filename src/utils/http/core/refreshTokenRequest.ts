@@ -1,5 +1,5 @@
+import { useUserStore } from '@/store/modules/user'
 import axios from 'axios'
-import { useUserStore } from '/@/store/modules/user'
 
 let isRefreshing = false
 let requests: Array<Function> = []

@@ -2,7 +2,7 @@
   <div v-if="showFrame">
     <template v-for="frame in framePages" :key="frame.path">
       <Frame
-        v-if="frame.meta.frameSrc && hasRenderFrame(frame.name)"
+        v-if="frame.meta?.frameSrc && hasRenderFrame(frame.name)"
         v-show="showIframe(frame)"
       ></Frame>
     </template>
@@ -12,8 +12,8 @@
   import uniqBy from 'lodash-es/uniqBy'
   import { computed, toRaw, unref } from 'vue'
   import { useRouter } from 'vue-router'
-  import Frame from '/@/components/iframe'
-  import { AppRouteRecordRaw } from '/@/router/types'
+  import Frame from '@/components/iframe'
+  import { AppRouteRecordRaw } from '@/router/types'
 
   const router = useRouter()
   const { currentRoute } = router

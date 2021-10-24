@@ -1,5 +1,5 @@
+import { useErrorStore } from '@/store/modules/error'
 import { App } from 'vue'
-import { useErrorStore } from '/@/store/modules/error'
 
 function setUpVueErrorHandler(app: App): void {
   app.config.errorHandler = (err: any, vm: any): void => {

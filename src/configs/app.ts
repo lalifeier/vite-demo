@@ -1,6 +1,6 @@
+import { AppConfig } from '#/config'
 import { ContentMode, PermissionMode } from '../enums/app'
 import { themeColor, themeMode } from './design'
-import { AppConfig } from '/#/config'
 
 const app: AppConfig = {
   contentMode: ContentMode.FLUID,

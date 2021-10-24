@@ -8,9 +8,9 @@
     exact-active-class="primary--text"
   >
     <v-list-item-icon>
-      <v-icon :small="small" :class="{ 'grey--text': menuItem.disabled }">
-        {{ menuItem.icon || 'mdi-circle-medium' }}
-      </v-icon>
+      <v-icon :small="small" :class="{ 'grey--text': menuItem.disabled }">{{
+        menuItem.icon || 'mdi-circle-medium'
+      }}</v-icon>
     </v-list-item-icon>
     <v-list-item-content>
       <v-list-item-title>{{ menuItem.text }}</v-list-item-title>
@@ -35,7 +35,6 @@
   </v-list-group>
 </template>
 <script setup lang="ts">
-  import { defineExpose } from 'vue'
   const props = defineProps({
     menuItem: {
       type: Object,

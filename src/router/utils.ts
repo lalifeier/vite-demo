@@ -3,7 +3,7 @@
 // import { createRouter, createWebHashHistory } from 'vue-router'
 // import { isUrl } from '../utils/is'
 // import { treeMap } from '../utils/tree'
-// import type { AppRouteModule, AppRouteRecordRaw, Menu } from '/@/router/types'
+// import type { AppRouteModule, AppRouteRecordRaw, Menu } from '@/router/types'
 
 // export function flatMultiLevelRoutes(routeModules: AppRouteModule[]) {
 //   const modules: AppRouteModule[] = cloneDeep(routeModules)

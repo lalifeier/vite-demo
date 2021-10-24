@@ -1,5 +1,5 @@
+import { on, once } from '@/utils/dom'
 import type { DirectiveBinding } from 'vue'
-import { on, once } from '/@/utils/dom'
 
 export default {
   beforeMount: function (el: Element, binding: DirectiveBinding) {

@@ -1,5 +1,5 @@
+import { usePermissionStore } from '@/store/modules/permission'
 import type { Router, RouteRecordRaw } from 'vue-router'
-import { usePermissionStore } from '/@/store/modules/permission'
 
 const whiteRouterList = ['/login']
 

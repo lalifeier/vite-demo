@@ -1,11 +1,11 @@
-import { AppConfig } from '/#/config'
-import app from '/@/configs/app'
-import { ThemeMode } from '/@/enums/app'
-import { APP_CONFIG_KEY } from '/@/enums/cache'
-import { useAppStore } from '/@/store/modules/app'
-import { deepMerge } from '/@/utils'
-import { _localStorage } from '/@/utils/cache'
-import { toggleClass } from '/@/utils/dom'
+import { AppConfig } from '#/config'
+import app from '@/configs/app'
+import { ThemeMode } from '@/enums/app'
+import { APP_CONFIG_KEY } from '@/enums/cache'
+import { useAppStore } from '@/store/modules/app'
+import { deepMerge } from '@/utils'
+import { _localStorage } from '@/utils/cache'
+import { toggleClass } from '@/utils/dom'
 
 export function updateThemeMode(mode: ThemeMode = ThemeMode.LIGHT) {
   document.documentElement.dataset.theme = mode

@@ -20,7 +20,7 @@ export interface AppRouteMeta extends RouteMeta {
 // @ts-ignore
 export interface AppRouteRecordRaw extends Omit<RouteRecordRaw, 'meta'> {
   name: string
-  meta: AppRouteMeta
+  meta?: AppRouteMeta
   component?: Component | string
   children?: AppRouteRecordRaw[]
   props?: Recordable

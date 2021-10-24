@@ -1,5 +1,5 @@
+import Lazy from '@/utils/dom/lazy/index'
 import type { DirectiveBinding } from 'vue'
-import Lazy from '/@/utils/dom/lazy/index'
 
 const lazy = new Lazy()
 

@@ -1,3 +1,4 @@
+import { convertToUnit } from '@/utils/dom'
 import { useEventListener } from '@vueuse/core'
 import { computed, CSSProperties, defineComponent, onMounted, reactive, ref, unref } from 'vue'
 import './index.scss'
@@ -15,16 +16,6 @@ const props = {
   bufferSize: {
     type: Number,
     default: 0
-  }
-}
-
-function convertToUnit(str: string | number | null | undefined, unit = 'px'): string | undefined {
-  if (str == null || str === '') {
-    return undefined
-  } else if (isNaN(+str!)) {
-    return String(str)
-  } else {
-    return `${Number(str)}${unit}`
   }
 }
 

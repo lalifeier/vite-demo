@@ -9,7 +9,6 @@
   </v-list>
 </template>
 <script setup lang="ts">
-  import { defineProps } from 'vue'
   import MenuItem from './MenuItem.vue'
 
   const props = defineProps({

@@ -1,7 +1,7 @@
+import { Role } from '@/enums/role'
+import { useUserStore } from '@/store/modules/user'
+import { isArray } from '@/utils/is'
 import type { DirectiveBinding } from 'vue'
-import { Role } from '/@/enums/role'
-import { useUserStore } from '/@/store/modules/user'
-import { isArray } from '/@/utils/is'
 
 export default {
   mounted(el: Element, binding: DirectiveBinding<any>) {

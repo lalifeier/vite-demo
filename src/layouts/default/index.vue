@@ -21,36 +21,46 @@
   </v-navigation-drawer>
 
   <v-app-bar app>
-    <v-app-bar-nav-icon @click.stop="drawer = !drawer" />
-
-    <v-spacer />
-
-    <!-- <v-text-field
-      ref="search"
-      class="hidden-xs-only mx-2"
+    <v-text-field
+      v-if="showSearch"
+      append-icon="mdi-close"
       placeholder="Search"
       prepend-inner-icon="mdi-magnify"
       hide-details
-      filled
-      dense
-      style="max-width: 600px"
-      rounded
+      outlined
+      solo
+      flat
+      autofocus
+      @click:append="showSearch = false"
     ></v-text-field>
 
-    <v-spacer class="d-block d-sm-none"></v-spacer>-->
+    <template v-else>
+      <v-app-bar-nav-icon @click.stop="drawer = !drawer" />
 
-    <v-btn class="d-block d-sm-none" icon @click="showSearch = true">
-      <v-icon>mdi-magnify</v-icon>
-    </v-btn>
+      <v-spacer />
 
-    <!-- <v-btn icon @click.stop="miniVariant = !miniVariant">
-      <v-icon>mdi-{{ `chevron-${miniVariant ? 'right' : 'left'}` }}</v-icon>
-    </v-btn>-->
+      <v-text-field
+        ref="search"
+        class="hidden-xs-only mx-2"
+        placeholder="Search"
+        prepend-inner-icon="mdi-magnify"
+        hide-details
+        filled
+        dense
+        style="max-width: 600px"
+        rounded
+      ></v-text-field>
 
-    <!-- <v-toolbar-title>hi</v-toolbar-title> -->
+      <v-spacer class="d-block d-sm-none"></v-spacer>
 
-    <toolbar-notifications />
-    <toolbar-user />
+      <v-btn class="d-block d-sm-none" icon @click="showSearch = true">
+        <v-icon>mdi-magnify</v-icon>
+      </v-btn>
+
+      <toolbar-notifications />
+
+      <toolbar-user />
+    </template>
   </v-app-bar>
 
   <v-main>
@@ -60,12 +70,9 @@
   </v-main>
 
   <v-footer app>
-    <div class="d-flex flex-column align-center">
-      <div class="my-1">
-        Copyright © 2020
-        <router-link to="#" class="text-decoration-none">Admin Pro</router-link>, All rights
-        Reserved
-      </div>
+    <div class="my-1">
+      Copyright © 2021
+      <router-link to="#" class="text-decoration-none">Admin Pro</router-link>, All rights Reserved
     </div>
   </v-footer>
 
@@ -74,15 +81,15 @@
   <Setting />
 </template>
 <script setup lang="ts">
+  import BackToTop from '@/components/BackToTop'
+  import Menu from '@/layouts/default/menu/index.vue'
   import { ref } from 'vue'
   import Setting from './setting/index.vue'
   import ToolbarNotifications from './toolbar/ToolbarNotifications.vue'
   import ToolbarUser from './toolbar/ToolbarUser.vue'
-  import BackToTop from '/@/components/BackToTop'
-  import Menu from '/@/layouts/default/menu/index.vue'
 
   const drawer = ref(true)
 
-  const showSearch = ref(true)
+  const showSearch = ref(false)
   // const miniVariant = ref(false)
 </script>

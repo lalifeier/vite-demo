@@ -1,10 +1,10 @@
+import { PermissionMode } from '@/enums/app'
+import { Role } from '@/enums/role'
+import { asyncRoutes } from '@/router/routes'
+import { AppRouteRecordRaw, Menu } from '@/router/types'
 import { defineStore } from 'pinia'
 import { useAppStore } from './app'
 import { useUserStore } from './user'
-import { PermissionMode } from '/@/enums/app'
-import { Role } from '/@/enums/role'
-import { asyncRoutes } from '/@/router/routes'
-import { AppRouteRecordRaw, Menu } from '/@/router/types'
 interface PermissionState {
   permissionCodeList: string[] | number[]
   isDynamicRoutes: boolean

@@ -1,5 +1,5 @@
+import { http } from '@/utils/http'
 import { UserInfoResponse, UserResponse } from './model/resp/user'
-import { http } from '/@/utils/http'
 
 enum Api {
   Login = '/user/login',

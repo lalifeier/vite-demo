@@ -4,6 +4,6 @@
 
 [ -n "$CI" ] && exit 0
 
-yarn lint:lint-staged
+npm run lint:lint-staged
 
-yarn lint:pretty
+npm run lint:pretty

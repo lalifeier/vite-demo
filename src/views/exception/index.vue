@@ -7,15 +7,13 @@
 </template>
 
 <script setup lang="ts">
-  import { defineProps } from 'vue'
   import { useRouter } from 'vue-router'
-  import Result from '/@/components/Result'
-  import { EXCEPTION_STATUS } from '/@/enums/exception'
-
-  import PRESENTED_IMAGE_403 from '/@/assets/svg/403.svg'
-  import PRESENTED_IMAGE_404 from '/@/assets/svg/404.svg'
-  import PRESENTED_IMAGE_500 from '/@/assets/svg/500.svg'
-  import PRESENTED_IMAGE_NETWORK_ERROR from '/@/assets/svg/network-error.svg'
+  import PRESENTED_IMAGE_403 from '@/assets/svg/403.svg'
+  import PRESENTED_IMAGE_404 from '@/assets/svg/404.svg'
+  import PRESENTED_IMAGE_500 from '@/assets/svg/500.svg'
+  import PRESENTED_IMAGE_NETWORK_ERROR from '@/assets/svg/network-error.svg'
+  import Result from '@/components/Result'
+  import { EXCEPTION_STATUS } from '@/enums/exception'
 
   const props = defineProps({
     status: {

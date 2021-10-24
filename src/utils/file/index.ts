@@ -83,3 +83,23 @@ export function urlToBase64(url: string, mineType = 'image/jpeg', quality = 1): 
 export function getFileNameByUrl(url: string): string {
   return url.substring(url.lastIndexOf('/') + 1, url.length)
 }
+
+export function transformByte(size: number) {
+  if (!size) {
+    return '0B'
+  }
+  const num = 1024.0
+  if (size < num) {
+    return size + 'B'
+  }
+  if (size < Math.pow(num, 2)) {
+    return (size / num).toFixed(2) + 'K'
+  }
+  if (size < Math.pow(num, 3)) {
+    return (size / Math.pow(num, 2)).toFixed(2) + 'M'
+  }
+  if (size < Math.pow(num, 4)) {
+    return (size / Math.pow(num, 3)).toFixed(2) + 'G'
+  }
+  return (size / Math.pow(num, 4)).toFixed(2) + 'T'
+}

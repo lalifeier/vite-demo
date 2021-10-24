@@ -3,7 +3,7 @@ import { deepMerge } from '../..'
 import { State } from './enum'
 import ReactiveListener from './listener'
 import { LazyOptions, Target } from './types'
-import { hasIntersectionObserver, isInViewport, scrollParent } from './utils'
+import { getScrollParent, hasIntersectionObserver, isInViewport } from './utils'
 
 const DEFAULT_OBSERVER_OPTIONS = {
   // root: null,
@@ -50,7 +50,7 @@ export default class Lazy {
 
   add(el: HTMLElement, src: string) {
     const { loading, error } = this.options
-    const parent = scrollParent(el)
+    const parent = getScrollParent(el)
 
     const listener = new ReactiveListener({
       el,

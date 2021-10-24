@@ -14,3 +14,9 @@ export interface AoAToSheet<T = any> {
   filename?: string
   writeOptions?: WritingOptions
 }
+
+export interface ExcelData<T = any> {
+  header: string[]
+  data: T[]
+  sheetName: string
+}

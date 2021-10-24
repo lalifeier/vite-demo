@@ -1,7 +1,7 @@
+import { scrollToTop } from '@/utils/dom'
 import { useEventListener } from '@vueuse/core'
 import { throttle } from 'lodash-es'
 import { computed, CSSProperties, defineComponent, onMounted, ref, unref } from 'vue'
-import { scrollToTop } from '/@/utils/dom'
 
 const props = {
   target: {

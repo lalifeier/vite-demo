@@ -117,3 +117,8 @@ export function isISOString(val) {
   const d = new Date(val)
   return !Number.isNaN(d.valueOf()) && d.toISOString() === val
 }
+
+export const isSupportsIntersection = isClient && 'IntersectionObserver' in window
+
+export const isSupportsTouch =
+  isClient && ('ontouchstart' in window || window.navigator.maxTouchPoints > 0)

@@ -1,4 +1,4 @@
-import { easeInOutCubic } from './animation'
+import { easeInOutCubic } from './easing-patterns'
 
 export const on = function (
   element: Element | HTMLElement | Document | Window,
@@ -176,4 +176,19 @@ export function scrollToTop(el) {
     }
   }
   rAF(frameFunc)
+}
+
+export function convertToUnit(
+  str: string | number | null | undefined,
+  unit = 'px'
+): string | undefined {
+  if (str == null || str === '') {
+    return undefined
+  } else if (isNaN(+str)) {
+    return String(str)
+  } else if (!isFinite(+str)) {
+    return undefined
+  } else {
+    return `${Number(str)}${unit}`
+  }
 }

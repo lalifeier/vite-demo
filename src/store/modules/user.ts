@@ -1,10 +1,10 @@
+import { UserInfo } from '#/store'
+import { UserInfoResponse } from '@/api/model/resp/user'
+import { getUserInfo, login, logout, refresh } from '@/api/user'
+import { ACCESS_TOKEN_KEY, REFRESH_TOKEN_KEY, ROLE_LIST_KEY, USER_INFO_KEY } from '@/enums/cache'
+import { Role } from '@/enums/role'
+import { _localStorage } from '@/utils/cache'
 import { defineStore } from 'pinia'
-import { UserInfo } from '/#/store'
-import { UserInfoResponse } from '/@/api/model/resp/user'
-import { getUserInfo, login, logout, refresh } from '/@/api/user'
-import { ACCESS_TOKEN_KEY, REFRESH_TOKEN_KEY, ROLE_LIST_KEY, USER_INFO_KEY } from '/@/enums/cache'
-import { Role } from '/@/enums/role'
-import { _localStorage } from '/@/utils/cache'
 interface UserState {
   userInfo: Nullable<UserInfo>
   roleList: []

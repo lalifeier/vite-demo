@@ -58,7 +58,7 @@
 </template>
 <script setup lang="ts">
   import { ref } from 'vue'
-  import { useAppStore } from '/@/store/modules/app'
+  import { useAppStore } from '@/store/modules/app'
 
   const right = ref(false)
 

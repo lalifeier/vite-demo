@@ -1,8 +1,8 @@
+import { getMode } from '@/utils/env'
 import * as Sentry from '@sentry/browser'
 import { Integrations } from '@sentry/tracing'
 import type { App } from 'vue'
 import { release } from '../../../build/utils'
-import { getMode } from '/@/utils/env'
 
 export default {
   install(app: App<Element>) {

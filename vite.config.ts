@@ -7,7 +7,6 @@ import { createProxy, wrapperEnv } from './build/utils'
 const pathResolve = (dir: string) => path.resolve(__dirname, dir)
 
 export default ({ mode }: ConfigEnv): UserConfig => {
-
   const env = loadEnv(mode, process.cwd())
   const viteEnv = wrapperEnv(env)
   const { VITE_PORT, VITE_PUBLIC_PATH, VITE_DROP_CONSOLE, VITE_PROXY } = viteEnv
@@ -16,23 +15,17 @@ export default ({ mode }: ConfigEnv): UserConfig => {
     plugins: createPlugins(viteEnv, mode),
     base: VITE_PUBLIC_PATH,
     resolve: {
-      alias: [
-        {
-          find: /\/@\//,
-          replacement: pathResolve('src') + '/',
-        },
-        {
-          find: /\/#\//,
-          replacement: pathResolve('types') + '/',
-        },
-      ],
+      alias: {
+        '@': pathResolve('src'),
+        '#': pathResolve('types')
+      }
     },
     server: {
       host: true,
       port: VITE_PORT,
       open: false,
       proxy: createProxy(VITE_PROXY),
-      cors: true,
+      cors: true
     },
     build: {
       sourcemap: true,
@@ -41,23 +34,23 @@ export default ({ mode }: ConfigEnv): UserConfig => {
       terserOptions: {
         compress: {
           keep_infinity: true,
-          drop_console: VITE_DROP_CONSOLE,
-        },
+          drop_console: VITE_DROP_CONSOLE
+        }
       },
       brotliSize: false,
-      chunkSizeWarningLimit: 2000,
+      chunkSizeWarningLimit: 2000
     },
     css: {
       preprocessorOptions: {
         scss: {
-          additionalData: `@import "./src/styles/variables.scss";`,
-        },
-      },
+          additionalData: `@import "./src/styles/variables.scss";`
+        }
+      }
     },
     define: {},
     optimizeDeps: {
       include: [],
-      exclude: [],
-    },
+      exclude: []
+    }
   }
 }

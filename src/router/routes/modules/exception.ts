@@ -1,6 +1,6 @@
+import { EXCEPTION_STATUS } from '@/enums/exception'
+import { DEFAULT_LAYOUT, EXCEPTION_PAGE } from '@/router/routes/constant'
 import { AppRouteModule } from '../../types'
-import { EXCEPTION_STATUS } from '/@/enums/exception'
-import { DEFAULT_LAYOUT, EXCEPTION_PAGE } from '/@/router/routes/constant'
 
 const exception: AppRouteModule = {
   path: '/exception',

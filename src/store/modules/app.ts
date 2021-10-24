@@ -1,10 +1,10 @@
+import { ThemeMode } from '@/enums/app'
+import { APP_CONFIG_KEY } from '@/enums/cache'
+import { resetRouter } from '@/router'
+import { deepMerge } from '@/utils'
+import { clearWebStorage, _localStorage } from '@/utils/cache'
 import { defineStore } from 'pinia'
 import { AppConfig } from '/#/config'
-import { ThemeMode } from '/@/enums/app'
-import { APP_CONFIG_KEY } from '/@/enums/cache'
-import { resetRouter } from '/@/router'
-import { deepMerge } from '/@/utils'
-import { clearWebStorage, _localStorage } from '/@/utils/cache'
 
 interface AppState {
   loading: boolean

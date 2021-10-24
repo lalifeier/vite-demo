@@ -1,5 +1,5 @@
+import { formatDateTime } from '@/utils/date'
 import { defineStore } from 'pinia'
-import { formatDateTime } from '/@/utils/date'
 
 interface ErrorState {
   errorList: any

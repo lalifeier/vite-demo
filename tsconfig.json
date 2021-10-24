@@ -22,8 +22,8 @@
     "experimentalDecorators": true,
     "baseUrl": ".",
     "paths": {
-      "/@/*": ["src/*"],
-      "/#/*": ["types/*"]
+      "@/*": ["src/*"],
+      "#/*": ["types/*"]
     },
     "noUnusedLocals": true,
     "noUnusedParameters": true
