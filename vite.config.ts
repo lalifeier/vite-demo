@@ -6,13 +6,15 @@ import { createProxy, wrapperEnv } from './build/utils'
 
 const pathResolve = (dir: string) => path.resolve(__dirname, dir)
 
-export default ({ mode }: ConfigEnv): UserConfig => {
+export default ({ command, mode }: ConfigEnv): UserConfig => {
   const env = loadEnv(mode, process.cwd())
   const viteEnv = wrapperEnv(env)
   const { VITE_PORT, VITE_PUBLIC_PATH, VITE_DROP_CONSOLE, VITE_PROXY } = viteEnv
 
+  const isBuild = command === 'build'
+
   return {
-    plugins: createPlugins(viteEnv, mode),
+    plugins: createPlugins(viteEnv, isBuild, mode),
     base: VITE_PUBLIC_PATH,
     resolve: {
       alias: {

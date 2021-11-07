@@ -14,9 +14,7 @@ import { configSvgIconsPlugin } from './plugins/svgIcons'
 import { configThemePlugin } from './plugins/theme'
 import { configVisualizerPlugin } from './plugins/visualizer'
 
-export function createPlugins(viteEnv: ViteEnv, mode: string) {
-  const isProd = mode === 'production'
-
+export function createPlugins(viteEnv: ViteEnv, isBuild: boolean, mode: string) {
   const {
     VITE_IMAGEMIN,
     VITE_LEGACY,
@@ -28,7 +26,7 @@ export function createPlugins(viteEnv: ViteEnv, mode: string) {
 
   const plugins: (Plugin | Plugin[])[] = [vue(), vueJsx()]
 
-  VITE_LEGACY && plugins.push(legacy())
+  VITE_LEGACY && isBuild && plugins.push(legacy())
 
   plugins.push(configVisualizerPlugin())
 
@@ -42,16 +40,16 @@ export function createPlugins(viteEnv: ViteEnv, mode: string) {
 
   plugins.push(WindiCSS())
 
-  plugins.push(configSvgIconsPlugin())
+  plugins.push(configSvgIconsPlugin(isBuild))
 
-  if (isProd) {
+  VITE_SENTRY && plugins.push(configSentryPlugin(mode))
+
+  if (isBuild) {
     VITE_IMAGEMIN && plugins.push(configImageminPlugin())
 
     plugins.push(configCompressPlugin(VITE_COMPRESS, VITE_COMPRESS_DELETE_ORIGIN_FILE))
 
     VITE_PWA && plugins.push(configPWAPlugin())
-
-    VITE_SENTRY && plugins.push(configSentryPlugin(mode))
   }
 
   return plugins
