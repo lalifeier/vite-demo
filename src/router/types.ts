@@ -2,7 +2,7 @@ import { defineComponent } from 'vue'
 import type { RouteMeta, RouteRecordRaw } from 'vue-router'
 import { Role } from '../enums/role'
 
-export type Component<T extends any = any> =
+export type Component<T = any> =
   | ReturnType<typeof defineComponent>
   | (() => Promise<typeof import('*.vue')>)
   | (() => Promise<T>)

@@ -1,17 +1,17 @@
 .waves-ripple {
   position: absolute;
-  background-color: rgba(0, 0, 0, 0.15);
+  background-color: rgb(0 0 0 / 15%);
   background-clip: padding-box;
   border-radius: 100%;
   transform: scale(0);
-  opacity: 1;
+  opacity: 100%;
   user-select: none;
   pointer-events: none;
 }
 
 .waves-ripple.z-active {
   transform: scale(2);
-  opacity: 0;
+  opacity: 0%;
   transition: opacity 1.2s ease-out, -webkit-transform 0.6s ease-out;
   transition: opacity 1.2s ease-out, transform 0.6s ease-out;
   transition: opacity 1.2s ease-out, transform 0.6s ease-out, -webkit-transform 0.6s ease-out;

@@ -1,4 +1,5 @@
-import { easeInOutCubic } from './easing-patterns'
+import type { FunctionArgs } from '@vueuse/core';
+import { easeInOutCubic } from './easing-patterns';
 
 export const on = function (
   element: Element | HTMLElement | Document | Window,
@@ -191,4 +192,18 @@ export function convertToUnit(
   } else {
     return `${Number(str)}${unit}`
   }
+}
+
+export function useRafThrottle<T extends FunctionArgs>(fn: T): T {
+  let locked = false;
+  // @ts-ignore
+  return function (...args: any[]) {
+    if (locked) return;
+    locked = true;
+    window.requestAnimationFrame(() => {
+      // @ts-ignore
+      fn.apply(this, args);
+      locked = false;
+    });
+  };
 }

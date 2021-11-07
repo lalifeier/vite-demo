@@ -1,7 +1,7 @@
 import { on, once } from '@/utils/dom'
-import type { DirectiveBinding } from 'vue'
+import type { Directive, DirectiveBinding } from 'vue'
 
-export default {
+const repeat: Directive = {
   beforeMount: function (el: Element, binding: DirectiveBinding) {
     let interval: Nullable<IntervalHandle> = null
     let startTime = 0
@@ -23,3 +23,5 @@ export default {
     })
   }
 }
+
+export default repeat

@@ -25,6 +25,11 @@ export const constantRoutes: Array<AppRouteRecordRaw> = [
     meta: { title: '首页' },
     redirect: '/dashboard'
   },
+  {
+    path: '/tinymce',
+    name: 'tinymce1',
+    component: () => import('@/views/demo/tinymce.vue')
+  },
   // 页面重定向 必须保留
   {
     path: '/redirect/:path(.*)',

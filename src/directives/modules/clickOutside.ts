@@ -1,10 +1,10 @@
-import type { DirectiveBinding } from 'vue'
+import type { Directive, DirectiveBinding } from 'vue'
 
 interface ClickOutsideElement extends HTMLElement {
   _clickOutside: any
 }
 
-export default {
+const clickOutside: Directive = {
   beforeMount: function (el: ClickOutsideElement, binding: DirectiveBinding) {
     const onClick = (event: MouseEvent) => {
       if (!el.contains(event.target as HTMLElement)) {
@@ -21,3 +21,5 @@ export default {
     delete el._clickOutside
   }
 }
+
+export default clickOutside

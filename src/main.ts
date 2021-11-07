@@ -14,7 +14,7 @@ import './styles/index.scss'
 import './styles/tailwind.css'
 import { isDev } from './utils/env'
 
-if (isDev) {
+if (!isDev) {
   worker.start()
 }
 

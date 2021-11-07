@@ -4,6 +4,7 @@
   height: 100%;
   overflow: auto;
 }
+
 .infinite-list-phantom {
   position: absolute;
   top: 0;
@@ -11,6 +12,7 @@
   left: 0;
   z-index: -1;
 }
+
 .infinite-list {
   position: absolute;
   top: 0;

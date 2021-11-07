@@ -41,6 +41,8 @@ export function createPlugins(viteEnv: ViteEnv, mode: string) {
 
   // plugins.push(configWindiCSSPlugin())
 
+  plugins.push(configSvgIconsPlugin())
+
   if (isProd) {
     VITE_IMAGEMIN && plugins.push(configImageminPlugin())
 
@@ -50,8 +52,6 @@ export function createPlugins(viteEnv: ViteEnv, mode: string) {
 
     VITE_SENTRY && plugins.push(configSentryPlugin(mode))
   }
-
-  plugins.push(configSvgIconsPlugin())
 
   return plugins
 }

@@ -1,10 +1,11 @@
+import { AppConfig } from '#/config'
 import { ThemeMode } from '@/enums/app'
 import { APP_CONFIG_KEY } from '@/enums/cache'
 import { resetRouter } from '@/router'
+import { store } from '@/store'
 import { deepMerge } from '@/utils'
 import { clearWebStorage, _localStorage } from '@/utils/cache'
 import { defineStore } from 'pinia'
-import { AppConfig } from '/#/config'
 
 interface AppState {
   loading: boolean
@@ -45,3 +46,7 @@ export const useAppStore = defineStore({
     }
   }
 })
+
+export function useAppStoreWithOut() {
+  return useAppStore(store)
+}

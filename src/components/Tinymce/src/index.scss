@@ -1,0 +1,9 @@
+.tinymce-container {
+  position: relative;
+  line-height: normal;
+
+  textarea {
+    z-index: -1;
+    visibility: hidden;
+  }
+}

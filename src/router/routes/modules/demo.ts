@@ -38,6 +38,11 @@ export const demo: AppRouteModule = {
       path: 'upload',
       name: 'upload',
       component: () => import('@/views/demo/upload.vue')
+    },
+    {
+      path: 'tinymce',
+      name: 'tinymce',
+      component: () => import('@/views/demo/tinymce.vue')
     }
   ]
 }

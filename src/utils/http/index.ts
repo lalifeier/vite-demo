@@ -6,9 +6,14 @@ import { AxiosInterceptor } from './core/interceptor'
 import { refreshTokenRequest } from './core/refreshTokenRequest'
 import { ContentType } from './enum'
 import { HttpOptions } from './types'
+import { clearEmptyParam } from './utils'
 
 const interceptor: AxiosInterceptor = {
   requestInterceptors: (config) => {
+    if (config.filterParams) {
+      clearEmptyParam(config)
+    }
+
     if (typeof window !== 'undefined') {
       // config.headers.Authorization = config.authenticationScheme
       // ? `${config.authenticationScheme} ${token}`
@@ -17,11 +22,7 @@ const interceptor: AxiosInterceptor = {
 
     let { params = {} } = config
     const url = config.url || ''
-    const { apiUrl, joinTime, filterParams } = config['requestOptions']
-
-    if (filterParams) {
-      params = filterParams(params)
-    }
+    const { apiUrl, joinTime } = config['requestOptions']
 
     if (joinTime) {
       params = Object.assign(params, { _t: new Date().getTime() })
@@ -84,17 +85,6 @@ const interceptor: AxiosInterceptor = {
 
     return Promise.reject(error)
   }
-}
-
-export const filterParams = (params: Record<string, unknown>) => {
-  const data: Record<string, unknown> = {}
-  for (const k in params) {
-    const value = params[k]
-    if (value !== '' && value !== null && value !== undefined) {
-      data[k] = value
-    }
-  }
-  return data
 }
 
 function createHttp(opt?: HttpOptions) {
