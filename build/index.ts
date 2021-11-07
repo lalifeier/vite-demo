@@ -3,6 +3,7 @@ import vue from '@vitejs/plugin-vue'
 import vueJsx from '@vitejs/plugin-vue-jsx'
 import type { Plugin } from 'vite'
 import PurgeIcons from 'vite-plugin-purge-icons'
+import WindiCSS from 'vite-plugin-windicss'
 import { configBannerPlugin } from './plugins/banner'
 import { configCompressPlugin } from './plugins/compress'
 import { configImageminPlugin } from './plugins/imagemin'
@@ -39,7 +40,7 @@ export function createPlugins(viteEnv: ViteEnv, mode: string) {
 
   plugins.push(configThemePlugin())
 
-  // plugins.push(configWindiCSSPlugin())
+  plugins.push(WindiCSS())
 
   plugins.push(configSvgIconsPlugin())
 

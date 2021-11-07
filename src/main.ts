@@ -1,5 +1,8 @@
 import 'animate.css'
 import 'spinkit/spinkit.css'
+import 'virtual:windi-base.css'
+import 'virtual:windi-components.css'
+import 'virtual:windi-utilities.css'
 import { createApp } from 'vue'
 import { worker } from '../mock/browser'
 import App from './App.vue'
@@ -11,7 +14,6 @@ import { router, setupRouter } from './router'
 import { setupRouterGuard } from './router/guard'
 import { setupStore } from './store'
 import './styles/index.scss'
-import './styles/tailwind.css'
 import { isDev } from './utils/env'
 
 if (!isDev) {
