@@ -10,6 +10,7 @@ const props = {
 export default defineComponent({
   name: 'ImportExcel',
   props,
+  emits: ['onSuccess', 'onError'],
   setup(props, { slots, emit }) {
     const el = ref<HTMLInputElement | null>(null)
 

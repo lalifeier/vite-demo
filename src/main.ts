@@ -1,3 +1,4 @@
+import { setupI18n } from '@/locales/index'
 import 'animate.css'
 import 'spinkit/spinkit.css'
 import 'virtual:windi-base.css'
@@ -17,6 +18,8 @@ import { setupStore } from './store'
 import './styles/index.scss'
 import { isDev } from './utils/env'
 
+
+
 if (!isDev) {
   worker.start()
 }
@@ -32,6 +35,8 @@ if (!isDev) {
 
   setupComponent(app)
 
+  await setupI18n(app)
+
   setupRouter(app)
 
   setupRouterGuard()
@@ -46,4 +51,6 @@ if (!isDev) {
   await router.isReady()
 
   app.mount('#app')
+
+
 })()

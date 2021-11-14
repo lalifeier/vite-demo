@@ -1,6 +1,6 @@
 import { ThemeMode } from '../enums/app'
 
-export const prefixCls = 'cv_admin_mro'
+export const prefixCls = 'vva-pro'
 
 export const themeMode = ThemeMode.LIGHT
 

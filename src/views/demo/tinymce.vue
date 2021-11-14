@@ -9,23 +9,22 @@
 </template>
 
 <script setup lang="ts">
-import { Tinymce } from '@/components/Tinymce';
-import { ref, unref } from 'vue';
+  import { Tinymce } from '@/components/Tinymce'
+  import { ref, unref } from 'vue'
 
-const description = ref('123')
+  const description = ref('123')
 
-const disabled = ref(false)
-const skin = ref('oxide-dark')
-function handleTinymceChange() { }
+  const disabled = ref(false)
+  const skin = ref('oxide-dark')
+  function handleTinymceChange() {}
 
-function handleClick() {
-  description.value = 'qeeeeeeeeeeeeee'
+  function handleClick() {
+    description.value = 'qeeeeeeeeeeeeee'
 
-  disabled.value = !unref(disabled)
+    disabled.value = !unref(disabled)
 
-  skin.value = 'oxide-dark'
-}
+    skin.value = 'oxide-dark'
+  }
 </script>
 
-<style>
-</style>
+<style></style>

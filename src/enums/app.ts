@@ -22,3 +22,9 @@ export enum TransitionMode {
   FADE_BOTTOM = 'fade-bottom',
   FADE_SCALE = 'fade-scale'
 }
+
+export enum LOCALE_TYPE {
+  ZH_CN = 'zh-CN',
+  ZH_TW = 'zh-TW',
+  EN = 'en'
+}

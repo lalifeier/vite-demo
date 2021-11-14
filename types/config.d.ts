@@ -1,4 +1,4 @@
-import { ContentMode, PermissionMode, ThemeMode } from '@/enums/app'
+import { ContentMode, PermissionMode, ThemeMode } from '@/enums/app';
 
 export interface HeaderConfig {
   fixed: boolean

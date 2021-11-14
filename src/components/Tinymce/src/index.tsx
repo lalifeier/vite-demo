@@ -18,76 +18,78 @@ import load from './dynamicLoadScript'
 import './index.scss'
 import { plugins, toolbar } from './tinymce'
 
-export default defineComponent({
-  name: 'Tinymce',
-  props: {
-    url: {
-      type: String,
-      default: () => {
-        // return 'https://cdn.jsdelivr.net/npm/tinymce@5.10.1/tinymce.min.js'
-        return 'tinymce/tinymce.min.js'
-      }
-    },
-    baseUrl: {
-      type: String,
-      default: () => {
-        return 'tinymce/tinymce.min.js'
-      }
-    },
-    id: {
-      type: String,
-      default: () => {
-        return 'vue-tinymce-' + uuidv4()
-      }
-    },
-    modelValue: {
-      type: String,
-      default: ''
-    },
-    disabled: {
-      type: Boolean,
-      default: false
-    },
-    options: {
-      type: Object as PropType<Partial<RawEditorSettings>>,
-      default: () => {}
-    },
-    toolbar: {
-      type: Array as PropType<string[]>,
-      default: toolbar
-    },
-    plugins: {
-      type: Array as PropType<string[]>,
-      default: plugins
-    },
-    height: {
-      type: [Number, String] as PropType<string | number>,
-      required: false,
-      default: 400
-    },
-    width: {
-      type: [Number, String] as PropType<string | number>,
-      required: false,
-      default: 'auto'
-    },
-    menubar: {
-      type: String,
-      default: 'file edit insert view format table'
-    },
-    language: {
-      type: String,
-      default: 'zh_CN'
-    },
-    skin: {
-      type: String,
-      default: 'oxide'
+const props = {
+  url: {
+    type: String,
+    default: () => {
+      // return 'https://cdn.jsdelivr.net/npm/tinymce@5.10.1/tinymce.min.js'
+      return 'tinymce/tinymce.min.js'
     }
   },
+  baseUrl: {
+    type: String,
+    default: () => {
+      return 'tinymce/tinymce.min.js'
+    }
+  },
+  id: {
+    type: String,
+    default: () => {
+      return 'vue-tinymce-' + uuidv4()
+    }
+  },
+  modelValue: {
+    type: String,
+    default: ''
+  },
+  disabled: {
+    type: Boolean,
+    default: false
+  },
+  options: {
+    type: Object as PropType<Partial<RawEditorSettings>>,
+    default: () => {}
+  },
+  toolbar: {
+    type: Array as PropType<string[]>,
+    default: toolbar
+  },
+  plugins: {
+    type: Array as PropType<string[]>,
+    default: plugins
+  },
+  height: {
+    type: [Number, String] as PropType<string | number>,
+    required: false,
+    default: 400
+  },
+  width: {
+    type: [Number, String] as PropType<string | number>,
+    required: false,
+    default: 'auto'
+  },
+  menubar: {
+    type: String,
+    default: 'file edit insert view format table'
+  },
+  language: {
+    type: String,
+    default: 'zh_CN'
+  },
+  skin: {
+    type: String,
+    default: 'oxide'
+  }
+}
+
+export default defineComponent({
+  name: 'Tinymce',
+  props,
   emits: ['init', 'change', 'update:modelValue'],
   setup(props, { emit }) {
     let mounted = false
     const fullscreen = ref(false)
-    // const elRef = ref<Nullable<HTMLElement>>(null)
+    const elRef = ref<Nullable<HTMLElement>>(null)
     const editorRef = ref<Nullable<Editor>>(null)
     const tinymceId = computed(() => props.id)
 
@@ -204,7 +206,7 @@ export default defineComponent({
     }
 
     const getContainerClass = computed(() =>
-      fullscreen ? 'tinymce-container fullscreen' : `tinymce-container`
+      fullscreen.value ? 'tinymce-container fullscreen' : `tinymce-container`
     )
 
     const getContainerStyle = computed((): CSSProperties => {
@@ -220,7 +222,7 @@ export default defineComponent({
 
     return () => (
       <div class={getContainerClass.value} style={getContainerStyle.value}>
-        <textarea id={tinymceId.value} ref="elRef"></textarea>
+        <textarea id={tinymceId.value} ref={elRef}></textarea>
       </div>
     )
   }

@@ -11,7 +11,6 @@ import { configPWAPlugin } from './plugins/pwa'
 import { configSentryPlugin } from './plugins/sentry'
 import { configStyleImportPlugin } from './plugins/styleImport'
 import { configSvgIconsPlugin } from './plugins/svgIcons'
-import { configThemePlugin } from './plugins/theme'
 import { configVisualizerPlugin } from './plugins/visualizer'
 
 export function createPlugins(viteEnv: ViteEnv, isBuild: boolean, mode: string) {
@@ -36,7 +35,7 @@ export function createPlugins(viteEnv: ViteEnv, isBuild: boolean, mode: string) 
 
   plugins.push(configBannerPlugin())
 
-  plugins.push(configThemePlugin())
+  // plugins.push(configThemePlugin())
 
   plugins.push(WindiCSS())
 

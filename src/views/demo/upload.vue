@@ -1,7 +1,7 @@
 import { ImportExcel } from '../../components/Excel/ImportExcel';
 <template>
   <div>
-    <Upload :before-upload="beforeUpload" @onSuccess="onSuccess($event)">
+    <Upload :before-upload="beforeUpload" @on-success="onSuccess($event)">
       <v-btn color="primary">上传</v-btn>
     </Upload>
   </div>

@@ -43,6 +43,11 @@ export const demo: AppRouteModule = {
       path: 'tinymce',
       name: 'tinymce',
       component: () => import('@/views/demo/tinymce.vue')
+    },
+    {
+      path: 'markdown',
+      name: 'markdown',
+      component: () => import('@/views/demo/markdown.vue')
     }
   ]
 }

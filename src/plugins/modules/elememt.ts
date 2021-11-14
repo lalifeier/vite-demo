@@ -1,7 +1,7 @@
-// import type { App, Component } from 'vue';
+// import { Component } from '@/router/types';
+// import type { App } from 'vue';
 
-// const components = [
-// ]
+// const components = []
 
 // const plugins = []
 
@@ -13,5 +13,5 @@
 //     plugins.forEach(plugin => {
 //       app.use(plugin);
 //     })
-//   },
+//   }
 // }

@@ -28,11 +28,11 @@ export function isNull(val: unknown): val is null {
 }
 
 export function isDef<T = unknown>(val?: T): val is T {
-  return typeof val !== 'undefined';
+  return typeof val !== 'undefined'
 }
 
 export function isUnDef<T = unknown>(val?: T): val is T {
-  return !isDef(val);
+  return !isDef(val)
 }
 
 export function isDate(val: unknown): val is Date {
@@ -126,3 +126,7 @@ export const isSupportsIntersection = isClient && 'IntersectionObserver' in wind
 
 export const isSupportsTouch =
   isClient && ('ontouchstart' in window || window.navigator.maxTouchPoints > 0)
+
+export const isNil = (value: any) => value === null || value === undefined
+
+export const isImg = (path: string): boolean =>  /\w.(png|jpg|jpeg|svg|webp|gif|bmp)$/i.test(path)

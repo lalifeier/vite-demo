@@ -1,15 +1,15 @@
 import { ImportExcel } from '../../components/Excel/ImportExcel';
 <template>
   <div>
-    <ImportExcel :before-upload="beforeUpload" @onSuccess="onSuccess($event)">
+    <ImportExcel :before-upload="beforeUpload" @on-success="onSuccess($event)">
       <v-btn color="primary">导入Excel</v-btn>
     </ImportExcel>
   </div>
 </template>
 
 <script setup lang="ts">
-  import { ImportExcel } from '../../components/Excel'
   import { ExcelData } from '@/utils/excel/types'
+  import { ImportExcel } from '../../components/Excel'
 
   const onSuccess = (data: ExcelData[]) => {
     console.log(data)

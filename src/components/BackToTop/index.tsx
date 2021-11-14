@@ -25,6 +25,7 @@ const props = {
 export default defineComponent({
   name: 'BackToTop',
   props,
+  emits: ['click'],
   setup(props, { slots, emit }) {
     const el = ref<HTMLElement | null>(null)
     const visible = ref(false)

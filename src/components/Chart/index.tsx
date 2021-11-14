@@ -37,6 +37,6 @@ export default defineComponent({
       }
     })
 
-    return () => <div ref="chartRef" style={unref(getWrapStyle)}></div>
+    return () => <div ref={chartRef} style={unref(getWrapStyle)}></div>
   }
 })

@@ -1,9 +1,14 @@
 <template>
-  <v-app>
-    <router-view />
-  </v-app>
+  <AppProvider>
+    <v-app>
+      <RouterView />
+    </v-app>
+  </AppProvider>
 </template>
 
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import { AppProvider } from '@/components/Application';
+
+</script>
 
 <style scoped></style>
