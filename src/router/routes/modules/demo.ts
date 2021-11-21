@@ -48,6 +48,11 @@ export const demo: AppRouteModule = {
       path: 'markdown',
       name: 'markdown',
       component: () => import('@/views/demo/markdown.vue')
+    },
+    {
+      path: 'video',
+      name: 'video',
+      component: () => import('@/views/demo/video.vue')
     }
   ]
 }

@@ -1,4 +1,4 @@
-import { prefixCls, themeMode } from '@/configs/design'
+import { prefixCls, themeMode } from '@/configs/theme'
 import { useI18nProvide } from '@/context/modules/i18n'
 import { getLanguage } from '@/locales/utils'
 import { breakpointsTailwind, useBreakpoints } from '@vueuse/core'

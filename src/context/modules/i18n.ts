@@ -15,7 +15,7 @@ async function  setI18nLanguage (locale) {
   if (i18n.mode === 'legacy') {
     globalI18n.locale = locale;
   } else {
-    globalI18n.locale.value = locale;
+    (globalI18n.locale as any).value = locale;
   }
 
   globalI18n.setLocaleMessage(locale, message)

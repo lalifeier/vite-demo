@@ -1,10 +1,17 @@
+import dayjs from 'dayjs'
 import path from 'path'
 import type { ConfigEnv, UserConfig } from 'vite'
 import { loadEnv } from 'vite'
 import { createPlugins } from './build/index'
 import { createProxy, wrapperEnv } from './build/utils'
-
+import pkg from './package.json'
 const pathResolve = (dir: string) => path.resolve(__dirname, dir)
+
+const { dependencies, devDependencies, name, version } = pkg;
+const __APP_INFO__ = {
+  pkg: { dependencies, devDependencies, name, version },
+  lastBuildTime: dayjs().format('YYYY-MM-DD HH:mm:ss'),
+}
 
 export default ({ command, mode }: ConfigEnv): UserConfig => {
   const env = loadEnv(mode, process.cwd())
@@ -18,6 +25,7 @@ export default ({ command, mode }: ConfigEnv): UserConfig => {
     base: VITE_PUBLIC_PATH,
     resolve: {
       alias: {
+        'vue-i18n': 'vue-i18n/dist/vue-i18n.cjs.js',
         '@': pathResolve('src'),
         '#': pathResolve('types')
       }
@@ -40,7 +48,15 @@ export default ({ command, mode }: ConfigEnv): UserConfig => {
         }
       },
       brotliSize: false,
-      chunkSizeWarningLimit: 2000
+      chunkSizeWarningLimit: 2000,
+      rollupOptions: {
+        // external: ['vue'],
+        // plugins: [
+        //   externalGlobals({
+        //     vue: 'Vue',
+        //   }),
+        // ],
+      }
     },
     css: {
       preprocessorOptions: {
@@ -49,7 +65,10 @@ export default ({ command, mode }: ConfigEnv): UserConfig => {
         }
       }
     },
-    define: {},
+    define: {
+      __APP_VERSION__: JSON.stringify(pkg.version),
+      __APP_INFO__: JSON.stringify(__APP_INFO__),
+    },
     optimizeDeps: {
       include: [],
       exclude: []

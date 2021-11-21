@@ -10,20 +10,19 @@ import { clearEmptyParam } from './utils'
 
 const interceptor: AxiosInterceptor = {
   requestInterceptors: (config) => {
-    if (config.filterParams) {
-      clearEmptyParam(config)
-    }
-
     if (typeof window !== 'undefined') {
       // config.headers.Authorization = config.authenticationScheme
       // ? `${config.authenticationScheme} ${token}`
       // : token;
     }
 
-    let { params = {} } = config
-    const url = config.url || ''
-    const { apiUrl, joinTime } = config['requestOptions']
+    let { params = {}, } = config
 
+    const url = config.url || ''
+    const { apiUrl, joinTime, filterParams } = config['requestOptions']
+    if (filterParams) {
+      clearEmptyParam(config)
+    }
     if (joinTime) {
       params = Object.assign(params, { _t: new Date().getTime() })
     }

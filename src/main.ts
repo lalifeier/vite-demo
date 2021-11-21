@@ -21,7 +21,9 @@ import { isDev } from './utils/env'
 
 
 if (!isDev) {
-  worker.start()
+  worker.start({
+    onUnhandledRequest: 'bypass',
+  })
 }
 
 ;(async () => {

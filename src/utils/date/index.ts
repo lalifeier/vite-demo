@@ -3,11 +3,11 @@ import dayjs from 'dayjs'
 export const DATE_TIME_FORMAT = 'YYYY-MM-DD HH:mm:ss'
 export const DATE_FORMAT = 'YYYY-MM-DD '
 
-export function formatDateTime(date: dayjs.ConfigType, format = DATE_TIME_FORMAT): string {
+export function formatDateTime(date: dayjs.ConfigType  , format = DATE_TIME_FORMAT): string {
   return dayjs(date).format(format)
 }
 
-export function formatDate(date: dayjs.ConfigType, format = DATE_FORMAT): string {
+export function formatDate(date: dayjs.ConfigType , format = DATE_FORMAT): string {
   return dayjs(date).format(format)
 }
 

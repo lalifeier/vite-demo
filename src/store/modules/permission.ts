@@ -115,7 +115,7 @@ export const usePermissionStore = defineStore({
       const roleList = userStore.getRoleList
 
       switch (permissionMode) {
-        case PermissionMode.FRONT:
+        case PermissionMode.ROLE:
           routes = filterAsyncRoutes(asyncRoutes, roleList)
 
           console.log(routes)

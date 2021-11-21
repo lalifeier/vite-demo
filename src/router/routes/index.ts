@@ -1,4 +1,5 @@
 import type { AppRouteRecordRaw } from '@/router/types'
+import { DEFAULT_LAYOUT, REDIRECT_NAME } from './constant'
 
 const modules = import.meta.globEager('./modules/**/*.ts')
 
@@ -16,7 +17,26 @@ export const PAGE_NOT_FOUND_ROUTE: AppRouteRecordRaw = {
   redirect: '/exception/404'
 }
 
-export const asyncRoutes: Array<AppRouteRecordRaw> = [PAGE_NOT_FOUND_ROUTE, ...moduleRouters]
+export const REDIRECT_ROUTE: AppRouteRecordRaw = {
+  path: '/redirect',
+  component: DEFAULT_LAYOUT,
+  name: 'RedirectTo',
+  meta: {
+    title: REDIRECT_NAME,
+  },
+  children: [
+    {
+      path: '/redirect/:path(.*)',
+      name: REDIRECT_NAME,
+      component: () => import('@/views/redirect/index.vue'),
+      meta: {
+        title: REDIRECT_NAME,
+      },
+    },
+  ],
+}
+
+export const asyncRoutes: Array<AppRouteRecordRaw> = [...moduleRouters, REDIRECT_ROUTE, PAGE_NOT_FOUND_ROUTE]
 
 export const constantRoutes: Array<AppRouteRecordRaw> = [
   {
@@ -24,32 +44,5 @@ export const constantRoutes: Array<AppRouteRecordRaw> = [
     name: 'Home',
     meta: { title: '首页' },
     redirect: '/dashboard'
-  },
-  {
-    path: '/tinymce',
-    name: 'tinymce1',
-    component: () => import('@/views/demo/tinymce.vue')
-  },
-  // 页面重定向 必须保留
-  {
-    path: '/redirect/:path(.*)',
-    name: 'Redirect',
-    hidden: true,
-    component: {
-      beforeRouteEnter(_to, from, next) {
-        next((vm) => vm.$router.replace(JSON.parse(from.params.route)))
-      }
-    }
-  },
-  // 刷新页面 必须保留
-  {
-    path: '/refresh',
-    name: 'Refresh',
-    hidden: true,
-    component: {
-      beforeRouteEnter(_to, from, next) {
-        next((vm) => vm.$router.replace(from.fullPath))
-      }
-    }
   }
 ]

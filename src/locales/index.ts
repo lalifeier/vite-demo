@@ -9,7 +9,7 @@ async function createI18nOptions(): Promise<I18nOptions> {
 
   return {
     legacy: false,
-    globalInjection: true,
+    // globalInjection: true,
     locale,
     messages: {
       [locale]: message

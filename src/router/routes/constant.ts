@@ -1,3 +1,5 @@
+export const REDIRECT_NAME = 'Redirect';
+
 export const DEFAULT_LAYOUT = () => import('@/layouts/default/index.vue')
 
 export const BLANK_LAYOUT = () => import('@/layouts/blank/index.vue')

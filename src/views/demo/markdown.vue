@@ -7,14 +7,14 @@
     <v-btn color="primary" @click="handleClick"></v-btn>
 
     <!-- <h2>{{ i18n.$t('hello_world') }}</h2> -->
-    {{ $t('common.light') }}
+    {{ t('common.light') }}
   </div>
 </template>
 
 <script setup lang="ts">
 import { markDown } from '@/components/Markdown';
 import { useI18nContext } from '@/context';
-import { useDesign } from '@/hooks/web/useDesign';
+import { useI18n } from '@/hooks/web/useI18n';
 // import { useI18n } from '@/plugins/lib/i18n';
 import { ref } from 'vue';
 
@@ -24,8 +24,8 @@ import { ref } from 'vue';
 //   i18n.locale.value = locale;
 // };
 
+const { t } = useI18n()
 
-console.log(console.log(useDesign('---')));
 
 const data = ref('erwrew')
 
@@ -38,7 +38,7 @@ function handleClick() {
 }
 
 function handleInit(e) {
-  console.log(e)
+
 }
 </script>
 

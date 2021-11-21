@@ -1,4 +1,4 @@
-import echarts from '@/plugins/lib/echarts'
+import echarts from '@/libs/echarts'
 import {
   breakpointsTailwind,
   tryOnUnmounted,

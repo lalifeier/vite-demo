@@ -9,7 +9,7 @@ export enum ContentMode {
 }
 
 export enum PermissionMode {
-  FRONT = 'FRONT',
+  ROLE = 'ROLE',
   BACK = 'BACK',
   ROUTE_MAPPING = 'ROUTE_MAPPING'
 }
@@ -27,4 +27,12 @@ export enum LOCALE_TYPE {
   ZH_CN = 'zh-CN',
   ZH_TW = 'zh-TW',
   EN = 'en'
+}
+
+
+// 卡片风格card、灵动风格smart、圆滑风格smooth
+export enum BarStyle {
+  CARD = 'card',
+  SMART = 'smart',
+  SMOOTH = 'smooth'
 }

@@ -49,4 +49,6 @@ echarts.use([
   GraphicComponent
 ])
 
+// echarts.registerTheme("ovilia-green", theme)
+
 export default echarts

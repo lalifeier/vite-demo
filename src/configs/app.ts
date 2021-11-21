@@ -1,11 +1,11 @@
 import { AppConfig } from '#/config'
-import { ContentMode, PermissionMode } from '../enums/app'
-import { themeColor, themeMode } from './design'
+import { BarStyle, ContentMode, PermissionMode, TransitionMode } from '../enums/app'
+import { themeColor, themeMode } from './theme'
 
 const app: AppConfig = {
-  contentMode: ContentMode.FLUID,
+  permissionMode: PermissionMode.ROLE,
 
-  permissionMode: PermissionMode.FRONT,
+  contentMode: ContentMode.FLUID,
 
   theme: {
     themeMode,
@@ -22,7 +22,7 @@ const app: AppConfig = {
 
     themeMode,
 
-    primaryColor: ''
+    primaryColor: '',
   },
 
   sidebar: {
@@ -35,12 +35,18 @@ const app: AppConfig = {
     primaryColor: ''
   },
 
+  multiTabs: {
+    show: true,
+
+    barStyle: BarStyle.CARD,
+  },
+
   transition: {
     enable: true,
 
-    animate: '',
+    transition: TransitionMode.FADE_SIDE,
 
-    loading: true,
+    pageLoading: true,
 
     progressBar: true
   }

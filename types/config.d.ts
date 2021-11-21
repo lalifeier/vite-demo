@@ -8,7 +8,7 @@ export interface HeaderConfig {
   primaryColor: string
 }
 
-export interface sidebarConfig {
+export interface SidebarConfig {
   fixed: boolean
 
   collapsed: boolean
@@ -21,9 +21,9 @@ export interface sidebarConfig {
 export interface TransitionConfig {
   enable: boolean
 
-  animate: string
+  transition: TransitionMode
 
-  loading: boolean
+  pageLoading: boolean
 
   progressBar: boolean
 }
@@ -38,6 +38,11 @@ export interface ThemeConfig {
   colorWeak: boolean
 }
 
+
+export interface multiTabsConfig {
+  show: boolean
+  barStyle: BarStyle
+}
 export interface AppConfig {
   theme: ThemeConfig
 
@@ -47,7 +52,9 @@ export interface AppConfig {
 
   header: HeaderConfig
 
-  sidebar: sidebarConfig
+  sidebar: SidebarConfig
+
+  multiTabs: multiTabsConfig
 
   transition: TransitionConfig
 }

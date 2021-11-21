@@ -1,6 +1,5 @@
 <template>
-  <!-- <div> -->
-  <v-btn class="drawer-button" color="primary" @click="right = true">
+  <v-btn icon @click="right = true">
     <v-icon class="fa-spin">mdi-cog-outline</v-icon>
   </v-btn>
 
@@ -53,17 +52,15 @@
       <!-- <v-color-picker v-model="theme.primaryColor" mode="hexa" :swatches="swatches" show-swatches></v-color-picker> -->
     </div>
   </v-navigation-drawer>
-
-  <!-- </div> -->
 </template>
 <script setup lang="ts">
-  import { ref } from 'vue'
-  import { useAppStore } from '@/store/modules/app'
+import { useAppStore } from '@/store/modules/app'
+import { ref } from 'vue'
 
-  const right = ref(false)
+const right = ref(false)
 
-  const appStore = useAppStore()
-  const { theme, header, sidebar } = appStore.appConfig
+const appStore = useAppStore()
+const { theme, header, sidebar } = appStore.appConfig
 
   // const swatches = [
   //   ['#0096c7', '#31944f'],
@@ -73,15 +70,15 @@
 </script>
 
 <style lang="scss" scoped>
-  .drawer-button {
-    position: fixed;
-    top: 340px;
-    right: -20px;
-    z-index: 6;
+// .drawer-button {
+//   position: fixed;
+//   top: 340px;
+//   right: -20px;
+//   z-index: 6;
 
-    .v-icon {
-      margin-left: -18px;
-      font-size: 1.3rem;
-    }
-  }
+//   .v-icon {
+//     margin-left: -18px;
+//     font-size: 1.3rem;
+//   }
+// }
 </style>

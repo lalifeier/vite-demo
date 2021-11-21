@@ -1,4 +1,3 @@
-import avatar from '@/assets/img/avatars/avatar1.svg';
 <template>
   <!-- <v-menu offset-y left transition="slide-y-transition"> -->
   <!-- <template v-slot:activator="{ on }"> -->

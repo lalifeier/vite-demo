@@ -1,6 +1,8 @@
-import { ThemeMode } from '../enums/app'
+import { ThemeMode } from '@/enums/app';
+import pkg from '../../package.json';
 
-export const prefixCls = 'vva-pro'
+const { name } = pkg;
+export const prefixCls = name
 
 export const themeMode = ThemeMode.LIGHT
 
