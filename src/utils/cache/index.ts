@@ -1,4 +1,4 @@
-import { DEFAULT_EXPIRE_TIME, DEFAULT_PREFIX_KEY } from '@/configs/cache'
+import { DEFAULT_EXPIRE_TIME, DEFAULT_PREFIX_KEY } from '@/settings/cache'
 import { createWebStorage, WebStorageOption } from './storage'
 
 export type Options = Partial<WebStorageOption>

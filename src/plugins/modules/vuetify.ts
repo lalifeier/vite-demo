@@ -1,5 +1,5 @@
-import app from '@/configs/app'
-import { DARK_THEME, LIGHT_THEME } from '@/configs/theme'
+import app from '@/settings/app'
+import { DARK_THEME, LIGHT_THEME } from '@/settings/design'
 import '@mdi/font/css/materialdesignicons.css'
 import { createVuetify } from 'vuetify'
 import * as components from 'vuetify/components'

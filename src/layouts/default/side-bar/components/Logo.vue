@@ -9,18 +9,19 @@
   <div :class="prefixCls">
     <a>
       <img src="/static/img/v-logo-small.png" width="32" height="32" alt="logo" />
-      <h1>{{ VITE_APP_TITLE }}</h1>
+      <h1>{{ title }}</h1>
     </a>
   </div>
 </template>
 
 
 <script setup lang="ts">import { useDesign } from '@/hooks/web/useDesign';
+import { useGlobConfig } from '@/utils/env';
 
 
 const { prefixCls } = useDesign('layout-side-bar-logo');
 
-const VITE_APP_TITLE = import.meta.env.VITE_APP_TITLE
+const { title } = useGlobConfig()
 
 </script>
 

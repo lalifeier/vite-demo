@@ -1,8 +1,9 @@
 import { AppConfig } from '#/config'
 import { BarStyle, ContentMode, PermissionMode, TransitionMode } from '../enums/app'
-import { themeColor, themeMode } from './theme'
+import { themeColor, themeMode } from './design'
 
 const app: AppConfig = {
+
   permissionMode: PermissionMode.ROLE,
 
   contentMode: ContentMode.FLUID,

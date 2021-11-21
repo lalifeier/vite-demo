@@ -1,6 +1,6 @@
-import { prefixCls, themeMode } from '@/configs/theme'
 import { useI18nProvide } from '@/context/modules/i18n'
 import { getLanguage } from '@/locales/utils'
+import { prefixCls, themeMode } from '@/settings/design'
 import { breakpointsTailwind, useBreakpoints } from '@vueuse/core'
 import { defineComponent, ref, toRefs, watch } from 'vue'
 import { createAppProviderContext } from './useAppContext'

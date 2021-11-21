@@ -2,11 +2,10 @@ import { SidebarConfig } from "#/config";
 import { useAppStore } from "@/store/modules/app";
 import { computed, unref } from 'vue';
 
-export function useSidebar() {
+export function useAppSetting() {
   const appStore = useAppStore();
 
   const getSidebarFixed = computed(() => appStore.getSidebarConfig.fixed)
-
 
   const getCollapsed = computed(() => appStore.getSidebarConfig.collapsed)
 

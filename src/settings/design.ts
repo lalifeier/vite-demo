@@ -1,8 +1,6 @@
 import { ThemeMode } from '@/enums/app';
-import pkg from '../../package.json';
 
-const { name } = pkg;
-export const prefixCls = name
+export const prefixCls = 'admin-pro'
 
 export const themeMode = ThemeMode.LIGHT
 

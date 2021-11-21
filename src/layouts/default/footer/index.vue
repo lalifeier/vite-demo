@@ -12,14 +12,16 @@
     Copyright
     <v-icon>mdi-copyright</v-icon>
     {{ fullYear }}
-    <router-link to="#" class="text-decoration-none">{{ VITE_APP_TITLE }}</router-link>, All rights Reserved
+    <router-link to="#" class="text-decoration-none">{{ title }}</router-link>, All rights Reserved
   </div>
 </template>
 
-<script setup lang="ts">import { useDesign } from '@/hooks/web/useDesign';
+<script setup lang="ts">
+import { useDesign } from '@/hooks/web/useDesign';
+import { useGlobConfig } from '@/utils/env';
 
 
-const VITE_APP_TITLE = import.meta.env.VITE_APP_TITLE
+const { title } = useGlobConfig()
 const fullYear = new Date().getFullYear()
 
 
