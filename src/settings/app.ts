@@ -4,12 +4,12 @@ import { themeColor, themeMode } from './design'
 
 const app: AppConfig = {
 
-  permissionMode: PermissionMode.ROLE,
+  permissionMode: PermissionMode.ROUTE_MAPPING,
 
   contentMode: ContentMode.FLUID,
 
-  theme: {
-    themeMode,
+  themeSetting: {
+    theme: themeMode,
 
     primaryColor: themeColor,
 
@@ -18,31 +18,25 @@ const app: AppConfig = {
     colorWeak: false
   },
 
-  header: {
+  headerSetting: {
     fixed: true,
-
-    themeMode,
-
-    primaryColor: '',
   },
 
-  sidebar: {
+  sidebarSetting: {
     fixed: true,
 
     collapsed: false,
 
-    themeMode,
-
-    primaryColor: ''
+    theme: themeMode,
   },
 
-  multiTabs: {
+  multiTabsSetting: {
     show: true,
 
     barStyle: BarStyle.CARD,
   },
 
-  transition: {
+  transitionSetting: {
     enable: true,
 
     transition: TransitionMode.FADE_SIDE,

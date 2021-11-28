@@ -16,17 +16,17 @@
 
     <div class="pa-2">
       <div class="font-weight-bold my-1">系统主题</div>
-      <v-btn-toggle v-model="theme.themeMode" color="primary" mandatory class="mb-2">
+      <v-btn-toggle v-model="themeSetting.theme" color="primary" mandatory class="mb-2">
         <v-btn x-large value="light">Light</v-btn>
         <v-btn x-large value="dark">Dark</v-btn>
       </v-btn-toggle>
 
-      <div class="font-weight-bold my-1">顶栏主题</div>
-      <v-btn-toggle v-model="header.themeMode" color="primary" mandatory class="mb-2">
+      <!-- <div class="font-weight-bold my-1">顶栏主题</div>
+      <v-btn-toggle v-model="headerSetting.fixed" color="primary" mandatory class="mb-2">
         <v-btn x-large>Global</v-btn>
         <v-btn x-large>Light</v-btn>
         <v-btn x-large>Dark</v-btn>
-      </v-btn-toggle>
+      </v-btn-toggle>-->
 
       <!-- <div class="font-weight-bold my-1">Toolbar Style</div>
       <v-btn-toggle v-model="toolbarStyle" color="primary" mandatory class="mb-2">
@@ -41,7 +41,7 @@
       </v-btn-toggle>-->
 
       <div class="font-weight-bold my-1">侧边栏主题</div>
-      <v-btn-toggle v-model="sidebar.themeMode" color="primary" mandatory class="mb-2">
+      <v-btn-toggle v-model="sidebarSetting.theme" color="primary" mandatory class="mb-2">
         <v-btn x-large>Global</v-btn>
         <v-btn x-large>Light</v-btn>
         <v-btn x-large>Dark</v-btn>
@@ -60,7 +60,7 @@ import { ref } from 'vue'
 const right = ref(false)
 
 const appStore = useAppStore()
-const { theme, header, sidebar } = appStore.appConfig
+const { themeSetting, headerSetting, sidebarSetting } = appStore.appConfig
 
   // const swatches = [
   //   ['#0096c7', '#31944f'],

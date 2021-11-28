@@ -1,22 +1,38 @@
 <template>
   <div>
+    <PageHeader></PageHeader>
+
     <!-- <markDown v-model="data" lang="ja_JP" theme="dark"></markDown> -->
 
     <markDown v-model="data" @init="handleInit"></markDown>
 
-    <v-btn color="primary" @click="handleClick"></v-btn>
+    <!-- <v-btn color="primary" @click="handleClick"></v-btn> -->
 
     <!-- <h2>{{ i18n.$t('hello_world') }}</h2> -->
-    {{ t('common.light') }}
+    <!-- {{ t('common.light') }} -->
+
+    <div>
+      2222
+      <SvgIcon class="kkkkkkkkkasdas asdffsa adfs" name="test" />333
+    </div>
+
+    <PageFooter>
+      <template #left>2222</template>
+      dasfd
+      <template #right>33333333333</template>
+    </PageFooter>
   </div>
 </template>
 
 <script setup lang="ts">
 import { markDown } from '@/components/Markdown';
+import { SvgIcon } from '@/components/Icon';
 import { useI18nContext } from '@/context';
 import { useI18n } from '@/hooks/web/useI18n';
 // import { useI18n } from '@/plugins/lib/i18n';
 import { ref } from 'vue';
+
+import { PageHeader, PageFooter } from '@/components/Page'
 
 // const i18n = useI18n();
 // const switchLanguage = () => {

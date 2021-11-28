@@ -1,116 +1,126 @@
-// import { cloneDeep, omit } from 'lodash-es'
-// import type { Router, RouteRecordNormalized } from 'vue-router'
-// import { createRouter, createWebHashHistory } from 'vue-router'
-// import { isUrl } from '../utils/is'
-// import { treeMap } from '../utils/tree'
-// import type { AppRouteModule, AppRouteRecordRaw, Menu } from '@/router/types'
+import { Role } from "@/enums/role";
+import { isUrl } from "@/utils/is";
+import { cloneDeep } from 'lodash-es';
+import { AppRouteModule, AppRouteRecordRaw, Menu } from "./types";
 
-// export function flatMultiLevelRoutes(routeModules: AppRouteModule[]) {
-//   const modules: AppRouteModule[] = cloneDeep(routeModules)
-//   for (let index = 0; index < modules.length; index++) {
-//     const routeModule = modules[index]
-//     if (!isMultipleRoute(routeModule)) {
-//       continue
-//     }
-//     promoteRouteLevel(routeModule)
-//   }
-//   return modules
-// }
+export function hasPermission(route: AppRouteRecordRaw, roleList: Array<Role>): boolean {
+  const { meta } = route
+  const { roles } = meta || {}
+  if (!roles) return true
+  return roleList.some((role) => roles.includes(role))
+}
 
-// function promoteRouteLevel(routeModule: AppRouteModule) {
-//   let router: Router | null = createRouter({
-//     routes: [routeModule as unknown as RouteRecordNormalized],
-//     history: createWebHashHistory()
-//   })
+export function filterRoutes(
+  routes: Array<AppRouteRecordRaw>,
+  roles: Array<Role>
+): Array<AppRouteRecordRaw> {
+  const routeList: Array<AppRouteRecordRaw> = []
+  routes.forEach((route) => {
+    const tmp: AppRouteRecordRaw = { ...route }
+    if (hasPermission(tmp, roles)) {
+      if (tmp.children) {
+        tmp.children = filterRoutes(tmp.children, roles)
+      }
+      routeList.push(tmp)
+    }
+  })
+  return routeList
+}
 
-//   const routes = router.getRoutes()
-//   addToChildren(routes, routeModule.children || [], routeModule)
-//   router = null
+export function fixFullPath(menuList: Menu[], parentPath = '') {
+  for (const menu of menuList) {
+    menu.path = getFullPath(menu.path, parentPath)
+    if (menu?.children?.length) {
+      fixFullPath(menu.children, menu.path);
+    }
+  }
+}
 
-//   routeModule.children = routeModule.children?.map((item) => omit(item, 'children'))
-// }
+export function sortMenu(menuList: Menu[]) {
+  menuList.sort((a, b) => {
+    return (a.meta?.orderNo || 0) - (b.meta?.orderNo || 0)
+  })
+}
 
-// function addToChildren(
-//   routes: RouteRecordNormalized[],
-//   children: AppRouteRecordRaw[],
-//   routeModule: AppRouteModule
-// ) {
-//   for (let index = 0; index < children.length; index++) {
-//     const child = children[index]
-//     const route = routes.find((item) => item.name === child.name)
-//     if (!route) {
-//       continue
-//     }
-//     routeModule.children = routeModule.children || []
-//     if (!routeModule.children.find((item) => item.name === route.name)) {
-//       routeModule.children?.push(route as unknown as AppRouteModule)
-//     }
-//     if (child.children?.length) {
-//       addToChildren(routes, child.children, routeModule)
-//     }
-//   }
-// }
+export function transformRouteToMenu(routes: AppRouteModule[]): Menu[] {
+  const cloneRoutes = cloneDeep(routes);
 
-// function isMultipleRoute(routeModule: AppRouteModule) {
-//   if (!routeModule || !Reflect.has(routeModule, 'children') || !routeModule.children?.length) {
-//     return false
-//   }
+  const getMenu = (route: AppRouteModule): Menu => {
+    const { meta: { title = '', hideMenu = false } = {}, path, redirect} = route
+    return {
+      ...(route.meta || {}),
+      meta: route.meta,
+      name: title,
+      hideMenu,
+      path,
+      ...(redirect ? { redirect } : {})
+    }
+  }
 
-//   const children = routeModule.children
+  const getChildren = (route: AppRouteModule): Menu => {
+    let children: Menu[] = []
+    if (route.children) {
+      route.children.forEach(item => {
+        children.push(getChildren(item))
+      })
+    }
 
-//   let flag = false
-//   for (let index = 0; index < children.length; index++) {
-//     const child = children[index]
-//     if (child.children?.length) {
-//       flag = true
-//       break
-//     }
-//   }
-//   return flag
-// }
+    return {
+      ...getMenu(route),
+      children
+    }
+  }
 
-// export function transformRouteToMenu(routeModList: AppRouteModule[]) {
-//   const cloneRouteModList = cloneDeep(routeModList)
-//   const routeList: AppRouteRecordRaw[] = []
+  let menu: Menu[] = []
+  for (const item of cloneRoutes) {
+    menu.push(getChildren(item))
+  }
 
-//   cloneRouteModList.forEach((item) => {
-//     if (item.meta?.single) {
-//       const realItem = item?.children?.[0]
-//       realItem && routeList.push(realItem)
-//     } else {
-//       routeList.push(item)
-//     }
-//   })
-//   const list = treeMap(routeList, {
-//     conversion: (node: AppRouteRecordRaw) => {
-//       const { meta: { title, hideMenu = false } = {} } = node
+  fixFullPath(menu)
 
-//       return {
-//         ...(node.meta || {}),
-//         meta: node.meta,
-//         name: title,
-//         hideMenu,
-//         path: node.path,
-//         ...(node.redirect ? { redirect: node.redirect } : {})
-//       }
-//     }
-//   })
-//   joinParentPath(list)
-//   return cloneDeep(list)
-// }
+  return menu
+}
 
-// function joinParentPath(menus: Menu[], parentPath = '') {
-//   for (let index = 0; index < menus.length; index++) {
-//     const menu = menus[index]
-//     // https://next.router.vuejs.org/guide/essentials/nested-routes.html
-//     // Note that nested paths that start with / will be treated as a root path.
-//     // This allows you to leverage the component nesting without having to use a nested URL.
-//     if (!(menu.path?.startsWith('/') || isUrl(menu.path))) {
-//       // path doesn't start with /, nor is it a url, join parent path
-//       menu.path = `${parentPath}/${menu.path}`
-//     }
-//     if (menu?.children?.length) {
-//       joinParentPath(menu.children, menu.meta?.hidePathForChildren ? parentPath : menu.path)
-//     }
-//   }
-// }
+function isMultipleRoute(routeModule: AppRouteModule): boolean {
+  if (!routeModule || !Reflect.has(routeModule, 'children') || !routeModule.children?.length) {
+    return false
+  }
+  return routeModule.children.some(item => item.children?.length)
+}
+
+
+function getFullPath(path, parentPath) {
+  if (path?.startsWith('/') || isUrl(path)) {
+    return path
+  }
+  return `${parentPath}/${path}`
+}
+
+const flatRouteModule = (routeModules: AppRouteModule[], parentPath?: string) => {
+  let routes: AppRouteModule[] = []
+  for (const routeModule of routeModules) {
+    const { path, children, ...item } = routeModule
+    const fullPath = getFullPath(path, parentPath)
+    if (children && children.length) {
+      routes = routes.concat(flatRouteModule(children, fullPath))
+    }
+    routes.push({ ...item, path: fullPath })
+  }
+  return routes
+}
+
+export function flatMultiLevelRoutes(routes: AppRouteModule[]): AppRouteModule[] {
+  const cloneRoutes = cloneDeep(routes);
+  let routeModules: AppRouteModule[] = []
+  for (const routeModule of cloneRoutes) {
+    if (!isMultipleRoute(routeModule)) {
+      routeModules.push(routeModule)
+      continue
+    }
+    const { children = [], path } = routeModule
+    routeModules.push({ ...routeModule, children: flatRouteModule(children, path) })
+  }
+  console.log(routeModules);
+
+  return routeModules
+}

@@ -1,4 +1,4 @@
-// import { AppRouteModule } from '../../types'
+// import { AppRouteModule } from '@/router/types'
 
 // const nested: AppRouteModule = {
 //   path: '/nested',

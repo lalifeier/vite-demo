@@ -1,3 +1,4 @@
+import { useDesign } from '@/hooks/web/useDesign'
 import type { CSSProperties } from 'vue'
 import { computed, defineComponent } from 'vue'
 import './index.scss'
@@ -5,13 +6,13 @@ import './index.scss'
 export default defineComponent({
   name: 'SvgIcon',
   props: {
-    iconClass: {
+    prefix: {
+      type: String,
+      default: 'icon'
+    },
+    name: {
       type: String,
       required: true
-    },
-    className: {
-      type: String,
-      default: ''
     },
     size: {
       type: [Number, String],
@@ -19,8 +20,9 @@ export default defineComponent({
     }
   },
   setup(props) {
-    const iconName = computed(() => `#icon-${props.iconClass}`)
-    const svgClass = computed(() => (props.className ? `svg-icon ${props.className}` : 'svg-icon'))
+    const { prefixCls } = useDesign('svg-icon')
+
+    const symbolId = computed(() => `#${props.prefix}-${props.name}`)
 
     const getStyle = computed((): CSSProperties => {
       const { size } = props
@@ -31,10 +33,10 @@ export default defineComponent({
         height: s
       }
     })
-    return () => {
-      ;<svg class={svgClass.value} aria-hidden="true" style={getStyle.value}>
-        <use xlinkHref={iconName.value} />
+    return () => (
+      <svg class={prefixCls} aria-hidden="true" style={getStyle.value}>
+        <use xlinkHref={symbolId.value} />
       </svg>
-    }
+    )
   }
 })

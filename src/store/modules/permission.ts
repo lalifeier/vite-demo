@@ -1,86 +1,16 @@
 import { PermissionMode } from '@/enums/app'
-import { Role } from '@/enums/role'
 import { asyncRoutes } from '@/router/routes'
 import { AppRouteRecordRaw, Menu } from '@/router/types'
+import { filterRoutes, flatMultiLevelRoutes, sortMenu, transformRouteToMenu } from '@/router/utils'
 import { store } from '@/store'
 import { defineStore } from 'pinia'
-import { useAppStore } from './app'
-import { useUserStore } from './user'
+import { toRaw } from 'vue'
+import { useAppStoreWithOut } from './app'
+import { useUserStoreWithOut } from './user'
 interface PermissionState {
   permissionCodeList: string[] | number[]
   isDynamicRoutes: boolean
   menuList: Menu[]
-}
-
-// function setMenu(menus) {
-//   let all = []
-//   const mapper = (route, parent) => {
-//     let parents = parent ? parent.split(',') : []
-//     parents.push(route.name)
-//     let child = []
-//     if (route.children) {
-//       route.children.forEach(item => {
-//         child.push(mapper(item, parents.join(',')))
-//       })
-//     }
-//     if (child.length === 0) {
-//       return {
-//         ...route,
-//         parents: parents
-//       }
-//     }
-//     return {
-//       ...route,
-//       parents: parents,
-//       children: child
-//     }
-//   }
-//   menus.forEach(item => {
-//     all.push(mapper(item))
-//   })
-//   return all
-// }
-
-// function getMenuItems(menus) {
-//   let all = []
-//   const mapper = (menu) => {
-//     if (menu.name && !menu.children) {
-//       all.push({ ...menu })
-//     }
-//     if (menu.children) {
-//       menu.children.forEach(item => {
-//         mapper(item)
-//       })
-//     }
-//   }
-//   menus.forEach(item => {
-//     mapper(item)
-//   })
-//   return all
-// }
-
-function hasPermission(route: AppRouteRecordRaw, roleList: Array<Role>): boolean {
-  const { meta } = route
-  const { roles } = meta || {}
-  if (!roles) return true
-  return roleList.some((role) => roles.includes(role))
-}
-
-function filterAsyncRoutes(
-  routes: Array<AppRouteRecordRaw>,
-  roles: Array<Role>
-): Array<AppRouteRecordRaw> {
-  const routeList: Array<AppRouteRecordRaw> = []
-  routes.forEach((route) => {
-    const tmp: AppRouteRecordRaw = { ...route }
-    if (hasPermission(tmp, roles)) {
-      if (tmp.children) {
-        tmp.children = filterAsyncRoutes(tmp.children, roles)
-      }
-      routeList.push(tmp)
-    }
-  })
-  return routeList
 }
 
 export const usePermissionStore = defineStore({
@@ -91,6 +21,9 @@ export const usePermissionStore = defineStore({
     menuList: []
   }),
   getters: {
+    getPermCodeList(): string[] | number[] {
+      return this.permissionCodeList
+    },
     getMenuList(): Menu[] {
       return this.menuList
     },
@@ -99,6 +32,9 @@ export const usePermissionStore = defineStore({
     }
   },
   actions: {
+    setPermissionCodeList(permissionCodeList: string[]) {
+      this.permissionCodeList = permissionCodeList
+    },
     setMenuList(list: Menu[]) {
       this.menuList = list
     },
@@ -106,25 +42,23 @@ export const usePermissionStore = defineStore({
       this.isDynamicRoutes = isDynamicRoutes
     },
     async generateRoutes() {
+      const appStore = useAppStoreWithOut()
+      const userStore = useUserStoreWithOut()
+
       let routes: AppRouteRecordRaw[] = []
-
-      const appStore = useAppStore()
-      const userStore = useUserStore()
-
       const { permissionMode } = appStore.appConfig
-      const roleList = userStore.getRoleList
+      const roleList = toRaw(userStore.getRoleList)
 
       switch (permissionMode) {
-        case PermissionMode.ROLE:
-          routes = filterAsyncRoutes(asyncRoutes, roleList)
+        case PermissionMode.ROUTE_MAPPING:
+          routes = filterRoutes(asyncRoutes, roleList)
 
-          console.log(routes)
-        // menuList.sort((a, b) => {
-        //   return (a.meta?.orderNo || 0) - (b.meta?.orderNo || 0)
-        // })
-        // this.setMenuList(menuList)
-        // console.log(menuList)
+          const menuList = transformRouteToMenu(routes)
+          sortMenu(menuList)
+          this.setMenuList(menuList)
+          console.log(menuList);
 
+          flatMultiLevelRoutes(routes)
         case PermissionMode.BACK:
       }
       return routes
@@ -132,6 +66,7 @@ export const usePermissionStore = defineStore({
     resetState(): void {
       this.permissionCodeList = []
       this.menuList = []
+      this.isDynamicRoutes = false
     }
   }
 })

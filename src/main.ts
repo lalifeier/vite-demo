@@ -10,12 +10,12 @@ import { worker } from '../mock/browser'
 import App from './App.vue'
 import { setupComponent } from './components'
 import { setupDirective } from './directives'
-import { setupAppConfig } from './logics/config'
 import { setupPlugin } from './plugins'
 import { router, setupRouter } from './router'
 import { setupRouterGuard } from './router/guard'
 import { setupStore } from './store'
 import './styles/index.scss'
+import { setupAppConfig } from './utils/appConfig'
 import { isDev } from './utils/env'
 
 

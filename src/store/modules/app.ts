@@ -1,4 +1,4 @@
-import { AppConfig, HeaderConfig, SidebarConfig, ThemeConfig } from '#/config'
+import { AppConfig, HeaderSetting, SidebarSetting, ThemeSetting, TransitionSetting } from '#/config'
 import { ThemeMode } from '@/enums/app'
 import { APP_CONFIG_KEY } from '@/enums/cache'
 import { resetRouter } from '@/router'
@@ -26,17 +26,20 @@ export const useAppStore = defineStore({
       return this.appConfig
     },
     getThemeMode(): ThemeMode {
-      return this.appConfig.theme.themeMode
+      return this.appConfig.themeSetting.theme
     },
 
-    getHeaderConfig(): HeaderConfig {
-      return this.appConfig.header
+    getHeaderSetting(): HeaderSetting {
+      return this.appConfig.headerSetting
     },
-    getSidebarConfig(): SidebarConfig {
-      return this.appConfig.sidebar
+    getSidebarSetting(): SidebarSetting {
+      return this.appConfig.sidebarSetting
     },
-    getThemeConfig(): ThemeConfig {
-      return this.appConfig.theme
+    getThemeSetting(): ThemeSetting {
+      return this.appConfig.themeSetting
+    },
+    getTransitionSetting(): TransitionSetting {
+      return this.appConfig.transitionSetting
     },
   },
   actions: {
@@ -48,7 +51,7 @@ export const useAppStore = defineStore({
       _localStorage.set(APP_CONFIG_KEY, this.appConfig)
     },
     setThemeMode(mode: ThemeMode): void {
-      this.appConfig.theme.themeMode = mode
+      this.appConfig.themeSetting.theme = mode
     },
     async resetState() {
       resetRouter()

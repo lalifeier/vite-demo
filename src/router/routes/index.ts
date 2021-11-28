@@ -1,5 +1,5 @@
 import type { AppRouteRecordRaw } from '@/router/types'
-import { DEFAULT_LAYOUT, REDIRECT_NAME } from './constant'
+import { LAYOUT, REDIRECT_NAME } from './constant'
 
 const modules = import.meta.globEager('./modules/**/*.ts')
 
@@ -13,16 +13,17 @@ Object.keys(modules).forEach((key) => {
 export const PAGE_NOT_FOUND_ROUTE: AppRouteRecordRaw = {
   path: '/:path(.*)*',
   name: 'Not Found Page',
-  meta: { title: 'Not Found Page' },
+  meta: { title: 'Not Found Page', hideMenu: true },
   redirect: '/exception/404'
 }
 
 export const REDIRECT_ROUTE: AppRouteRecordRaw = {
   path: '/redirect',
-  component: DEFAULT_LAYOUT,
+  component: LAYOUT,
   name: 'RedirectTo',
   meta: {
     title: REDIRECT_NAME,
+    hideMenu: true,
   },
   children: [
     {

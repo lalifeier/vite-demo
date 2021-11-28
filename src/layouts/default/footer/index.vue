@@ -8,12 +8,12 @@
     </div>
   </v-footer>-->
 
-  <div :class="prefixCls">
+  <footer :class="prefixCls">
     Copyright
     <v-icon>mdi-copyright</v-icon>
     {{ fullYear }}
     <router-link to="#" class="text-decoration-none">{{ title }}</router-link>, All rights Reserved
-  </div>
+  </footer>
 </template>
 
 <script setup lang="ts">
@@ -23,7 +23,6 @@ import { useGlobConfig } from '@/utils/env';
 
 const { title } = useGlobConfig()
 const fullYear = new Date().getFullYear()
-
 
 const { prefixCls } = useDesign('layout-footer');
 
@@ -38,7 +37,7 @@ $prefix-cls: "#{$namespace}-layout-footer";
   align-items: center;
   justify-content: center;
   height: 55px;
-  padding: 0 20 px 0 20 px;
+  padding: 0 20px 0 20px;
   background-color: #fff;
 }
 </style>

@@ -1,5 +1,5 @@
 import type { AppRouteModule } from '@/router/types'
-import { DEFAULT_LAYOUT } from '../constant'
+import { LAYOUT } from '../constant'
 
 export const dashboard: AppRouteModule = {
   path: '/dashboard',
@@ -7,7 +7,7 @@ export const dashboard: AppRouteModule = {
   meta: {
     title: 'Dashboard'
   },
-  component: DEFAULT_LAYOUT,
+  component: LAYOUT,
   redirect: '/dashboard/index',
   children: [
     {

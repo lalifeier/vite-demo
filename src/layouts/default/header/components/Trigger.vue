@@ -6,6 +6,7 @@
 
 <script setup lang="ts">import { useSidebarSetting } from '@/hooks/setting/useSidebarSetting';
 
+
 const { toggleCollapsed } = useSidebarSetting()
 
 </script>

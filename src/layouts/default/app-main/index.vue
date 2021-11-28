@@ -7,10 +7,22 @@
     </v-container>
   </v-main>-->
 
-  <div>
+  <main :class="prefixCls">
     <router-view></router-view>
-  </div>
+  </main>
 </template>
 
 
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import { useDesign } from '@/hooks/web/useDesign';
+
+const { prefixCls } = useDesign('layout-app-main');
+
+</script>
+
+<style lang="scss">
+$prefix-cls: "#{$namespace}-app-main";
+
+.#{$prefix-cls} {
+}
+</style>

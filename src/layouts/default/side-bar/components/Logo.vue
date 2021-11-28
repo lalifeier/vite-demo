@@ -8,7 +8,7 @@
 
   <div :class="prefixCls">
     <a>
-      <img src="/static/img/v-logo-small.png" width="32" height="32" alt="logo" />
+      <img src="/static/img/v-logo-small.png" alt="logo" />
       <h1>{{ title }}</h1>
     </a>
   </div>
@@ -33,11 +33,14 @@ $prefix-cls: "#{$namespace}-layout-side-bar-logo";
   height: 64px;
   img {
     display: inline-block;
+    width: 32px;
+    height: 32px;
     vertical-align: middle;
   }
   h1 {
     display: inline-block;
     height: 32px;
+    line-height: 32px;
     margin: 0 0 0 12px;
     font-weight: 600;
     font-size: 18px;

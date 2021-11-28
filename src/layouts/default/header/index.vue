@@ -50,9 +50,9 @@
     </template>
   </v-app-bar>-->
 
-  <div :class="prefixCls">
+  <header :class="prefixCls">
     <div :class="prefixCls + '-left'">
-      <Fold />
+      <Trigger />
     </div>
 
     <div :class="prefixCls + '-right'">
@@ -68,14 +68,14 @@
 
       <Setting />
     </div>
-  </div>
+  </header>
 </template>
 
 
 <script setup lang="ts">
 import { useDesign } from '@/hooks/web/useDesign'
 import Avatar from '@/layouts/default/header/components/Avatar.vue'
-import Fold from '@/layouts/default/header/components/Fold.vue'
+import Trigger from '@/layouts/default/header/components/Trigger.vue'
 import FullScreen from '@/layouts/default/header/components/FullScreen.vue'
 import Language from '@/layouts/default/header/components/Language.vue'
 import Notice from '@/layouts/default/header/components/Notice.vue'
@@ -104,6 +104,10 @@ $prefix-cls: "#{$namespace}-layout-header";
   &-left {
   }
   &-right {
+  }
+  &--fixed {
+    position: fixed;
+    top: 0;
   }
 }
 </style>

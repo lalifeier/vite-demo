@@ -7,23 +7,14 @@ export type Component<T = any> =
   | (() => Promise<typeof import('*.vue')>)
   | (() => Promise<T>)
 
-export interface AppRouteMeta extends RouteMeta {
-  roles?: Role[]
-  orderNo?: number
-  frameSrc?: string
-  ignoreKeepAlive?: boolean
-  affix?: boolean
-  icon?: string
-  hidden?: boolean
-}
-
 // @ts-ignore
 export interface AppRouteRecordRaw extends Omit<RouteRecordRaw, 'meta'> {
   name: string
-  meta?: AppRouteMeta
+  meta: RouteMeta
   component?: Component | string
   children?: AppRouteRecordRaw[]
   props?: Recordable
+  fullPath?: string
 }
 export interface MenuTag {
   type?: 'primary' | 'error' | 'warn' | 'success'

@@ -1,5 +1,5 @@
 import { EXCEPTION_STATUS } from '@/enums/exception'
-import { DEFAULT_LAYOUT, EXCEPTION_PAGE } from '@/router/routes/constant'
+import { EXCEPTION_PAGE, LAYOUT } from '@/router/routes/constant'
 import { AppRouteModule } from '../../types'
 
 const exception: AppRouteModule = {
@@ -8,7 +8,7 @@ const exception: AppRouteModule = {
   meta: {
     title: '异常页面'
   },
-  component: DEFAULT_LAYOUT,
+  component: LAYOUT,
   children: [
     {
       path: '403',

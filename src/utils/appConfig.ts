@@ -26,9 +26,9 @@ export function setupAppConfig() {
   appConfig = deepMerge(app, appConfig || {})
   appStore.setAppConfig(appConfig)
 
-  const { grayMode, colorWeak, themeMode } = appConfig.theme
+  const { grayMode, colorWeak, theme } = appConfig.themeSetting
   grayMode && updateGrayMode(grayMode)
   colorWeak && updateColorWeak(colorWeak)
 
-  updateThemeMode(themeMode)
+  updateThemeMode(theme)
 }

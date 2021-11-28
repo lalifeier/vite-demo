@@ -1,4 +1,5 @@
 import { useI18nProvide } from '@/context/modules/i18n'
+import { useSidebarSetting } from '@/hooks/setting/useSidebarSetting'
 import { getLanguage } from '@/locales/utils'
 import { prefixCls, themeMode } from '@/settings/design'
 import { breakpointsTailwind, useBreakpoints } from '@vueuse/core'
@@ -34,6 +35,12 @@ export default defineComponent({
       isSmallerSm,
       (value) => {
         isMobile.value = value
+
+        const { toggleCollapsed, getCollapsed } = useSidebarSetting()
+
+        if (value) {
+          !getCollapsed && toggleCollapsed()
+        }
       },
       {
         immediate: true

@@ -14,25 +14,23 @@
     </template>
   </v-navigation-drawer>-->
 
-  <div :class="prefixCls">
+  <aside :class="prefixCls" v-if="getCollapsed">
     <Logo />
 
     <Menu />
-  </div>
+  </aside>
 </template>
 
 
 <script setup lang="ts">
+import { useSidebarSetting } from '@/hooks/setting/useSidebarSetting';
 import { useDesign } from '@/hooks/web/useDesign';
 import Menu from '@/layouts/default/menu/index.vue';
 import Logo from '@/layouts/default/side-bar/components/Logo.vue';
 
-
-
-// const drawer = ref(true)
-
-
 const { prefixCls } = useDesign('layout-side-bar');
+
+const { getCollapsed } = useSidebarSetting()
 
 
 </script>
@@ -44,5 +42,11 @@ $prefix-cls: "#{$namespace}-layout-side-bar";
   width: 208px;
   height: 100vh;
   background: #fff;
+  &--fixed {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+  }
 }
 </style>

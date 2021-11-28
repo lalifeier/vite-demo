@@ -1,16 +1,19 @@
-import { SidebarConfig } from "#/config";
+
+import { SidebarSetting } from "#/config";
 import { useAppStore } from "@/store/modules/app";
 import { computed, unref } from 'vue';
 
-export function useAppSetting() {
+export function useSidebarSetting() {
   const appStore = useAppStore();
 
-  const getSidebarFixed = computed(() => appStore.getSidebarConfig.fixed)
+  const getSidebarTheme = computed(() => appStore.getSidebarSetting.theme);
 
-  const getCollapsed = computed(() => appStore.getSidebarConfig.collapsed)
+  const getSidebarFixed = computed(() => appStore.getSidebarSetting.fixed)
 
-  function setSidebarConfig(sidebar: Partial<SidebarConfig>): void {
-    appStore.setAppConfig({ sidebar })
+  const getCollapsed = computed(() => appStore.getSidebarSetting.collapsed)
+
+  function setSidebarConfig(sidebarSetting: Partial<SidebarSetting>): void {
+    appStore.setAppConfig({ sidebarSetting })
   }
 
   function toggleCollapsed() {
@@ -19,6 +22,11 @@ export function useAppSetting() {
     });
   }
 
+  const getCalcContentWidth = computed(() => {
+    const width = 208
+    return `calc(100% - ${unref(width)}px)`;
+  });
+
   return {
     setSidebarConfig,
 
@@ -26,5 +34,8 @@ export function useAppSetting() {
 
     getSidebarFixed,
     getCollapsed,
+    getSidebarTheme,
+
+    getCalcContentWidth,
   }
 }

@@ -1,24 +1,18 @@
 import { ContentMode, PermissionMode, ThemeMode } from '@/enums/app';
 
-export interface HeaderConfig {
+export interface HeaderSetting {
   fixed: boolean
-
-  themeMode: ThemeMode
-
-  primaryColor: string
 }
 
-export interface SidebarConfig {
+export interface SidebarSetting {
   fixed: boolean
 
   collapsed: boolean
 
-  themeMode: ThemeMode
-
-  primaryColor: string
+  theme: ThemeMode
 }
 
-export interface TransitionConfig {
+export interface TransitionSetting {
   enable: boolean
 
   transition: TransitionMode
@@ -28,8 +22,8 @@ export interface TransitionConfig {
   progressBar: boolean
 }
 
-export interface ThemeConfig {
-  themeMode: ThemeMode
+export interface ThemeSetting {
+  theme: ThemeMode
 
   primaryColor: string
 
@@ -39,24 +33,24 @@ export interface ThemeConfig {
 }
 
 
-export interface multiTabsConfig {
+export interface MultiTabsSetting {
   show: boolean
   barStyle: BarStyle
 }
 export interface AppConfig {
-  theme: ThemeConfig
+  themeSetting: ThemeSetting
 
   contentMode: ContentMode
 
   permissionMode: PermissionMode
 
-  header: HeaderConfig
+  headerSetting: HeaderSetting
 
-  sidebar: SidebarConfig
+  sidebarSetting: SidebarSetting
 
-  multiTabs: multiTabsConfig
+  multiTabsSetting: MultiTabsSetting
 
-  transition: TransitionConfig
+  transitionSetting: TransitionSetting
 }
 export interface GlobEnvConfig {
   VITE_GLOB_APP_TITLE: string;

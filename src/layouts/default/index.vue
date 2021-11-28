@@ -2,13 +2,13 @@
   <div :class="prefixCls">
     <layout-side-bar />
 
-    <div :class="prefixCls + '-main'">
+    <section :class="prefixCls + '-main'">
       <layout-header />
 
       <layout-app-main />
 
       <layout-footer />
-    </div>
+    </section>
   </div>
 
   <BackToTop />
@@ -31,10 +31,20 @@ $prefix-cls: "#{$namespace}-layout";
 
 .#{$prefix-cls} {
   display: flex;
-  width: 100%;
-  height: 100%;
+  flex-direction: row;
   &-main {
     width: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+  &-header {
+  }
+
+  &-app-main {
+    flex: 1;
+    // padding: 20px;
+  }
+  &-footer {
   }
 }
 </style>
