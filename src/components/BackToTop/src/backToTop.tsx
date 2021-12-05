@@ -1,7 +1,8 @@
+import { useDesign } from '@/hooks/web/useDesign'
 import { scrollToTop } from '@/utils/dom'
 import { useEventListener } from '@vueuse/core'
 import { throttle } from 'lodash-es'
-import { computed, CSSProperties, defineComponent, onMounted, ref, unref } from 'vue'
+import { computed, CSSProperties, defineComponent, onMounted, ref, shallowRef, unref } from 'vue'
 
 const props = {
   target: {
@@ -27,7 +28,10 @@ export default defineComponent({
   props,
   emits: ['click'],
   setup(props, { slots, emit }) {
-    const el = ref<HTMLElement | null>(null)
+    const { prefixCls } = useDesign('backtop')
+
+    const el = shallowRef<HTMLElement | undefined>(document.documentElement)
+    const container = shallowRef<Document | HTMLElement>(document)
     const visible = ref(false)
 
     const getWrapStyle = computed((): CSSProperties => {
@@ -35,8 +39,6 @@ export default defineComponent({
       const right = `${props.right}px`
 
       return {
-        position: 'fixed',
-        zIndex: 6,
         bottom,
         right
       }
@@ -44,60 +46,54 @@ export default defineComponent({
 
     const throttledScrollHandler = throttle(handleScroll, 300)
 
-    onMounted(() => {
-      const { target } = props
-
-      let container: Document | HTMLElement = document
-      el.value = document.documentElement
-
-      if (target) {
-        el.value = document.querySelector(target)
-        if (!el.value) {
-          throw new Error(`target is not existed: ${target}`)
-        }
-        container = el.value
-      }
-
-      useEventListener(container, 'scroll', throttledScrollHandler)
-    })
-
     function handleScroll() {
+      if (!el.value) {
+        return
+      }
       const scrollTop = el.value?.scrollTop || 0
       visible.value = scrollTop >= props.visibilityHeight
     }
 
     function handleClick(event) {
-      if (!el.value) {
-        return
-      }
-
       scrollToTop(el.value)
-
       emit('click', event)
     }
 
+    onMounted(() => {
+      if (props.target) {
+        el.value = document.querySelector<HTMLElement>(props.target) ?? undefined
+        if (!el.value) {
+          throw new Error(`target is not existed: ${props.target}`)
+        }
+        container.value = el.value
+      }
+
+      useEventListener(container, 'scroll', throttledScrollHandler)
+    })
+
     return () => (
-      <div style={unref(getWrapStyle)} onClick={handleClick}>
-        <v-fab-transition>
+      <v-fab-transition>
+        <div
+          class={prefixCls}
+          style={unref(getWrapStyle)}
+          onClick={handleClick}
+          v-show={visible.value}
+        >
           {slots.default ? (
             slots.default()
           ) : (
             <v-btn
-              v-show={visible.value}
               aria-label="滚动页面至顶部"
               title="滚动页面至顶部"
               class="transition-swing"
               color="primary"
               icon
-              fixed
-              bottom
-              right
             >
               <v-icon>mdi-chevron-up</v-icon>
             </v-btn>
           )}
-        </v-fab-transition>
-      </div>
+        </div>
+      </v-fab-transition>
     )
   }
 })

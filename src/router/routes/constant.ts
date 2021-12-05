@@ -1,6 +1,6 @@
-export const REDIRECT_NAME = 'Redirect';
+export const REDIRECT_NAME = 'Redirect'
 
-export const PAGE_NOT_FOUND = 'PageNotFound';
+export const PAGE_NOT_FOUND = 'PageNotFound'
 
 export const LAYOUT = () => import('@/layouts/default/index.vue')
 

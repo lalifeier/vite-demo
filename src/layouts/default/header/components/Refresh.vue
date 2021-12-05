@@ -5,11 +5,10 @@
 </template>
 
 <script setup lang="ts">
-import { useRedo } from '@/hooks/web/usePage';
-const redo = useRedo();
+  import { useRedo } from '@/hooks/web/usePage'
+  const redo = useRedo()
 
-async function handleRefreshRoute() {
-  redo();
-}
-
+  async function handleRefreshRoute() {
+    redo()
+  }
 </script>

@@ -31,7 +31,6 @@ export default defineComponent({
     const { prefixCls } = useDesign('page-header')
     const headingPrefixCls = `${prefixCls}-heading`
 
-    const { content, dense } = props
     const title = props.title ?? slots.title?.()
     const subTitle = props.subTitle ?? slots.subTitle?.()
     const extra = props.extra ?? slots.extra?.()
@@ -40,7 +39,7 @@ export default defineComponent({
       return [
         prefixCls,
         {
-          [`${prefixCls}--dense`]: dense
+          [`${prefixCls}--dense`]: props.dense
         }
       ]
     })
@@ -69,7 +68,7 @@ export default defineComponent({
             </div>
             <div class={headingPrefixCls + '-extra'}>{extra}</div>
           </div>
-          <div class={prefixCls + '-content'}>{content}</div>
+          <div class={prefixCls + '-content'}>{props.content}</div>
         </div>
       )
     }

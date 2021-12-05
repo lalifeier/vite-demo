@@ -1,4 +1,4 @@
-import { inject, provide, Ref, ref } from "vue"
+import { inject, provide, Ref, ref } from 'vue'
 
 type ThemeContext = {
   theme: Ref<String>

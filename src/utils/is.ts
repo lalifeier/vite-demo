@@ -119,7 +119,6 @@ export function isMobile() {
 
 export const isIOS = (): boolean => /ios|iphone|ipad|ipod/.test(navigator.userAgent.toLowerCase())
 
-
 export function isISOString(val) {
   const d = new Date(val)
   return !Number.isNaN(d.valueOf()) && d.toISOString() === val
@@ -132,4 +131,4 @@ export const isSupportsTouch =
 
 export const isNil = (value: any) => value === null || value === undefined
 
-export const isImg = (path: string): boolean =>  /\w.(png|jpg|jpeg|svg|webp|gif|bmp)$/i.test(path)
+export const isImg = (path: string): boolean => /\w.(png|jpg|jpeg|svg|webp|gif|bmp)$/i.test(path)

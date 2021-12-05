@@ -40,7 +40,7 @@ export const useAppStore = defineStore({
     },
     getTransitionSetting(): TransitionSetting {
       return this.appConfig.transitionSetting
-    },
+    }
   },
   actions: {
     setLoading(loading: boolean): void {

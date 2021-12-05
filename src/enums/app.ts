@@ -29,7 +29,6 @@ export enum LOCALE_TYPE {
   EN = 'en'
 }
 
-
 // 卡片风格card、灵动风格smart、圆滑风格smooth
 export enum BarStyle {
   CARD = 'card',

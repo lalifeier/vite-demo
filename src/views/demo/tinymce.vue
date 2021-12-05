@@ -9,7 +9,7 @@
 </template>
 
 <script setup lang="ts">
-  import  Tinymce  from '@/components/Tinymce'
+  import Tinymce from '@/components/Tinymce'
   import { ref, unref } from 'vue'
 
   const description = ref('123')

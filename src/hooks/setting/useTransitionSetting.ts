@@ -1,22 +1,20 @@
-import type { TransitionSetting } from '#/config';
-import { useAppStore } from '@/store/modules/app';
-import { computed } from 'vue';
-
-
+import type { TransitionSetting } from '#/config'
+import { useAppStore } from '@/store/modules/app'
+import { computed } from 'vue'
 
 export function useTransitionSetting() {
-  const appStore = useAppStore();
+  const appStore = useAppStore()
 
-  const getEnableTransition = computed(() => appStore.getTransitionSetting.enable);
+  const getEnableTransition = computed(() => appStore.getTransitionSetting.enable)
 
-  const getOpenProgressBar = computed(() => appStore.getTransitionSetting.progressBar);
+  const getOpenProgressBar = computed(() => appStore.getTransitionSetting.progressBar)
 
   const getOpenPageLoading = computed(() => appStore.getTransitionSetting.pageLoading)
 
-  const getTransition = computed(() => appStore.getTransitionSetting.transition);
+  const getTransition = computed(() => appStore.getTransitionSetting.transition)
 
   function setTransitionSetting(transitionSetting: Partial<TransitionSetting>) {
-    appStore.setAppConfig({ transitionSetting });
+    appStore.setAppConfig({ transitionSetting })
   }
   return {
     setTransitionSetting,
@@ -24,6 +22,6 @@ export function useTransitionSetting() {
     getEnableTransition,
     getOpenProgressBar,
     getOpenPageLoading,
-    getTransition,
-  };
+    getTransition
+  }
 }

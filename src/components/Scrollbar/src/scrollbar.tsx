@@ -72,13 +72,11 @@ export default defineComponent({
     const moveY = ref(0)
     const GAP = 4
 
-    const { native, wrapClass, wrapStyle, viewClass, viewStyle, always } = props
-
     const style = computed<StyleValue>(() => {
       const style: CSSProperties = {}
       if (props.height) style.height = convertToUnit(props.height)
       if (props.maxHeight) style.maxHeight = convertToUnit(props.maxHeight)
-      return [wrapStyle, style]
+      return [props.wrapStyle, style]
     })
 
     const handleScroll = () => {
@@ -138,7 +136,7 @@ export default defineComponent({
     provide('scrollbar-wrap', wrapRef)
 
     onMounted(() => {
-      if (!native) nextTick(() => update())
+      if (!props.native) nextTick(() => update())
     })
 
     return () => (
@@ -146,21 +144,25 @@ export default defineComponent({
         <div
           ref={wrapRef}
           class={[
-            wrapClass,
+            props.wrapClass,
             prefixCls + '__wrap',
-            native ? '' : prefixCls + '__wrap--hidden-default'
+            props.native ? '' : prefixCls + '__wrap--hidden-default'
           ]}
           style={style.value}
           onScroll={handleScroll}
         >
-          <props.tag ref={resizeRef} class={[prefixCls + '__view', viewClass]} style={viewStyle}>
+          <props.tag
+            ref={resizeRef}
+            class={[prefixCls + '__view', props.viewClass]}
+            style={props.viewStyle}
+          >
             {slots.default?.()}
           </props.tag>
         </div>
-        {!native
+        {!props.native
           ? [
-              <Bar move={moveX.value} size={sizeWidth.value} always={always} />,
-              <Bar vertical move={moveY.value} size={sizeHeight.value} always={always} />
+              <Bar move={moveX.value} size={sizeWidth.value} always={props.always} />,
+              <Bar vertical move={moveY.value} size={sizeHeight.value} always={props.always} />
             ]
           : ''}
       </div>

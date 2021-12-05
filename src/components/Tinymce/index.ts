@@ -1,4 +1,4 @@
-import { withInstall } from "@/utils/with-install"
+import { withInstall } from '@/utils/with-install'
 import tinymce from './src/tinymce'
 import './style/index.scss'
 

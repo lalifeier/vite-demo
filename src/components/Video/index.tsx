@@ -41,8 +41,6 @@ export default defineComponent({
     const elRef = ref<ElRef>(null)
     const player = ref<Nullable<Player>>(null)
 
-    const { id, url, width, height } = props
-
     onMounted(() => {
       init()
     })
@@ -51,7 +49,7 @@ export default defineComponent({
 
     function init() {
       player.value = new Player({
-        id,
+        id: props.id,
         // width,
         // height,
         autoplay: false,
@@ -61,7 +59,7 @@ export default defineComponent({
         // screenShot: true,
         playbackRate: [0.5, 0.75, 1, 1.5, 2],
         ...props.options,
-        url
+        url: props.url
       })
 
       emit('init', player.value)
@@ -71,6 +69,6 @@ export default defineComponent({
       player.value?.destroy()
     }
 
-    return () => <div id={id} ref={elRef}></div>
+    return () => <div id={props.id} ref={elRef}></div>
   }
 })

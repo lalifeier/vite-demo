@@ -1,5 +1,4 @@
 import { computed, CSSProperties, defineComponent } from 'vue'
-import './index.scss'
 
 const props = {
   loading: {

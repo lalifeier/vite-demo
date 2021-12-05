@@ -1,4 +1,4 @@
-import { ThemeMode } from '@/enums/app';
+import { ThemeMode } from '@/enums/app'
 
 export const prefixCls = 'vap'
 

@@ -1,5 +1,3 @@
-
-
 import { withInstall } from '@/utils/with-install'
 import scrollbar from './src/scrollbar'
 import './style/index.scss'

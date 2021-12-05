@@ -54,13 +54,13 @@
   </v-navigation-drawer>
 </template>
 <script setup lang="ts">
-import { useAppStore } from '@/store/modules/app'
-import { ref } from 'vue'
+  import { useAppStore } from '@/store/modules/app'
+  import { ref } from 'vue'
 
-const right = ref(false)
+  const right = ref(false)
 
-const appStore = useAppStore()
-const { themeSetting, headerSetting, sidebarSetting } = appStore.appConfig
+  const appStore = useAppStore()
+  const { themeSetting, headerSetting, sidebarSetting } = appStore.appConfig
 
   // const swatches = [
   //   ['#0096c7', '#31944f'],
@@ -70,15 +70,15 @@ const { themeSetting, headerSetting, sidebarSetting } = appStore.appConfig
 </script>
 
 <style lang="scss" scoped>
-// .drawer-button {
-//   position: fixed;
-//   top: 340px;
-//   right: -20px;
-//   z-index: 6;
+  // .drawer-button {
+  //   position: fixed;
+  //   top: 340px;
+  //   right: -20px;
+  //   z-index: 6;
 
-//   .v-icon {
-//     margin-left: -18px;
-//     font-size: 1.3rem;
-//   }
-// }
+  //   .v-icon {
+  //     margin-left: -18px;
+  //     font-size: 1.3rem;
+  //   }
+  // }
 </style>

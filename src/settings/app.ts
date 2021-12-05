@@ -3,7 +3,6 @@ import { BarStyle, ContentMode, PermissionMode, TransitionMode } from '../enums/
 import { themeColor, themeMode } from './design'
 
 const app: AppConfig = {
-
   permissionMode: PermissionMode.ROUTE_MAPPING,
 
   contentMode: ContentMode.FLUID,
@@ -19,7 +18,7 @@ const app: AppConfig = {
   },
 
   headerSetting: {
-    fixed: true,
+    fixed: true
   },
 
   sidebarSetting: {
@@ -27,13 +26,13 @@ const app: AppConfig = {
 
     collapsed: false,
 
-    theme: themeMode,
+    theme: themeMode
   },
 
   multiTabsSetting: {
     show: true,
 
-    barStyle: BarStyle.CARD,
+    barStyle: BarStyle.CARD
   },
 
   transitionSetting: {

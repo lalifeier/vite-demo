@@ -23,7 +23,7 @@ export const REDIRECT_ROUTE: AppRouteRecordRaw = {
   name: 'RedirectTo',
   meta: {
     title: REDIRECT_NAME,
-    hideMenu: true,
+    hideMenu: true
   },
   children: [
     {
@@ -31,13 +31,17 @@ export const REDIRECT_ROUTE: AppRouteRecordRaw = {
       name: REDIRECT_NAME,
       component: () => import('@/views/redirect/index.vue'),
       meta: {
-        title: REDIRECT_NAME,
-      },
-    },
-  ],
+        title: REDIRECT_NAME
+      }
+    }
+  ]
 }
 
-export const asyncRoutes: Array<AppRouteRecordRaw> = [...moduleRouters, REDIRECT_ROUTE, PAGE_NOT_FOUND_ROUTE]
+export const asyncRoutes: Array<AppRouteRecordRaw> = [
+  ...moduleRouters,
+  REDIRECT_ROUTE,
+  PAGE_NOT_FOUND_ROUTE
+]
 
 export const constantRoutes: Array<AppRouteRecordRaw> = [
   {

@@ -1,7 +1,7 @@
-import { Role } from "@/enums/role";
-import { isUrl } from "@/utils/is";
-import { cloneDeep } from 'lodash-es';
-import { AppRouteModule, AppRouteRecordRaw, Menu } from "./types";
+import { Role } from '@/enums/role'
+import { isUrl } from '@/utils/is'
+import { cloneDeep } from 'lodash-es'
+import { AppRouteModule, AppRouteRecordRaw, Menu } from './types'
 
 export function hasPermission(route: AppRouteRecordRaw, roleList: Array<Role>): boolean {
   const { meta } = route
@@ -31,7 +31,7 @@ export function fixFullPath(menuList: Menu[], parentPath = '') {
   for (const menu of menuList) {
     menu.path = getFullPath(menu.path, parentPath)
     if (menu?.children?.length) {
-      fixFullPath(menu.children, menu.path);
+      fixFullPath(menu.children, menu.path)
     }
   }
 }
@@ -43,10 +43,10 @@ export function sortMenu(menuList: Menu[]) {
 }
 
 export function transformRouteToMenu(routes: AppRouteModule[]): Menu[] {
-  const cloneRoutes = cloneDeep(routes);
+  const cloneRoutes = cloneDeep(routes)
 
   const getMenu = (route: AppRouteModule): Menu => {
-    const { meta: { title = '', hideMenu = false } = {}, path, redirect} = route
+    const { meta: { title = '', hideMenu = false } = {}, path, redirect } = route
     return {
       ...(route.meta || {}),
       meta: route.meta,
@@ -58,9 +58,9 @@ export function transformRouteToMenu(routes: AppRouteModule[]): Menu[] {
   }
 
   const getChildren = (route: AppRouteModule): Menu => {
-    let children: Menu[] = []
+    const children: Menu[] = []
     if (route.children) {
-      route.children.forEach(item => {
+      route.children.forEach((item) => {
         children.push(getChildren(item))
       })
     }
@@ -71,7 +71,7 @@ export function transformRouteToMenu(routes: AppRouteModule[]): Menu[] {
     }
   }
 
-  let menu: Menu[] = []
+  const menu: Menu[] = []
   for (const item of cloneRoutes) {
     menu.push(getChildren(item))
   }
@@ -85,9 +85,8 @@ function isMultipleRoute(routeModule: AppRouteModule): boolean {
   if (!routeModule || !Reflect.has(routeModule, 'children') || !routeModule.children?.length) {
     return false
   }
-  return routeModule.children.some(item => item.children?.length)
+  return routeModule.children.some((item) => item.children?.length)
 }
-
 
 function getFullPath(path, parentPath) {
   if (path?.startsWith('/') || isUrl(path)) {
@@ -110,8 +109,8 @@ const flatRouteModule = (routeModules: AppRouteModule[], parentPath?: string) =>
 }
 
 export function flatMultiLevelRoutes(routes: AppRouteModule[]): AppRouteModule[] {
-  const cloneRoutes = cloneDeep(routes);
-  let routeModules: AppRouteModule[] = []
+  const cloneRoutes = cloneDeep(routes)
+  const routeModules: AppRouteModule[] = []
   for (const routeModule of cloneRoutes) {
     if (!isMultipleRoute(routeModule)) {
       routeModules.push(routeModule)
@@ -120,7 +119,7 @@ export function flatMultiLevelRoutes(routes: AppRouteModule[]): AppRouteModule[]
     const { children = [], path } = routeModule
     routeModules.push({ ...routeModule, children: flatRouteModule(children, path) })
   }
-  console.log(routeModules);
+  console.log(routeModules)
 
   return routeModules
 }

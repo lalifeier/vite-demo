@@ -1,4 +1,14 @@
+import App from '@/App.vue'
+import { setupComponent } from '@/components'
+import { setupDirective } from '@/directives'
 import { setupI18n } from '@/locales/index'
+import { setupPlugin } from '@/plugins'
+import { router, setupRouter } from '@/router'
+import { setupRouterGuard } from '@/router/guard'
+import { setupStore } from '@/store'
+import '@/styles/index.scss'
+import { setupAppConfig } from '@/utils/app-config'
+import { isDev } from '@/utils/env'
 import 'animate.css'
 import 'spinkit/spinkit.css'
 import 'virtual:windi-base.css'
@@ -7,22 +17,10 @@ import 'virtual:windi-utilities.css'
 import 'vite-plugin-svg-icons/register'
 import { createApp } from 'vue'
 import { worker } from '../mock/browser'
-import App from './App.vue'
-import { setupComponent } from './components'
-import { setupDirective } from './directives'
-import { setupPlugin } from './plugins'
-import { router, setupRouter } from './router'
-import { setupRouterGuard } from './router/guard'
-import { setupStore } from './store'
-import './styles/index.scss'
-import { setupAppConfig } from './utils/app-config'
-import { isDev } from './utils/env'
-
-
 
 if (!isDev) {
   worker.start({
-    onUnhandledRequest: 'bypass',
+    onUnhandledRequest: 'bypass'
   })
 }
 
@@ -53,6 +51,4 @@ if (!isDev) {
   await router.isReady()
 
   app.mount('#app')
-
-
 })()

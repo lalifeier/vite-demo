@@ -12,30 +12,29 @@
     Copyright
     <v-icon>mdi-copyright</v-icon>
     {{ fullYear }}
-    <router-link to="#" class="text-decoration-none">{{ title }}</router-link>, All rights Reserved
+    <router-link to="#" class="text-decoration-none">{{ title }}</router-link
+    >, All rights Reserved
   </footer>
 </template>
 
 <script setup lang="ts">
-import { useDesign } from '@/hooks/web/useDesign';
-import { useGlobConfig } from '@/utils/env';
+  import { useDesign } from '@/hooks/web/useDesign'
+  import { useGlobConfig } from '@/utils/env'
 
+  const { title } = useGlobConfig()
+  const fullYear = new Date().getFullYear()
 
-const { title } = useGlobConfig()
-const fullYear = new Date().getFullYear()
-
-const { prefixCls } = useDesign('layout-footer');
-
+  const { prefixCls } = useDesign('layout-footer')
 </script>
 
 <style lang="scss">
-$prefix-cls: "#{$namespace}-layout-footer";
+  $prefix-cls: '#{$namespace}-layout-footer';
 
-.#{$prefix-cls} {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 40px;
-  background-color: #fff;
-}
+  .#{$prefix-cls} {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 40px;
+    background-color: #fff;
+  }
 </style>

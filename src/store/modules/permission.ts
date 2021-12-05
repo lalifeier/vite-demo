@@ -56,7 +56,7 @@ export const usePermissionStore = defineStore({
           const menuList = transformRouteToMenu(routes)
           sortMenu(menuList)
           this.setMenuList(menuList)
-          console.log(menuList);
+          console.log(menuList)
 
           flatMultiLevelRoutes(routes)
         case PermissionMode.BACK:

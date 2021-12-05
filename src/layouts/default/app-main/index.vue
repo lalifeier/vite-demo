@@ -12,17 +12,15 @@
   </main>
 </template>
 
-
 <script setup lang="ts">
-import { useDesign } from '@/hooks/web/useDesign';
+  import { useDesign } from '@/hooks/web/useDesign'
 
-const { prefixCls } = useDesign('layout-content');
-
+  const { prefixCls } = useDesign('layout-content')
 </script>
 
 <style lang="scss">
-$prefix-cls: "#{$namespace}-content";
+  $prefix-cls: '#{$namespace}-content';
 
-.#{$prefix-cls} {
-}
+  .#{$prefix-cls} {
+  }
 </style>

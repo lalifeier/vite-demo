@@ -16,7 +16,7 @@ const interceptor: AxiosInterceptor = {
       // : token;
     }
 
-    let { params = {}, } = config
+    let { params = {} } = config
 
     const url = config.url || ''
     const { apiUrl, joinTime, filterParams } = config['requestOptions']

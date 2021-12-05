@@ -4,8 +4,8 @@
   </v-btn>
 </template>
 
-<script setup lang="ts">import { useSidebarSetting } from '@/hooks/setting/useSidebarSetting';
+<script setup lang="ts">
+  import { useSidebarSetting } from '@/hooks/setting/useSidebarSetting'
 
-const { toggleCollapsed } = useSidebarSetting()
-
+  const { toggleCollapsed } = useSidebarSetting()
 </script>

@@ -1,12 +1,11 @@
-
-import { SidebarSetting } from "#/config";
-import { useAppStore } from "@/store/modules/app";
-import { computed, unref } from 'vue';
+import { SidebarSetting } from '#/config'
+import { useAppStore } from '@/store/modules/app'
+import { computed, unref } from 'vue'
 
 export function useSidebarSetting() {
-  const appStore = useAppStore();
+  const appStore = useAppStore()
 
-  const getSidebarTheme = computed(() => appStore.getSidebarSetting.theme);
+  const getSidebarTheme = computed(() => appStore.getSidebarSetting.theme)
 
   const getSidebarFixed = computed(() => appStore.getSidebarSetting.fixed)
 
@@ -18,14 +17,14 @@ export function useSidebarSetting() {
 
   function toggleCollapsed() {
     setSidebarConfig({
-      collapsed: !unref(getCollapsed),
-    });
+      collapsed: !unref(getCollapsed)
+    })
   }
 
   const getCalcContentWidth = computed(() => {
     const width = 208
-    return `calc(100% - ${unref(width)}px)`;
-  });
+    return `calc(100% - ${unref(width)}px)`
+  })
 
   return {
     setSidebarConfig,
@@ -36,6 +35,6 @@ export function useSidebarSetting() {
     getCollapsed,
     getSidebarTheme,
 
-    getCalcContentWidth,
+    getCalcContentWidth
   }
 }
