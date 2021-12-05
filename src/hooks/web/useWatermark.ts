@@ -1,6 +1,6 @@
 import { useRafThrottle } from '@/utils/dom'
-import { addResizeListener, removeResizeListener } from '@/utils/dom/resize-event'
 import { isDef } from '@/utils/is'
+import { addResizeListener, removeResizeListener } from '@/utils/resize-event'
 import { getCurrentInstance, onBeforeUnmount, ref, Ref, shallowRef, unref } from 'vue'
 const domSymbol = Symbol('watermark-dom')
 

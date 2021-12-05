@@ -14,9 +14,8 @@ import {
   unref,
   watch
 } from 'vue'
+import { plugins, toolbar } from './config'
 import load from './dynamicLoadScript'
-import './index.scss'
-import { plugins, toolbar } from './tinymce'
 
 const props = {
   url: {

@@ -1,3 +1,6 @@
-import markDown from './src'
+import { withInstall } from "@/utils/with-install"
+import markDown from './src/markdown'
 
-export { markDown }
+export const MarkDown = withInstall(markDown)
+
+export default MarkDown

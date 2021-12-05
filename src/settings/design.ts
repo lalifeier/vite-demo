@@ -1,6 +1,6 @@
 import { ThemeMode } from '@/enums/app';
 
-export const prefixCls = 'admin-pro'
+export const prefixCls = 'vap'
 
 export const themeMode = ThemeMode.LIGHT
 

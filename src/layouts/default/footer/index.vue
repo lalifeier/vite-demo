@@ -33,11 +33,9 @@ $prefix-cls: "#{$namespace}-layout-footer";
 
 .#{$prefix-cls} {
   display: flex;
-  width: 100%;
   align-items: center;
   justify-content: center;
-  height: 55px;
-  padding: 0 20px 0 20px;
+  height: 40px;
   background-color: #fff;
 }
 </style>

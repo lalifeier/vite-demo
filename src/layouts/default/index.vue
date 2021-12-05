@@ -1,8 +1,8 @@
 <template>
-  <div :class="prefixCls">
+  <div :class="[prefixCls, prefixCls + '-has-sider']">
     <layout-side-bar />
 
-    <section :class="prefixCls + '-main'">
+    <section :class="prefixCls">
       <layout-header />
 
       <layout-app-main />
@@ -30,8 +30,12 @@ const { prefixCls } = useDesign('layout');
 $prefix-cls: "#{$namespace}-layout";
 
 .#{$prefix-cls} {
+  width: 100%;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
+  &-has-sider {
+    flex-direction: row;
+  }
   &-main {
     width: 100%;
     display: flex;
@@ -40,7 +44,7 @@ $prefix-cls: "#{$namespace}-layout";
   &-header {
   }
 
-  &-app-main {
+  &-content {
     flex: 1;
     // padding: 20px;
   }

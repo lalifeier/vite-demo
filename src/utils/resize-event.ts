@@ -1,5 +1,5 @@
 import ResizeObserver from 'resize-observer-polyfill'
-import { isServer } from '../is'
+import { isServer } from './is'
 
 /* istanbul ignore next */
 const resizeHandler = function (entries: any[]) {

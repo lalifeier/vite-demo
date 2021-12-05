@@ -53,6 +53,11 @@ export const demo: AppRouteModule = {
       path: 'video',
       name: 'video',
       component: () => import('@/views/demo/video.vue')
+    },
+    {
+      path: 'scrollbar',
+      name: 'scrollbar',
+      component: () => import('@/views/demo/scrollbar.vue')
     }
   ]
 }

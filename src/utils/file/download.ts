@@ -1,5 +1,5 @@
+import { asyncPool } from '@/utils/async-pool'
 import { getFileNameByUrl, urlToBase64 } from '.'
-import { asyncPool } from '../async'
 
 export function saveAs(blob: any, filename = 'download') {
   if (typeof blob === 'string') {

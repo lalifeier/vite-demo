@@ -1,6 +1,7 @@
 import qs from 'qs'
 import { getCookie } from '../cache/cookie'
 import { uuidv4 } from '../uuid'
+
 let image: HTMLImageElement | null
 
 type Params = { [key: string]: any }

@@ -1,4 +1,4 @@
-import { withInstall } from "..";
+import { withInstall } from '@/utils/with-install';
 import pageContainer from './src/PageContainer';
 import pageFooter from './src/PageFooter';
 import pageHeader from './src/PageHeader';

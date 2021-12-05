@@ -1,6 +1,6 @@
 <template>
   <Result :title="title" :sub-title="subTitle" :icon="icon">
-    <template #default>
+    <template #extra>
       <v-btn color="primary" @click="handleClick">{{ btnText }}</v-btn>
     </template>
   </Result>

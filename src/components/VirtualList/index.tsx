@@ -1,4 +1,4 @@
-import { convertToUnit } from '@/utils/dom'
+import { convertToUnit } from '@/utils/format'
 import { useEventListener } from '@vueuse/core'
 import { computed, CSSProperties, defineComponent, onMounted, reactive, ref, unref } from 'vue'
 import './index.scss'

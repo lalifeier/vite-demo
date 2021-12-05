@@ -117,6 +117,9 @@ export function isMobile() {
   return /Android|webOS|i?Phone|iPad|iPod|BlackBerry|Mobile/i.test(navigator.userAgent)
 }
 
+export const isIOS = (): boolean => /ios|iphone|ipad|ipod/.test(navigator.userAgent.toLowerCase())
+
+
 export function isISOString(val) {
   const d = new Date(val)
   return !Number.isNaN(d.valueOf()) && d.toISOString() === val

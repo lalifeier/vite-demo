@@ -15,7 +15,7 @@ import { router, setupRouter } from './router'
 import { setupRouterGuard } from './router/guard'
 import { setupStore } from './store'
 import './styles/index.scss'
-import { setupAppConfig } from './utils/appConfig'
+import { setupAppConfig } from './utils/app-config'
 import { isDev } from './utils/env'
 
 

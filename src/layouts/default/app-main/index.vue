@@ -16,12 +16,12 @@
 <script setup lang="ts">
 import { useDesign } from '@/hooks/web/useDesign';
 
-const { prefixCls } = useDesign('layout-app-main');
+const { prefixCls } = useDesign('layout-content');
 
 </script>
 
 <style lang="scss">
-$prefix-cls: "#{$namespace}-app-main";
+$prefix-cls: "#{$namespace}-content";
 
 .#{$prefix-cls} {
 }

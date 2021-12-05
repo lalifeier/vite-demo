@@ -2,9 +2,11 @@
   <div>
     <PageHeader></PageHeader>
 
+
+
     <!-- <markDown v-model="data" lang="ja_JP" theme="dark"></markDown> -->
 
-    <markDown v-model="data" @init="handleInit"></markDown>
+    <MarkDown v-model="data" @init="handleInit"></MarkDown>
 
     <!-- <v-btn color="primary" @click="handleClick"></v-btn> -->
 
@@ -12,7 +14,6 @@
     <!-- {{ t('common.light') }} -->
 
     <div>
-      2222
       <SvgIcon class="kkkkkkkkkasdas asdffsa adfs" name="test" />333
     </div>
 
@@ -25,14 +26,19 @@
 </template>
 
 <script setup lang="ts">
-import { markDown } from '@/components/Markdown';
 import { SvgIcon } from '@/components/Icon';
+import MarkDown from '@/components/Markdown';
+import { PageFooter, PageHeader } from '@/components/Page';
+import scrollbar from '@/components/Scrollbar/src/scrollbar';
 import { useI18nContext } from '@/context';
 import { useI18n } from '@/hooks/web/useI18n';
 // import { useI18n } from '@/plugins/lib/i18n';
 import { ref } from 'vue';
 
-import { PageHeader, PageFooter } from '@/components/Page'
+function scroll(e) {
+  // console.log(e);
+
+}
 
 // const i18n = useI18n();
 // const switchLanguage = () => {
@@ -58,4 +64,35 @@ function handleInit(e) {
 }
 </script>
 
-<style></style>
+<style scoped>
+.el-scrollbar {
+  .scrollbar-demo-item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 50px;
+    margin: 10px;
+    text-align: center;
+    border-radius: 4px;
+    background: #ecf5ff;
+    color: #409eff;
+  }
+  .flex-content {
+    display: flex;
+
+    .scrollbar-demo-item {
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100px;
+      height: 50px;
+      margin: 10px;
+      text-align: center;
+      border-radius: 4px;
+      background: #ecf5ff;
+      color: #409eff;
+    }
+  }
+}
+</style>

@@ -1,3 +1,7 @@
-import Tinymce from './src/index'
+import { withInstall } from "@/utils/with-install"
+import tinymce from './src/tinymce'
+import './style/index.scss'
 
-export { Tinymce }
+export const Tinymce = withInstall(tinymce)
+
+export default Tinymce

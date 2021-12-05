@@ -1,7 +1,6 @@
 import { useDesign } from '@/hooks/web/useDesign'
 import type { CSSProperties } from 'vue'
 import { computed, defineComponent } from 'vue'
-import './index.scss'
 
 export default defineComponent({
   name: 'SvgIcon',
