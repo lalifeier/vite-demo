@@ -1,5 +1,6 @@
-import { LOCALE_TYPE } from '@/enums/app'
-import { LANGUAGE_KEY } from '@/enums/cache'
+import { LocaleType } from '#/config'
+import { LOCALE_KEY } from '@/enums/cache'
+import { LOCALE } from '@/settings/locale'
 import { _localStorage } from '@/utils/cache'
 import { set } from 'lodash-es'
 
@@ -31,25 +32,32 @@ export function getLangMessage(langs: Record<string, Record<string, any>>, prefi
   return obj
 }
 
-export const setLanguage = (language: string) => _localStorage.set(LANGUAGE_KEY, language)
+// export const getLanguage = (messages = {}) => {
+//   const chooseLanguage = _localStorage.get(LOCALE_KEY)
+//   if (chooseLanguage) {
+//     return chooseLanguage
+//   }
 
-export const getLanguage = (messages = {}) => {
-  const chooseLanguage = _localStorage.get(LANGUAGE_KEY)
-  if (chooseLanguage) {
-    return chooseLanguage
-  }
+//   const language = (navigator.language || navigator.browserLanguage).toLowerCase()
+//   const locales = Object.keys(messages)
+//   for (const locale of locales) {
+//     if (language.indexOf(locale) > -1) {
+//       return locale
+//     }
+//   }
+//   return LOCALE_TYPE.ZH_CN
+// }
 
-  const language = (navigator.language || navigator.browserLanguage).toLowerCase()
-  const locales = Object.keys(messages)
-  for (const locale of locales) {
-    if (language.indexOf(locale) > -1) {
-      return locale
-    }
-  }
-  return LOCALE_TYPE.ZH_CN
+export const getLanguage = (): LocaleType => _localStorage.get(LOCALE_KEY) || LOCALE.ZH_CN
+
+export const setLanguage = (locale: LocaleType) => _localStorage.set(LOCALE_KEY, locale)
+interface LangModule {
+  message: Recordable
+  dateLocale: Recordable
+  dateLocaleName: string
 }
 
-export const getMessage = async (locale: string) => {
-  const defaultLocal = await import(`./lang/${locale}.ts`)
-  return defaultLocal.default?.message ?? {}
+export const getMessage = async (locale: LocaleType) => {
+  const langModule = ((await import(`./lang/${locale}.ts`)) as any).default as LangModule
+  return langModule?.message ?? {}
 }

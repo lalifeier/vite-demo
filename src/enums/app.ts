@@ -23,12 +23,6 @@ export enum TransitionMode {
   FADE_SCALE = 'fade-scale'
 }
 
-export enum LOCALE_TYPE {
-  ZH_CN = 'zh-CN',
-  ZH_TW = 'zh-TW',
-  EN = 'en'
-}
-
 // 卡片风格card、灵动风格smart、圆滑风格smooth
 export enum BarStyle {
   CARD = 'card',

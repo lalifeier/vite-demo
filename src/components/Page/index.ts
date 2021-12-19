@@ -1,10 +1,10 @@
 import { withInstall } from '@/utils/with-install'
-import pageContainer from './src/PageContainer'
-import pageFooter from './src/PageFooter'
-import pageHeader from './src/PageHeader'
+import _PageContainer from './src/PageContainer'
+import _PageFooter from './src/PageFooter'
+import _PageHeader from './src/PageHeader'
 
-export const PageFooter = withInstall(pageFooter)
+export const PageFooter = withInstall(_PageFooter)
 
-export const PageHeader = withInstall(pageHeader)
+export const PageHeader = withInstall(_PageHeader)
 
-export const PageContainer = withInstall(pageContainer)
+export const PageContainer = withInstall(_PageContainer)

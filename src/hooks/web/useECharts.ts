@@ -1,4 +1,4 @@
-import echarts from '@/libs/echarts'
+import echarts from '@/utils/error-handle/echarts'
 import {
   breakpointsTailwind,
   tryOnUnmounted,

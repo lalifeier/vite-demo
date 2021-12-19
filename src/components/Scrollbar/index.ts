@@ -1,7 +1,7 @@
 import { withInstall } from '@/utils/with-install'
-import scrollbar from './src/scrollbar'
+import _Scrollbar from './src/scrollbar'
 import './style/index.scss'
 
-export const Scrollbar = withInstall(scrollbar)
+export const Scrollbar = withInstall(_Scrollbar)
 
 export default Scrollbar

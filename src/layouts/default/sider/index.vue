@@ -1,31 +1,18 @@
 <template>
-  <!-- <v-navigation-drawer v-model="drawer" app>
-    <template #prepend>
+  <aside v-if="getCollapsed" :class="[prefixCls, prefixCls + '--light']">
+    <div :class="prefixCls + '-children'">
       <Logo />
-      <v-divider class="mb-1"></v-divider>
-    </template>
 
-    <Menu></Menu>
-
-    <template #append>
-      <div class="pa-2 text-center">
-        <v-btn to="#" block color="secondary">Documentation</v-btn>
-      </div>
-    </template>
-  </v-navigation-drawer>-->
-
-  <aside v-if="getCollapsed" :class="prefixCls">
-    <Logo />
-
-    <Menu />
+      <LayoutMenu />
+    </div>
   </aside>
 </template>
 
 <script setup lang="ts">
   import { useSidebarSetting } from '@/hooks/setting/useSidebarSetting'
   import { useDesign } from '@/hooks/web/useDesign'
-  import Menu from '@/layouts/default/menu/index.vue'
-  import Logo from '@/layouts/default/side-bar/components/Logo.vue'
+  import LayoutMenu from '@/layouts/default/menu/index.vue'
+  import Logo from '@/layouts/default/sider/components/Logo.vue'
 
   const { prefixCls } = useDesign('layout-sider')
 
@@ -36,9 +23,6 @@
   $prefix-cls: '#{$namespace}-layout-sider';
 
   .#{$prefix-cls} {
-    width: 208px;
-    height: 100vh;
-    background: #fff;
     // flex: 0 0 256px;
     // max-width: 256px;
     // min-width: 256px;

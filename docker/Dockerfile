@@ -1,15 +1,15 @@
 # build stage
 FROM node:lts-alpine AS build-stage
 
-# RUN npm install -g yarn
-RUN yarn config set registry https://registry.npm.taobao.org
+# RUN npm install -g pnpm
+RUN pnpm config set registry https://registry.npmmirror.com
 
 WORKDIR /app
 
-COPY package*.json ./
-RUN yarn install
+COPY .npmrc package.json pnpm-lock.yaml .pnpmfile.cjs ./
+RUN pnpm install --frozen-lockfile --prod
 COPY . .
-RUN yarn build
+RUN pnpm build
 
 # production stage
 FROM nginx:stable-alpine AS production-stage

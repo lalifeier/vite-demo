@@ -1,8 +1,10 @@
-import { useI18nContext } from './modules/i18n'
+import { useLocaleContext, useLocaleProvide } from './modules/locale'
 import { useThemContext, useThemeProvide } from './modules/theme'
 
-export { useThemContext, useI18nContext }
+export { useThemContext, useLocaleContext }
 
 export const useProvider = () => {
+  useLocaleProvide()
+
   useThemeProvide()
 }

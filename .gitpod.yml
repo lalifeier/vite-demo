@@ -3,5 +3,5 @@ ports:
     onOpen: open-preview
 
 tasks:
-  - init: yarn
-    command: yarn dev
+  - init: pnpm install
+    command: pnpm

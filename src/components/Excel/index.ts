@@ -1,4 +1,4 @@
 import { withInstall } from '@/utils/with-install'
-import importExcel from './src/ImportExcel'
+import _ImportExcel from './src/ImportExcel'
 
-export const ImportExcel = withInstall(importExcel)
+export const ImportExcel = withInstall(_ImportExcel)

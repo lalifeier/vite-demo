@@ -1,6 +1,5 @@
-import { useI18nProvide } from '@/context/modules/i18n'
+import { useProvider } from '@/context'
 import { useSidebarSetting } from '@/hooks/setting/useSidebarSetting'
-import { getLanguage } from '@/locales/utils'
 import { prefixCls, themeMode } from '@/settings/design'
 import { breakpointsTailwind, useBreakpoints } from '@vueuse/core'
 import { defineComponent, ref, toRefs, watch } from 'vue'
@@ -10,10 +9,6 @@ const props = {
   prefixCls: {
     type: String,
     default: prefixCls
-  },
-  locale: {
-    type: String,
-    default: getLanguage()
   },
   theme: {
     type: String,
@@ -47,15 +42,7 @@ export default defineComponent({
       }
     )
 
-    const locale = ref(props.locale)
-    watch(
-      () => props.locale,
-      () => {
-        locale.value = props.locale
-      }
-    )
-
-    useI18nProvide(locale)
+    useProvider()
 
     createAppProviderContext({ prefixCls, isMobile })
 

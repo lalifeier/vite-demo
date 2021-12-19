@@ -1,5 +1,6 @@
 import { useDesign } from '@/hooks/web/useDesign'
 import { convertToUnit } from '@/utils/format'
+import { makeStringProp } from '@/utils/props'
 import { useEventListener, useResizeObserver } from '@vueuse/core'
 import type { CSSProperties, StyleValue } from 'vue'
 import { computed, defineComponent, nextTick, onMounted, provide, ref, watch } from 'vue'
@@ -38,10 +39,7 @@ const props = {
     type: Boolean,
     default: false
   },
-  tag: {
-    type: String,
-    default: 'div'
-  },
+  tag: makeStringProp<keyof HTMLElementTagNameMap>('div'),
   always: {
     type: Boolean,
     default: false

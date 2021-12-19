@@ -1,52 +1,82 @@
 <template>
-  <div :class="[prefixCls, prefixCls + '-has-sider']">
-    <layout-side-bar />
+  <ProLayout>
+    <template #logo>logo</template>
+    <template #headerContent>headerContent</template>
+    <template #headerExtra>headerExtra</template>
 
-    <section :class="prefixCls">
-      <layout-header />
+    <template #siderHeader>siderHeader</template>
+    <template #siderContent>siderContent</template>
+    <template #siderFooter>siderFooter</template>
 
-      <layout-app-main />
+    <router-view></router-view>
 
-      <layout-footer />
-    </section>
-  </div>
+    <template #footer>footer</template>
+  </ProLayout>
 
   <BackToTop />
 </template>
 <script setup lang="ts">
-  import BackToTop from '@/components/BackToTop'
-  import { useDesign } from '@/hooks/web/useDesign'
-  import LayoutAppMain from '@/layouts/default/app-main/index.vue'
-  import LayoutFooter from '@/layouts/default/footer/index.vue'
-  import LayoutHeader from '@/layouts/default/header/index.vue'
-  import LayoutSideBar from '@/layouts/default/side-bar/index.vue'
+import BackToTop from '@/components/BackToTop';
+import ProLayout from '@/components/ProLayout';
+import { useDesign } from '@/hooks/web/useDesign';
 
-  const { prefixCls } = useDesign('layout')
+const { prefixCls } = useDesign('layout')
 </script>
 
 <style lang="scss">
-  $prefix-cls: '#{$namespace}-layout';
+// $prefix-cls: "#{$namespace}-layout";
 
-  .#{$prefix-cls} {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    &-has-sider {
-      flex-direction: row;
-    }
-    &-main {
-      width: 100%;
-      display: flex;
-      flex-direction: column;
-    }
-    &-header {
-    }
-
-    &-content {
-      flex: 1;
-      // padding: 20px;
-    }
-    &-footer {
-    }
-  }
+// .#{$prefix-cls} {
+//   display: flex;
+//   flex-direction: column;
+//   width: 100%;
+//   min-height: 100%;
+//   &-sider {
+//     width: 208px;
+//     position: relative;
+//     &-fixed {
+//       position: fixed;
+//       top: 0;
+//       left: 0;
+//       // z-index: 100;
+//     }
+//     &-children {
+//       display: flex;
+//       flex-direction: column;
+//       height: 100%;
+//     }
+//     &--light {
+//       background-color: #fff;
+//     }
+//     &--dark {
+//       background-color: #001529;
+//     }
+//   }
+//   &-has-sider {
+//     flex-direction: row;
+//   }
+//   &-header {
+//     display: flex;
+//     align-items: center;
+//     justify-content: space-between;
+//     height: 48px;
+//     line-height: 48px;
+//     background: #fff;
+//     &-fixed {
+//       position: fixed;
+//       top: 0;
+//       left: 0;
+//     }
+//   }
+//   &-content {
+//     flex: 1;
+//   }
+//   &-footer {
+//     display: flex;
+//     align-items: center;
+//     justify-content: center;
+//     height: 40px;
+//     background-color: #fff;
+//   }
+// }
 </style>

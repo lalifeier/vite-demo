@@ -1,23 +1,27 @@
 import { useDesign } from '@/hooks/web/useDesign'
-import type { CSSProperties } from 'vue'
+import type { CSSProperties, ExtractPropTypes } from 'vue'
 import { computed, defineComponent } from 'vue'
+
+const svgIconProps = {
+  prefix: {
+    type: String,
+    default: 'icon'
+  },
+  name: {
+    type: String,
+    required: true
+  },
+  size: {
+    type: [Number, String],
+    default: 16
+  }
+}
+
+export type SvgIconProps = ExtractPropTypes<typeof svgIconProps>
 
 export default defineComponent({
   name: 'SvgIcon',
-  props: {
-    prefix: {
-      type: String,
-      default: 'icon'
-    },
-    name: {
-      type: String,
-      required: true
-    },
-    size: {
-      type: [Number, String],
-      default: 16
-    }
-  },
+  props: svgIconProps,
   setup(props) {
     const { prefixCls } = useDesign('svg-icon')
 

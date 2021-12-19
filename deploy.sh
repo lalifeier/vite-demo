@@ -6,8 +6,8 @@ set -e
 # 构建
 # npm run build
 
-npm install -g yarn
-yarn build
+npm install -g pnpm
+pnpm build
 
 # cd 到构建输出的目录下
 cd dist

@@ -2,6 +2,7 @@ import dayjs from 'dayjs'
 import path from 'path'
 import type { ConfigEnv, UserConfig } from 'vite'
 import { loadEnv } from 'vite'
+import { OUTPUT_DIR } from './build/constant'
 import { createPlugins } from './build/index'
 import { createProxy, wrapperEnv } from './build/utils'
 import pkg from './package.json'
@@ -40,7 +41,7 @@ export default ({ command, mode }: ConfigEnv): UserConfig => {
     build: {
       sourcemap: true,
       target: 'es2015',
-      outDir: 'dist',
+      outDir: OUTPUT_DIR,
       terserOptions: {
         compress: {
           keep_infinity: true,
@@ -61,7 +62,7 @@ export default ({ command, mode }: ConfigEnv): UserConfig => {
     css: {
       preprocessorOptions: {
         scss: {
-          additionalData: `@import "./src/styles/variables.scss";`
+          additionalData: `@import "./src/styles/_variables.scss";`
         }
       }
     },

@@ -1,4 +1,4 @@
-import { ContentMode, PermissionMode, ThemeMode } from '@/enums/app';
+import { ContentMode, PermissionMode, ThemeMode } from '@/enums/app'
 
 export interface HeaderSetting {
   fixed: boolean
@@ -32,7 +32,6 @@ export interface ThemeSetting {
   colorWeak: boolean
 }
 
-
 export interface MultiTabsSetting {
   show: boolean
   barStyle: BarStyle
@@ -53,13 +52,25 @@ export interface AppConfig {
   transitionSetting: TransitionSetting
 }
 export interface GlobEnvConfig {
-  VITE_GLOB_APP_TITLE: string;
-  VITE_GLOB_API_URL: string;
-  VITE_GLOB_APP_SHORT_NAME: string;
+  VITE_GLOB_APP_TITLE: string
+  VITE_GLOB_API_URL: string
+  VITE_GLOB_APP_SHORT_NAME: string
+  VITE_GLOB_UPLOAD_URL: string
 }
 
 export interface GlobConfig {
-  title: string;
-  apiUrl: string;
-  short_name: string;
+  title: string
+  apiUrl: string
+  shortName: string
+  uploadUrl?: string
+}
+
+export type LocaleType = 'zh-CN' | 'en-US' | 'ru' | 'ja' | 'ko'
+
+export interface LocaleSetting {
+  locale: LocaleType
+
+  fallback: LocaleType
+
+  availableLocales: LocaleType[]
 }

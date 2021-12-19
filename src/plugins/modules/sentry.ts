@@ -1,4 +1,4 @@
-import { getMode } from '@/utils/env'
+import { getEnv } from '@/utils/env'
 import * as Sentry from '@sentry/browser'
 import { Integrations } from '@sentry/tracing'
 import type { App } from 'vue'
@@ -11,7 +11,7 @@ export default {
     }
     Sentry.init({
       dsn: import.meta.env.VITE_SENTRY_DSN,
-      environment: getMode(),
+      environment: getEnv(),
       release,
       integrations: [new Integrations.BrowserTracing()],
       tracesSampleRate: 1.0

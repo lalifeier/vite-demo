@@ -6,6 +6,7 @@ import { useAppStore } from '@/store/modules/app'
 import { deepMerge } from '@/utils'
 import { _localStorage } from '@/utils/cache'
 import { toggleClass } from '@/utils/dom'
+import { getCommonStoragePrefix, getStorageShortName } from '@/utils/env'
 
 export function updateThemeMode(mode: ThemeMode = ThemeMode.LIGHT) {
   document.documentElement.dataset.theme = mode
@@ -21,6 +22,7 @@ export function updateColorWeak(flag: boolean) {
 
 export function setupAppConfig() {
   const appStore = useAppStore()
+
   let appConfig: AppConfig = _localStorage.get(APP_CONFIG_KEY) as AppConfig
 
   appConfig = deepMerge(app, appConfig || {})
@@ -31,4 +33,21 @@ export function setupAppConfig() {
   colorWeak && updateColorWeak(colorWeak)
 
   updateThemeMode(theme)
+
+  setTimeout(() => {
+    clearObsoleteStorage()
+  }, 16)
+}
+
+export function clearObsoleteStorage() {
+  const commonPrefix = getCommonStoragePrefix()
+  const shortPrefix = getStorageShortName()
+
+  ;[localStorage, sessionStorage].forEach((item: Storage) => {
+    Object.keys(item).forEach((key) => {
+      if (key && key.startsWith(commonPrefix) && !key.startsWith(shortPrefix)) {
+        item.removeItem(key)
+      }
+    })
+  })
 }

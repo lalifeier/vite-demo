@@ -1,7 +1,6 @@
 import ResizeObserver from 'resize-observer-polyfill'
 import { isServer } from './is'
 
-/* istanbul ignore next */
 const resizeHandler = function (entries: any[]) {
   for (const entry of entries) {
     const listeners = entry.target.__resizeListeners__ || []
@@ -13,7 +12,6 @@ const resizeHandler = function (entries: any[]) {
   }
 }
 
-/* istanbul ignore next */
 export const addResizeListener = function (
   element: any,
   fn: (...args: unknown[]) => unknown
@@ -27,7 +25,6 @@ export const addResizeListener = function (
   element.__resizeListeners__.push(fn)
 }
 
-/* istanbul ignore next */
 export const removeResizeListener = function (
   element: any,
   fn: (...args: unknown[]) => unknown

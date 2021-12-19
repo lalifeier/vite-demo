@@ -131,4 +131,14 @@ export const isSupportsTouch =
 
 export const isNil = (value: any) => value === null || value === undefined
 
-export const isImg = (path: string): boolean => /\w.(png|jpg|jpeg|svg|webp|gif|bmp)$/i.test(path)
+export const isImg = (path: string): boolean =>
+  /\w.(jpeg|jpg|gif|png|svg|webp|jfif|bmp|dpg)$/i.test(path)
+
+export function isPhone(value: string): boolean {
+  value = value.replace(/[^-|\d]/g, '')
+  return /^((\+86)|(86))?(1)\d{10}$/.test(value) || /^0[0-9-]{10,13}$/.test(value)
+}
+
+export function isKorean(text: string): boolean {
+  return /([(\uAC00-\uD7AF)|(\u3130-\u318F)])+/gi.test(text)
+}

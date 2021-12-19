@@ -6,11 +6,10 @@
 
     <MarkDown v-model="data" @init="handleInit"></MarkDown>
 
-    <!-- <v-btn color="primary" @click="handleClick"></v-btn> -->
+    <v-btn color="primary" @click="handleClick"></v-btn>
 
     <!-- <h2>{{ i18n.$t('hello_world') }}</h2> -->
-    <!-- {{ t('common.light') }} -->
-
+    {{ t('common.light') }}
     <div><SvgIcon class="kkkkkkkkkasdas asdffsa adfs" name="test" />333</div>
 
     <PageFooter>
@@ -25,10 +24,8 @@
   import { SvgIcon } from '@/components/Icon'
   import MarkDown from '@/components/Markdown'
   import { PageFooter, PageHeader } from '@/components/Page'
-  import scrollbar from '@/components/Scrollbar/src/scrollbar'
-  import { useI18nContext } from '@/context'
+  import { useLocaleContext } from '@/context'
   import { useI18n } from '@/hooks/web/useI18n'
-  // import { useI18n } from '@/plugins/lib/i18n';
   import { ref } from 'vue'
 
   function scroll(e) {
@@ -45,12 +42,12 @@
 
   const data = ref('erwrew')
 
-  const i18n = useI18nContext()
+  const i18n = useLocaleContext()
 
   function handleClick() {
     data.value = '456'
 
-    i18n.setLocale(i18n.locale.value === 'en' ? 'zh-CN' : 'en')
+    i18n.setLocale(i18n.getLocale.value === 'en-US' ? 'zh-CN' : 'en-US')
   }
 
   function handleInit(e) {}

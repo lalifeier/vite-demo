@@ -8,3 +8,7 @@ export function getRandomFileName(): string {
   const random_number = timestamp + random
   return random_number
 }
+
+export function getRandomInt(max: number) {
+  return Math.floor(Math.random() * Math.floor(max))
+}

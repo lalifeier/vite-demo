@@ -9,9 +9,8 @@
 </template>
 
 <script lang="ts">
-  import VirtualList from '../../components/VirtualList'
-
   import { defineComponent } from 'vue'
+  import VirtualList from '../../components/VirtualList'
 
   let data: any = []
   for (let index = 0; index < 10000000; index++) {
@@ -32,6 +31,7 @@
   .virtual-list-demo {
     display: flex;
     justify-content: center;
+    width: 400px;
     &-item {
       height: 40px;
       padding: 0 20px;

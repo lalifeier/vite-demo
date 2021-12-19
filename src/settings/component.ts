@@ -1,20 +1,21 @@
 export default {
   table: {
-    fieldNames: {
-      page: 'currentPage',
+    apiSetting: {
+      pageField: 'currentPage',
 
-      size: 'pageSize',
+      sizeField: 'pageSize',
 
-      list: 'data',
+      listField: 'data',
 
-      total: 'totalPages'
+      totalField: 'totalPages'
     },
-    pageSizeOptions: ['10', '50', '80', '100'],
+    pageSizeOptions: [10, 50, 80, 100],
 
     defaultPageSize: 10,
 
     defaultSize: 'middle'
   },
+
   scrollbar: {
     native: false
   }

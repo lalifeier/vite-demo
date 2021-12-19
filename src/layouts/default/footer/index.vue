@@ -1,13 +1,4 @@
 <template>
-  <!-- <v-footer app>
-    <div class="my-1">
-      Copyright
-      <v-icon>mdi-copyright</v-icon>
-      {{ fullYear }}
-      <router-link to="#" class="text-decoration-none">{{ VITE_APP_TITLE }}</router-link>, All rights Reserved
-    </div>
-  </v-footer>-->
-
   <footer :class="prefixCls">
     Copyright
     <v-icon>mdi-copyright</v-icon>
@@ -31,10 +22,5 @@
   $prefix-cls: '#{$namespace}-layout-footer';
 
   .#{$prefix-cls} {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 40px;
-    background-color: #fff;
   }
 </style>

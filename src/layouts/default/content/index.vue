@@ -1,12 +1,4 @@
 <template>
-  <!-- <v-main>
-    <v-container>
-      <transition name="fade-transform" mode="out-in">
-        <router-view></router-view>
-      </transition>
-    </v-container>
-  </v-main>-->
-
   <main :class="prefixCls">
     <router-view></router-view>
   </main>

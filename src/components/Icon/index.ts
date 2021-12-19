@@ -1,5 +1,7 @@
 import { withInstall } from '@/utils/with-install'
-import svgIcon from './src/SvgIcon'
+import _SvgIcon from './src/SvgIcon'
 import './style/index.scss'
 
-export const SvgIcon = withInstall(svgIcon)
+export const SvgIcon = withInstall(_SvgIcon)
+
+export type { SvgIconProps } from './src/SvgIcon'

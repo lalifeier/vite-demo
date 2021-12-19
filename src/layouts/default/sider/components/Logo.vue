@@ -1,11 +1,4 @@
 <template>
-  <!-- <div class="d-flex pa-2 align-center">
-    <img src="/static/img/v-logo-small.png" width="48" height="48" alt="logo" class="mr-1" />
-    <div>
-      <div class="font-weight-bold text-uppercase text-primary">{{ VITE_APP_TITLE }}</div>
-    </div>
-  </div>-->
-
   <div :class="prefixCls">
     <a>
       <img src="/static/img/v-logo-small.png" alt="logo" />
