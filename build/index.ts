@@ -4,6 +4,7 @@ import vueJsx from '@vitejs/plugin-vue-jsx'
 import vuetify from '@vuetify/vite-plugin'
 import type { Plugin, PluginOption } from 'vite'
 import PurgeIcons from 'vite-plugin-purge-icons'
+import vueSetupExtend from 'vite-plugin-vue-setup-extend'
 import WindiCSS from 'vite-plugin-windicss'
 import { configBannerPlugin } from './plugins/banner'
 import { configCompressPlugin } from './plugins/compress'
@@ -25,7 +26,12 @@ export function createPlugins(viteEnv: ViteEnv, isBuild: boolean, mode: string) 
     VITE_SENTRY
   } = viteEnv
 
-  const plugins: (Plugin | Plugin[] | PluginOption[])[] = [vue(), vueJsx(), vuetify()]
+  const plugins: (Plugin | Plugin[] | PluginOption[])[] = [
+    vue(),
+    vueJsx(),
+    vueSetupExtend(),
+    vuetify()
+  ]
 
   VITE_LEGACY && isBuild && plugins.push(legacy())
 
@@ -39,7 +45,7 @@ export function createPlugins(viteEnv: ViteEnv, isBuild: boolean, mode: string) 
 
   // plugins.push(configThemePlugin())
 
-  plugins.push(configHtmlPlugin(viteEnv, isBuild));
+  plugins.push(configHtmlPlugin(viteEnv, isBuild))
 
   plugins.push(WindiCSS())
 
