@@ -1,7 +1,7 @@
 import { useDesign } from '@/hooks/web/useDesign'
-import { defineComponent } from 'vue'
+import { defineComponent, ExtractPropTypes } from 'vue'
 
-const props = {
+const resultProps = {
   title: {
     type: String,
     default: ''
@@ -16,29 +16,33 @@ const props = {
   }
 }
 
+export type ResultProps = ExtractPropTypes<typeof resultProps>
+
 export default defineComponent({
   name: 'Result',
-  props,
+  props: resultProps,
   setup(props, { slots }) {
     const { prefixCls } = useDesign('result')
 
-    const renderIcon = () => (
-      <div class={prefixCls + '__icon'}>{slots.icon ? slots.icon() : <img src={props.icon} />}</div>
-    )
+    const { icon, title, subTitle } = props
 
-    const renderTitle = () => (
-      <div class={prefixCls + '__title'}>{slots.title ? slots.title() : props.title}</div>
-    )
+    const renderIcon = () =>
+      (icon || slots.icon) && (
+        <div class={prefixCls + '__icon'}>{slots.icon ? slots.icon() : <img src={icon} />}</div>
+      )
 
-    const renderSubTitle = () => (
-      <div class={prefixCls + '__subtitle'}>
-        {slots.subTitle ? slots.subTitle() : props.subTitle}
-      </div>
-    )
+    const renderTitle = () =>
+      (title || slots.title) && (
+        <div class={prefixCls + '__title'}>{slots.title ? slots.title() : title}</div>
+      )
 
-    const renderExtra = () => (
-      <div class={prefixCls + '__extra'}>{slots.extra ? slots.extra() : props.title}</div>
-    )
+    const renderSubTitle = () =>
+      (subTitle || slots.subTitle) && (
+        <div class={prefixCls + '__subtitle'}>{slots.subTitle ? slots.subTitle() : subTitle}</div>
+      )
+
+    const renderExtra = () =>
+      slots.extra && <div class={prefixCls + '__extra'}>{slots.extra()}</div>
 
     return () => (
       <div class={prefixCls}>

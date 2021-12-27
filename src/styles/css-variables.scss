@@ -1,0 +1,24 @@
+@use 'sass:map';
+
+@use 'var.scss' as *;
+@use 'mixins/var' as *;
+
+:root {
+  --vap-color-white: #{$color-white};
+  --vap-color-black: #{$color-black};
+
+  --vap-color-primary: #{$color-primary};
+
+  @each $type in (success, warning, danger, error, info) {
+    @include set-css-color-type($type);
+  }
+
+  --vap-text-color: #{$text-color};
+
+  --vap-background-color: #{$background-color};
+
+  // Transition
+  // --vap-transition-duration: #{$transition-duration-base};
+  // --vap-transition-duration-slow: #{$transition-duration-slow};
+  // --vap-transition-duration-fast: #{$transition-duration-fast};
+}

@@ -1,38 +1,60 @@
 import { AppConfig } from '#/config'
-import { BarStyle, ContentMode, PermissionMode, TransitionMode } from '../enums/app'
-import { themeColor, themeMode } from './design'
+import { BarStyle, PermissionMode, TransitionMode } from '../enums/app'
+import { themeColor } from './design'
 
 const app: AppConfig = {
+  darkMode: 'light',
+
+  layout: 'side',
+
+  contentWidth: 'Fixed',
+
   permissionMode: PermissionMode.ROUTE_MAPPING,
 
-  contentMode: ContentMode.FLUID,
+  themeColor,
 
-  themeSetting: {
-    theme: themeMode,
+  grayMode: false,
 
-    primaryColor: themeColor,
+  colorWeak: false,
 
-    grayMode: false,
+  showFooter: true,
 
-    colorWeak: false
-  },
+  openKeepAlive: true,
 
   headerSetting: {
-    fixed: true
+    bgColor: '#fff',
+
+    fixed: true,
+
+    show: true,
+
+    theme: 'light',
   },
 
   sidebarSetting: {
+    bgColor: '#fff',
+
     fixed: true,
 
     collapsed: false,
 
-    theme: themeMode
+    show: true,
+
+    theme: 'light',
+
+    split: false,
   },
 
   multiTabsSetting: {
     show: true,
 
     barStyle: BarStyle.CARD
+  },
+
+  breadCrumbSetting: {
+    show: true,
+
+    showIcon: false
   },
 
   transitionSetting: {

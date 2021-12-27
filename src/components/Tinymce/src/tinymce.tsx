@@ -166,6 +166,10 @@ export default defineComponent({
             emit('update:modelValue', content)
             emit('change', content)
           })
+
+          editor.on('WordCountUpdate', function (e) {
+            console.log(e.wordCount)
+          })
         },
         setup(editor) {
           editorRef.value = editor

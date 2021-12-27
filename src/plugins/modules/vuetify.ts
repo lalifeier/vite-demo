@@ -19,7 +19,7 @@ export default createVuetify({
     }
   },
   theme: {
-    defaultTheme: app.themeSetting.theme,
+    defaultTheme: app.darkMode,
     themes: {
       light: LIGHT_THEME,
       dark: DARK_THEME

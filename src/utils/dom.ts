@@ -56,12 +56,7 @@ export function toggleClass(ele: Element, cls: string, flag: boolean) {
   }
 }
 
-export function getViewportOffset() {
-  return {
-    w: getWindowWidth(),
-    h: getWindowHeight()
-  }
-}
+
 
 export function getScrollOffset() {
   if (window.pageXOffset) {
@@ -86,6 +81,13 @@ export function isElementViewport(el: Element) {
   const horInView = rect.left <= windowWidth && rect.left + rect.width >= 0
 
   return vertInView && horInView
+}
+
+export function getViewportOffset() {
+  return {
+    width: getWindowWidth(),
+    height: getWindowHeight()
+  }
 }
 
 export function getWindowWidth() {

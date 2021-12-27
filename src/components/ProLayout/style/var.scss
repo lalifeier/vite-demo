@@ -1,4 +1,6 @@
-@import '../../../components/Layout/style/_variables.scss';
+@use '@/styles/var.scss' as *;
+
+@use '@/components/Layout/style/var.scss' as *;
 
 $pro-layout-height: 100%;
 

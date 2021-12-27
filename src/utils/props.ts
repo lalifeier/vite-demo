@@ -33,3 +33,18 @@ export const makeStringProp = <T>(defaultVal: T) => ({
   type: String as unknown as PropType<T>,
   default: defaultVal
 })
+
+
+export function callEmit<T extends (...args: any[]) => any>(
+  funcs: T[] | T | undefined,
+  ...args: Parameters<T>
+): ReturnType<T> | void {
+  if (!funcs) {
+    return
+  }
+  if (Array.isArray(funcs)) {
+    funcs.forEach(fn => fn(...args))
+  } else {
+    return funcs(...args)
+  }
+}

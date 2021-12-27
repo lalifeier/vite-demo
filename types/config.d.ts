@@ -1,15 +1,33 @@
-import { ContentMode, PermissionMode, ThemeMode } from '@/enums/app'
+import { PermissionMode, TransitionMode } from '@/enums/app';
+
+export type ContentWidth = 'Fluid' | 'Fixed';
+
+export type Layout = 'side' | 'top' | 'mix'
+
+declare type Theme = 'light' | 'dark'
 
 export interface HeaderSetting {
+  bgColor: string
+
   fixed: boolean
+
+  show: boolean
+
+  theme: Theme
 }
 
 export interface SidebarSetting {
+  bgColor: string
+
   fixed: boolean
 
   collapsed: boolean
 
-  theme: ThemeMode
+  show: boolean
+
+  theme: Theme
+
+  split: boolean
 }
 
 export interface TransitionSetting {
@@ -22,32 +40,45 @@ export interface TransitionSetting {
   progressBar: boolean
 }
 
-export interface ThemeSetting {
-  theme: ThemeMode
-
-  primaryColor: string
-
-  grayMode: boolean
-
-  colorWeak: boolean
-}
-
 export interface MultiTabsSetting {
   show: boolean
   barStyle: BarStyle
 }
-export interface AppConfig {
-  themeSetting: ThemeSetting
 
-  contentMode: ContentMode
+export interface BreadCrumbSetting {
+  show: boolean
+
+  showIcon: boolean
+}
+
+
+
+export interface AppConfig {
+  darkMode: Theme
+
+  layout: Layout
+
+  contentWidth: ContentWidth
 
   permissionMode: PermissionMode
+
+  themeColor: string
+
+  grayMode: boolean
+
+  colorWeak: boolean
+
+  showFooter: boolean
+
+  openKeepAlive: boolean
 
   headerSetting: HeaderSetting
 
   sidebarSetting: SidebarSetting
 
   multiTabsSetting: MultiTabsSetting
+
+  breadCrumbSetting: BreadCrumbSetting
 
   transitionSetting: TransitionSetting
 }

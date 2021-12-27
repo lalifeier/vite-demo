@@ -3,7 +3,17 @@ export enum ThemeMode {
   LIGHT = 'light'
 }
 
-export enum ContentMode {
+export enum LayoutMode {
+  SIDEBAR = 'sidebar',
+
+  MIX_SIDEBAR = 'mix-sidebar',
+
+  MIX = 'mix',
+
+  TOP_MENU = 'top-menu',
+}
+
+export enum ContentWidthMode {
   FLUID = 'fluid',
   FIXED = 'fixed'
 }

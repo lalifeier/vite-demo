@@ -1,4 +1,4 @@
-import { AppConfig } from '#/config'
+import { AppConfig, Theme } from '#/config'
 import { ThemeMode } from '@/enums/app'
 import { APP_CONFIG_KEY } from '@/enums/cache'
 import app from '@/settings/app'
@@ -8,7 +8,7 @@ import { _localStorage } from '@/utils/cache'
 import { toggleClass } from '@/utils/dom'
 import { getCommonStoragePrefix, getStorageShortName } from '@/utils/env'
 
-export function updateThemeMode(mode: ThemeMode = ThemeMode.LIGHT) {
+export function updateThemeMode(mode: Theme = ThemeMode.LIGHT) {
   document.documentElement.dataset.theme = mode
 }
 
@@ -28,11 +28,11 @@ export function setupAppConfig() {
   appConfig = deepMerge(app, appConfig || {})
   appStore.setAppConfig(appConfig)
 
-  const { grayMode, colorWeak, theme } = appConfig.themeSetting
+  const { grayMode, colorWeak, darkMode } = appConfig
   grayMode && updateGrayMode(grayMode)
   colorWeak && updateColorWeak(colorWeak)
 
-  updateThemeMode(theme)
+  updateThemeMode(darkMode)
 
   setTimeout(() => {
     clearObsoleteStorage()

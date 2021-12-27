@@ -62,12 +62,11 @@ export default ({ command, mode }: ConfigEnv): UserConfig => {
     css: {
       preprocessorOptions: {
         scss: {
-          additionalData: `@import "./src/styles/_variables.scss";`
+          additionalData: `@use "@/styles/var.scss" as *;`
         }
       }
     },
     define: {
-      __APP_VERSION__: JSON.stringify(pkg.version),
       __APP_INFO__: JSON.stringify(__APP_INFO__),
     },
     optimizeDeps: {

@@ -1,8 +1,5 @@
-import NProgress from 'nprogress'
-import 'nprogress/nprogress.css'
+import NProgress from '@/utils/lib/progress'
 import type { Router } from 'vue-router'
-
-NProgress.configure({ showSpinner: false })
 
 export function createProgressGuard(router: Router) {
   router.beforeEach(async () => {

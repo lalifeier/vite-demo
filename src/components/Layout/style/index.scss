@@ -1,4 +1,4 @@
-@import './variables.scss';
+@use './var.scss' as *;
 
 :root {
   --vap-layout-header-color: #{$layout-header-color};

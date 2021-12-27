@@ -1,12 +1,9 @@
-$black: #000;
-$white: #fff;
-
-$color-primary: #1c6eff;
+@use '@/styles/var.scss' as *;
 
 $text-color: rgba(#000, 0.85);
 $text-color-dark: rgba(#fff, 85%);
 
-$background-color-component: $white;
+$background-color-component: var(--vap-color-white);
 $background-color-component-dark: #191c24;
 
 $transition-duration-base: 0.3s;

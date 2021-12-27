@@ -1,4 +1,4 @@
-import { AppConfig, HeaderSetting, SidebarSetting, ThemeSetting, TransitionSetting } from '#/config'
+import { AppConfig, HeaderSetting, SidebarSetting, TransitionSetting } from '#/config'
 import { ThemeMode } from '@/enums/app'
 import { APP_CONFIG_KEY } from '@/enums/cache'
 import { resetRouter } from '@/router'
@@ -9,6 +9,7 @@ import { defineStore } from 'pinia'
 
 interface AppState {
   pageLoading: boolean
+
   appConfig: AppConfig
 }
 
@@ -16,6 +17,7 @@ export const useAppStore = defineStore({
   id: 'app',
   state: (): AppState => ({
     pageLoading: false,
+
     appConfig: _localStorage.get(APP_CONFIG_KEY)
   }),
   getters: {
@@ -25,18 +27,14 @@ export const useAppStore = defineStore({
     getAppConfig(): AppConfig {
       return this.appConfig
     },
-    getThemeMode(): ThemeMode {
-      return this.appConfig.themeSetting.theme
+    getDarkMode(): ThemeMode {
+      return this.appConfig.darkMode
     },
-
     getHeaderSetting(): HeaderSetting {
       return this.appConfig.headerSetting
     },
     getSidebarSetting(): SidebarSetting {
       return this.appConfig.sidebarSetting
-    },
-    getThemeSetting(): ThemeSetting {
-      return this.appConfig.themeSetting
     },
     getTransitionSetting(): TransitionSetting {
       return this.appConfig.transitionSetting
@@ -50,11 +48,12 @@ export const useAppStore = defineStore({
       this.appConfig = deepMerge(this.appConfig || {}, config)
       _localStorage.set(APP_CONFIG_KEY, this.appConfig)
     },
-    setThemeMode(mode: ThemeMode): void {
-      this.appConfig.themeSetting.theme = mode
+    setDarkMode(mode: ThemeMode): void {
+      this.appConfig.darkMode = mode
     },
     async resetState() {
       resetRouter()
+
       clearWebStorage()
     }
   }

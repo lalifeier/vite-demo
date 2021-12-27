@@ -1,3 +1,4 @@
+import { isDate } from '@/utils/is'
 import dayjs from 'dayjs'
 
 export const DATE_TIME_FORMAT = 'YYYY-MM-DD HH:mm:ss'
@@ -18,4 +19,9 @@ export function getPrevMonthDays() {
   const endDate = new Date()
   const end = dayjs(endDate).date(0).format('YYYY-MM-DD')
   return { start, end }
+}
+
+
+export function isValidDate(date: Date): boolean {
+  return isDate(date) && !isNaN(date.getTime())
 }

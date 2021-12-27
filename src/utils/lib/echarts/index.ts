@@ -24,6 +24,7 @@ import {
 } from 'echarts/components'
 import * as echarts from 'echarts/core'
 import { SVGRenderer } from 'echarts/renderers'
+// import theme from "./theme.json"
 
 echarts.use([
   LegendComponent,
