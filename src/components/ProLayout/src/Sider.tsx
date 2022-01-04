@@ -1,5 +1,6 @@
 import { LayoutSider } from '@/components/Layout'
 import { useDesign } from '@/hooks/web/useDesign'
+import { isObject } from '@/utils/is'
 import { computed, defineComponent } from 'vue'
 import { useProLayoutContext } from './useProLayoutContext'
 
@@ -18,7 +19,10 @@ export default defineComponent({
 
     const { props, slots, collapsed, setCollapsed } = useProLayoutContext()
 
-    const fixed = computed(() => !!props.fixedSider)
+    const fixed = computed(() => {
+      const { fixed } = props
+      return isObject(fixed) ? fixed.sider : fixed
+    })
 
     const getClass = computed(() => {
       return [

@@ -34,7 +34,6 @@ export const makeStringProp = <T>(defaultVal: T) => ({
   default: defaultVal
 })
 
-
 export function callEmit<T extends (...args: any[]) => any>(
   funcs: T[] | T | undefined,
   ...args: Parameters<T>

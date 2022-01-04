@@ -1,5 +1,6 @@
 import { LayoutHeader } from '@/components/Layout'
 import { useDesign } from '@/hooks/web/useDesign'
+import { isObject } from '@/utils/is'
 import { computed, defineComponent } from 'vue'
 import { useProLayoutContext } from './useProLayoutContext'
 
@@ -18,12 +19,21 @@ export default defineComponent({
 
     const { props, slots } = useProLayoutContext()
 
-    const fixed = computed(() => !!props.fixedHeader)
+    const theme = computed(() => {
+      const { theme } = props
+      return isObject(theme) ? theme.header : theme
+    })
+
+    const fixed = computed(() => {
+      const { fixed } = props
+      return isObject(fixed) ? fixed.header : fixed
+    })
 
     const getClass = computed(() => {
       return [
         prefixCls,
         {
+          [`${prefixCls}-${theme.value}`]: true,
           [`${prefixCls}-fixed`]: fixed.value
         }
       ]

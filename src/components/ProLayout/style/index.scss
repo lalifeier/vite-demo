@@ -9,31 +9,10 @@ $prefix-cls: '#{$namespace}-pro-layout';
   height: $pro-layout-height;
   overflow: auto;
 
-  &--side {
-    grid-template-areas:
-      'sider header header'
-      'sider content content'
-      'sider footer footer';
-  }
-
-  &--top {
-    grid-template-areas:
-      'header header header'
-      'content content content'
-      'footer footer footer';
-  }
-
-  &--mix {
-    grid-template-areas:
-      'header header header'
-      'sider content content'
-      'sider footer footer';
-  }
-
-  .#{$prefix-cls}-content.fixed {
-    width: 1200px;
-    margin: 0 auto;
-  }
+  // .#{$prefix-cls}-content.fixed {
+  //   width: 1200px;
+  //   margin: 0 auto;
+  // }
 
   &-fixed {
     overflow: hidden;

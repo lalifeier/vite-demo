@@ -58,3 +58,9 @@ export function getZIndexStyle(zIndex?: string | number) {
   }
   return style
 }
+
+const isStringNumber = (value: string) => isNaN(Number(value)) === false
+
+export function enumToArray<T extends {}>(givenEnum: T) {
+  return (Object.keys(givenEnum).filter(isStringNumber) as (keyof T)[]).map((key) => givenEnum[key])
+}

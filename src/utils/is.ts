@@ -67,6 +67,16 @@ export function isElement(val: unknown): val is Element {
   return isObject(val) && !!val.tagName
 }
 
+function validURL(str: string): boolean {
+  const pattern = new RegExp('^(https?:\\/\\/)?' + // protocol
+    '((([a-z\\d]([a-z\\d-]*[a-z\\d])*)\\.)+[a-z]{2,}|' + // domain name
+    '((\\d{1,3}\\.){3}\\d{1,3}))' + // OR ip (v4) address
+    '(\\:\\d+)?(\\/[-a-z\\d%_.~+]*)*' + // port and path
+    '(\\?[;&a-z\\d%_.~+=-]*)?' + // query string
+    '(\\#[-a-z\\d_]*)?$', 'i') // fragment locator
+  return !!pattern.test(str)
+}
+
 export function isUrl(url: string): boolean {
   const reg =
     /(((^https?:(?:\/\/)?)(?:[-;:&=\+\$,\w]+@)?[A-Za-z0-9.-]+(?::\d+)?|(?:www.|[-;:&=\+\$,\w]+@)[A-Za-z0-9.-]+)((?:\/[\+~%\/.\w-_]*)?\??(?:[-\+=&;%@.\w_]*)#?(?:[\w]*))?)$/
@@ -141,4 +151,8 @@ export function isPhone(value: string): boolean {
 
 export function isKorean(text: string): boolean {
   return /([(\uAC00-\uD7AF)|(\u3130-\u318F)])+/gi.test(text)
+}
+
+export const isNumeric = (value): boolean => {
+  return !isNaN(parseFloat(value)) && isFinite(value);
 }

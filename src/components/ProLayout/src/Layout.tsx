@@ -1,55 +1,33 @@
 import { Layout, LayoutContent, LayoutFooter } from '@/components/Layout'
-import { breakpointType } from '@/components/Layout/src/LayoutSider'
 import { useDesign } from '@/hooks/web/useDesign'
+import PropTypes from '@/utils/propTypes'
 import { computed, defineComponent, ExtractPropTypes } from 'vue'
+import { func, object } from 'vue-types'
 import Header from './Header'
 import Sider from './Sider'
+import {
+  BreakpointType,
+  MenuClickOptions,
+  ProLayoutContentMode,
+  ProLayoutMode,
+  ProLayoutTheme
+} from './types'
 import { useProLayoutProvide } from './useProLayoutContext'
 
 const proLayoutProps = {
-  prefixCls: {
-    type: String as PropType<string>,
-    default: 'pro-layout'
-  },
-  collapsed: {
-    type: Boolean,
-    default: false
-  },
-  breakpoint: {
-    type: String as PropType<breakpointType>,
-    default: 'lg'
-  },
-  // side | top | mix
-  layout: {
-    type: String,
-    default: 'side'
-  },
-  // Fluid | Fixed
-  contentWidth: {
-    type: String,
-    default: 'Fluid'
-  },
-  siderWidth: {
-    type: Number,
-    default: 208
-  },
-  fixedHeader: {
-    type: Boolean,
-    default: true
-  },
-  fixedSider: {
-    type: Boolean,
-    default: true
-  },
-  // light | dark
-  headerTheme: {
-    type: String,
-    default: 'dark'
-  },
-  siderTheme: {
-    type: String,
-    default: 'dark'
-  }
+  collapsed: PropTypes.bool,
+  activeKey: PropTypes.oneOfType<string | number | symbol>([String, Number, Symbol]),
+  mode: PropTypes.oneOfType<ProLayoutMode>([String]).def('sider'),
+  contentMode: PropTypes.oneOfType<ProLayoutContentMode>([String]).def('fluid'),
+  fixed: PropTypes.oneOfType([Boolean, object<{ header: boolean; sider: boolean }>()]).def(false),
+  theme: PropTypes.oneOfType([
+    PropTypes.oneOfType<ProLayoutTheme>([String]),
+    object<{ header: ProLayoutTheme; sider: ProLayoutTheme }>()
+  ]).def('light'),
+  breakpoint: PropTypes.oneOfType<BreakpointType>([String]),
+
+  onCollapse: func<(collapsed: boolean) => void>(),
+  onMenuClick: func<(options: MenuClickOptions) => void>()
 }
 
 export type ProLayoutProps = ExtractPropTypes<typeof proLayoutProps>
@@ -63,18 +41,18 @@ export default defineComponent({
     useProLayoutProvide()
 
     const getClass = computed(() => {
+      const { mode, fixed } = props
+
       return [
         prefixCls,
         {
-          [`${prefixCls}-fixed`]: props.fixedHeader || props.fixedSider,
-          [`${prefixCls}--side`]: props.layout === 'side',
-          [`${prefixCls}--top`]: props.layout === 'top',
-          [`${prefixCls}--mix`]: props.layout === 'mix'
+          [`${prefixCls}-fixed`]: fixed,
+          [`${prefixCls}-is-${mode}`]: true
         }
       ]
     })
 
-    const showSider = computed(() => ['side', 'mix'].includes(props.layout))
+    const showSider = computed(() => ['sider', 'mixin'].includes(props.mode))
 
     return () => (
       <Layout class={getClass.value}>
