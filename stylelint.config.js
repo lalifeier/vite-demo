@@ -47,8 +47,25 @@ module.exports = {
       }
     ],
     'no-empty-source': null,
-    // "declaration-block-trailing-semicolon": null,
-    'no-descending-specificity': null
+    'no-descending-specificity': null,
+    'order/order': [
+      [
+        'dollar-variables',
+        'custom-properties',
+        'at-rules',
+        'declarations',
+        {
+          type: 'at-rule',
+          name: 'supports',
+        },
+        {
+          type: 'at-rule',
+          name: 'media',
+        },
+        'rules',
+      ],
+      { severity: 'warning' },
+    ],
   },
   ignoreFiles: ['**/*.js', '**/*.jsx', '**/*.tsx', '**/*.ts'],
   overrides: [
