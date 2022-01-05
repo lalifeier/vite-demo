@@ -1,0 +1,10 @@
+/**
+ * name: @vvap/admin
+ * version: v0.0.1
+ * description: 
+ * author: lalifeier
+ * email: lalifeier@gmail.com
+ * homepage: https://lalifeier.github.io
+ */
+import{_ as d}from"./plugin-vue_export-helper.21dcd24c.js";import{n as _,v as r,T as i,x as e,q as t,U as u,W as f,X as h,Y as n,Z as l,_ as s,$ as c,a0 as x,a1 as m,a2 as o}from"./vendor.5ada8107.js";const g={},p=o("Welcome"),b=o("\u521B\u5EFA\u5E10\u53F7"),v=o("\u521B\u5EFA\u5E10\u53F7"),V=s("div",{class:"caption font-weight-bold text-uppercase my-3"},"\u6216\u6CE8\u518C",-1),w={class:"d-flex justify-space-between"},y=o("mdi-facebook"),k=o("mdi-twitter"),C=o("mdi-google"),j={class:"mt-5 text-overline"},T=o(" \u7B7E\u7F72\u5373\u8868\u793A\u60A8\u540C\u610F "),B=s("br",null,null,-1),N=o("\u670D\u52A1\u6761\u6B3E"),F=o("& "),W=o("\u9690\u79C1\u653F\u7B56"),q={class:"mt-6"},z=o(" \u5DF2\u7ECF\u6709\u5E10\u53F7\u4E86\uFF1F "),E=o("\u767B\u5165");function I(S,U){const a=_("router-link");return r(),i(m,null,[e(x,{class:"pa-1",color:"transparent"},{default:t(()=>[e(u,{class:"justify-center text-h4 mb-2"},{default:t(()=>[p]),_:1}),e(f,{class:"justify-center"},{default:t(()=>[b]),_:1}),e(h,null,{default:t(()=>[e(n,{label:"\u7528\u6237\u540D"}),e(n,{label:"\u7535\u5B50\u90AE\u4EF6"}),e(n,{label:"\u5BC6\u7801"}),e(l,{color:"primary",block:"",size:"x-large"},{default:t(()=>[v]),_:1}),V,s("div",w,[e(l,{outlined:"",large:"",class:"flex-grow-1",color:"secondary lighten-2"},{default:t(()=>[e(c,null,{default:t(()=>[y]),_:1})]),_:1}),e(l,{outlined:"",large:"",class:"flex-grow-1 mx-2",color:"secondary lighten-2"},{default:t(()=>[e(c,null,{default:t(()=>[k]),_:1})]),_:1}),e(l,{outlined:"",large:"",class:"flex-grow-1",color:"secondary lighten-2"},{default:t(()=>[e(c,null,{default:t(()=>[C]),_:1})]),_:1})]),s("div",j,[T,B,e(a,{class:"text-decoration-underline",to:""},{default:t(()=>[N]),_:1}),F,e(a,{class:"text-decoration-underline",to:""},{default:t(()=>[W]),_:1})])]),_:1})]),_:1}),s("div",q,[z,e(a,{to:"/auth/signin",class:"font-weight-bold text-decoration-underline"},{default:t(()=>[E]),_:1})])],64)}var Z=d(g,[["render",I]]);export{Z as default};
+//# sourceMappingURL=signup.d61e02f4.js.map

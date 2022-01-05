@@ -1,0 +1,1 @@
+window.__PRODUCTION__ADMIN_PRO__CONF__={"VITE_GLOB_APP_TITLE":"AdminPro","VITE_GLOB_APP_SHORT_NAME":"admin_pro"};Object.freeze(window.__PRODUCTION__ADMIN_PRO__CONF__);Object.defineProperty(window,"__PRODUCTION__ADMIN_PRO__CONF__",{configurable:false,writable:false,});

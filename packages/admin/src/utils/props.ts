@@ -42,7 +42,7 @@ export function callEmit<T extends (...args: any[]) => any>(
     return
   }
   if (Array.isArray(funcs)) {
-    funcs.forEach(fn => fn(...args))
+    funcs.forEach((fn) => fn(...args))
   } else {
     return funcs(...args)
   }

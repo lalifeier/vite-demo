@@ -10,7 +10,7 @@ export enum LayoutMode {
 
   MIX = 'mix',
 
-  TOP_MENU = 'top-menu',
+  TOP_MENU = 'top-menu'
 }
 
 export enum ContentWidthMode {

@@ -28,7 +28,7 @@ const app: AppConfig = {
 
     show: true,
 
-    theme: 'light',
+    theme: 'light'
   },
 
   sidebarSetting: {
@@ -42,7 +42,7 @@ const app: AppConfig = {
 
     theme: 'light',
 
-    split: false,
+    split: false
   },
 
   multiTabsSetting: {

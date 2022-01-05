@@ -21,7 +21,6 @@ export function getPrevMonthDays() {
   return { start, end }
 }
 
-
 export function isValidDate(date: Date): boolean {
   return isDate(date) && !isNaN(date.getTime())
 }

@@ -56,8 +56,6 @@ export function toggleClass(ele: Element, cls: string, flag: boolean) {
   }
 }
 
-
-
 export function getScrollOffset() {
   if (window.pageXOffset) {
     return {

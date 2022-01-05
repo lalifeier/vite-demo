@@ -30,7 +30,6 @@ export function copyTextToClipboard(input: string, { target = document.body }: O
   element.value = input
 
   element.setAttribute('readonly', '')
-
   ;(element.style as any).contain = 'strict'
   element.style.position = 'absolute'
   element.style.left = '-9999px'

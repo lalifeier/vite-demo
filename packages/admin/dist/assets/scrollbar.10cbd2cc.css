@@ -1,0 +1,9 @@
+/**
+ * name: @vvap/admin
+ * version: v0.0.1
+ * description: 
+ * author: lalifeier
+ * email: lalifeier@gmail.com
+ * homepage: https://lalifeier.github.io
+ */
+.vap-scrollbar{overflow:hidden;position:relative;height:100%}.vap-scrollbar__wrap{overflow:auto;height:100%}.vap-scrollbar__wrap--hidden-default{scrollbar-width:none}.vap-scrollbar__wrap--hidden-default::-webkit-scrollbar{display:none}.vap-scrollbar__thumb{position:relative;display:block;width:0;height:0;cursor:pointer;border-radius:inherit;background-color:#9093994d;transition:.3s background-color}.vap-scrollbar__thumb:hover{background-color:#90939980}.vap-scrollbar__bar{position:absolute;right:2px;bottom:2px;z-index:1;border-radius:4px}.vap-scrollbar__bar.is-vertical{width:6px;top:2px}.vap-scrollbar__bar.is-vertical>div{width:100%}.vap-scrollbar__bar.is-horizontal{height:6px;left:2px}.vap-scrollbar__bar.is-horizontal>div{height:100%}.vap-fade-enter-active{transition:opacity .34s ease-out}.vap-fade-leave-active{transition:opacity .12s ease-out}.vap-fade-enter-from,.vap-fade-leave-active{opacity:0}.vap-scrollbar[data-v-d0a15ed0] .scrollbar-demo-item[data-v-d0a15ed0]{display:flex;align-items:center;justify-content:center;height:50px;margin:10px;text-align:center;border-radius:4px;background:#ecf5ff;color:#409eff}.vap-scrollbar[data-v-d0a15ed0] .flex-content[data-v-d0a15ed0]{display:flex}.vap-scrollbar[data-v-d0a15ed0] .flex-content[data-v-d0a15ed0] .scrollbar-demo-item[data-v-d0a15ed0]{flex-shrink:0;display:flex;align-items:center;justify-content:center;width:100px;height:50px;margin:10px;text-align:center;border-radius:4px;background:#ecf5ff;color:#409eff}

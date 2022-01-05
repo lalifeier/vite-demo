@@ -1,0 +1,132 @@
+.loading-mask {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  background-color: #f4f7f9;
+}
+
+.loading-wrapper {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  display: flex;
+  transform: translate3d(-50%, -50%, 0);
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.loading-wrapper .loading-spin {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.loading-wrapper .loading-logo {
+  display: block;
+  width: 90px;
+  margin: 0 auto;
+  margin-bottom: 30px;
+}
+
+.loading-wrapper .loading-title {
+  display: flex;
+  margin-top: 30px;
+  font-size: 30px;
+  color: rgba(0, 0, 0, 0.85);
+  justify-content: center;
+  align-items: center;
+}
+
+.spin-dot {
+  position: relative;
+  display: inline-block;
+  font-size: 20px;
+  width: 1em;
+  height: 1em;
+}
+
+.loading-spin-sm .ant-spin-dot {
+  font-size: 14px
+}
+
+.loading-spin-sm .spin-dot i {
+  width: 6px;
+  height: 6px
+}
+
+.loading-spin-lg .spin-dot {
+  font-size: 32px;
+}
+
+.loading-spin-lg .spin-dot i {
+  width: 14px;
+  height: 14px
+}
+
+.loading-spin-xl .spin-dot {
+  width: 46px;
+  height: 46px;
+  font-size: 46px;
+}
+
+.loading-spin-xl .spin-dot i {
+  width: 20px;
+  height: 20px;
+}
+
+.spin-dot-spin {
+  transform: rotate(45deg);
+  animation: antRotate 1.2s infinite linear;
+}
+
+.spin-dot i {
+  position: absolute;
+  display: block;
+  width: 9px;
+  height: 9px;
+  background-color: #1890ff;
+  border-radius: 100%;
+  transform: scale(0.75);
+  transform-origin: 50% 50%;
+  opacity: 0.3;
+  animation: antSpinMove 1s infinite linear alternate;
+}
+
+.spin-dot i:nth-child(1) {
+  top: 0;
+  left: 0;
+}
+
+.spin-dot i:nth-child(2) {
+  top: 0;
+  right: 0;
+  animation-delay: 0.4s;
+}
+
+.spin-dot i:nth-child(3) {
+  right: 0;
+  bottom: 0;
+  animation-delay: 0.8s;
+}
+
+.spin-dot i:nth-child(4) {
+  bottom: 0;
+  left: 0;
+  animation-delay: 1.2s;
+}
+
+@keyframes antRotate {
+  to {
+    transform: rotate(405deg);
+  }
+}
+
+@keyframes antSpinMove {
+  to {
+    opacity: 1;
+  }
+}

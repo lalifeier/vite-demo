@@ -1,0 +1,9 @@
+/**
+ * name: @vvap/admin
+ * version: v0.0.1
+ * description: 
+ * author: lalifeier
+ * email: lalifeier@gmail.com
+ * homepage: https://lalifeier.github.io
+ */
+.infinite-list-container{position:relative;width:100%;height:100%;overflow:auto}.infinite-list-phantom{position:absolute;top:0;right:0;left:0;z-index:-1}.infinite-list{position:absolute;top:0;right:0;left:0}.virtual-list-demo[data-v-6dff2ffb]{display:flex;justify-content:center;width:400px}.virtual-list-demo-item[data-v-6dff2ffb]{height:40px;padding:0 20px;line-height:40px;text-align:center;border-bottom:1px solid #eee}

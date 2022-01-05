@@ -1,4 +1,3 @@
-
 import { createTypes, toType } from 'vue-types'
 
 export default class PropTypes extends createTypes() {

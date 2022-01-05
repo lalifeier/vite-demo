@@ -68,12 +68,15 @@ export function isElement(val: unknown): val is Element {
 }
 
 function validURL(str: string): boolean {
-  const pattern = new RegExp('^(https?:\\/\\/)?' + // protocol
-    '((([a-z\\d]([a-z\\d-]*[a-z\\d])*)\\.)+[a-z]{2,}|' + // domain name
-    '((\\d{1,3}\\.){3}\\d{1,3}))' + // OR ip (v4) address
-    '(\\:\\d+)?(\\/[-a-z\\d%_.~+]*)*' + // port and path
-    '(\\?[;&a-z\\d%_.~+=-]*)?' + // query string
-    '(\\#[-a-z\\d_]*)?$', 'i') // fragment locator
+  const pattern = new RegExp(
+    '^(https?:\\/\\/)?' + // protocol
+      '((([a-z\\d]([a-z\\d-]*[a-z\\d])*)\\.)+[a-z]{2,}|' + // domain name
+      '((\\d{1,3}\\.){3}\\d{1,3}))' + // OR ip (v4) address
+      '(\\:\\d+)?(\\/[-a-z\\d%_.~+]*)*' + // port and path
+      '(\\?[;&a-z\\d%_.~+=-]*)?' + // query string
+      '(\\#[-a-z\\d_]*)?$',
+    'i'
+  ) // fragment locator
   return !!pattern.test(str)
 }
 
@@ -154,5 +157,5 @@ export function isKorean(text: string): boolean {
 }
 
 export const isNumeric = (value): boolean => {
-  return !isNaN(parseFloat(value)) && isFinite(value);
+  return !isNaN(parseFloat(value)) && isFinite(value)
 }
