@@ -67,7 +67,7 @@ export function isElement(val: unknown): val is Element {
   return isObject(val) && !!val.tagName
 }
 
-function validURL(str: string): boolean {
+export function validURL(str: string): boolean {
   const pattern = new RegExp(
     '^(https?:\\/\\/)?' + // protocol
       '((([a-z\\d]([a-z\\d-]*[a-z\\d])*)\\.)+[a-z]{2,}|' + // domain name
