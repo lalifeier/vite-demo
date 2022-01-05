@@ -1,13 +1,14 @@
 $prefix-cls: '#{$namespace}-page-header';
 
 .#{$prefix-cls} {
-  background-color: #fff;
-  width: 100%;
   display: flex;
   flex-direction: column;
+  width: 100%;
   padding: 16px 24px;
   font-size: 14px;
   line-height: 1.5715;
+  background-color: #fff;
+
   // &--dense {
   //   &-content {
   //     margin: 0;
@@ -23,29 +24,33 @@ $prefix-cls: '#{$namespace}-page-header';
       margin: 4px 0;
       overflow: hidden;
     }
+
     &-title {
       margin-right: 12px;
       margin-bottom: 0;
-      color: rgba(0, 0, 0, 0.85);
+      overflow: hidden;
+      color: rgb(0 0 0 / 85%);
       font-weight: 600;
       font-size: 20px;
       line-height: 32px;
-      overflow: hidden;
       white-space: nowrap;
       text-overflow: ellipsis;
     }
+
     &-sub-title {
       margin-right: 12px;
-      color: #00000073;
       overflow: hidden;
+      color: #00000073;
       white-space: nowrap;
       text-overflow: ellipsis;
     }
+
     &-extra {
       margin: 4px 0;
       white-space: nowrap;
     }
   }
+
   &-content {
     padding-top: 12px;
   }

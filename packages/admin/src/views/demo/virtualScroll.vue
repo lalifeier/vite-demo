@@ -32,6 +32,7 @@
     display: flex;
     justify-content: center;
     width: 400px;
+
     &-item {
       height: 40px;
       padding: 0 20px;

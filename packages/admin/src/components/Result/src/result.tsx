@@ -24,22 +24,32 @@ export default defineComponent({
   setup(props, { slots }) {
     const { prefixCls } = useDesign('result')
 
-    const { icon, title, subTitle } = props
-
-    const renderIcon = () =>
-      (icon || slots.icon) && (
-        <div class={prefixCls + '__icon'}>{slots.icon ? slots.icon() : <img src={icon} />}</div>
+    const renderIcon = () => {
+      const { icon } = props
+      return (
+        (icon || slots.icon) && (
+          <div class={prefixCls + '__icon'}>{slots.icon ? slots.icon() : <img src={icon} />}</div>
+        )
       )
+    }
 
-    const renderTitle = () =>
-      (title || slots.title) && (
-        <div class={prefixCls + '__title'}>{slots.title ? slots.title() : title}</div>
+    const renderTitle = () => {
+      const { title } = props
+      return (
+        (title || slots.title) && (
+          <div class={prefixCls + '__title'}>{slots.title ? slots.title() : title}</div>
+        )
       )
+    }
 
-    const renderSubTitle = () =>
-      (subTitle || slots.subTitle) && (
-        <div class={prefixCls + '__subtitle'}>{slots.subTitle ? slots.subTitle() : subTitle}</div>
+    const renderSubTitle = () => {
+      const { subTitle } = props
+      return (
+        (subTitle || slots.subTitle) && (
+          <div class={prefixCls + '__subtitle'}>{slots.subTitle ? slots.subTitle() : subTitle}</div>
+        )
       )
+    }
 
     const renderExtra = () =>
       slots.extra && <div class={prefixCls + '__extra'}>{slots.extra()}</div>

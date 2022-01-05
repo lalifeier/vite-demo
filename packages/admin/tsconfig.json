@@ -1,32 +1,12 @@
 {
+  "extends": "../../tsconfig",
   "compilerOptions": {
-    "target": "esnext",
-    "module": "esnext",
-    "moduleResolution": "node",
-    "strict": true,
-    "forceConsistentCasingInFileNames": true,
-    "allowSyntheticDefaultImports": true,
-    "strictFunctionTypes": false,
-    "jsx": "preserve",
-    "allowJs": true,
-    "sourceMap": true,
-    "inlineSources": true,
-    "sourceRoot": "/",
-    "resolveJsonModule": true,
-    "esModuleInterop": true,
-    "lib": ["esnext", "dom"],
-    "types": ["vite/client"],
-    "typeRoots": ["./node_modules/@types/", "./types"],
-    "noImplicitAny": false,
-    "skipLibCheck": true,
-    "experimentalDecorators": true,
     "baseUrl": ".",
+    "typeRoots": ["./node_modules/@types/", "./types"],
     "paths": {
       "@/*": ["src/*"],
       "#/*": ["types/*"]
     },
-    "noUnusedLocals": true,
-    "noUnusedParameters": true
   },
   "include": [
     "src/**/*.ts",

@@ -23,9 +23,10 @@ $prefix-cls: '#{$namespace}-pro-layout';
   }
 
   &-header {
+    z-index: 2;
     display: flex;
     align-items: center;
-    z-index: 2;
+
     // height: $pro-layout-header-height;
     // line-height: $pro-layout-header-height;
     // box-shadow: $pro-layout-header-box-shadow;
@@ -48,11 +49,11 @@ $prefix-cls: '#{$namespace}-pro-layout';
   }
 
   &-sider {
+    z-index: 1;
     display: flex;
     flex-direction: column;
-    z-index: 1;
-    height: 100%;
     width: $pro-layout-sider-width;
+    height: 100%;
 
     &-fixed {
       position: sticky;
@@ -70,8 +71,8 @@ $prefix-cls: '#{$namespace}-pro-layout';
     &-content {
       flex: 1 1 0%;
       height: 100%;
-      border-right: 1px solid #f0f0f0;
       overflow: hidden;
+      border-right: 1px solid #f0f0f0;
 
       // &:hover {
       //   overflow-y: auto;

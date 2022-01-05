@@ -2,13 +2,13 @@ $prefix-cls: '#{$namespace}-scrollbar';
 $prefix-cls-fade: '#{$namespace}-fade';
 
 .#{$prefix-cls} {
-  overflow: hidden;
   position: relative;
   height: 100%;
+  overflow: hidden;
 
   &__wrap {
-    overflow: auto;
     height: 100%;
+    overflow: auto;
 
     &--hidden-default {
       scrollbar-width: none;
@@ -24,8 +24,7 @@ $prefix-cls-fade: '#{$namespace}-fade';
     display: block;
     width: 0;
     height: 0;
-    cursor: pointer;
-    border-radius: inherit;
+
     // background-color: var(
     //   --el-scrollbar-bg-color,
     //   map.get($scrollbar, 'bg-color')
@@ -33,10 +32,13 @@ $prefix-cls-fade: '#{$namespace}-fade';
     // transition: var(--el-transition-duration) background-color;
     // opacity: var(--el-scrollbar-opacity, map.get($scrollbar, 'opacity'));
     background-color: rgb(144 147 153 / 30%);
+    border-radius: inherit;
+    cursor: pointer;
     transition: 0.3s background-color;
 
     &:hover {
       background-color: rgb(144 147 153 / 50%);
+
       // background-color: var(
       //   --el-scrollbar-hover-bg-color,
       //   map.get($scrollbar, 'hover-bg-color')
@@ -56,8 +58,8 @@ $prefix-cls-fade: '#{$namespace}-fade';
     border-radius: 4px;
 
     &.is-vertical {
-      width: 6px;
       top: 2px;
+      width: 6px;
 
       > div {
         width: 100%;
@@ -65,8 +67,8 @@ $prefix-cls-fade: '#{$namespace}-fade';
     }
 
     &.is-horizontal {
-      height: 6px;
       left: 2px;
+      height: 6px;
 
       > div {
         height: 100%;

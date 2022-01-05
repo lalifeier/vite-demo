@@ -9,10 +9,10 @@
 </template>
 
 <script setup lang="ts">
+  import { useGlobSetting } from '@/hooks/setting/useGlobSetting'
   import { useDesign } from '@/hooks/web/useDesign'
-  import { useGlobConfig } from '@/utils/env'
 
-  const { title } = useGlobConfig()
+  const { title } = useGlobSetting()
   const fullYear = new Date().getFullYear()
 
   const { prefixCls } = useDesign('layout-footer')

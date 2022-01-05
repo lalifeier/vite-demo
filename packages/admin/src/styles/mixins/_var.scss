@@ -8,6 +8,7 @@
 
 @mixin set-css-color-type($type) {
   --vap-color-#{$type}: #{map.get($colors, $type, 'base')};
+
   // --vap-color-#{$type}-light: #{map.get($colors, $type, 'light-8')};
   // --vap-color-#{$type}-lighter: #{map.get($colors, $type, 'light-9')};
 }

@@ -6,7 +6,6 @@
 :root {
   --vap-color-white: #{$color-white};
   --vap-color-black: #{$color-black};
-
   --vap-color-primary: #{$color-primary};
 
   @each $type in (success, warning, danger, error, info) {
@@ -14,7 +13,6 @@
   }
 
   --vap-text-color: #{$text-color};
-
   --vap-background-color: #{$background-color};
 
   // Transition

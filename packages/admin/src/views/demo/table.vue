@@ -28,10 +28,12 @@
     width: 100%;
     border-collapse: collapse;
   }
+
   th,
   td {
     padding: 8px 16px;
   }
+
   th {
     background: #eee;
   }
@@ -40,11 +42,13 @@
     height: 800px;
     overflow: auto;
   }
+
   .tableFixHead thead th {
     position: sticky;
     top: 0;
     z-index: 1;
   }
+
   .tableFixHead tbody th {
     position: sticky;
     left: 0;
@@ -54,6 +58,7 @@
   .tableFixHead td {
     box-shadow: inset 1px -1px #000;
   }
+
   .tableFixHead th {
     box-shadow: inset 1px 1px #000, 0 1px #000;
   }

@@ -3,10 +3,8 @@
 :root {
   --vap-layout-header-color: #{$layout-header-color};
   --vap-layout-header-background: #{$layout-header-background};
-
   --vap-layout-footer-background: #{$layout-footer-background};
   --vap-layout-footer-color: #{$layout-footer-color};
-
   --vap-layout-sider-background: #{$layout-sider-background};
   --vap-layout-sider-color: #{$layout-sider-color};
 }
@@ -15,22 +13,23 @@ $prefix-cls: '#{$namespace}-layout';
 
 .#{$prefix-cls} {
   display: grid;
-  grid-template-columns: auto 1fr auto;
-  grid-template-rows: auto 1fr auto;
   grid-template-areas:
     'header header header'
     'sider content content'
     'sider footer footer';
+  grid-template-rows: auto 1fr auto;
+  grid-template-columns: auto 1fr auto;
+
   // grid-area: content;
 
   &-header {
     // position: relative;
     grid-area: header;
-    background: var(--vap-layout-header-background);
-    color: var(--vap-layout-header-color);
     height: $layout-header-height;
-    line-height: $layout-header-height;
     padding: $layout-header-padding;
+    color: var(--vap-layout-header-color);
+    line-height: $layout-header-height;
+    background: var(--vap-layout-header-background);
   }
 
   &-content {
@@ -41,17 +40,17 @@ $prefix-cls: '#{$namespace}-layout';
   &-footer {
     // position: relative;
     grid-area: footer;
-    background: var(--vap-layout-footer-background);
-    color: var(--vap-layout-footer-color);
     padding: $layout-footer-padding;
+    color: var(--vap-layout-footer-color);
+    background: var(--vap-layout-footer-background);
   }
 
   &-sider {
     // position: relative;
     grid-area: sider;
-    background: var(--vap-layout-sider-background);
-    color: var(--vap-layout-sider-color);
     width: $layout-sider-width;
+    color: var(--vap-layout-sider-color);
+    background: var(--vap-layout-sider-background);
     transition: width $transition-duration-base;
 
     &-collapsed {

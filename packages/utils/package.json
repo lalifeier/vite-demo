@@ -1,0 +1,11 @@
+{
+  "name": "@vvap/utils",
+  "version": "1.0.0",
+  "description": "@vvap/utils",
+  "main": "index.ts",
+  "module": "index.ts",
+  "types": "index.d.js",
+  "unpkg": "index.js",
+  "jsdelivr": "index.js",
+  "license": "MIT"
+}

@@ -41,8 +41,10 @@
   .#{$prefix-cls} {
     &-left {
     }
+
     &-right {
     }
+
     &--fixed {
       position: fixed;
       top: 0;
