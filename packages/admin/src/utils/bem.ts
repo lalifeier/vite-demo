@@ -1,22 +1,22 @@
-import { prefixCls } from '@/settings/design'
+import { prefixCls } from '@/settings/design';
 
-export type Mod = string | { [key: string]: any }
-export type Mods = Mod | Mod[]
+export type Mod = string | { [key: string]: any };
+export type Mods = Mod | Mod[];
 
 function genBem(name: string, mods?: Mods): string {
   if (!mods) {
-    return ''
+    return '';
   }
 
   if (typeof mods === 'string') {
-    return ` ${name}--${mods}`
+    return ` ${name}--${mods}`;
   }
 
   if (Array.isArray(mods)) {
-    return mods.reduce<string>((ret, item) => ret + genBem(name, item), '')
+    return mods.reduce<string>((ret, item) => ret + genBem(name, item), '');
   }
 
-  return Object.keys(mods).reduce((ret, key) => ret + (mods[key] ? genBem(name, key) : ''), '')
+  return Object.keys(mods).reduce((ret, key) => ret + (mods[key] ? genBem(name, key) : ''), '');
 }
 
 /**
@@ -30,19 +30,19 @@ function genBem(name: string, mods?: Mods): string {
 export function createBEM(name: string) {
   return (el?: Mods, mods?: Mods): Mods => {
     if (el && typeof el !== 'string') {
-      mods = el
-      el = ''
+      mods = el;
+      el = '';
     }
 
-    el = el ? `${name}__${el}` : name
+    el = el ? `${name}__${el}` : name;
 
-    return `${el}${genBem(el, mods)}`
-  }
+    return `${el}${genBem(el, mods)}`;
+  };
 }
 
-export type BEM = ReturnType<typeof createBEM>
+export type BEM = ReturnType<typeof createBEM>;
 
 export function createNamespace(name: string) {
-  const prefixedName = `${prefixCls}-${name}`
-  return [prefixedName, createBEM(prefixedName)] as const
+  const prefixedName = `${prefixCls}-${name}`;
+  return [prefixedName, createBEM(prefixedName)] as const;
 }

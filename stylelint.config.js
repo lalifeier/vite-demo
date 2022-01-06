@@ -1,71 +1,22 @@
 module.exports = {
   root: true,
-  plugins: ['stylelint-order'],
-  extends: ['stylelint-config-standard', 'stylelint-config-prettier'],
+  extends: [
+    'stylelint-config-standard',
+    'stylelint-config-rational-order',
+    'stylelint-config-prettier'
+  ],
+  plugins: ['stylelint-order', 'stylelint-config-rational-order/plugin', 'stylelint-scss'],
   rules: {
-    'selector-pseudo-class-no-unknown': [
+    'order/properties-order': [],
+    'plugin/rational-order': [
       true,
       {
-        ignorePseudoClasses: ['global', 'export']
+        'border-in-box-model': false,
+        'empty-line-between-groups': false
       }
     ],
-    'at-rule-no-unknown': [
-      true,
-      {
-        ignoreAtRules: [
-          'tailwind',
-          'layer',
-          'apply',
-          'variants',
-          'responsive',
-          'screen',
-
-          'extend',
-          'at-root',
-          'debug',
-          'warn',
-          'error',
-          'if',
-          'else',
-          'for',
-          'each',
-          'while',
-          'mixin',
-          'include',
-          'content',
-          'return',
-          'function',
-          'use',
-          'forward'
-        ]
-      }
-    ],
-    'selector-pseudo-element-no-unknown': [
-      true,
-      {
-        ignorePseudoElements: ['v-deep']
-      }
-    ],
-    'no-empty-source': null,
-    'no-descending-specificity': null,
-    'order/order': [
-      [
-        'dollar-variables',
-        'custom-properties',
-        'at-rules',
-        'declarations',
-        {
-          type: 'at-rule',
-          name: 'supports',
-        },
-        {
-          type: 'at-rule',
-          name: 'media',
-        },
-        'rules',
-      ],
-      { severity: 'warning' },
-    ],
+    "at-rule-no-unknown": null,
+    "scss/at-rule-no-unknown": true,
   },
   ignoreFiles: ['**/*.js', '**/*.jsx', '**/*.tsx', '**/*.ts'],
   overrides: [

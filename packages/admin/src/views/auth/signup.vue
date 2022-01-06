@@ -36,9 +36,7 @@
 
   <div class="mt-6">
     已经有帐号了？
-    <router-link to="/auth/signin" class="font-weight-bold text-decoration-underline"
-      >登入</router-link
-    >
+    <router-link to="/auth/signin" class="font-weight-bold text-decoration-underline">登入</router-link>
   </div>
 </template>
 

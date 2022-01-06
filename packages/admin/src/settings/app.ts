@@ -1,6 +1,6 @@
-import { AppConfig } from '#/config'
-import { BarStyle, PermissionMode, TransitionMode } from '../enums/app'
-import { themeColor } from './design'
+import { AppConfig } from '#/config';
+import { BarStyle, PermissionMode, TransitionMode } from '../enums/app';
+import { themeColor } from './design';
 
 const app: AppConfig = {
   darkMode: 'light',
@@ -28,7 +28,7 @@ const app: AppConfig = {
 
     show: true,
 
-    theme: 'light'
+    theme: 'light',
   },
 
   sidebarSetting: {
@@ -42,19 +42,19 @@ const app: AppConfig = {
 
     theme: 'light',
 
-    split: false
+    split: false,
   },
 
   multiTabsSetting: {
     show: true,
 
-    barStyle: BarStyle.CARD
+    barStyle: BarStyle.CARD,
   },
 
   breadCrumbSetting: {
     show: true,
 
-    showIcon: false
+    showIcon: false,
   },
 
   transitionSetting: {
@@ -64,8 +64,8 @@ const app: AppConfig = {
 
     pageLoading: true,
 
-    progressBar: true
-  }
-}
+    progressBar: true,
+  },
+};
 
-export default app
+export default app;

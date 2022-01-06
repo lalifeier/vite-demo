@@ -1,15 +1,15 @@
-import { createLoading } from '@/components/Loading'
+import { createLoading } from '@/components/Loading';
 
 const createInstance = (el, binding) => {
-  const svg = el.getAttribute('loading-svg')
-  const text = el.getAttribute('loading-text')
-  const spinner = el.getAttribute('loading-spinner')
-  const background = el.getAttribute('loading-background')
-  const fullscreen = !!binding.modifiers.fullscreen
+  const svg = el.getAttribute('loading-svg');
+  const text = el.getAttribute('loading-text');
+  const spinner = el.getAttribute('loading-spinner');
+  const background = el.getAttribute('loading-background');
+  const fullscreen = !!binding.modifiers.fullscreen;
 
-  const target = fullscreen ? document.body : el
+  const target = fullscreen ? document.body : el;
 
-  console.log(target)
+  console.log(target);
 
   const instance = createLoading(
     {
@@ -18,30 +18,30 @@ const createInstance = (el, binding) => {
       spinner,
       background,
       absolute: !fullscreen,
-      loading: !!binding.value
+      loading: !!binding.value,
     },
-    target
-  )
-  el.instance = instance
-}
+    target,
+  );
+  el.instance = instance;
+};
 
 export default {
   mounted(el, binding) {
-    createInstance(el, binding)
+    createInstance(el, binding);
   },
   updated(el, binding) {
-    const instance = el.instance
-    if (!instance) return
+    const instance = el.instance;
+    if (!instance) return;
     if (binding.oldValue === binding.value) {
-      return
+      return;
     }
     if (binding.value) {
-      createInstance(el, binding)
+      createInstance(el, binding);
     } else {
-      instance.close()
+      instance.close();
     }
   },
   unmounted: function (el) {
-    el?.instance?.close()
-  }
-}
+    el?.instance?.close();
+  },
+};

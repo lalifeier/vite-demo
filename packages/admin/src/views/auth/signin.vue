@@ -24,18 +24,14 @@
       </div>
 
       <div class="mt-5">
-        <router-link to="/auth/forgot-password" class="text-decoration-underline"
-          >忘记密码？</router-link
-        >
+        <router-link to="/auth/forgot-password" class="text-decoration-underline">忘记密码？</router-link>
       </div>
       <!-- </v-form> -->
     </v-card-text>
   </v-card>
   <div class="mt-6">
     还没有帐号？
-    <router-link to="/auth/signup" class="font-weight-bold text-decoration-underline"
-      >在此处创建一个</router-link
-    >
+    <router-link to="/auth/signup" class="font-weight-bold text-decoration-underline">在此处创建一个</router-link>
   </div>
 </template>
 

@@ -35,8 +35,8 @@
   <!-- </v-menu> -->
 </template>
 <script setup lang="ts">
-  // const menu = [
-  //   { icon: 'mdi-account-box-outline', text: '个人中心' },
-  //   { icon: 'mdi-cog-outline', text: '个人设置' }
-  // ]
+// const menu = [
+//   { icon: 'mdi-account-box-outline', text: '个人中心' },
+//   { icon: 'mdi-cog-outline', text: '个人设置' }
+// ]
 </script>

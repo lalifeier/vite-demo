@@ -35,21 +35,21 @@
   </v-list-group>
 </template>
 <script setup lang="ts">
-  const props = defineProps({
-    menuItem: {
-      type: Object,
-      default: () => {}
-    },
-    small: {
-      type: Boolean,
-      default: false
-    },
-    subgroup: {
-      type: Boolean,
-      default: false
-    }
-  })
-  defineExpose({
-    props
-  })
+const props = defineProps({
+  menuItem: {
+    type: Object,
+    default: () => {},
+  },
+  small: {
+    type: Boolean,
+    default: false,
+  },
+  subgroup: {
+    type: Boolean,
+    default: false,
+  },
+});
+defineExpose({
+  props,
+});
 </script>

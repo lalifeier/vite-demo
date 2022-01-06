@@ -1,8 +1,8 @@
-import { router } from '@/router'
-import { createPermissionGuard } from './permission'
-import { createProgressGuard } from './progress'
+import { router } from '@/router';
+import { createPermissionGuard } from './permission';
+import { createProgressGuard } from './progress';
 
 export function setupRouterGuard() {
-  createProgressGuard(router)
-  createPermissionGuard(router)
+  createProgressGuard(router);
+  createPermissionGuard(router);
 }

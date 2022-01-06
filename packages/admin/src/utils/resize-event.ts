@@ -1,37 +1,31 @@
-import ResizeObserver from 'resize-observer-polyfill'
-import { isServer } from './is'
+import ResizeObserver from 'resize-observer-polyfill';
+import { isServer } from './is';
 
 const resizeHandler = function (entries: any[]) {
   for (const entry of entries) {
-    const listeners = entry.target.__resizeListeners__ || []
+    const listeners = entry.target.__resizeListeners__ || [];
     if (listeners.length) {
       listeners.forEach((fn) => {
-        fn()
-      })
+        fn();
+      });
     }
   }
-}
+};
 
-export const addResizeListener = function (
-  element: any,
-  fn: (...args: unknown[]) => unknown
-): void {
-  if (isServer || !element) return
+export const addResizeListener = function (element: any, fn: (...args: unknown[]) => unknown): void {
+  if (isServer || !element) return;
   if (!element.__resizeListeners__) {
-    element.__resizeListeners__ = []
-    element.__ro__ = new ResizeObserver(resizeHandler)
-    element.__ro__.observe(element)
+    element.__resizeListeners__ = [];
+    element.__ro__ = new ResizeObserver(resizeHandler);
+    element.__ro__.observe(element);
   }
-  element.__resizeListeners__.push(fn)
-}
+  element.__resizeListeners__.push(fn);
+};
 
-export const removeResizeListener = function (
-  element: any,
-  fn: (...args: unknown[]) => unknown
-): void {
-  if (!element || !element.__resizeListeners__) return
-  element.__resizeListeners__.splice(element.__resizeListeners__.indexOf(fn), 1)
+export const removeResizeListener = function (element: any, fn: (...args: unknown[]) => unknown): void {
+  if (!element || !element.__resizeListeners__) return;
+  element.__resizeListeners__.splice(element.__resizeListeners__.indexOf(fn), 1);
   if (!element.__resizeListeners__.length) {
-    element.__ro__.disconnect()
+    element.__ro__.disconnect();
   }
-}
+};

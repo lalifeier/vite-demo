@@ -1,10 +1,10 @@
-import { ThemeMode } from '@/enums/app'
+import { ThemeMode } from '@/enums/app';
 
-export const prefixCls = 'vap'
+export const prefixCls = 'vap';
 
-export const themeMode = ThemeMode.LIGHT
+export const themeMode = ThemeMode.LIGHT;
 
-export const themeColor = '#0960bd'
+export const themeColor = '#0960bd';
 
 export const THEME_COLOR_LIST: string[] = [
   '#409EFF',
@@ -14,8 +14,8 @@ export const THEME_COLOR_LIST: string[] = [
   '#11a983',
   '#13c2c2',
   '#6959CD',
-  '#f5222d'
-]
+  '#f5222d',
+];
 
 export const LIGHT_THEME = {
   dark: false,
@@ -28,10 +28,10 @@ export const LIGHT_THEME = {
     error: '#ef476f',
     info: '#2196f3',
     success: '#05c075',
-    warning: '#ffd166'
+    warning: '#ffd166',
   },
-  variables: {}
-}
+  variables: {},
+};
 
 export const DARK_THEME = {
   dark: true,
@@ -44,7 +44,7 @@ export const DARK_THEME = {
     error: '#FF5252',
     info: '#2196F3',
     success: '#4CAF50',
-    warning: '#FFC107'
+    warning: '#FFC107',
   },
-  variables: {}
-}
+  variables: {},
+};

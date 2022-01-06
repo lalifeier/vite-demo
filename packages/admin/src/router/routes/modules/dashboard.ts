@@ -1,11 +1,11 @@
-import type { AppRouteModule } from '@/router/types'
-import { LAYOUT } from '../constant'
+import type { AppRouteModule } from '@/router/types';
+import { LAYOUT } from '../constant';
 
 export const dashboard: AppRouteModule = {
   path: '/dashboard',
   name: 'Dashboard',
   meta: {
-    title: 'Dashboard'
+    title: 'Dashboard',
   },
   component: LAYOUT,
   redirect: '/dashboard/index',
@@ -14,11 +14,11 @@ export const dashboard: AppRouteModule = {
       path: 'index',
       name: 'Index',
       meta: {
-        title: 'Dashboard'
+        title: 'Dashboard',
       },
-      component: () => import('@/views/dashboard/index.vue')
-    }
-  ]
-}
+      component: () => import('@/views/dashboard/index.vue'),
+    },
+  ],
+};
 
-export default dashboard
+export default dashboard;

@@ -1,6 +1,6 @@
 export enum ThemeMode {
   DARK = 'dark',
-  LIGHT = 'light'
+  LIGHT = 'light',
 }
 
 export enum LayoutMode {
@@ -10,18 +10,18 @@ export enum LayoutMode {
 
   MIX = 'mix',
 
-  TOP_MENU = 'top-menu'
+  TOP_MENU = 'top-menu',
 }
 
 export enum ContentWidthMode {
   FLUID = 'fluid',
-  FIXED = 'fixed'
+  FIXED = 'fixed',
 }
 
 export enum PermissionMode {
   ROLE = 'ROLE',
   BACK = 'BACK',
-  ROUTE_MAPPING = 'ROUTE_MAPPING'
+  ROUTE_MAPPING = 'ROUTE_MAPPING',
 }
 
 export enum TransitionMode {
@@ -30,12 +30,12 @@ export enum TransitionMode {
   FADE_SIDE = 'fade-slide',
   FADE = 'fade',
   FADE_BOTTOM = 'fade-bottom',
-  FADE_SCALE = 'fade-scale'
+  FADE_SCALE = 'fade-scale',
 }
 
 // 卡片风格card、灵动风格smart、圆滑风格smooth
 export enum BarStyle {
   CARD = 'card',
   SMART = 'smart',
-  SMOOTH = 'smooth'
+  SMOOTH = 'smooth',
 }

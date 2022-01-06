@@ -21,44 +21,61 @@
 </template>
 
 <script setup lang="ts">
-  import { SvgIcon } from '@/components/Icon'
-  import MarkDown from '@/components/Markdown'
-  import { PageFooter, PageHeader } from '@/components/Page'
-  import { useLocaleContext } from '@/context'
-  import { useI18n } from '@/hooks/web/useI18n'
-  import { ref } from 'vue'
+import { SvgIcon } from '@/components/Icon';
+import MarkDown from '@/components/Markdown';
+import { PageFooter, PageHeader } from '@/components/Page';
+import { useLocaleContext } from '@/context';
+import { useI18n } from '@/hooks/web/useI18n';
+import { ref } from 'vue';
 
-  function scroll(e) {
-    // console.log(e);
-  }
+function scroll(e) {
+  // console.log(e);
+}
 
-  // const i18n = useI18n();
-  // const switchLanguage = () => {
-  //   const locale = i18n.locale.value === "en" ? "es" : "en";
-  //   i18n.locale.value = locale;
-  // };
+// const i18n = useI18n();
+// const switchLanguage = () => {
+//   const locale = i18n.locale.value === "en" ? "es" : "en";
+//   i18n.locale.value = locale;
+// };
 
-  const { t } = useI18n()
+const { t } = useI18n();
 
-  const data = ref('erwrew')
+const data = ref('erwrew');
 
-  const i18n = useLocaleContext()
+const i18n = useLocaleContext();
 
-  function handleClick() {
-    data.value = '456'
+function handleClick() {
+  data.value = '456';
 
-    i18n.setLocale(i18n.getLocale.value === 'en-US' ? 'zh-CN' : 'en-US')
-  }
+  i18n.setLocale(i18n.getLocale.value === 'en-US' ? 'zh-CN' : 'en-US');
+}
 
-  function handleInit(e) {}
+function handleInit(e) {}
 </script>
 
 <style scoped>
-  .el-scrollbar {
+.el-scrollbar {
+  .scrollbar-demo-item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 50px;
+    margin: 10px;
+    color: #409eff;
+    text-align: center;
+    background: #ecf5ff;
+    border-radius: 4px;
+  }
+
+  .flex-content {
+    display: flex;
+
     .scrollbar-demo-item {
       display: flex;
+      flex-shrink: 0;
       align-items: center;
       justify-content: center;
+      width: 100px;
       height: 50px;
       margin: 10px;
       color: #409eff;
@@ -66,23 +83,6 @@
       background: #ecf5ff;
       border-radius: 4px;
     }
-
-    .flex-content {
-      display: flex;
-
-      .scrollbar-demo-item {
-        display: flex;
-        flex-shrink: 0;
-        align-items: center;
-        justify-content: center;
-        width: 100px;
-        height: 50px;
-        margin: 10px;
-        color: #409eff;
-        text-align: center;
-        background: #ecf5ff;
-        border-radius: 4px;
-      }
-    }
   }
+}
 </style>

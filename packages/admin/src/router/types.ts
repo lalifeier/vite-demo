@@ -1,53 +1,53 @@
-import { defineComponent } from 'vue'
-import type { RouteMeta, RouteRecordRaw } from 'vue-router'
-import { Role } from '../enums/role'
+import { defineComponent } from 'vue';
+import type { RouteMeta, RouteRecordRaw } from 'vue-router';
+import { Role } from '../enums/role';
 
 export type Component<T = any> =
   | ReturnType<typeof defineComponent>
   | (() => Promise<typeof import('*.vue')>)
-  | (() => Promise<T>)
+  | (() => Promise<T>);
 
 // @ts-ignore
 export interface AppRouteRecordRaw extends Omit<RouteRecordRaw, 'meta'> {
-  name: string
-  meta: RouteMeta
-  component?: Component | string
-  children?: AppRouteRecordRaw[]
-  props?: Recordable
-  fullPath?: string
+  name: string;
+  meta: RouteMeta;
+  component?: Component | string;
+  children?: AppRouteRecordRaw[];
+  props?: Recordable;
+  fullPath?: string;
 }
 export interface MenuTag {
-  type?: 'primary' | 'error' | 'warn' | 'success'
-  content?: string
-  dot?: boolean
+  type?: 'primary' | 'error' | 'warn' | 'success';
+  content?: string;
+  dot?: boolean;
 }
 export interface Menu {
-  name: string
+  name: string;
 
-  icon?: string
+  icon?: string;
 
-  path: string
+  path: string;
 
-  paramPath?: string
+  paramPath?: string;
 
-  disabled?: boolean
+  disabled?: boolean;
 
-  children?: Menu[]
+  children?: Menu[];
 
-  orderNo?: number
+  orderNo?: number;
 
-  roles?: Role[]
+  roles?: Role[];
 
-  meta?: Partial<RouteMeta>
+  meta?: Partial<RouteMeta>;
 
-  tag?: MenuTag
+  tag?: MenuTag;
 
-  hideMenu?: boolean
+  hideMenu?: boolean;
 }
 
 export interface MenuModule {
-  orderNo?: number
-  menu: Menu
+  orderNo?: number;
+  menu: Menu;
 }
 
-export type AppRouteModule = AppRouteRecordRaw
+export type AppRouteModule = AppRouteRecordRaw;

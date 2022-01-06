@@ -1,14 +1,14 @@
-import NProgress from '@/utils/lib/progress'
-import type { Router } from 'vue-router'
+import NProgress from '@/utils/lib/progress';
+import type { Router } from 'vue-router';
 
 export function createProgressGuard(router: Router) {
   router.beforeEach(async () => {
-    NProgress.start()
-    return true
-  })
+    NProgress.start();
+    return true;
+  });
 
   router.afterEach(async () => {
-    NProgress.done()
-    return true
-  })
+    NProgress.done();
+    return true;
+  });
 }

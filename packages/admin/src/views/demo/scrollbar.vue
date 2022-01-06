@@ -15,19 +15,36 @@
 </template>
 
 <script setup lang="ts">
-  import { Scrollbar } from '@/components/Scrollbar'
+import { Scrollbar } from '@/components/Scrollbar';
 
-  function scroll(e) {
-    // console.log(e)
-  }
+function scroll(e) {
+  // console.log(e)
+}
 </script>
 
 <style scoped>
-  .vap-scrollbar {
+.vap-scrollbar {
+  .scrollbar-demo-item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 50px;
+    margin: 10px;
+    color: #409eff;
+    text-align: center;
+    background: #ecf5ff;
+    border-radius: 4px;
+  }
+
+  .flex-content {
+    display: flex;
+
     .scrollbar-demo-item {
       display: flex;
+      flex-shrink: 0;
       align-items: center;
       justify-content: center;
+      width: 100px;
       height: 50px;
       margin: 10px;
       color: #409eff;
@@ -35,23 +52,6 @@
       background: #ecf5ff;
       border-radius: 4px;
     }
-
-    .flex-content {
-      display: flex;
-
-      .scrollbar-demo-item {
-        display: flex;
-        flex-shrink: 0;
-        align-items: center;
-        justify-content: center;
-        width: 100px;
-        height: 50px;
-        margin: 10px;
-        color: #409eff;
-        text-align: center;
-        background: #ecf5ff;
-        border-radius: 4px;
-      }
-    }
   }
+}
 </style>

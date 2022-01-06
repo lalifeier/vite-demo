@@ -1,21 +1,21 @@
-import enquireJs from 'enquire.js'
+import enquireJs from 'enquire.js';
 
-const mobileQuery = 'only screen and (max-width: 767.99px)'
+const mobileQuery = 'only screen and (max-width: 767.99px)';
 
 export function enquireScreen(cb, query = mobileQuery) {
   const handler = {
     match: () => {
-      cb && cb(true)
+      cb && cb(true);
     },
     unmatch: () => {
-      cb && cb(false)
-    }
-  }
+      cb && cb(false);
+    },
+  };
 
-  enquireJs.register(query, handler)
-  return handler
+  enquireJs.register(query, handler);
+  return handler;
 }
 
 export function unenquireScreen(handler, query = mobileQuery) {
-  enquireJs.unregister(query, handler)
+  enquireJs.unregister(query, handler);
 }

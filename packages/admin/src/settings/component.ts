@@ -7,16 +7,16 @@ export default {
 
       listField: 'data',
 
-      totalField: 'totalPages'
+      totalField: 'totalPages',
     },
     pageSizeOptions: [10, 50, 80, 100],
 
     defaultPageSize: 10,
 
-    defaultSize: 'middle'
+    defaultSize: 'middle',
   },
 
   scrollbar: {
-    native: false
-  }
-}
+    native: false,
+  },
+};

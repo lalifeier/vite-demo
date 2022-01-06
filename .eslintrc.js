@@ -9,14 +9,13 @@ module.exports = defineConfig({
   },
   parser: 'vue-eslint-parser',
   parserOptions: {
-    ecmaVersion: 12,
+    ecmaVersion: 'latest',
     parser: '@typescript-eslint/parser',
     sourceType: 'module',
     ecmaFeatures: {
       jsx: true
     }
   },
-  // extends: ['plugin:vue/vue3-recommended', 'plugin:@typescript-eslint/recommended', 'airbnb-base', 'plugin:prettier/recommended'],
   extends: [
     'plugin:vue/vue3-recommended',
     'plugin:@typescript-eslint/recommended',
@@ -38,7 +37,6 @@ module.exports = defineConfig({
     '@typescript-eslint/explicit-module-boundary-types': 'off',
     '@typescript-eslint/no-unused-vars': 'off',
 
-    'vue/valid-define-props': 'off',
     'vue/multi-word-component-names': 'off'
   },
   settings: {}

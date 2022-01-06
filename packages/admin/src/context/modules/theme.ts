@@ -1,26 +1,26 @@
-import { inject, provide, Ref, ref } from 'vue'
+import { inject, provide, Ref, ref } from 'vue';
 
-type ThemeContext = {
-  theme: Ref<String>
-  setTheme: (value: String) => void
+interface ThemeContext {
+  theme: Ref<string>;
+  setTheme: (value: string) => void;
 }
 
-const ThemeSymbol = Symbol()
+const ThemeSymbol = Symbol();
 
 export const useThemeProvide = () => {
-  const theme = ref<String>('')
-  const setTheme = (value: String) => (theme.value = value)
+  const theme = ref<string>('');
+  const setTheme = (value: string) => (theme.value = value);
 
   provide(ThemeSymbol, {
     theme,
-    setTheme
-  })
-}
+    setTheme,
+  });
+};
 
 export const useThemContext = () => {
-  const context = inject<ThemeContext>(ThemeSymbol)
+  const context = inject<ThemeContext>(ThemeSymbol);
   if (!context) {
-    throw new Error(`useThemeInject must be used after useThemeProvide`)
+    throw new Error(`useThemeInject must be used after useThemeProvide`);
   }
-  return context
-}
+  return context;
+};

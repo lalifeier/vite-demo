@@ -1,86 +1,86 @@
-import { createFileChunk, createFileHashInWorker, createFileSampleChunk } from '@/utils/file/upload'
-import { defineComponent, ref, unref } from 'vue'
+import { createFileChunk, createFileHashInWorker, createFileSampleChunk } from '@/utils/file/upload';
+import { defineComponent, ref, unref } from 'vue';
 
 const props = {
   disabled: {
     type: Boolean,
-    default: false
+    default: false,
   },
   multiple: {
     type: Boolean,
-    default: false
+    default: false,
   },
   limit: {
     type: Number as PropType<Nullable<number>>,
-    default: null
+    default: null,
   },
   accept: {
     type: String,
-    default: ''
+    default: '',
   },
   autoUpload: {
     type: Boolean,
-    default: true
+    default: true,
   },
   drag: {
     type: Boolean,
-    default: false
+    default: false,
   },
 
   chunkSize: {
     type: Number,
-    default: 10 * 1024 * 1024
+    default: 10 * 1024 * 1024,
   },
   threads: {
     type: Number,
-    default: 3
+    default: 3,
   },
   retry: {
     type: Number,
-    default: 3
+    default: 3,
   },
 
   beforeUpload: {
     type: Function,
-    default: null
+    default: null,
   },
   onExceed: {
     type: Function,
-    default: null
+    default: null,
   },
   onProgress: {
     type: Function,
-    default: null
+    default: null,
   },
   onSuccess: {
     type: Function,
-    default: null
+    default: null,
   },
   onError: {
     type: Function,
-    default: null
+    default: null,
   },
   onRemove: {
     type: Function,
-    default: null
-  }
-}
+    default: null,
+  },
+};
 
-export type UploadStatus = 'ready' | 'pause' | 'uploading' | 'success' | 'fail'
+export type UploadStatus = 'ready' | 'pause' | 'uploading' | 'success' | 'fail';
 
-export type UploadFile = {
-  name: string
-  percentage?: number
-  status: UploadStatus
-  size: number
-  file: File
+export interface UploadFile {
+  name: string;
+  percentage?: number;
+  status: UploadStatus;
+  size: number;
+  file: File;
 }
 
 export default defineComponent({
   name: 'Upload',
   props,
   setup(props, { slots }) {
-    const inputRef = ref<HTMLInputElement | null>(null)
+    const inputRef = ref<HTMLInputElement | null>(null);
 
     // async function uploadChunks(data, uploadedList = []) {
     // uploadApi({})
@@ -117,13 +117,13 @@ export default defineComponent({
     // }
 
     async function post(rawFile: File) {
-      const fileChunkList = createFileChunk(rawFile)
+      const fileChunkList = createFileChunk(rawFile);
 
-      const hash = await createFileHashInWorker(fileChunkList)
+      const hash = await createFileHashInWorker(fileChunkList);
 
-      console.log('sampleHash', await createFileHashInWorker(createFileSampleChunk(rawFile)))
+      console.log('sampleHash', await createFileHashInWorker(createFileSampleChunk(rawFile)));
 
-      console.log('hash', await createFileHashInWorker(createFileChunk(rawFile)))
+      console.log('hash', await createFileHashInWorker(createFileChunk(rawFile)));
 
       // console.log('slow hash', await createFileHash(createFileChunk(file)))
 
@@ -136,7 +136,7 @@ export default defineComponent({
       // if (!shouldUpload) {
       //   return
       // }
-      const uploadedList: number[] = []
+      const uploadedList: number[] = [];
 
       const data = fileChunkList.map((file, index) => ({
         fileHash: hash,
@@ -144,64 +144,64 @@ export default defineComponent({
         hash: hash + '-' + index,
         chunk: file,
         size: file.size,
-        percentage: uploadedList.includes(index) ? 100 : 0
-      }))
+        percentage: uploadedList.includes(index) ? 100 : 0,
+      }));
 
-      console.log(data)
+      console.log(data);
 
       // uploadChunks(data)
     }
 
     function upload(rawFile: File) {
       if (inputRef.value) {
-        inputRef.value.value = ''
+        inputRef.value.value = '';
       }
 
-      const { beforeUpload, onRemove } = props
+      const { beforeUpload, onRemove } = props;
       if (!beforeUpload) {
-        return post(rawFile)
+        return post(rawFile);
       }
 
-      const before = beforeUpload(rawFile)
+      const before = beforeUpload(rawFile);
       if (before instanceof Promise) {
         before
           .then(() => {
-            post(rawFile)
+            post(rawFile);
           })
           .catch(() => {
-            onRemove(null, rawFile)
-          })
+            onRemove(null, rawFile);
+          });
       } else if (before !== false) {
-        post(rawFile)
+        post(rawFile);
       } else {
-        onRemove(null, rawFile)
+        onRemove(null, rawFile);
       }
     }
 
     function uploadFiles(files: FileList) {
-      const { limit, onExceed, autoUpload, multiple } = props
+      const { limit, onExceed, autoUpload, multiple } = props;
       if (limit && files.length > limit) {
-        onExceed && onExceed(files)
-        return
+        onExceed && onExceed(files);
+        return;
       }
-      let postFiles = Array.from(files)
+      let postFiles = Array.from(files);
       if (!multiple) {
-        postFiles = postFiles.slice(0, 1)
+        postFiles = postFiles.slice(0, 1);
       }
       if (postFiles.length === 0) {
-        return
+        return;
       }
       postFiles.forEach((rawFile) => {
-        autoUpload && upload(rawFile)
-      })
+        autoUpload && upload(rawFile);
+      });
     }
 
     function handleFileChange(e: Event) {
-      const files = (e.target as HTMLInputElement).files
+      const files = (e.target as HTMLInputElement).files;
       if (!files) {
-        return
+        return;
       }
-      uploadFiles(files)
+      uploadFiles(files);
     }
 
     function handlePause() {}
@@ -210,11 +210,11 @@ export default defineComponent({
 
     function handleUpload() {
       if (props.disabled) {
-        return
+        return;
       }
       if (inputRef.value) {
-        inputRef.value.value = ''
-        inputRef.value.click()
+        inputRef.value.value = '';
+        inputRef.value.click();
       }
     }
 
@@ -232,6 +232,6 @@ export default defineComponent({
         <div onClick={handlePause}></div>
         <div onClick={handleResume}></div>
       </div>
-    )
-  }
-})
+    );
+  },
+});

@@ -18,15 +18,15 @@
 </template>
 
 <script setup lang="ts">
-  // import { ref } from 'vue';
-  // const formRef = ref(null)
+// import { ref } from 'vue';
+// const formRef = ref(null)
 
-  // const isFormValid = ref(false)
-  // const form = reactive({
-  //   email: ''
-  // })
+// const isFormValid = ref(false)
+// const form = reactive({
+//   email: ''
+// })
 
-  // function submit() { }
+// function submit() { }
 </script>
 
 <style scoped></style>

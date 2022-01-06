@@ -1,12 +1,12 @@
-import { EXCEPTION_STATUS } from '@/enums/exception'
-import { EXCEPTION_PAGE, LAYOUT } from '@/router/routes/constant'
-import { AppRouteModule } from '../../types'
+import { EXCEPTION_STATUS } from '@/enums/exception';
+import { EXCEPTION_PAGE, LAYOUT } from '@/router/routes/constant';
+import { AppRouteModule } from '../../types';
 
 const exception: AppRouteModule = {
   path: '/exception',
   name: 'ExceptionPage',
   meta: {
-    title: '异常页面'
+    title: '异常页面',
   },
   component: LAYOUT,
   children: [
@@ -16,8 +16,8 @@ const exception: AppRouteModule = {
       component: EXCEPTION_PAGE,
       meta: { title: '403' },
       props: {
-        status: EXCEPTION_STATUS.NOT_ACCESS
-      }
+        status: EXCEPTION_STATUS.NOT_ACCESS,
+      },
     },
     {
       path: '404',
@@ -25,8 +25,8 @@ const exception: AppRouteModule = {
       component: EXCEPTION_PAGE,
       meta: { title: '404' },
       props: {
-        status: EXCEPTION_STATUS.NOT_FOUND
-      }
+        status: EXCEPTION_STATUS.NOT_FOUND,
+      },
     },
     {
       path: '500',
@@ -34,8 +34,8 @@ const exception: AppRouteModule = {
       component: EXCEPTION_PAGE,
       meta: { title: '500' },
       props: {
-        status: EXCEPTION_STATUS.ERROR
-      }
+        status: EXCEPTION_STATUS.ERROR,
+      },
     },
     {
       path: 'network-error',
@@ -43,10 +43,10 @@ const exception: AppRouteModule = {
       component: EXCEPTION_PAGE,
       meta: { title: '网络错误' },
       props: {
-        status: EXCEPTION_STATUS.NETWORK_ERROR
-      }
-    }
-  ]
-}
+        status: EXCEPTION_STATUS.NETWORK_ERROR,
+      },
+    },
+  ],
+};
 
-export default exception
+export default exception;

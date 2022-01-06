@@ -12,7 +12,7 @@
 <script setup lang="ts"></script>
 
 <style scoped>
-  .layout-content {
-    max-width: 480px;
-  }
+.layout-content {
+  max-width: 480px;
+}
 </style>

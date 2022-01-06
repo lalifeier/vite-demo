@@ -1,11 +1,4 @@
-import {
-  BarChart,
-  LineChart,
-  MapChart,
-  PictorialBarChart,
-  PieChart,
-  RadarChart
-} from 'echarts/charts'
+import { BarChart, LineChart, MapChart, PictorialBarChart, PieChart, RadarChart } from 'echarts/charts';
 import {
   AriaComponent,
   CalendarComponent,
@@ -20,10 +13,10 @@ import {
   TitleComponent,
   ToolboxComponent,
   TooltipComponent,
-  VisualMapComponent
-} from 'echarts/components'
-import * as echarts from 'echarts/core'
-import { SVGRenderer } from 'echarts/renderers'
+  VisualMapComponent,
+} from 'echarts/components';
+import * as echarts from 'echarts/core';
+import { SVGRenderer } from 'echarts/renderers';
 // import theme from "./theme.json"
 
 echarts.use([
@@ -47,9 +40,9 @@ echarts.use([
   VisualMapComponent,
   TimelineComponent,
   CalendarComponent,
-  GraphicComponent
-])
+  GraphicComponent,
+]);
 
 // echarts.registerTheme("ovilia-green", theme)
 
-export default echarts
+export default echarts;
