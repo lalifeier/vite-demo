@@ -5,4 +5,4 @@
 [ -n "$CI" ] && exit 0
 
 pnpm run lint:lint-staged
-# pnpm run lint:pretty
+pnpm run lint:pretty

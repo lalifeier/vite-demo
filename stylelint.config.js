@@ -2,35 +2,28 @@ module.exports = {
   root: true,
   extends: [
     'stylelint-config-standard',
+    'stylelint-config-recommended-vue',
+    'stylelint-config-standard-scss',
+    'stylelint-config-recommended-vue/scss',
     'stylelint-config-rational-order',
-    'stylelint-config-prettier'
+    'stylelint-config-prettier',
   ],
-  plugins: ['stylelint-order', 'stylelint-config-rational-order/plugin', 'stylelint-scss'],
+  plugins: ['stylelint-order', 'stylelint-config-rational-order/plugin'],
   rules: {
     'order/properties-order': [],
     'plugin/rational-order': [
       true,
       {
         'border-in-box-model': false,
-        'empty-line-between-groups': false
-      }
+        'empty-line-between-groups': false,
+      },
     ],
-    "at-rule-no-unknown": null,
-    "scss/at-rule-no-unknown": true,
+    'no-empty-source': null,
+    'selector-class-pattern': null,
+    'no-descending-specificity': null,
+
+    'custom-property-pattern': null,
+    'scss/dollar-variable-pattern': null,
   },
   ignoreFiles: ['**/*.js', '**/*.jsx', '**/*.tsx', '**/*.ts'],
-  overrides: [
-    {
-      files: ['**/*.less'],
-      customSyntax: 'postcss-less'
-    },
-    {
-      files: ['**/*.scss'],
-      customSyntax: 'postcss-scss'
-    },
-    {
-      files: ['**/*.(html|vue|css)'],
-      customSyntax: 'postcss-html'
-    }
-  ]
-}
+};

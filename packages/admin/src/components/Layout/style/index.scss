@@ -13,12 +13,11 @@ $prefix-cls: '#{$namespace}-layout';
 
 .#{$prefix-cls} {
   display: grid;
-  grid-template-areas:
-    'header header header'
-    'sider content content'
-    'sider footer footer';
-  grid-template-rows: auto 1fr auto;
-  grid-template-columns: auto 1fr auto;
+  grid-template:
+    'header header header' auto
+    'sider content content' 1fr
+    'sider footer footer' auto
+    / auto 1fr auto;
 
   // grid-area: content;
 

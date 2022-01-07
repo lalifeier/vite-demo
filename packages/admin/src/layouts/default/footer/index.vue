@@ -20,7 +20,4 @@ const { prefixCls } = useDesign('layout-footer');
 
 <style lang="scss">
 $prefix-cls: '#{$namespace}-layout-footer';
-
-.#{$prefix-cls} {
-}
 </style>

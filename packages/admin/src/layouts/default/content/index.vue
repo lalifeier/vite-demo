@@ -12,7 +12,4 @@ const { prefixCls } = useDesign('layout-content');
 
 <style lang="scss">
 $prefix-cls: '#{$namespace}-content';
-
-.#{$prefix-cls} {
-}
 </style>

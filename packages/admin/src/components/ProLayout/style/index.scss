@@ -1,8 +1,5 @@
 @use './var.scss' as *;
 
-:root {
-}
-
 $prefix-cls: '#{$namespace}-pro-layout';
 
 .#{$prefix-cls} {

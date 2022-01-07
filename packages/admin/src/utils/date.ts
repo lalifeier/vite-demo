@@ -24,3 +24,5 @@ export function getPrevMonthDays() {
 export function isValidDate(date: Date): boolean {
   return isDate(date) && !isNaN(date.getTime());
 }
+
+export const timestamp = () => +Date.now();

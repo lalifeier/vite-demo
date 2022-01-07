@@ -2,7 +2,6 @@ export const escapeRegexpString = (value = ''): string => String(value).replace(
 
 export function escapeString(str: string): string {
   if (!str) return '';
-  // eslint-disable-next-line no-control-regex
   return str.replace(/[\0\n\r\b\t\\'"\x1a]/g, (s) => {
     switch (s) {
       case '\0':

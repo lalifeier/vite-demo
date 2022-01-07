@@ -39,12 +39,6 @@ const { prefixCls } = useDesign('layout-header');
 $prefix-cls: '#{$namespace}-layout-header';
 
 .#{$prefix-cls} {
-  &-left {
-  }
-
-  &-right {
-  }
-
   &--fixed {
     position: fixed;
     top: 0;
