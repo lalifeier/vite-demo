@@ -1,4 +1,4 @@
-import viteImagemin from 'vite-plugin-imagemin'
+import viteImagemin from 'vite-plugin-imagemin';
 
 export function configImageminPlugin() {
   return viteImagemin({
@@ -26,9 +26,9 @@ export function configImageminPlugin() {
         },
         {
           name: 'removeEmptyAttrs',
-              active: false,
+          active: false,
         },
       ],
     },
-  })
+  });
 }

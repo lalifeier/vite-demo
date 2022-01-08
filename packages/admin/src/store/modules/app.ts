@@ -1,4 +1,4 @@
-import { AppConfig, HeaderSetting, SidebarSetting, TransitionSetting } from '#/config';
+import { AppConfig, HeaderSetting, SidebarSetting, Theme, TransitionSetting } from '#/config';
 import { ThemeMode } from '@/enums/app';
 import { APP_CONFIG_KEY } from '@/enums/cache';
 import { resetRouter } from '@/router';
@@ -27,7 +27,7 @@ export const useAppStore = defineStore({
     getAppConfig(): AppConfig {
       return this.appConfig;
     },
-    getDarkMode(): ThemeMode {
+    getDarkMode(): Theme {
       return this.appConfig.darkMode;
     },
     getHeaderSetting(): HeaderSetting {

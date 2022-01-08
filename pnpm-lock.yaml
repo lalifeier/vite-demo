@@ -23,6 +23,7 @@ importers:
       eslint-plugin-prettier: ^4.0.0
       eslint-plugin-vue: ^8.2.0
       esno: ^0.13.0
+      fs-extra: ^10.0.0
       husky: ^7.0.4
       lint-staged: ^12.1.6
       postcss: ^8.4.5
@@ -60,6 +61,7 @@ importers:
       eslint-plugin-prettier: 4.0.0_1c588f61426b1faf18812943f1678311
       eslint-plugin-vue: 8.2.0_eslint@8.6.0
       esno: 0.13.0_typescript@4.5.4
+      fs-extra: 10.0.0
       husky: 7.0.4
       lint-staged: 12.1.6
       postcss: 8.4.5
@@ -84,7 +86,6 @@ importers:
     specifiers:
       '@iconify/iconify': ^2.1.0
       '@iconify/json': ^1.1.452
-      '@iconify/types': ^1.0.12
       '@mdi/font': 6.5.95
       '@mdi/js': ^6.5.95
       '@sentry/browser': ^6.16.1
@@ -104,6 +105,7 @@ importers:
       animate.css: ^4.1.1
       autoprefixer: ^10.4.1
       axios: ^0.24.0
+      chalk: ^5.0.0
       clipboard: ^2.0.8
       cropperjs: ^1.5.12
       cross-env: ^7.0.3
@@ -135,6 +137,7 @@ importers:
       tinymce: ^5.10.2
       typescript: ^4.5.4
       unplugin-auto-import: ^0.5.5
+      unplugin-icons: ^0.13.0
       unplugin-vue-components: ^0.17.11
       vditor: ^3.8.10
       vite: 2.7.10
@@ -142,7 +145,7 @@ importers:
       vite-plugin-compression: ^0.4.0
       vite-plugin-html: ^2.1.2
       vite-plugin-imagemin: ^0.5.1
-      vite-plugin-purge-icons: ^0.7.0
+      vite-plugin-inspect: ^0.3.13
       vite-plugin-pwa: ^0.11.12
       vite-plugin-sentry: ^1.0.12
       vite-plugin-style-import: ^1.4.1
@@ -199,7 +202,6 @@ importers:
       xlsx: 0.17.4
     devDependencies:
       '@iconify/json': 1.1.452
-      '@iconify/types': 1.0.12
       '@mdi/font': 6.5.95
       '@mdi/js': 6.5.95
       '@types/lodash-es': 4.17.5
@@ -212,6 +214,7 @@ importers:
       '@vue/compiler-sfc': 3.2.26
       '@vuetify/vite-plugin': 1.0.0-alpha.10_6624005a1d0c234a66724994f5973f5a
       autoprefixer: 10.4.1_postcss@8.4.5
+      chalk: 5.0.0
       cross-env: 7.0.3
       cz-conventional-changelog: 3.3.0_@types+node@17.0.8
       dotenv: 10.0.0
@@ -224,13 +227,14 @@ importers:
       sortablejs: 1.14.0
       typescript: 4.5.4
       unplugin-auto-import: 0.5.5_b473779475226ce888583816e2792766
+      unplugin-icons: 0.13.0_19309e3b970352503a73abb51bdede66
       unplugin-vue-components: 0.17.11_5f0e46dd90b19e6d0d01b34ab1022632
       vite: 2.7.10_sass@1.45.2
       vite-plugin-banner: 0.1.3
       vite-plugin-compression: 0.4.0_vite@2.7.10
       vite-plugin-html: 2.1.2_vite@2.7.10
       vite-plugin-imagemin: 0.5.1_vite@2.7.10
-      vite-plugin-purge-icons: 0.7.0_vite@2.7.10
+      vite-plugin-inspect: 0.3.13_vite@2.7.10
       vite-plugin-pwa: 0.11.12_vite@2.7.10
       vite-plugin-style-import: 1.4.1_vite@2.7.10
       vite-plugin-svg-icons: 1.1.0_vite@2.7.10
@@ -248,9 +252,30 @@ importers:
     specifiers: {}
 
 packages:
+  /@antfu/install-pkg/0.1.0:
+    resolution:
+      {
+        integrity: sha1-jYxhggy8MuXDfYLVFUha0+6b0FI=,
+        tarball: '@antfu/install-pkg/download/@antfu/install-pkg-0.1.0.tgz',
+      }
+    dependencies:
+      execa: 5.1.1
+      find-up: 5.0.0
+    dev: true
+
   /@antfu/utils/0.3.0:
     resolution:
       { integrity: sha1-YwbEO1Kog72Olz4+2N1kJIQYvMQ=, tarball: '@antfu/utils/download/@antfu/utils-0.3.0.tgz' }
+    dependencies:
+      '@types/throttle-debounce': 2.1.0
+    dev: true
+
+  /@antfu/utils/0.4.0:
+    resolution:
+      {
+        integrity: sha512-gqkpvjkgFUu+s3kP+Ly33OKpo5zvVY3FDFhv5BIb98SncS3KD6DNxPfNDjwHIoyXbz1leWo1j8DtRLZ1D2Jv+Q==,
+        tarball: '@antfu/utils/download/@antfu/utils-0.4.0.tgz',
+      }
     dependencies:
       '@types/throttle-debounce': 2.1.0
     dev: true
@@ -2189,16 +2214,6 @@ packages:
     engines: { node: '>=6.9.0' }
     dev: true
 
-  /@iconify/iconify/2.0.0-rc.6:
-    resolution:
-      {
-        integrity: sha1-4/U3a2O0QdyzaWMXeEuY4uZ4z0Y=,
-        tarball: '@iconify/iconify/download/@iconify/iconify-2.0.0-rc.6.tgz',
-      }
-    dependencies:
-      cross-fetch: 3.1.4
-    dev: true
-
   /@iconify/iconify/2.1.0:
     resolution:
       {
@@ -2207,6 +2222,7 @@ packages:
       }
     dependencies:
       cross-fetch: 3.1.4
+    dev: false
 
   /@iconify/json/1.1.452:
     resolution:
@@ -2222,6 +2238,16 @@ packages:
         integrity: sha512-6er6wSGF3hgc1JEZqiGpg21CTCjHBYOUwqLmb2Idzkjiw6ogalGP0ZMLVutCzah+0WB4yP+Zd2oVPN8jvJ+Ftg==,
         tarball: '@iconify/types/download/@iconify/types-1.0.12.tgz',
       }
+    dev: true
+
+  /@iconify/utils/1.0.20:
+    resolution:
+      {
+        integrity: sha512-J5IriR8KeANs8vIEFKWzOlOvNgZHkwqkmqaIwvqtuDbBeFHtXGfM/LYMDmjtRJ0AAa7f254qw6TK7gAibYfHUA==,
+        tarball: '@iconify/utils/download/@iconify/utils-1.0.20.tgz',
+      }
+    dependencies:
+      '@iconify/types': 1.0.12
     dev: true
 
   /@intlify/core-base/9.1.9:
@@ -2396,30 +2422,9 @@ packages:
       }
     dev: true
 
-  /@purge-icons/core/0.7.0:
+  /@polka/url/1.0.0-next.21:
     resolution:
-      {
-        integrity: sha1-CXuo1Ni36NZi32h70jkeuLg8q6A=,
-        tarball: '@purge-icons/core/download/@purge-icons/core-0.7.0.tgz',
-      }
-    dependencies:
-      '@iconify/iconify': 2.0.0-rc.6
-      axios: 0.21.4_debug@4.3.3
-      debug: 4.3.3
-      fast-glob: 3.2.7
-      fs-extra: 9.1.0
-    transitivePeerDependencies:
-      - supports-color
-    dev: true
-
-  /@purge-icons/generated/0.7.0:
-    resolution:
-      {
-        integrity: sha1-2H27MUXouaZOLhL/ZgqjyxPL61Y=,
-        tarball: '@purge-icons/generated/download/@purge-icons/generated-0.7.0.tgz',
-      }
-    dependencies:
-      '@iconify/iconify': 2.1.0
+      { integrity: sha1-XeWiOFo1MJQn9gEZkrVEUU1VmqE=, tarball: '@polka/url/download/@polka/url-1.0.0-next.21.tgz' }
     dev: true
 
   /@rollup/plugin-babel/5.3.0_@babel+core@7.16.7+rollup@2.63.0:
@@ -3999,18 +4004,6 @@ packages:
       postcss-value-parser: 4.2.0
     dev: true
 
-  /axios/0.21.4_debug@4.3.3:
-    resolution:
-      {
-        integrity: sha512-ut5vewkiu8jjGBdqpM44XxjuCjq9LAKeHVmoVfHVzy8eHgxxq8SbAVQNovDA8mVi05kP0Ea/n/UzcSHcTJQfNg==,
-        tarball: axios/download/axios-0.21.4.tgz,
-      }
-    dependencies:
-      follow-redirects: 1.14.6
-    transitivePeerDependencies:
-      - debug
-    dev: true
-
   /axios/0.24.0:
     resolution:
       {
@@ -4540,6 +4533,15 @@ packages:
     dependencies:
       ansi-styles: 4.3.0
       supports-color: 7.2.0
+    dev: true
+
+  /chalk/5.0.0:
+    resolution:
+      {
+        integrity: sha512-/duVOqst+luxCQRKEo4bNxinsOQtMP80ZYm7mMqzuh5PociNL0PvmHFvREJ9ueYL2TxlHjBcmLCdmocx9Vg+IQ==,
+        tarball: chalk/download/chalk-5.0.0.tgz,
+      }
+    engines: { node: ^12.17.0 || ^14.13 || >=16.0.0 }
     dev: true
 
   /change-case/4.1.2:
@@ -5368,6 +5370,7 @@ packages:
     resolution: { integrity: sha1-lyPzo6JHv4uJA586OAqSROj6Lzk=, tarball: cross-fetch/download/cross-fetch-3.1.4.tgz }
     dependencies:
       node-fetch: 2.6.1
+    dev: false
 
   /cross-spawn/5.1.0:
     resolution: { integrity: sha1-6L0O/uWPz/b4+UUQoKVUu/ojVEk=, tarball: cross-spawn/download/cross-spawn-5.1.0.tgz }
@@ -7515,6 +7518,7 @@ packages:
     peerDependenciesMeta:
       debug:
         optional: true
+    dev: false
 
   /for-in/1.0.2:
     resolution: { integrity: sha1-gQaNKVqBQuwKxybG4iAMMPttXoA=, tarball: for-in/download/for-in-1.0.2.tgz }
@@ -7561,11 +7565,7 @@ packages:
     dev: true
 
   /fs-extra/10.0.0:
-    resolution:
-      {
-        integrity: sha1-n/YbZV3eU/s0qC34S7IUzoAuF8E=,
-        tarball: fs-extra/download/fs-extra-10.0.0.tgz?cache=0&sync_timestamp=1633191065970&other_urls=https%3A%2F%2Fregistry.npmmirror.com%2Ffs-extra%2Fdownload%2Ffs-extra-10.0.0.tgz,
-      }
+    resolution: { integrity: sha1-n/YbZV3eU/s0qC34S7IUzoAuF8E=, tarball: fs-extra/download/fs-extra-10.0.0.tgz }
     engines: { node: '>=12' }
     dependencies:
       graceful-fs: 4.2.9
@@ -7586,11 +7586,7 @@ packages:
     dev: false
 
   /fs-extra/8.1.0:
-    resolution:
-      {
-        integrity: sha1-SdQ8RaiM2Wd2aMt74bRu/bjS4cA=,
-        tarball: fs-extra/download/fs-extra-8.1.0.tgz?cache=0&sync_timestamp=1633191065970&other_urls=https%3A%2F%2Fregistry.npmmirror.com%2Ffs-extra%2Fdownload%2Ffs-extra-8.1.0.tgz,
-      }
+    resolution: { integrity: sha1-SdQ8RaiM2Wd2aMt74bRu/bjS4cA=, tarball: fs-extra/download/fs-extra-8.1.0.tgz }
     engines: { node: '>=6 <7 || >=8' }
     dependencies:
       graceful-fs: 4.2.9
@@ -8548,7 +8544,7 @@ packages:
     engines: { node: '>=8.0.0' }
     dependencies:
       ansi-escapes: 4.3.2
-      chalk: 4.1.1
+      chalk: 4.1.2
       cli-cursor: 3.1.0
       cli-width: 3.0.0
       external-editor: 3.1.0
@@ -9606,7 +9602,7 @@ packages:
     resolution: { integrity: sha1-P727lbRoOsn8eFER55LlWNSr1QM=, tarball: log-symbols/download/log-symbols-4.1.0.tgz }
     engines: { node: '>=10' }
     dependencies:
-      chalk: 4.1.1
+      chalk: 4.1.2
       is-unicode-supported: 0.1.0
     dev: true
 
@@ -10007,6 +10003,11 @@ packages:
     engines: { node: '>=4' }
     dev: true
 
+  /mrmime/1.0.0:
+    resolution: { integrity: sha1-FNOH8FhaUjPSkbq6M5sGN1KiOYs=, tarball: mrmime/download/mrmime-1.0.0.tgz }
+    engines: { node: '>=10' }
+    dev: true
+
   /ms/2.0.0:
     resolution: { integrity: sha1-VgiurfwAvmwpAd9fmGF4jeDVl8g=, tarball: ms/download/ms-2.0.0.tgz }
     dev: true
@@ -10123,6 +10124,7 @@ packages:
   /node-fetch/2.6.1:
     resolution: { integrity: sha1-BFvTI2Mfdu0uK1VXM5RBa2OaAFI=, tarball: node-fetch/download/node-fetch-2.6.1.tgz }
     engines: { node: 4.x || >=6.0.0 }
+    dev: false
 
   /node-fetch/2.6.6:
     resolution: { integrity: sha1-F1GnwBg06OFpd1hzLp77burfr4k=, tarball: node-fetch/download/node-fetch-2.6.6.tgz }
@@ -10389,7 +10391,7 @@ packages:
     engines: { node: '>=10' }
     dependencies:
       bl: 4.1.0
-      chalk: 4.1.1
+      chalk: 4.1.2
       cli-cursor: 3.1.0
       cli-spinners: 2.6.1
       is-interactive: 1.0.0
@@ -11816,20 +11818,6 @@ packages:
       rollup: 2.63.0
     dev: true
 
-  /rollup-plugin-purge-icons/0.7.0:
-    resolution:
-      {
-        integrity: sha1-RBm4ENXXXxu6OvcqI45wtKZ18Dw=,
-        tarball: rollup-plugin-purge-icons/download/rollup-plugin-purge-icons-0.7.0.tgz,
-      }
-    engines: { node: '>= 12' }
-    dependencies:
-      '@purge-icons/core': 0.7.0
-      '@purge-icons/generated': 0.7.0
-    transitivePeerDependencies:
-      - supports-color
-    dev: true
-
   /rollup-plugin-terser/7.0.2_rollup@2.63.0:
     resolution:
       {
@@ -12067,6 +12055,19 @@ packages:
         integrity: sha512-sDl4qMFpijcGw22U5w63KmD3cZJfBuFlVNbVMKje2keoKML7X2UzWbc4XrmEbDwg0NXJc3yv4/ox7b+JWb57kQ==,
         tarball: signal-exit/download/signal-exit-3.0.6.tgz,
       }
+
+  /sirv/2.0.0:
+    resolution:
+      {
+        integrity: sha512-TT+4+zSM9LR8soWT5/4gOYHfB5a5XEOSV2LtmBRN5MUxi8kh7BSRGuoRYjeBaqhR4w+yx+k6t0OibDNgoLfF7w==,
+        tarball: sirv/download/sirv-2.0.0.tgz,
+      }
+    engines: { node: '>= 10' }
+    dependencies:
+      '@polka/url': 1.0.0-next.21
+      mrmime: 1.0.0
+      totalist: 2.0.0
+    dev: true
 
   /slash/2.0.0:
     resolution: { integrity: sha1-3lUoUaF1nfOo8gZTVEL17E3eq0Q=, tarball: slash/download/slash-2.0.0.tgz }
@@ -13242,6 +13243,11 @@ packages:
     resolution: { integrity: sha1-zCAOqyYT9BZtJ/+a/HylbUnfbrQ=, tarball: token-stream/download/token-stream-1.0.0.tgz }
     dev: true
 
+  /totalist/2.0.0:
+    resolution: { integrity: sha1-228eGcD6Y+cTObu4+6iWU8GMfuw=, tarball: totalist/download/totalist-2.0.0.tgz }
+    engines: { node: '>=6' }
+    dev: true
+
   /tr46/0.0.3:
     resolution: { integrity: sha1-gYT9NH2snNwYWZLzpmIuFLnZq2o=, tarball: tr46/download/tr46-0.0.3.tgz }
 
@@ -13460,6 +13466,10 @@ packages:
       }
     engines: { node: '>=4.2.0' }
     hasBin: true
+    dev: true
+
+  /ufo/0.7.9:
+    resolution: { integrity: sha1-Amjjc0tBPJ7W81ECAfQjcoIbh1w=, tarball: ufo/download/ufo-0.7.9.tgz }
     dev: true
 
   /uglify-js/3.14.5:
@@ -13684,6 +13694,42 @@ packages:
       unplugin: 0.2.21_rollup@2.63.0+vite@2.7.10
     transitivePeerDependencies:
       - rollup
+      - vite
+      - webpack
+    dev: true
+
+  /unplugin-icons/0.13.0_19309e3b970352503a73abb51bdede66:
+    resolution:
+      {
+        integrity: sha512-CyAl0HV3bZUGT7ut9agpPRhEYXCvufr80Fh72yrkD57BVCTZ7ze10Rt63ZrvPXiJQpd+aI/Bizm2aqOf3WPSfg==,
+        tarball: unplugin-icons/download/unplugin-icons-0.13.0.tgz,
+      }
+    peerDependencies:
+      '@svgr/core': ^5.5.0
+      '@vue/compiler-sfc': ^3.0.2
+      vue-template-compiler: ^2.6.12
+      vue-template-es2015-compiler: ^1.9.0
+    peerDependenciesMeta:
+      '@svgr/core':
+        optional: true
+      '@vue/compiler-sfc':
+        optional: true
+      vue-template-compiler:
+        optional: true
+      vue-template-es2015-compiler:
+        optional: true
+    dependencies:
+      '@antfu/install-pkg': 0.1.0
+      '@antfu/utils': 0.4.0
+      '@iconify/utils': 1.0.20
+      '@vue/compiler-sfc': 3.2.26
+      debug: 4.3.3
+      kolorist: 1.5.1
+      local-pkg: 0.4.1
+      unplugin: 0.2.21_rollup@2.63.0+vite@2.7.10
+    transitivePeerDependencies:
+      - rollup
+      - supports-color
       - vite
       - webpack
     dev: true
@@ -13972,19 +14018,21 @@ packages:
       - supports-color
     dev: true
 
-  /vite-plugin-purge-icons/0.7.0_vite@2.7.10:
+  /vite-plugin-inspect/0.3.13_vite@2.7.10:
     resolution:
       {
-        integrity: sha1-xGADdDj9cTchUzYMy559l7Aw+1g=,
-        tarball: vite-plugin-purge-icons/download/vite-plugin-purge-icons-0.7.0.tgz,
+        integrity: sha512-Naie3Rx/0IbmQSknfQPVrvWKiar7fCu50u+uLcUgt54yX0espduLDnI8IEtOYlsCA4gHs93IYKtxFDTxAThmYw==,
+        tarball: vite-plugin-inspect/download/vite-plugin-inspect-0.3.13.tgz,
       }
-    engines: { node: '>= 12' }
+    engines: { node: '>=14' }
     peerDependencies:
-      vite: ^2.0.0-beta.3
+      vite: ^2.0.0
     dependencies:
-      '@purge-icons/core': 0.7.0
-      '@purge-icons/generated': 0.7.0
-      rollup-plugin-purge-icons: 0.7.0
+      '@rollup/pluginutils': 4.1.2
+      debug: 4.3.3
+      kolorist: 1.5.1
+      sirv: 2.0.0
+      ufo: 0.7.9
       vite: 2.7.10_sass@1.45.2
     transitivePeerDependencies:
       - supports-color

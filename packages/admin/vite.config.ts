@@ -1,42 +1,44 @@
-import dayjs from 'dayjs'
-import path from 'path'
-import type { ConfigEnv, UserConfig } from 'vite'
-import { loadEnv } from 'vite'
-import { OUTPUT_DIR } from './build/constant'
-import { createPlugins } from './build/index'
-import { createProxy, wrapperEnv } from './build/utils'
-import pkg from './package.json'
-const pathResolve = (dir: string) => path.resolve(__dirname, dir)
+import dayjs from 'dayjs';
+import path from 'path';
+import type { ConfigEnv, UserConfig } from 'vite';
+import { loadEnv } from 'vite';
+import { OUTPUT_DIR } from './build/constants';
+import { wrapperEnv } from './build/utils';
+import { configProxy, createPlugins } from './build/vite';
+import pkg from './package.json';
+const pathResolve = (dir: string) => path.resolve(__dirname, dir);
 
 const { dependencies, devDependencies, name, version } = pkg;
 const __APP_INFO__ = {
   pkg: { dependencies, devDependencies, name, version },
   lastBuildTime: dayjs().format('YYYY-MM-DD HH:mm:ss'),
-}
+};
 
 export default ({ command, mode }: ConfigEnv): UserConfig => {
-  const env = loadEnv(mode, process.cwd())
-  const viteEnv = wrapperEnv(env)
-  const { VITE_PORT, VITE_PUBLIC_PATH, VITE_DROP_CONSOLE, VITE_PROXY } = viteEnv
+  const env = loadEnv(mode, process.cwd());
+  const viteEnv = wrapperEnv(env);
+  const { VITE_PORT, VITE_PUBLIC_PATH, VITE_DROP_CONSOLE, VITE_PROXY } = viteEnv;
 
-  const isBuild = command === 'build'
+  const isBuild = command === 'build';
 
   return {
     plugins: createPlugins(viteEnv, isBuild, mode),
     base: VITE_PUBLIC_PATH,
     resolve: {
       alias: {
-        'vue-i18n': 'vue-i18n/dist/vue-i18n.cjs.js',
         '@': pathResolve('src'),
-        '#': pathResolve('types')
-      }
+        '#': pathResolve('types'),
+        'vue-i18n': 'vue-i18n/dist/vue-i18n.cjs.js',
+        vue: 'vue/dist/vue.esm-bundler.js',
+      },
     },
     server: {
       host: true,
+      fs: {
+        strict: true,
+      },
       port: VITE_PORT,
-      open: false,
-      proxy: createProxy(VITE_PROXY),
-      cors: true
+      proxy: configProxy(VITE_PROXY),
     },
     build: {
       sourcemap: true,
@@ -45,11 +47,11 @@ export default ({ command, mode }: ConfigEnv): UserConfig => {
       terserOptions: {
         compress: {
           keep_infinity: true,
-          drop_console: VITE_DROP_CONSOLE
-        }
+          drop_console: VITE_DROP_CONSOLE,
+        },
       },
       brotliSize: false,
-      chunkSizeWarningLimit: 2000,
+      chunkSizeWarningLimit: 2048,
       rollupOptions: {
         // external: ['vue'],
         // plugins: [
@@ -57,21 +59,29 @@ export default ({ command, mode }: ConfigEnv): UserConfig => {
         //     vue: 'Vue',
         //   }),
         // ],
-      }
+      },
     },
     css: {
       preprocessorOptions: {
+        less: {
+          javascriptEnabled: true,
+        },
         scss: {
-          additionalData: `@use "@/styles/var.scss" as *;`
-        }
-      }
+          additionalData: `@use "@/styles/var.scss" as *;`,
+        },
+      },
     },
     define: {
       __APP_INFO__: JSON.stringify(__APP_INFO__),
     },
     optimizeDeps: {
-      include: [],
-      exclude: []
-    }
-  }
-}
+      include: [
+        'vue',
+        'vue-router',
+        '@vueuse/core',
+        // '@vueuse/head',
+      ],
+      exclude: ['vue-demi'],
+    },
+  };
+};
