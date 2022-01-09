@@ -11,3 +11,5 @@ export type BreakpointType = 'sm' | 'md' | 'lg' | 'xl' | '2xl';
 export interface MenuClickOptions {
   event: Event;
 }
+
+export type CollapseEventType = 'trigger' | 'breakpoint';

@@ -1,21 +1,19 @@
 @use '@/styles/var.scss' as *;
 
-$text-color: rgba(#000, 0.85);
-$text-color-dark: rgba(#fff, 85%);
-$background-color-component: var(--vap-color-white);
-$background-color-component-dark: #191c24;
-$transition-duration-base: 0.3s;
-$layout-header-background: $background-color-component;
+// header
+$layout-header-background: $background-color;
 $layout-header-color: $text-color;
 $layout-header-height: 64px;
 $layout-header-padding: 0 24px;
+$layout-header-box-shadow: 0 2px 8px 0 rgb(0 0 0 / 8%);
 
-// $layout-header-box-shadow: 0 2px 8px 0 rgb(0 0 0 / 8%);
-
-$layout-footer-background: $background-color-component;
+// footer
+$layout-footer-background: $background-color;
 $layout-footer-color: $text-color;
 $layout-footer-padding: 24px 48px;
-$layout-sider-background: $background-color-component;
+
+// sider
+$layout-sider-background: $background-color;
 $layout-sider-color: $text-color;
 $layout-sider-width: 224px;
 $layout-sider-collapsed-width: 64px;

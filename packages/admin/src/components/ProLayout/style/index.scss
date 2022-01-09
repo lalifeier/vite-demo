@@ -23,10 +23,9 @@ $prefix-cls: '#{$namespace}-pro-layout';
     z-index: 2;
     display: flex;
     align-items: center;
-
-    // height: $pro-layout-header-height;
-    // line-height: $pro-layout-header-height;
-    // box-shadow: $pro-layout-header-box-shadow;
+    height: $pro-layout-header-height;
+    line-height: $pro-layout-header-height;
+    box-shadow: $pro-layout-header-box-shadow;
 
     &-fixed {
       position: sticky;
@@ -51,6 +50,7 @@ $prefix-cls: '#{$namespace}-pro-layout';
     flex-direction: column;
     width: $pro-layout-sider-width;
     height: 100%;
+    border-right: 1px solid #f0f0f0;
 
     &-fixed {
       position: sticky;
@@ -69,16 +69,29 @@ $prefix-cls: '#{$namespace}-pro-layout';
       flex: 1 1 0%;
       height: 100%;
       overflow: hidden;
-      border-right: 1px solid #f0f0f0;
 
-      // &:hover {
-      //   overflow-y: auto;
-      // }
+      &:hover {
+        overflow-y: auto;
+      }
     }
 
     &-footer {
       height: $pro-layout-sider-footer-height;
       line-height: $pro-layout-sider-footer-height;
+    }
+
+    &-trigger {
+      z-index: 1;
+      color: $pro-layout-sider-trigger-color;
+      font-size: $pro-layout-sider-trigger-font-size;
+      text-align: center;
+      background: $pro-layout-sider-trigger-background;
+      cursor: pointer;
+      transition: color $transition-duration-base;
+
+      &:hover {
+        color: $pro-layout-sider-trigger-active-color;
+      }
     }
   }
 }

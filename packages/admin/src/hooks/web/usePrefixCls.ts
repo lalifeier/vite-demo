@@ -1,8 +1,13 @@
-// import type { ComputedRef } from 'vue';
-// import { computed, inject } from 'vue';
+import { useAppProviderContext } from '@/components/Application';
+import { CLASS_PREFIX } from '@/settings/design';
 
-// export function usePrefixCls (name: string, props: Record<any, any>): ComputedRef<string> => {
+export function usePrefixCls(name: string): string {
+  const vm = getCurrentInstance()!;
+  const appProvider = useAppProviderContext();
 
-//   // const prefixCls = computed(() =>getPrefixCls(name, props.prefixCls));
-//   return prefixCls;
-// };
+  const prefix = appProvider?.prefixCls ?? vm.props?.prefixCls ?? CLASS_PREFIX;
+  if (name) {
+    return `${prefix}-${name}`;
+  }
+  return prefix;
+}

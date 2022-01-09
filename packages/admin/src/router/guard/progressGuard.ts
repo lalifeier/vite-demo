@@ -1,4 +1,4 @@
-import NProgress from '@/utils/lib/progress';
+import NProgress from '@/utils/lib/nprogress';
 import type { Router } from 'vue-router';
 
 export function createProgressGuard(router: Router) {

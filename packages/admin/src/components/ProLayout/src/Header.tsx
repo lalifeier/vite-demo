@@ -1,21 +1,13 @@
 import { LayoutHeader } from '@/components/Layout';
-import { useDesign } from '@/hooks/web/useDesign';
+import { usePrefixCls } from '@/hooks/web/usePrefixCls';
 import { isObject } from '@/utils/is';
 import { computed, defineComponent } from 'vue';
 import { useProLayoutContext } from './useProLayoutContext';
 
-const props = {
-  prefixCls: {
-    type: String as PropType<string>,
-    default: 'pro-layout-header',
-  },
-};
-
 export default defineComponent({
   name: 'Header',
-  props,
   setup() {
-    const { prefixCls } = useDesign('pro-layout-header');
+    const prefixCls = usePrefixCls('pro-layout-header');
 
     const { props, slots } = useProLayoutContext();
 

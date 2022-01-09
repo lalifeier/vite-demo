@@ -2,7 +2,6 @@ import legacy from '@vitejs/plugin-legacy';
 import vue from '@vitejs/plugin-vue';
 import vueJsx from '@vitejs/plugin-vue-jsx';
 import vuetify from '@vuetify/vite-plugin';
-import Icons from 'unplugin-icons/vite';
 import type { Plugin, PluginOption } from 'vite';
 import Inspect from 'vite-plugin-inspect';
 import vueSetupExtend from 'vite-plugin-vue-setup-extend';
@@ -12,6 +11,7 @@ import { configBannerPlugin } from './banner';
 import { configComponentsPlugin } from './components';
 import { configCompressPlugin } from './compress';
 import { configHtmlPlugin } from './html';
+import { configIconsPlugin } from './icons';
 import { configImageminPlugin } from './imagemin';
 import { configProxy } from './proxy';
 import { configPWAPlugin } from './pwa';
@@ -30,19 +30,12 @@ export function createPlugins(viteEnv: ViteEnv, isBuild: boolean, mode: string) 
   plugins.push(configVisualizerPlugin());
 
   // plugins.push(PurgeIcons())
-  Icons({
-    autoInstall: true,
 
-    // customCollections: {
-    //   'icon': FileSystemIconLoader(
-    //     'src/assets/icons',
-    //     svg => svg.replace(/^<svg /, '<svg fill="currentColor" ')
-    //   ),
-    // }
-  }),
-    // plugins.push(configStyleImportPlugin())
+  plugins.push(configIconsPlugin());
 
-    plugins.push(configBannerPlugin());
+  // plugins.push(configStyleImportPlugin())
+
+  plugins.push(configBannerPlugin());
 
   // plugins.push(configThemePlugin())
 
@@ -54,14 +47,16 @@ export function createPlugins(viteEnv: ViteEnv, isBuild: boolean, mode: string) 
 
   VITE_SENTRY && plugins.push(configSentryPlugin(mode));
 
-  configComponentsPlugin();
+  plugins.push(configComponentsPlugin());
 
-  configAutoImportPlugin();
+  plugins.push(configAutoImportPlugin());
 
-  Inspect({
-    // change this to enable inspect for debugging
-    enabled: false,
-  });
+  plugins.push(
+    Inspect({
+      // change this to enable inspect for debugging
+      enabled: false,
+    }),
+  );
 
   if (isBuild) {
     VITE_IMAGEMIN && plugins.push(configImageminPlugin());

@@ -4,12 +4,11 @@ import { AppRouteRecordRaw, Menu } from '@/router/types';
 import { filterRoutes, flatMultiLevelRoutes, sortMenu, transformRouteToMenu } from '@/router/utils';
 import { store } from '@/store';
 import { defineStore } from 'pinia';
-import { toRaw } from 'vue';
 import { useAppStoreWithOut } from './app';
 import { useUserStoreWithOut } from './user';
 interface PermissionState {
   permissionCodeList: string[] | number[];
-  isDynamicRoutes: boolean;
+  isDynamicAddedRoute: boolean;
   menuList: Menu[];
 }
 
@@ -17,7 +16,7 @@ export const usePermissionStore = defineStore({
   id: 'permission',
   state: (): PermissionState => ({
     permissionCodeList: [],
-    isDynamicRoutes: false,
+    isDynamicAddedRoute: false,
     menuList: [],
   }),
   getters: {
@@ -27,8 +26,8 @@ export const usePermissionStore = defineStore({
     getMenuList(): Menu[] {
       return this.menuList;
     },
-    getIsDynamicRoutes(): boolean {
-      return this.isDynamicRoutes;
+    getIsDynamicAddedRoute(): boolean {
+      return this.isDynamicAddedRoute;
     },
   },
   actions: {
@@ -38,16 +37,16 @@ export const usePermissionStore = defineStore({
     setMenuList(list: Menu[]) {
       this.menuList = list;
     },
-    setIsDynamicRoutes(isDynamicRoutes): void {
-      this.isDynamicRoutes = isDynamicRoutes;
+    setDynamicAddedRoute(isDynamicAddedRoute): void {
+      this.isDynamicAddedRoute = isDynamicAddedRoute;
     },
     async generateRoutes() {
-      const appStore = useAppStoreWithOut();
       const userStore = useUserStoreWithOut();
+      const appStore = useAppStoreWithOut();
 
       let routes: AppRouteRecordRaw[] = [];
       const { permissionMode } = appStore.appConfig;
-      const roleList = toRaw(userStore.getRoleList);
+      const roleList = userStore.getRoleList || [];
 
       switch (permissionMode) {
         case PermissionMode.ROUTE_MAPPING:
@@ -66,7 +65,7 @@ export const usePermissionStore = defineStore({
     resetState(): void {
       this.permissionCodeList = [];
       this.menuList = [];
-      this.isDynamicRoutes = false;
+      this.isDynamicAddedRoute = false;
     },
   },
 });

@@ -35,9 +35,9 @@ $color-warning: map.get($colors, 'warning', 'base') !default;
 $color-danger: map.get($colors, 'danger', 'base') !default;
 $color-error: map.get($colors, 'error', 'base') !default;
 $color-info: map.get($colors, 'info', 'base') !default;
-$text-color: rgb(var(--vap-color-black) 0.85) !default;
+$text-color: rgb(var(--vvap-color-black) 0.85) !default;
 
-// $text-color-dark: rgb(var(--vap-color-white) 0.85) !default;
+// $text-color-dark: rgb(var(--vvap-color-white) 0.85) !default;
 
 $background-color: $color-white;
 $component-background-color: $color-white;

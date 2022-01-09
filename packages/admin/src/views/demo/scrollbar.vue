@@ -23,7 +23,7 @@ function scroll(e) {
 </script>
 
 <style scoped>
-.vap-scrollbar {
+.vvap-scrollbar {
   .scrollbar-demo-item {
     display: flex;
     align-items: center;

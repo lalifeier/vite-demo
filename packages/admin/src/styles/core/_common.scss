@@ -1,7 +1,13 @@
 html {
+  overflow: hidden;
+}
+
+html,
+body {
   width: 100%;
   height: 100%;
-  overflow: visible !important;
+
+  // overflow: visible !important;
 
   // overflow-x: hidden !important;
 
@@ -18,6 +24,7 @@ html {
 #app {
   width: 100%;
   height: 100%;
+  background: #f5f7f9;
 }
 
 // ::-webkit-scrollbar {

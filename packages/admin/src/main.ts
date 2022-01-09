@@ -1,8 +1,6 @@
 import App from '@/App.vue';
-import { setupComponent } from '@/components';
 import { setupDirective } from '@/directives';
 import { setupI18n } from '@/locales/index';
-import { setupPlugin } from '@/plugins';
 import { router, setupRouter } from '@/router';
 import { setupRouterGuard } from '@/router/guard';
 import { setupStore } from '@/store';
@@ -17,6 +15,7 @@ import 'virtual:windi-utilities.css';
 import 'vite-plugin-svg-icons/register';
 import { createApp } from 'vue';
 import { worker } from '../mock/browser';
+import { setupPlugin } from './plugins';
 
 if (!isDev) {
   worker.start({
@@ -32,8 +31,6 @@ if (!isDev) {
   setupStore(app);
 
   setupAppConfig();
-
-  setupComponent(app);
 
   await setupI18n(app);
 

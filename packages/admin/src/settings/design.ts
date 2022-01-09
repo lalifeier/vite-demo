@@ -1,6 +1,6 @@
 import { ThemeMode } from '@/enums/app';
 
-export const prefixCls = 'vap';
+export const CLASS_PREFIX = 'vvap';
 
 export const themeMode = ThemeMode.LIGHT;
 

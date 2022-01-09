@@ -1,6 +1,6 @@
 import { useProvider } from '@/context';
 import { useSidebarSetting } from '@/hooks/setting/useSidebarSetting';
-import { prefixCls, themeMode } from '@/settings/design';
+import { CLASS_PREFIX, themeMode } from '@/settings/design';
 import { breakpointsTailwind, useBreakpoints } from '@vueuse/core';
 import { defineComponent, ref, toRefs, watch } from 'vue';
 import { createAppProviderContext } from './useAppContext';
@@ -8,7 +8,7 @@ import { createAppProviderContext } from './useAppContext';
 const props = {
   prefixCls: {
     type: String,
-    default: prefixCls,
+    default: CLASS_PREFIX,
   },
   theme: {
     type: String,

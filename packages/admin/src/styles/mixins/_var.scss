@@ -3,18 +3,18 @@
 @use '../var.scss' as *;
 
 // @mixin set-css-color-type-light($type, $i) {
-//   --vap-color-#{$type}-light-#{$i}: #{map.get($colors, $type, 'light-#{$i}')};
+//   --vvap-color-#{$type}-light-#{$i}: #{map.get($colors, $type, 'light-#{$i}')};
 // }
 
 @mixin set-css-color-type($type) {
-  --vap-color-#{$type}: #{map.get($colors, $type, 'base')};
+  --vvap-color-#{$type}: #{map.get($colors, $type, 'base')};
 
-  // --vap-color-#{$type}-light: #{map.get($colors, $type, 'light-8')};
-  // --vap-color-#{$type}-lighter: #{map.get($colors, $type, 'light-9')};
+  // --vvap-color-#{$type}-light: #{map.get($colors, $type, 'light-8')};
+  // --vvap-color-#{$type}-lighter: #{map.get($colors, $type, 'light-9')};
 }
 
 @mixin set-component-css-var($name, $variables) {
   @each $attribute, $value in $variables {
-    --vap-#{$name}-#{$attribute}: #{$value};
+    --vvap-#{$name}-#{$attribute}: #{$value};
   }
 }

@@ -2,8 +2,12 @@
   "name": "@vvap/components",
   "version": "1.0.0",
   "description": "@vvap/components",
-  "main": "index.ts",
-  "keywords": [],
-  "author": "",
-  "license": "MIT"
+  "main": "src/index.ts",
+  "license": "MIT",
+  "dependencies": {
+    "@vvap/utils": "workspace:^1.0.0"
+  },
+  "devDependencies": {
+    "vue": "^3.2.26"
+  }
 }

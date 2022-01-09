@@ -2,30 +2,35 @@ import IconsResolver from 'unplugin-icons/resolver';
 import {
   AntDesignVueResolver,
   ElementPlusResolver,
+  IduxResolver,
   VantResolver,
   VuetifyResolver,
 } from 'unplugin-vue-components/resolvers';
-import Components from 'unplugin-vue-components/vite';
+import UnpluginVueComponents from 'unplugin-vue-components/vite';
 
 export function configComponentsPlugin() {
-  return Components({
+  return UnpluginVueComponents({
     resolvers: [
       AntDesignVueResolver(),
       ElementPlusResolver(),
       VantResolver(),
       VuetifyResolver(),
+      IduxResolver({
+        importStyle: 'css',
+      }),
 
       // auto import icons
       IconsResolver({
         componentPrefix: '',
+        customCollections: ['icon'],
         // enabledCollections: ['carbon']
       }),
     ],
 
-    dirs: ['src/components'],
+    // dirs: ['src/components'],
 
-    extensions: ['vue'],
+    // extensions: ['vue', 'tsx'],
 
-    dts: 'src/components.d.ts',
+    dts: 'types/components.d.ts',
   });
 }

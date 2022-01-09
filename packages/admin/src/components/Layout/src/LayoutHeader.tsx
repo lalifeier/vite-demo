@@ -1,18 +1,10 @@
-import { useDesign } from '@/hooks/web/useDesign';
+import { usePrefixCls } from '@/hooks/web/usePrefixCls';
 import { defineComponent } from 'vue';
-
-const props = {
-  prefixCls: {
-    type: String as PropType<string>,
-    default: 'layout-header',
-  },
-};
 
 export default defineComponent({
   name: 'LayoutHeader',
-  props,
   setup(_, { slots }) {
-    const { prefixCls } = useDesign('layout-header');
+    const prefixCls = usePrefixCls('layout-header');
 
     return () => <header class={prefixCls}>{slots.default?.()}</header>;
   },

@@ -4,8 +4,10 @@
   "description": "@vvap/utils",
   "main": "index.ts",
   "module": "index.ts",
-  "types": "index.d.js",
-  "unpkg": "index.js",
-  "jsdelivr": "index.js",
-  "license": "MIT"
+  "types": "index.d.ts",
+  "license": "MIT",
+  "devDependencies": {
+    "@vue/shared": "^3.2.26",
+    "vue": "^3.2.26"
+  }
 }

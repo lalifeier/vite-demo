@@ -4,19 +4,19 @@
 @use 'mixins/var' as *;
 
 :root {
-  --vap-color-white: #{$color-white};
-  --vap-color-black: #{$color-black};
-  --vap-color-primary: #{$color-primary};
+  --vvap-color-white: #{$color-white};
+  --vvap-color-black: #{$color-black};
+  --vvap-color-primary: #{$color-primary};
 
   @each $type in (success, warning, danger, error, info) {
     @include set-css-color-type($type);
   }
 
-  --vap-text-color: #{$text-color};
-  --vap-background-color: #{$background-color};
+  --vvap-text-color: #{$text-color};
+  --vvap-background-color: #{$background-color};
 
   // Transition
-  // --vap-transition-duration: #{$transition-duration-base};
-  // --vap-transition-duration-slow: #{$transition-duration-slow};
-  // --vap-transition-duration-fast: #{$transition-duration-fast};
+  // --vvap-transition-duration: #{$transition-duration-base};
+  // --vvap-transition-duration-slow: #{$transition-duration-slow};
+  // --vvap-transition-duration-fast: #{$transition-duration-fast};
 }

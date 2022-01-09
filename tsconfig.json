@@ -18,8 +18,8 @@
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
     "allowSyntheticDefaultImports": true,
-    "types": ["vite/client"],
+    "types": ["vite/client"]
   },
   "include": ["packages"],
-  "exclude": ["node_modules"]
+  "exclude": ["node_modules", "dist"]
 }

@@ -1,5 +1,4 @@
 import { AppConfig, HeaderSetting, SidebarSetting, Theme, TransitionSetting } from '#/config';
-import { ThemeMode } from '@/enums/app';
 import { APP_CONFIG_KEY } from '@/enums/cache';
 import { resetRouter } from '@/router';
 import { store } from '@/store';
@@ -13,6 +12,7 @@ interface AppState {
   appConfig: AppConfig;
 }
 
+let timeId: TimeoutHandle;
 export const useAppStore = defineStore({
   id: 'app',
   state: (): AppState => ({
@@ -48,13 +48,28 @@ export const useAppStore = defineStore({
       this.appConfig = deepMerge(this.appConfig || {}, config);
       _localStorage.set(APP_CONFIG_KEY, this.appConfig);
     },
-    setDarkMode(mode: ThemeMode): void {
+    setDarkMode(mode: Theme): void {
       this.appConfig.darkMode = mode;
     },
     async resetState() {
       resetRouter();
 
       clearWebStorage();
+    },
+
+    setPageLoading(loading: boolean): void {
+      this.pageLoading = loading;
+    },
+    async setPageLoadingAction(loading: boolean): Promise<void> {
+      if (loading) {
+        clearTimeout(timeId);
+        timeId = setTimeout(() => {
+          this.setPageLoading(loading);
+        }, 50);
+      } else {
+        this.setPageLoading(loading);
+        clearTimeout(timeId);
+      }
     },
   },
 });

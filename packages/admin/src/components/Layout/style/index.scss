@@ -1,59 +1,50 @@
 @use './var.scss' as *;
 
 :root {
-  --vap-layout-header-color: #{$layout-header-color};
-  --vap-layout-header-background: #{$layout-header-background};
-  --vap-layout-footer-background: #{$layout-footer-background};
-  --vap-layout-footer-color: #{$layout-footer-color};
-  --vap-layout-sider-background: #{$layout-sider-background};
-  --vap-layout-sider-color: #{$layout-sider-color};
+  --vvap-layout-header-background: #{$layout-header-background};
+  --vvap-layout-header-color: #{$layout-header-color};
+  --vvap-layout-footer-background: #{$layout-footer-background};
+  --vvap-layout-footer-color: #{$layout-footer-color};
+  --vvap-layout-sider-background: #{$layout-sider-background};
+  --vvap-layout-sider-color: #{$layout-sider-color};
 }
 
 $prefix-cls: '#{$namespace}-layout';
 
 .#{$prefix-cls} {
   display: grid;
+  grid-area: content;
   grid-template:
     'header header header' auto
     'sider content content' 1fr
     'sider footer footer' auto
     / auto 1fr auto;
 
-  // grid-area: content;
-
   &-header {
-    // position: relative;
     grid-area: header;
     height: $layout-header-height;
     padding: $layout-header-padding;
-    color: var(--vap-layout-header-color);
+    color: var(--vvap-layout-header-color);
     line-height: $layout-header-height;
-    background: var(--vap-layout-header-background);
+    background: var(--vvap-layout-header-background);
   }
 
   &-content {
-    // position: relative;
     grid-area: content;
   }
 
   &-footer {
-    // position: relative;
     grid-area: footer;
     padding: $layout-footer-padding;
-    color: var(--vap-layout-footer-color);
-    background: var(--vap-layout-footer-background);
+    color: var(--vvap-layout-footer-color);
+    background: var(--vvap-layout-footer-background);
   }
 
   &-sider {
-    // position: relative;
     grid-area: sider;
     width: $layout-sider-width;
-    color: var(--vap-layout-sider-color);
-    background: var(--vap-layout-sider-background);
+    color: var(--vvap-layout-sider-color);
+    background: var(--vvap-layout-sider-background);
     transition: width $transition-duration-base;
-
-    &-collapsed {
-      width: $layout-sider-collapsed-width;
-    }
   }
 }

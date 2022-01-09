@@ -1,15 +1,15 @@
 import { Layout, LayoutContent, LayoutFooter } from '@/components/Layout';
-import { useDesign } from '@/hooks/web/useDesign';
+import { usePrefixCls } from '@/hooks/web/usePrefixCls';
 import PropTypes from '@/utils/propTypes';
 import { computed, defineComponent, ExtractPropTypes } from 'vue';
 import { func, object } from 'vue-types';
+import { BreakpointType, ProLayoutContentMode, ProLayoutMode, ProLayoutTheme } from '../types';
 import Header from './Header';
 import Sider from './Sider';
-import { BreakpointType, MenuClickOptions, ProLayoutContentMode, ProLayoutMode, ProLayoutTheme } from './types';
 import { useProLayoutProvide } from './useProLayoutContext';
 
 const proLayoutProps = {
-  collapsed: PropTypes.bool,
+  collapsed: PropTypes.bool.def(false),
   activeKey: PropTypes.oneOfType<string | number | symbol>([String, Number, Symbol]),
   mode: PropTypes.oneOfType<ProLayoutMode>([String]).def('sider'),
   contentMode: PropTypes.oneOfType<ProLayoutContentMode>([String]).def('fluid'),
@@ -20,8 +20,9 @@ const proLayoutProps = {
   ]).def('light'),
   breakpoint: PropTypes.oneOfType<BreakpointType>([String]),
 
+  'onUpdate:collapsed': func<(collapsed: boolean) => void>(),
   onCollapse: func<(collapsed: boolean) => void>(),
-  onMenuClick: func<(options: MenuClickOptions) => void>(),
+  // onMenuClick: func<(options: MenuClickOptions) => void>(),
 };
 
 export type ProLayoutProps = ExtractPropTypes<typeof proLayoutProps>;
@@ -30,7 +31,7 @@ export default defineComponent({
   name: 'Layout',
   props: proLayoutProps,
   setup(props, { slots }) {
-    const { prefixCls } = useDesign('pro-layout');
+    const prefixCls = usePrefixCls('pro-layout');
 
     useProLayoutProvide();
 
