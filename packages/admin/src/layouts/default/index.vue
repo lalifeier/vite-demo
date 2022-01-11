@@ -29,7 +29,7 @@ import { ProLayout, ProLayoutSiderTrigger } from '@/components/ProLayout';
 const collapsed = ref(false);
 
 const onCollapse = (collapsed: boolean) => {
-  console.log('onCollapse', collapsed);
+  // console.log('onCollapse', collapsed);
 };
 </script>
 

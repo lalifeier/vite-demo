@@ -1,7 +1,7 @@
 import { useControlledProp } from '@/hooks/core/useControlledProp';
 import { callEmit } from '@/utils/props';
 import { breakpointsTailwind } from '@vueuse/core';
-import { watch } from 'vue';
+import { watch, WatchStopHandle } from 'vue';
 import { ProLayoutProps } from './Layout';
 
 export function useCollapsed(props: ProLayoutProps) {
@@ -12,30 +12,19 @@ export function useCollapsed(props: ProLayoutProps) {
     callEmit(props.onCollapse, collapsed);
   };
 
-  // let stopBreakpoints: WatchStopHandle | undefined
-  // watch(
-  //   () => props.breakpoint, breakpoint => {
-  //     stopBreakpoints?.()
-
-  //     // if (breakpoint) {
-  //       const useSharedBreakpoints = createSharedComposable(useBreakpoints)
-  //       stopBreakpoints = watchEffect(() => {
-  //         console.log(useSharedBreakpoints, props.breakpoint);
-
-  //         console.log();
-
-  //       })
-  //     // }
-  //   },
-  //   { immediate: true },
-  // )
-
-  const breakpoints = useBreakpoints(breakpointsTailwind);
-  const breakpointRef = breakpoints.smaller('sm');
+  let stopBreakpoints: WatchStopHandle | undefined;
   watch(
-    breakpointRef,
-    (value) => {
-      setCollapsed(value);
+    () => props.breakpoint,
+    (breakpoint) => {
+      stopBreakpoints?.();
+
+      if (breakpoint) {
+        const breakpoints = useBreakpoints(breakpointsTailwind);
+
+        stopBreakpoints = watchEffect(() => {
+          setCollapsed(!unref(breakpoints[breakpoint]));
+        });
+      }
     },
     { immediate: true },
   );
