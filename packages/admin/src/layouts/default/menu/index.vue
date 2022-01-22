@@ -2,7 +2,7 @@
   <Menu :menu="menu"></Menu>
 </template>
 <script setup lang="ts">
-import Menu from './components/Menu.vue';
+import Menu from './components/Menu.vue'
 
 const menu = [
   {
@@ -53,5 +53,5 @@ const menu = [
       { key: 'menu.disabled', text: 'Menu Disabled', disabled: true },
     ],
   },
-];
+]
 </script>

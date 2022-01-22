@@ -1,12 +1,12 @@
-import { Layout, LayoutContent, LayoutFooter } from '@/components/Layout';
-import { usePrefixCls } from '@/hooks/web/usePrefixCls';
-import PropTypes from '@/utils/propTypes';
-import { computed, defineComponent, ExtractPropTypes } from 'vue';
-import { func, object } from 'vue-types';
-import { BreakpointType, ProLayoutContentMode, ProLayoutMode, ProLayoutTheme } from '../types';
-import Header from './Header';
-import Sider from './Sider';
-import { useProLayoutProvide } from './useProLayoutContext';
+import { Layout, LayoutContent, LayoutFooter } from '@/components/Layout'
+import { usePrefixCls } from '@/hooks/web/usePrefixCls'
+import PropTypes from '@/utils/propTypes'
+import { computed, defineComponent, ExtractPropTypes } from 'vue'
+import { func, object } from 'vue-types'
+import { BreakpointType, ProLayoutContentMode, ProLayoutMode, ProLayoutTheme } from '../types'
+import Header from './Header'
+import Sider from './Sider'
+import { useProLayoutProvide } from './useProLayoutContext'
 
 const proLayoutProps = {
   collapsed: PropTypes.bool.def(false),
@@ -23,20 +23,20 @@ const proLayoutProps = {
   'onUpdate:collapsed': func<(collapsed: boolean) => void>(),
   onCollapse: func<(collapsed: boolean) => void>(),
   // onMenuClick: func<(options: MenuClickOptions) => void>(),
-};
+}
 
-export type ProLayoutProps = ExtractPropTypes<typeof proLayoutProps>;
+export type ProLayoutProps = ExtractPropTypes<typeof proLayoutProps>
 
 export default defineComponent({
   name: 'Layout',
   props: proLayoutProps,
   setup(props, { slots }) {
-    const prefixCls = usePrefixCls('pro-layout');
+    const prefixCls = usePrefixCls('pro-layout')
 
-    useProLayoutProvide();
+    useProLayoutProvide()
 
     const getClass = computed(() => {
-      const { mode, fixed } = props;
+      const { mode, fixed } = props
 
       return [
         prefixCls,
@@ -44,10 +44,10 @@ export default defineComponent({
           [`${prefixCls}-fixed`]: fixed,
           [`${prefixCls}-is-${mode}`]: true,
         },
-      ];
-    });
+      ]
+    })
 
-    const showSider = computed(() => ['sider', 'mixin'].includes(props.mode));
+    const showSider = computed(() => ['sider', 'mixin'].includes(props.mode))
 
     return () => (
       <Layout class={getClass.value}>
@@ -56,6 +56,6 @@ export default defineComponent({
         <LayoutContent class={`${prefixCls}-content`}>{slots.default?.()}</LayoutContent>
         {slots.footer && <LayoutFooter class={`${prefixCls}-footer`}>{slots.footer()}</LayoutFooter>}
       </Layout>
-    );
+    )
   },
-});
+})

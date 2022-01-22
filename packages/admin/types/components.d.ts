@@ -4,8 +4,8 @@
 
 declare module 'vue' {
   export interface GlobalComponents {
-    Iframe: typeof import('./../src/components/iframe/index.vue')['default'];
+    Iframe: typeof import('./../src/components/iframe/index.vue')['default']
   }
 }
 
-export {};
+export {}

@@ -1,18 +1,18 @@
-import { AppConfig, HeaderSetting, SidebarSetting, Theme, TransitionSetting } from '#/config';
-import { APP_CONFIG_KEY } from '@/enums/cache';
-import { resetRouter } from '@/router';
-import { store } from '@/store';
-import { deepMerge } from '@/utils';
-import { clearWebStorage, _localStorage } from '@/utils/cache';
-import { defineStore } from 'pinia';
+import { AppConfig, HeaderSetting, SidebarSetting, Theme, TransitionSetting } from '#/config'
+import { APP_CONFIG_KEY } from '@/enums/cache'
+import { resetRouter } from '@/router'
+import { store } from '@/store'
+import { deepMerge } from '@/utils'
+import { clearWebStorage, _localStorage } from '@/utils/cache'
+import { defineStore } from 'pinia'
 
 interface AppState {
-  pageLoading: boolean;
+  pageLoading: boolean
 
-  appConfig: AppConfig;
+  appConfig: AppConfig
 }
 
-let timeId: TimeoutHandle;
+let timeId: TimeoutHandle
 export const useAppStore = defineStore({
   id: 'app',
   state: (): AppState => ({
@@ -22,58 +22,58 @@ export const useAppStore = defineStore({
   }),
   getters: {
     getPageLoading(): boolean {
-      return this.pageLoading;
+      return this.pageLoading
     },
     getAppConfig(): AppConfig {
-      return this.appConfig;
+      return this.appConfig
     },
     getDarkMode(): Theme {
-      return this.appConfig.darkMode;
+      return this.appConfig.darkMode
     },
     getHeaderSetting(): HeaderSetting {
-      return this.appConfig.headerSetting;
+      return this.appConfig.headerSetting
     },
     getSidebarSetting(): SidebarSetting {
-      return this.appConfig.sidebarSetting;
+      return this.appConfig.sidebarSetting
     },
     getTransitionSetting(): TransitionSetting {
-      return this.appConfig.transitionSetting;
+      return this.appConfig.transitionSetting
     },
   },
   actions: {
     setLoading(loading: boolean): void {
-      this.pageLoading = loading;
+      this.pageLoading = loading
     },
     setAppConfig(config: DeepPartial<AppConfig>): void {
-      this.appConfig = deepMerge(this.appConfig || {}, config);
-      _localStorage.set(APP_CONFIG_KEY, this.appConfig);
+      this.appConfig = deepMerge(this.appConfig || {}, config)
+      _localStorage.set(APP_CONFIG_KEY, this.appConfig)
     },
     setDarkMode(mode: Theme): void {
-      this.appConfig.darkMode = mode;
+      this.appConfig.darkMode = mode
     },
     async resetState() {
-      resetRouter();
+      resetRouter()
 
-      clearWebStorage();
+      clearWebStorage()
     },
 
     setPageLoading(loading: boolean): void {
-      this.pageLoading = loading;
+      this.pageLoading = loading
     },
     async setPageLoadingAction(loading: boolean): Promise<void> {
       if (loading) {
-        clearTimeout(timeId);
+        clearTimeout(timeId)
         timeId = setTimeout(() => {
-          this.setPageLoading(loading);
-        }, 50);
+          this.setPageLoading(loading)
+        }, 50)
       } else {
-        this.setPageLoading(loading);
-        clearTimeout(timeId);
+        this.setPageLoading(loading)
+        clearTimeout(timeId)
       }
     },
   },
-});
+})
 
 export function useAppStoreWithOut() {
-  return useAppStore(store);
+  return useAppStore(store)
 }

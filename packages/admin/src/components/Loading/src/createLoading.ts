@@ -1,37 +1,37 @@
-import { createVNode, defineComponent, h, reactive, render, VNode } from 'vue';
-import Loading from './index';
+import { createVNode, defineComponent, h, reactive, render, VNode } from 'vue'
+import Loading from './index'
 
 export function createLoading(props, target?: HTMLElement) {
-  let vm: Nullable<VNode> = null;
+  let vm: Nullable<VNode> = null
   const data = reactive({
     loading: true,
     ...props,
-  });
+  })
 
   const LoadingWrap = defineComponent({
     render() {
-      return h(Loading, { ...data });
+      return h(Loading, { ...data })
     },
-  });
+  })
 
-  vm = createVNode(LoadingWrap);
-  render(vm, document.createElement('div'));
+  vm = createVNode(LoadingWrap)
+  render(vm, document.createElement('div'))
 
   function open(target: HTMLElement = document.body) {
     if (!vm || !vm.el) {
-      return;
+      return
     }
-    target.appendChild(vm.el as HTMLElement);
+    target.appendChild(vm.el as HTMLElement)
   }
 
   function close() {
     if (vm?.el && vm.el.parentNode) {
-      vm.el.parentNode.removeChild(vm.el);
+      vm.el.parentNode.removeChild(vm.el)
     }
   }
 
   if (target) {
-    open(target);
+    open(target)
   }
 
   return {
@@ -39,7 +39,7 @@ export function createLoading(props, target?: HTMLElement) {
     open,
     close,
     get $el() {
-      return vm?.el as HTMLElement;
+      return vm?.el as HTMLElement
     },
-  };
+  }
 }

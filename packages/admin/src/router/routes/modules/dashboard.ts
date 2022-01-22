@@ -1,5 +1,5 @@
-import type { AppRouteModule } from '@/router/types';
-import { LAYOUT } from '../constant';
+import type { AppRouteModule } from '@/router/types'
+import { LAYOUT } from '../constant'
 
 export const dashboard: AppRouteModule = {
   path: '/dashboard',
@@ -19,6 +19,6 @@ export const dashboard: AppRouteModule = {
       component: () => import('@/views/dashboard/index.vue'),
     },
   ],
-};
+}
 
-export default dashboard;
+export default dashboard

@@ -1,6 +1,6 @@
-import { AppConfig } from '#/config';
-import { BarStyle, PermissionMode, TransitionMode } from '../enums/app';
-import { themeColor } from './design';
+import { AppConfig } from '#/config'
+import { BarStyle, PermissionMode, TransitionMode } from '../enums/app'
+import { themeColor } from './design'
 
 const app: AppConfig = {
   darkMode: 'light',
@@ -66,6 +66,6 @@ const app: AppConfig = {
 
     progressBar: true,
   },
-};
+}
 
-export default app;
+export default app

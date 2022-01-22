@@ -1,15 +1,15 @@
-export type ProLayoutMode = 'header' | 'sider' | 'mixin' | 'both';
+export type ProLayoutMode = 'header' | 'sider' | 'mixin' | 'both'
 
-export type ProLayoutContentMode = 'fluid' | 'fixed';
+export type ProLayoutContentMode = 'fluid' | 'fixed'
 
-export type ProLayoutTheme = 'light' | 'dark';
+export type ProLayoutTheme = 'light' | 'dark'
 
-export type ProLayoutFixed = boolean | { header: boolean; sider: boolean };
+export type ProLayoutFixed = boolean | { header: boolean; sider: boolean }
 
-export type BreakpointType = 'sm' | 'md' | 'lg' | 'xl' | '2xl';
+export type BreakpointType = 'sm' | 'md' | 'lg' | 'xl' | '2xl'
 
 export interface MenuClickOptions {
-  event: Event;
+  event: Event
 }
 
-export type CollapseEventType = 'trigger' | 'breakpoint';
+export type CollapseEventType = 'trigger' | 'breakpoint'

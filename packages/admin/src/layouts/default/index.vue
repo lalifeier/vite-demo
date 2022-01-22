@@ -24,13 +24,13 @@
 </template>
 <script setup lang="ts">
 // import BackToTop from '@/components/BackToTop';
-import { ProLayout, ProLayoutSiderTrigger } from '@/components/ProLayout';
+import { ProLayout, ProLayoutSiderTrigger } from '@/components/ProLayout'
 
-const collapsed = ref(false);
+const collapsed = ref(false)
 
 const onCollapse = (collapsed: boolean) => {
   // console.log('onCollapse', collapsed);
-};
+}
 </script>
 
 <style lang="scss"></style>

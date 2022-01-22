@@ -8,20 +8,20 @@ import { ImportExcel } from '../../components/Excel/ImportExcel';
 </template>
 
 <script setup lang="ts">
-import { ExcelData } from '@/utils/excel/types';
-import { ImportExcel } from '../../components/Excel';
+import { ExcelData } from '@/utils/excel/types'
+import { ImportExcel } from '../../components/Excel'
 
 const onSuccess = (data: ExcelData[]) => {
-  console.log(data);
-};
+  console.log(data)
+}
 
 function beforeUpload(file: File) {
-  console.log(file);
-  const isLt1M = file.size / 1024 / 1024 < 1;
+  console.log(file)
+  const isLt1M = file.size / 1024 / 1024 < 1
   if (isLt1M) {
-    return true;
+    return true
   }
-  return false;
+  return false
 }
 </script>
 

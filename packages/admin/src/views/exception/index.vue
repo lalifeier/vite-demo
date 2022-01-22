@@ -10,35 +10,35 @@
 </template>
 
 <script setup lang="ts">
-import PRESENTED_IMAGE_403 from '@/assets/svg/403.svg';
-import PRESENTED_IMAGE_404 from '@/assets/svg/404.svg';
-import PRESENTED_IMAGE_500 from '@/assets/svg/500.svg';
-import PRESENTED_IMAGE_NETWORK_ERROR from '@/assets/svg/network-error.svg';
-import Result from '@/components/Result';
-import { EXCEPTION_STATUS } from '@/enums/exception';
-import { unref } from 'vue';
-import { useRouter } from 'vue-router';
+import PRESENTED_IMAGE_403 from '@/assets/svg/403.svg'
+import PRESENTED_IMAGE_404 from '@/assets/svg/404.svg'
+import PRESENTED_IMAGE_500 from '@/assets/svg/500.svg'
+import PRESENTED_IMAGE_NETWORK_ERROR from '@/assets/svg/network-error.svg'
+import Result from '@/components/Result'
+import { EXCEPTION_STATUS } from '@/enums/exception'
+import { unref } from 'vue'
+import { useRouter } from 'vue-router'
 
 const props = defineProps({
   status: {
     type: Number,
     default: EXCEPTION_STATUS.NOT_FOUND,
   },
-});
+})
 
-const router = useRouter();
-console.log(unref(router.currentRoute));
+const router = useRouter()
+console.log(unref(router.currentRoute))
 
 const backHome = () => {
   router.push({
     name: 'Home',
-  });
-};
+  })
+}
 const refershPage = () => {
   router.push({
     name: 'Refresh',
-  });
-};
+  })
+}
 
 const exceptionMap = {
   [EXCEPTION_STATUS.NOT_ACCESS]: {
@@ -69,9 +69,9 @@ const exceptionMap = {
     btnText: '刷新',
     handleClick: refershPage,
   },
-};
+}
 
-const { title, subTitle, icon, btnText, handleClick } = exceptionMap[props.status];
+const { title, subTitle, icon, btnText, handleClick } = exceptionMap[props.status]
 </script>
 
 <style lang="scss" scoped></style>

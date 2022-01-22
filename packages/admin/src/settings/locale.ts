@@ -1,9 +1,9 @@
-import { LocaleSetting, LocaleType } from '#/config';
+import { LocaleSetting, LocaleType } from '#/config'
 
 export const LOCALE: { [key: string]: LocaleType } = {
   ZH_CN: 'zh-CN',
   EN_US: 'en-US',
-};
+}
 
 export const localeSetting: LocaleSetting = {
   locale: LOCALE.ZH_CN,
@@ -11,7 +11,7 @@ export const localeSetting: LocaleSetting = {
   fallback: LOCALE.ZH_CN,
 
   availableLocales: [LOCALE.ZH_CN, LOCALE.EN_US],
-};
+}
 
 export const localeList = [
   {
@@ -22,4 +22,4 @@ export const localeList = [
     text: 'English',
     event: LOCALE.EN_US,
   },
-];
+]

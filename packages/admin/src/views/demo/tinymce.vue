@@ -15,32 +15,32 @@
 </template>
 
 <script setup lang="ts">
-import Tinymce from '@/components/Tinymce';
-import { ref, unref } from 'vue';
+import Tinymce from '@/components/Tinymce'
+import { ref, unref } from 'vue'
 
-const description = ref('123');
+const description = ref('123')
 
-const disabled = ref(false);
-const skin = ref('oxide-dark');
+const disabled = ref(false)
+const skin = ref('oxide-dark')
 function handleTinymceChange() {}
 
 function handleClick() {
-  description.value = 'qeeeeeeeeeeeeee';
+  description.value = 'qeeeeeeeeeeeeee'
 
-  disabled.value = !unref(disabled);
+  disabled.value = !unref(disabled)
 
-  skin.value = 'oxide-dark';
+  skin.value = 'oxide-dark'
 }
 
 const options = {
   ax_wordlimit_num: 40,
   ax_wordlimit_callback: function (editor, txt, num) {
-    console.log('当前字数：' + txt.length + '，限制字数：' + num);
+    console.log('当前字数：' + txt.length + '，限制字数：' + num)
   },
   characterlimit_min: 5,
   characterlimit_max: 10,
   charwordcount_include_tags: false,
-};
+}
 </script>
 
 <style>

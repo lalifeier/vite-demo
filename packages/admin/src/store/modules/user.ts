@@ -1,16 +1,16 @@
-import { UserInfo } from '#/store';
-import { UserInfoResponse } from '@/api/model/resp/user';
-import { getUserInfo, login, logout, refresh } from '@/api/user';
-import { ACCESS_TOKEN_KEY, REFRESH_TOKEN_KEY, ROLE_LIST_KEY, USER_INFO_KEY } from '@/enums/cache';
-import { Role } from '@/enums/role';
-import { store } from '@/store';
-import { _localStorage } from '@/utils/cache';
-import { defineStore } from 'pinia';
+import { UserInfo } from '#/store'
+import { UserInfoResponse } from '@/api/model/resp/user'
+import { getUserInfo, login, logout, refresh } from '@/api/user'
+import { ACCESS_TOKEN_KEY, REFRESH_TOKEN_KEY, ROLE_LIST_KEY, USER_INFO_KEY } from '@/enums/cache'
+import { Role } from '@/enums/role'
+import { store } from '@/store'
+import { _localStorage } from '@/utils/cache'
+import { defineStore } from 'pinia'
 interface UserState {
-  userInfo: Nullable<UserInfo>;
-  roleList: [];
-  accessToken: string;
-  refreshToken: string;
+  userInfo: Nullable<UserInfo>
+  roleList: []
+  accessToken: string
+  refreshToken: string
 }
 
 export const useUserStore = defineStore({
@@ -23,79 +23,79 @@ export const useUserStore = defineStore({
   }),
   getters: {
     getUserInfo(): UserInfo {
-      return this.userInfo || _localStorage.get(USER_INFO_KEY);
+      return this.userInfo || _localStorage.get(USER_INFO_KEY)
     },
     getAccessToken(): string {
-      return this.accessToken || _localStorage.get(ACCESS_TOKEN_KEY);
+      return this.accessToken || _localStorage.get(ACCESS_TOKEN_KEY)
     },
     getRefreshToken(): string {
-      return this.accessToken || _localStorage.get(REFRESH_TOKEN_KEY);
+      return this.accessToken || _localStorage.get(REFRESH_TOKEN_KEY)
     },
     getRoleList(): Role[] {
-      return this.roleList.length > 0 ? this.roleList : _localStorage.get(ROLE_LIST_KEY);
+      return this.roleList.length > 0 ? this.roleList : _localStorage.get(ROLE_LIST_KEY)
     },
   },
   actions: {
     setUserInfo(info: UserInfo) {
-      this.userInfo = info;
-      _localStorage.set(USER_INFO_KEY, info);
+      this.userInfo = info
+      _localStorage.set(USER_INFO_KEY, info)
     },
     setToken(accessToken, refreshToken) {
-      this.accessToken = accessToken;
-      this.refreshToken = refreshToken;
-      _localStorage.set(ACCESS_TOKEN_KEY, accessToken);
-      _localStorage.set(REFRESH_TOKEN_KEY, refreshToken);
+      this.accessToken = accessToken
+      this.refreshToken = refreshToken
+      _localStorage.set(ACCESS_TOKEN_KEY, accessToken)
+      _localStorage.set(REFRESH_TOKEN_KEY, refreshToken)
     },
     setRoleList(roleList) {
-      this.roleList = roleList;
-      _localStorage.set(ROLE_LIST_KEY, roleList);
+      this.roleList = roleList
+      _localStorage.set(ROLE_LIST_KEY, roleList)
     },
     resetState() {
-      this.userInfo = null;
-      this.accessToken = '';
-      this.refreshToken = '';
-      this.roleList = [];
+      this.userInfo = null
+      this.accessToken = ''
+      this.refreshToken = ''
+      this.roleList = []
     },
     async login(params): Promise<UserInfoResponse> {
       try {
-        const data = await login(params);
-        const { access_token, refresh_token } = data;
-        this.setToken(access_token, refresh_token);
-        const userInfo = await this.getUserInfo();
-        return userInfo;
+        const data = await login(params)
+        const { access_token, refresh_token } = data
+        this.setToken(access_token, refresh_token)
+        const userInfo = await this.getUserInfo()
+        return userInfo
       } catch (error) {
-        return Promise.reject(error);
+        return Promise.reject(error)
       }
     },
     async getUserInfo() {
-      const userInfo = await getUserInfo();
-      const { role } = userInfo;
-      this.setUserInfo(userInfo);
-      this.setRoleList(role);
-      return userInfo;
+      const userInfo = await getUserInfo()
+      const { role } = userInfo
+      this.setUserInfo(userInfo)
+      this.setRoleList(role)
+      return userInfo
     },
     async logout() {
       try {
-        await logout();
+        await logout()
       } catch (error) {
-        console.log(error);
+        console.log(error)
       }
-      this.setToken(undefined, undefined);
-      window.location.reload();
+      this.setToken(undefined, undefined)
+      window.location.reload()
     },
     async refresh() {
       try {
-        const data = await refresh(this.getRefreshToken);
-        const { access_token, refresh_token } = data;
-        this.setToken(access_token, refresh_token);
-        return access_token;
+        const data = await refresh(this.getRefreshToken)
+        const { access_token, refresh_token } = data
+        this.setToken(access_token, refresh_token)
+        return access_token
       } catch (error) {
-        return Promise.reject(error);
+        return Promise.reject(error)
       }
     },
   },
-});
+})
 
 export function useUserStoreWithOut() {
-  return useUserStore(store);
+  return useUserStore(store)
 }

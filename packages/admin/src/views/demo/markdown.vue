@@ -21,12 +21,12 @@
 </template>
 
 <script setup lang="ts">
-import { SvgIcon } from '@/components/Icon';
-import MarkDown from '@/components/Markdown';
-import { PageFooter, PageHeader } from '@/components/Page';
-import { useLocaleContext } from '@/context';
-import { useI18n } from '@/hooks/web/useI18n';
-import { ref } from 'vue';
+import { SvgIcon } from '@/components/Icon'
+import MarkDown from '@/components/Markdown'
+import { PageFooter, PageHeader } from '@/components/Page'
+import { useLocaleContext } from '@/context'
+import { useI18n } from '@/hooks/web/useI18n'
+import { ref } from 'vue'
 
 function scroll(e) {
   // console.log(e);
@@ -38,16 +38,16 @@ function scroll(e) {
 //   i18n.locale.value = locale;
 // };
 
-const { t } = useI18n();
+const { t } = useI18n()
 
-const data = ref('erwrew');
+const data = ref('erwrew')
 
-const i18n = useLocaleContext();
+const i18n = useLocaleContext()
 
 function handleClick() {
-  data.value = '456';
+  data.value = '456'
 
-  i18n.setLocale(i18n.getLocale.value === 'en-US' ? 'zh-CN' : 'en-US');
+  i18n.setLocale(i18n.getLocale.value === 'en-US' ? 'zh-CN' : 'en-US')
 }
 
 function handleInit(e) {}

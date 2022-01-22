@@ -9,14 +9,14 @@
 </template>
 
 <script setup lang="ts">
-import { useSidebarSetting } from '@/hooks/setting/useSidebarSetting';
-import { useDesign } from '@/hooks/web/useDesign';
-import LayoutMenu from '@/layouts/default/menu/index.vue';
-import Logo from '@/layouts/default/sider/components/Logo.vue';
+import { useSidebarSetting } from '@/hooks/setting/useSidebarSetting'
+import { useDesign } from '@/hooks/web/useDesign'
+import LayoutMenu from '@/layouts/default/menu/index.vue'
+import Logo from '@/layouts/default/sider/components/Logo.vue'
 
-const { prefixCls } = useDesign('layout-sider');
+const { prefixCls } = useDesign('layout-sider')
 
-const { getCollapsed } = useSidebarSetting();
+const { getCollapsed } = useSidebarSetting()
 </script>
 
 <style lang="scss">

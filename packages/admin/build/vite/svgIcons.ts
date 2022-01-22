@@ -1,6 +1,6 @@
-import path from 'path';
-import type { Plugin } from 'vite';
-import viteSvgIcons from 'vite-plugin-svg-icons';
+import path from 'path'
+import type { Plugin } from 'vite'
+import viteSvgIcons from 'vite-plugin-svg-icons'
 
 export function configSvgIconsPlugin(isBuild: boolean) {
   return viteSvgIcons({
@@ -9,5 +9,5 @@ export function configSvgIconsPlugin(isBuild: boolean) {
     // 指定symbolId格式
     symbolId: 'icon-[dir]-[name]',
     svgoOptions: isBuild,
-  }) as Plugin;
+  }) as Plugin
 }

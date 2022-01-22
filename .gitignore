@@ -23,3 +23,6 @@ pnpm-debug.log*
 
 .eslintcache
 .stylelintcache
+
+.cache
+.turbo

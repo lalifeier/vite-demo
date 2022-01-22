@@ -1,72 +1,72 @@
-import legacy from '@vitejs/plugin-legacy';
-import vue from '@vitejs/plugin-vue';
-import vueJsx from '@vitejs/plugin-vue-jsx';
-import vuetify from '@vuetify/vite-plugin';
-import type { Plugin, PluginOption } from 'vite';
-import Inspect from 'vite-plugin-inspect';
-import vueSetupExtend from 'vite-plugin-vue-setup-extend';
-import WindiCSS from 'vite-plugin-windicss';
-import { configAutoImportPlugin } from './autoImport';
-import { configBannerPlugin } from './banner';
-import { configComponentsPlugin } from './components';
-import { configCompressPlugin } from './compress';
-import { configHtmlPlugin } from './html';
-import { configIconsPlugin } from './icons';
-import { configImageminPlugin } from './imagemin';
-import { configProxy } from './proxy';
-import { configPWAPlugin } from './pwa';
-import { configSentryPlugin } from './sentry';
-import { configSvgIconsPlugin } from './svgIcons';
-import { configVisualizerPlugin } from './visualizer';
+import legacy from '@vitejs/plugin-legacy'
+import vue from '@vitejs/plugin-vue'
+import vueJsx from '@vitejs/plugin-vue-jsx'
+import vuetify from '@vuetify/vite-plugin'
+import Inspect from 'vite-plugin-inspect'
+import VitePluginCertificate from 'vite-plugin-mkcert'
+import vueSetupExtend from 'vite-plugin-vue-setup-extend'
+import { configAutoImportPlugin } from './autoImport'
+import { configBannerPlugin } from './banner'
+import { configComponentsPlugin } from './components'
+import { configCompressPlugin } from './compress'
+import { configHtmlPlugin } from './html'
+import { configIconsPlugin } from './icons'
+import { configImageminPlugin } from './imagemin'
+import { configProxy } from './proxy'
+import { configPWAPlugin } from './pwa'
+import { configSentryPlugin } from './sentry'
+import { configSvgIconsPlugin } from './svgIcons'
+import { configVisualizerPlugin } from './visualizer'
 
 export function createPlugins(viteEnv: ViteEnv, isBuild: boolean, mode: string) {
-  const { VITE_IMAGEMIN, VITE_LEGACY, VITE_COMPRESS, VITE_COMPRESS_DELETE_ORIGIN_FILE, VITE_PWA, VITE_SENTRY } =
-    viteEnv;
+  const { VITE_IMAGEMIN, VITE_LEGACY, VITE_COMPRESS, VITE_COMPRESS_DELETE_ORIGIN_FILE, VITE_PWA, VITE_SENTRY } = viteEnv
 
-  const plugins: (Plugin | Plugin[] | PluginOption[])[] = [vue(), vueJsx(), vueSetupExtend(), vuetify()];
+  const plugins = [
+    vue(),
+    vueJsx(),
+    vueSetupExtend(),
+    VitePluginCertificate({
+      source: 'coding',
+    }),
+    vuetify(),
+  ]
 
-  VITE_LEGACY && isBuild && plugins.push(legacy());
+  VITE_LEGACY && isBuild && plugins.push(legacy())
 
-  plugins.push(configVisualizerPlugin());
+  plugins.push(configHtmlPlugin(viteEnv, isBuild))
 
-  // plugins.push(PurgeIcons())
+  plugins.push(configSvgIconsPlugin(isBuild))
 
-  plugins.push(configIconsPlugin());
+  plugins.push(configIconsPlugin())
 
-  // plugins.push(configStyleImportPlugin())
+  plugins.push(configVisualizerPlugin())
 
-  plugins.push(configBannerPlugin());
+  plugins.push(configBannerPlugin())
 
   // plugins.push(configThemePlugin())
 
-  plugins.push(configHtmlPlugin(viteEnv, isBuild));
+  VITE_SENTRY && plugins.push(configSentryPlugin(mode))
 
-  plugins.push(WindiCSS());
+  plugins.push(configComponentsPlugin())
 
-  plugins.push(configSvgIconsPlugin(isBuild));
-
-  VITE_SENTRY && plugins.push(configSentryPlugin(mode));
-
-  plugins.push(configComponentsPlugin());
-
-  plugins.push(configAutoImportPlugin());
+  plugins.push(configAutoImportPlugin())
 
   plugins.push(
     Inspect({
       // change this to enable inspect for debugging
       enabled: false,
     }),
-  );
+  )
 
   if (isBuild) {
-    VITE_IMAGEMIN && plugins.push(configImageminPlugin());
+    VITE_IMAGEMIN && plugins.push(configImageminPlugin())
 
-    plugins.push(configCompressPlugin(VITE_COMPRESS, VITE_COMPRESS_DELETE_ORIGIN_FILE));
+    plugins.push(configCompressPlugin(VITE_COMPRESS, VITE_COMPRESS_DELETE_ORIGIN_FILE))
 
-    VITE_PWA && plugins.push(configPWAPlugin());
+    VITE_PWA && plugins.push(configPWAPlugin())
   }
 
-  return plugins;
+  return plugins
 }
 
-export { configProxy };
+export { configProxy }

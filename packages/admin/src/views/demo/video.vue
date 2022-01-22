@@ -7,7 +7,7 @@
 </template>
 
 <script setup lang="ts">
-import Video from '@/components/Video';
+import Video from '@/components/Video'
 </script>
 
 <style></style>

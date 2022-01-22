@@ -9,12 +9,12 @@
   </v-list>
 </template>
 <script setup lang="ts">
-import MenuItem from './MenuItem.vue';
+import MenuItem from './MenuItem.vue'
 
 const props = defineProps({
   menu: {
     type: Array,
     default: () => [],
   },
-});
+})
 </script>

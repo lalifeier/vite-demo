@@ -1,25 +1,25 @@
-import { debounce } from 'lodash-es';
+import { debounce } from 'lodash-es'
 
-let loading;
-let needLoadingRequestCount = 0;
+let loading
+let needLoadingRequestCount = 0
 
 export function showLoading() {
   if (needLoadingRequestCount === 0 && !loading) {
   }
-  needLoadingRequestCount++;
+  needLoadingRequestCount++
 }
 
 const hideLoading = debounce(() => {
   if (loading !== null) {
-    loading.close();
+    loading.close()
   }
-  loading = null;
-}, 300);
+  loading = null
+}, 300)
 
 export function closeLoading() {
-  needLoadingRequestCount--;
-  needLoadingRequestCount = Math.max(needLoadingRequestCount, 0);
+  needLoadingRequestCount--
+  needLoadingRequestCount = Math.max(needLoadingRequestCount, 0)
   if (needLoadingRequestCount === 0) {
-    hideLoading();
+    hideLoading()
   }
 }

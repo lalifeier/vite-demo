@@ -1,11 +1,11 @@
-import { usePrefixCls } from '@/hooks/web/usePrefixCls';
-import { defineComponent } from 'vue';
+import { usePrefixCls } from '@/hooks/web/usePrefixCls'
+import { defineComponent } from 'vue'
 
 export default defineComponent({
   name: 'LayoutSider',
   setup(_, { slots }) {
-    const prefixCls = usePrefixCls('layout-sider');
+    const prefixCls = usePrefixCls('layout-sider')
 
-    return () => <aside class={prefixCls}>{slots.default?.()}</aside>;
+    return () => <aside class={prefixCls}>{slots.default?.()}</aside>
   },
-});
+})

@@ -1,25 +1,25 @@
-import dayjs from 'dayjs';
-import path from 'path';
-import type { ConfigEnv, UserConfig } from 'vite';
-import { loadEnv } from 'vite';
-import { OUTPUT_DIR } from './build/constants';
-import { wrapperEnv } from './build/utils';
-import { configProxy, createPlugins } from './build/vite';
-import pkg from './package.json';
-const pathResolve = (dir: string) => path.resolve(__dirname, dir);
+import dayjs from 'dayjs'
+import path from 'path'
+import type { ConfigEnv, UserConfig } from 'vite'
+import { loadEnv } from 'vite'
+import { OUTPUT_DIR } from './build/constants'
+import { wrapperEnv } from './build/utils'
+import { configProxy, createPlugins } from './build/vite'
+import pkg from './package.json'
+const pathResolve = (dir: string) => path.resolve(__dirname, dir)
 
-const { dependencies, devDependencies, name, version } = pkg;
+const { dependencies, devDependencies, name, version } = pkg
 const __APP_INFO__ = {
   pkg: { dependencies, devDependencies, name, version },
   lastBuildTime: dayjs().format('YYYY-MM-DD HH:mm:ss'),
-};
+}
 
 export default ({ command, mode }: ConfigEnv): UserConfig => {
-  const env = loadEnv(mode, process.cwd());
-  const viteEnv = wrapperEnv(env);
-  const { VITE_PORT, VITE_PUBLIC_PATH, VITE_DROP_CONSOLE, VITE_PROXY } = viteEnv;
+  const env = loadEnv(mode, process.cwd())
+  const viteEnv = wrapperEnv(env)
+  const { VITE_PORT, VITE_PUBLIC_PATH, VITE_DROP_CONSOLE, VITE_PROXY } = viteEnv
 
-  const isBuild = command === 'build';
+  const isBuild = command === 'build'
 
   return {
     plugins: createPlugins(viteEnv, isBuild, mode),
@@ -33,6 +33,7 @@ export default ({ command, mode }: ConfigEnv): UserConfig => {
       },
     },
     server: {
+      https: true,
       host: true,
       fs: {
         strict: true,
@@ -83,5 +84,5 @@ export default ({ command, mode }: ConfigEnv): UserConfig => {
       ],
       exclude: ['vue-demi'],
     },
-  };
-};
+  }
+}

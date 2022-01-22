@@ -9,12 +9,12 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue';
-import VirtualList from '../../components/VirtualList';
+import { defineComponent } from 'vue'
+import VirtualList from '../../components/VirtualList'
 
-let data: any = [];
+let data: any = []
 for (let index = 0; index < 10000000; index++) {
-  data.push(index);
+  data.push(index)
 }
 
 export default defineComponent({
@@ -22,9 +22,9 @@ export default defineComponent({
   setup() {
     return {
       data,
-    };
+    }
   },
-});
+})
 </script>
 
 <style lang="scss" scoped>

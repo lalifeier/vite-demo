@@ -1,6 +1,6 @@
-import type { CSSProperties } from 'vue';
+import type { CSSProperties } from 'vue'
 
-export const scrollbarContextKey = Symbol('scrollbarContextKey');
+export const scrollbarContextKey = Symbol('scrollbarContextKey')
 
 export const BAR_MAP = {
   vertical: {
@@ -23,9 +23,9 @@ export const BAR_MAP = {
     client: 'clientX',
     direction: 'left',
   },
-};
+}
 
 export const renderThumbStyle = ({ move, size, bar }): CSSProperties => ({
   [bar.size]: size,
   transform: `translate${bar.axis}(${move}%)`,
-});
+})

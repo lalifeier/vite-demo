@@ -8,12 +8,12 @@
 </template>
 
 <script setup lang="ts">
-import { useGlobSetting } from '@/hooks/setting/useGlobSetting';
-import { useDesign } from '@/hooks/web/useDesign';
+import { useGlobSetting } from '@/hooks/setting/useGlobSetting'
+import { useDesign } from '@/hooks/web/useDesign'
 
-const { prefixCls } = useDesign('layout-side-bar-logo');
+const { prefixCls } = useDesign('layout-side-bar-logo')
 
-const { title } = useGlobSetting();
+const { title } = useGlobSetting()
 </script>
 
 <style lang="scss">

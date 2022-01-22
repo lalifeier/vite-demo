@@ -1,6 +1,6 @@
-import { inBrowser } from '../../is';
+import { inBrowser } from '../../is'
 
-export const hasIntersectionObserver = checkIntersectionObserver();
+export const hasIntersectionObserver = checkIntersectionObserver()
 
 function checkIntersectionObserver() {
   if (
@@ -14,90 +14,90 @@ function checkIntersectionObserver() {
     if (!('isIntersecting' in window.IntersectionObserverEntry.prototype)) {
       Object.defineProperty(window.IntersectionObserverEntry.prototype, 'isIntersecting', {
         get: function () {
-          return this.intersectionRatio > 0;
+          return this.intersectionRatio > 0
         },
-      });
+      })
     }
-    return true;
+    return true
   }
-  return false;
+  return false
 }
 
 const style = (el: HTMLElement, prop: string): string => {
-  return getComputedStyle(el).getPropertyValue(prop);
-};
+  return getComputedStyle(el).getPropertyValue(prop)
+}
 
 const overflow = (el: HTMLElement): string => {
-  return style(el, 'overflow') + style(el, 'overflow-y') + style(el, 'overflow-x');
-};
+  return style(el, 'overflow') + style(el, 'overflow-y') + style(el, 'overflow-x')
+}
 
 export function scrollParent(el: HTMLElement): HTMLElement | Window {
-  let parent = el;
+  let parent = el
 
   while (parent) {
     if (parent === document.body || parent === document.documentElement) {
-      break;
+      break
     }
 
     if (!parent.parentNode) {
-      break;
+      break
     }
 
     if (/(scroll|auto)/.test(overflow(parent))) {
-      return parent;
+      return parent
     }
 
-    parent = parent.parentNode as HTMLElement;
+    parent = parent.parentNode as HTMLElement
   }
 
-  return window;
+  return window
 }
 
 export function getScrollParent(el?: HTMLElement) {
   while (el) {
-    if (hasScrollbar(el)) return el;
-    el = el.parentElement!;
+    if (hasScrollbar(el)) return el
+    el = el.parentElement!
   }
 
-  return document.scrollingElement as HTMLElement;
+  return document.scrollingElement as HTMLElement
 }
 
 export function getScrollParents(el?: HTMLElement) {
-  const elements: HTMLElement[] = [];
+  const elements: HTMLElement[] = []
   while (el) {
-    if (hasScrollbar(el)) elements.push(el);
-    el = el.parentElement!;
+    if (hasScrollbar(el)) elements.push(el)
+    el = el.parentElement!
   }
 
-  return elements;
+  return elements
 }
 
 function hasScrollbar(el?: HTMLElement) {
-  if (!el || el.nodeType !== Node.ELEMENT_NODE) return false;
+  if (!el || el.nodeType !== Node.ELEMENT_NODE) return false
 
-  const style = window.getComputedStyle(el);
-  return style.overflowY === 'scroll' || (style.overflowY === 'auto' && el.scrollHeight > el.clientHeight);
+  const style = window.getComputedStyle(el)
+  return style.overflowY === 'scroll' || (style.overflowY === 'auto' && el.scrollHeight > el.clientHeight)
 }
 
 export default function loadImage(src: string): Promise<void> {
   return new Promise((resolve, reject) => {
-    const image = new Image();
-    image.src = src;
+    const image = new Image()
+    image.src = src
     image.onload = function () {
-      resolve();
-    };
+      resolve()
+    }
     image.onerror = function (e) {
-      reject(e);
-    };
-  });
+      reject(e)
+    }
+  })
 }
 
 export function isInViewport(el: Element, preLoad = 1) {
-  const rect = el.getBoundingClientRect();
+  const rect = el.getBoundingClientRect()
   return (
     rect.top < (window.innerHeight || document.documentElement.clientHeight) * preLoad &&
     rect.bottom > 0 &&
     rect.left < (window.innerWidth || document.documentElement.clientWidth) * preLoad &&
     rect.right > 0
-  );
+  )
 }

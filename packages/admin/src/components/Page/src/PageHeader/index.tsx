@@ -1,7 +1,7 @@
-import { useDesign } from '@/hooks/web/useDesign';
-import type { CSSProperties } from 'vue';
-import { computed, defineComponent } from 'vue';
-import './index.scss';
+import { useDesign } from '@/hooks/web/useDesign'
+import type { CSSProperties } from 'vue'
+import { computed, defineComponent } from 'vue'
+import './index.scss'
 
 export default defineComponent({
   name: 'PageHeader',
@@ -28,12 +28,12 @@ export default defineComponent({
     },
   },
   setup(props, { slots }) {
-    const { prefixCls } = useDesign('page-header');
-    const headingPrefixCls = `${prefixCls}-heading`;
+    const { prefixCls } = useDesign('page-header')
+    const headingPrefixCls = `${prefixCls}-heading`
 
-    const title = props.title ?? slots.title?.();
-    const subTitle = props.subTitle ?? slots.subTitle?.();
-    const extra = props.extra ?? slots.extra?.();
+    const title = props.title ?? slots.title?.()
+    const subTitle = props.subTitle ?? slots.subTitle?.()
+    const extra = props.extra ?? slots.extra?.()
 
     const getClass = computed(() => {
       return [
@@ -41,12 +41,12 @@ export default defineComponent({
         {
           [`${prefixCls}--dense`]: props.dense,
         },
-      ];
-    });
+      ]
+    })
 
     const getStyle = computed((): CSSProperties => {
-      return {};
-    });
+      return {}
+    })
 
     return () => {
       return (
@@ -64,7 +64,7 @@ export default defineComponent({
           </div>
           <div class={prefixCls + '-content'}>{props.content}</div>
         </div>
-      );
-    };
+      )
+    }
   },
-});
+})

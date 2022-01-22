@@ -1,8 +1,8 @@
-import { formatDateTime } from '@/utils/date';
-import { defineStore } from 'pinia';
+import { formatDateTime } from '@/utils/date'
+import { defineStore } from 'pinia'
 
 interface ErrorState {
-  errorList: any;
+  errorList: any
 }
 
 export const useErrorStore = defineStore({
@@ -17,8 +17,8 @@ export const useErrorStore = defineStore({
         ...info,
         url: window.location.href,
         time: formatDateTime(new Date()),
-      };
-      this.errorList = [item, ...(this.errorList || [])];
+      }
+      this.errorList = [item, ...(this.errorList || [])]
     },
   },
-});
+})

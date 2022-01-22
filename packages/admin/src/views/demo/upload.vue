@@ -8,14 +8,14 @@ import { ImportExcel } from '../../components/Excel/ImportExcel';
 </template>
 
 <script setup lang="ts">
-import Upload from '@/components/Upload';
+import Upload from '@/components/Upload'
 
 const onSuccess = (data) => {
-  console.log(data);
-};
+  console.log(data)
+}
 
 function beforeUpload(_file: File) {
-  return true;
+  return true
 }
 </script>
 

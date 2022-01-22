@@ -1,10 +1,10 @@
-import { useLocaleContext, useLocaleProvide } from './modules/locale';
-import { useThemContext, useThemeProvide } from './modules/theme';
+import { useLocaleContext, useLocaleProvide } from './modules/locale'
+import { useThemContext, useThemeProvide } from './modules/theme'
 
-export { useThemContext, useLocaleContext };
+export { useThemContext, useLocaleContext }
 
 export const useProvider = () => {
-  useLocaleProvide();
+  useLocaleProvide()
 
-  useThemeProvide();
-};
+  useThemeProvide()
+}

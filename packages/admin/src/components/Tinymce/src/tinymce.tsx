@@ -1,7 +1,7 @@
-import { isNumber } from '@/utils/is';
-import { uuidv4 } from '@/utils/uuid';
-import type { Editor, RawEditorSettings } from 'tinymce';
-import type { CSSProperties } from 'vue';
+import { isNumber } from '@/utils/is'
+import { uuidv4 } from '@/utils/uuid'
+import type { Editor, RawEditorSettings } from 'tinymce'
+import type { CSSProperties } from 'vue'
 import {
   computed,
   defineComponent,
@@ -13,28 +13,28 @@ import {
   ref,
   unref,
   watch,
-} from 'vue';
-import { plugins, toolbar } from './config';
-import load from './dynamicLoadScript';
+} from 'vue'
+import { plugins, toolbar } from './config'
+import load from './dynamicLoadScript'
 
 const props = {
   url: {
     type: String,
     default: () => {
       // return 'https://cdn.jsdelivr.net/npm/tinymce@5.10.1/tinymce.min.js'
-      return 'tinymce/tinymce.min.js';
+      return 'tinymce/tinymce.min.js'
     },
   },
   baseUrl: {
     type: String,
     default: () => {
-      return 'tinymce/tinymce.min.js';
+      return 'tinymce/tinymce.min.js'
     },
   },
   id: {
     type: String,
     default: () => {
-      return 'vue-tinymce-' + uuidv4();
+      return 'vue-tinymce-' + uuidv4()
     },
   },
   modelValue: {
@@ -79,72 +79,72 @@ const props = {
     type: String,
     default: 'oxide',
   },
-};
+}
 
 export default defineComponent({
   name: 'Tinymce',
   props,
   emits: ['init', 'change', 'update:modelValue'],
   setup(props, { emit }) {
-    let mounted = false;
-    const fullscreen = ref(false);
-    const elRef = ref<Nullable<HTMLElement>>(null);
-    const editorRef = ref<Nullable<Editor>>(null);
-    const tinymceId = computed(() => props.id);
+    let mounted = false
+    const fullscreen = ref(false)
+    const elRef = ref<Nullable<HTMLElement>>(null)
+    const editorRef = ref<Nullable<Editor>>(null)
+    const tinymceId = computed(() => props.id)
 
     watch(
       () => props.modelValue,
       (val: string) => {
-        setValue(unref(editorRef), val);
+        setValue(unref(editorRef), val)
       },
-    );
+    )
 
     watch(
       () => props.disabled,
       () => {
-        setModeDisabled(unref(editorRef), props.disabled);
+        setModeDisabled(unref(editorRef), props.disabled)
       },
-    );
+    )
 
     onMounted(() => {
       load(unref(props.url), (err) => {
         if (err) {
-          console.error(err.message);
-          return;
+          console.error(err.message)
+          return
         }
-        initTinymce();
-      });
+        initTinymce()
+      })
 
       nextTick(() => {
-        mounted = true;
-      });
-    });
+        mounted = true
+      })
+    })
 
     onActivated(() => {
       if (mounted) {
-        initTinymce();
+        initTinymce()
       }
-    });
+    })
 
     onBeforeUnmount(() => {
-      destroyTinymce();
-    });
+      destroyTinymce()
+    })
 
     onDeactivated(() => {
-      destroyTinymce();
-    });
+      destroyTinymce()
+    })
 
     function destroyTinymce() {
       if (fullscreen.value) {
-        tinymce.get(unref(tinymceId)).execCommand('mceFullScreen');
+        tinymce.get(unref(tinymceId)).execCommand('mceFullScreen')
       }
       if (tinymce) {
-        tinymce.get(unref(tinymceId)).destroy();
+        tinymce.get(unref(tinymceId)).destroy()
       }
     }
 
     const initOptions = computed(() => {
-      const { height, toolbar, plugins, menubar, options } = props;
+      const { height, toolbar, plugins, menubar, options } = props
 
       return {
         selector: `#${unref(tinymceId)}`,
@@ -162,69 +162,69 @@ export default defineComponent({
         ...options,
         init_instance_callback: (editor) => {
           editor.on('NodeChange Change KeyUp SetContent', () => {
-            const content = editor.getContent();
-            emit('update:modelValue', content);
-            emit('change', content);
-          });
+            const content = editor.getContent()
+            emit('update:modelValue', content)
+            emit('change', content)
+          })
 
           editor.on('WordCountUpdate', (e) => {
-            console.log(e.wordCount);
-          });
+            console.log(e.wordCount)
+          })
         },
         setup(editor) {
-          editorRef.value = editor;
+          editorRef.value = editor
 
           editor.on('FullscreenStateChanged', (e) => {
-            fullscreen.value = e.state;
-          });
+            fullscreen.value = e.state
+          })
         },
         convert_urls: false,
-      };
-    });
+      }
+    })
 
     function initTinymce() {
       tinymce
         .init(unref(initOptions))
         .then((editor) => {
-          setValue(unref(editorRef), props.modelValue);
+          setValue(unref(editorRef), props.modelValue)
 
-          setModeDisabled(unref(editorRef), props.disabled);
+          setModeDisabled(unref(editorRef), props.disabled)
 
-          emit('init', editor);
+          emit('init', editor)
         })
         .catch((err) => {
-          console.error(err);
-        });
+          console.error(err)
+        })
     }
 
     function setValue(editor, val: string) {
       if (editor && val !== editor.getContent()) {
-        editor.setContent(val);
+        editor.setContent(val)
       }
     }
 
     function setModeDisabled(editor, disabled = true) {
-      if (!editor) return;
-      editor.mode.set(disabled ? 'readonly' : 'design');
+      if (!editor) return
+      editor.mode.set(disabled ? 'readonly' : 'design')
     }
 
-    const getContainerClass = computed(() => (fullscreen.value ? 'tinymce-container fullscreen' : `tinymce-container`));
+    const getContainerClass = computed(() => (fullscreen.value ? 'tinymce-container fullscreen' : `tinymce-container`))
 
     const getContainerStyle = computed((): CSSProperties => {
-      const { width } = props;
-      let w = `${width}`;
+      const { width } = props
+      let w = `${width}`
       if (isNumber(w)) {
-        w = `${w}px`;
+        w = `${w}px`
       }
       return {
         width: w,
-      };
-    });
+      }
+    })
 
     return () => (
       <div class={getContainerClass.value} style={getContainerStyle.value}>
         <textarea id={tinymceId.value} ref={elRef}></textarea>
       </div>
-    );
+    )
   },
-});
+})

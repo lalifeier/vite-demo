@@ -1,10 +1,10 @@
-import { ThemeMode } from '@/enums/app';
+import { ThemeMode } from '@/enums/app'
 
-export const CLASS_PREFIX = 'vvap';
+export const CLASS_PREFIX = 'vvap'
 
-export const themeMode = ThemeMode.LIGHT;
+export const themeMode = ThemeMode.LIGHT
 
-export const themeColor = '#0960bd';
+export const themeColor = '#0960bd'
 
 export const THEME_COLOR_LIST: string[] = [
   '#409EFF',
@@ -15,7 +15,7 @@ export const THEME_COLOR_LIST: string[] = [
   '#13c2c2',
   '#6959CD',
   '#f5222d',
-];
+]
 
 export const LIGHT_THEME = {
   dark: false,
@@ -31,7 +31,7 @@ export const LIGHT_THEME = {
     warning: '#ffd166',
   },
   variables: {},
-};
+}
 
 export const DARK_THEME = {
   dark: true,
@@ -47,4 +47,4 @@ export const DARK_THEME = {
     warning: '#FFC107',
   },
   variables: {},
-};
+}

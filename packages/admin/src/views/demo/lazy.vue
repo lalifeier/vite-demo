@@ -5,7 +5,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue';
+import { defineComponent } from 'vue'
 
 export default defineComponent({
   setup() {
@@ -17,13 +17,13 @@ export default defineComponent({
       'https://article-fd.zol-img.com.cn/t_s640x709/g6/M00/07/00/ChMkKl-7j8yIWZXlAAU_dwj8c0AAAFubAPNuMAABT-P182.png',
       'https://article-fd.zol-img.com.cn/t_s640x496/g6/M00/07/00/ChMkKV-7j82IaXWcAAf1A1qo0-gAAFubAPcPzUAB_Ub040.png',
       'https://article-fd.zol-img.com.cn/t_s640x286/g6/M00/07/00/ChMkKV-7j8qIRV9LAAC1WTJ8wRUAAFubQP6LUIAALVx696.jpg',
-    ];
+    ]
 
     return {
       images,
-    };
+    }
   },
-});
+})
 </script>
 
 <style scoped>

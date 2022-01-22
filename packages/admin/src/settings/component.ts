@@ -19,4 +19,4 @@ export default {
   scrollbar: {
     native: false,
   },
-};
+}

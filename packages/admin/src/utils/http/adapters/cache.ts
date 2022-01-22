@@ -1,5 +1,5 @@
-import LRUCache from 'lru-cache';
-import { generateReqKey } from '../utils';
+import LRUCache from 'lru-cache'
+import { generateReqKey } from '../utils'
 
 function isCacheLike(cache) {
   return !!(
@@ -13,11 +13,11 @@ function isCacheLike(cache) {
       typeof cache.del === 'function'
     )
     // typeof cache.clear === 'function'
-  );
+  )
 }
 
-const FIVE_MINUTES = 1000 * 60 * 5;
-const CAPACITY = 100;
+const FIVE_MINUTES = 1000 * 60 * 5
+const CAPACITY = 100
 
 export function cacheAdapterEnhancer(adapter, options) {
   const {
@@ -25,30 +25,30 @@ export function cacheAdapterEnhancer(adapter, options) {
     enabledByDefault = true,
     cacheFlag = 'cache',
     defaultCache = new LRUCache({ maxAge: FIVE_MINUTES, max: CAPACITY }),
-  } = options;
+  } = options
   return (config) => {
-    const { method, forceUpdate } = config;
+    const { method, forceUpdate } = config
     const useCache =
-      config[cacheFlag] !== undefined && config[cacheFlag] !== null ? config[cacheFlag] : enabledByDefault;
+      config[cacheFlag] !== undefined && config[cacheFlag] !== null ? config[cacheFlag] : enabledByDefault
     if (method === 'get' && useCache) {
-      const cache = isCacheLike(useCache) ? useCache : defaultCache;
-      const requestKey = generateReqKey(config);
-      let responsePromise = cache.get(requestKey);
+      const cache = isCacheLike(useCache) ? useCache : defaultCache
+      const requestKey = generateReqKey(config)
+      let responsePromise = cache.get(requestKey)
       if (!responsePromise || forceUpdate) {
         responsePromise = (async () => {
           try {
-            return await adapter(config);
+            return await adapter(config)
           } catch (error) {
-            cache.del(requestKey);
-            throw error;
+            cache.del(requestKey)
+            throw error
           }
-        })();
-        cache.set(requestKey, responsePromise, maxAge);
-        return responsePromise;
+        })()
+        cache.set(requestKey, responsePromise, maxAge)
+        return responsePromise
       }
-      return responsePromise;
+      return responsePromise
     }
 
-    return adapter(config);
-  };
+    return adapter(config)
+  }
 }

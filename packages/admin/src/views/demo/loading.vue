@@ -24,68 +24,68 @@
 </template>
 
 <script setup lang="ts">
-import { Loading, useLoading } from '../../components/Loading';
-import { ref, reactive, toRefs } from 'vue';
+import { Loading, useLoading } from '../../components/Loading'
+import { ref, reactive, toRefs } from 'vue'
 
-const loadingRef = ref(false);
+const loadingRef = ref(false)
 const componentState = reactive({
   absolute: false,
   loading: false,
   text: '加载中...',
-});
+})
 
 const fullLoading = useLoading({
   text: '加载中...',
-});
+})
 
-const wrapEl = ref(null);
+const wrapEl = ref(null)
 
 const absoluteLoading = useLoading({
   target: wrapEl,
   text: '加载中...',
   absolute: true,
-});
+})
 
 function openLoading(absolute: boolean) {
-  componentState.absolute = absolute;
-  componentState.loading = true;
+  componentState.absolute = absolute
+  componentState.loading = true
   setTimeout(() => {
     // componentState.loading = false
-  }, 2000);
+  }, 2000)
 }
 
 function openFullLoading() {
-  openLoading(false);
+  openLoading(false)
 }
 
 function openWrapLoading() {
-  openLoading(true);
+  openLoading(true)
 }
 
 function handleOpenFnFullLoading() {
-  fullLoading.open();
+  fullLoading.open()
 
   setTimeout(() => {
-    fullLoading.close();
-  }, 2000);
+    fullLoading.close()
+  }, 2000)
 }
 
 function handleOpenFnWrapLoading() {
-  absoluteLoading.open();
+  absoluteLoading.open()
 
   setTimeout(() => {
-    absoluteLoading.close();
-  }, 2000);
+    absoluteLoading.close()
+  }, 2000)
 }
 
 function openDirectiveLoading() {
-  loadingRef.value = true;
+  loadingRef.value = true
   setTimeout(() => {
-    loadingRef.value = false;
-  }, 2000);
+    loadingRef.value = false
+  }, 2000)
 }
 
-const { loading, text, absolute } = toRefs(componentState);
+const { loading, text, absolute } = toRefs(componentState)
 </script>
 
 <style></style>

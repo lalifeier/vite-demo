@@ -1,5 +1,5 @@
-import type { FunctionArgs } from '@vueuse/core';
-import { easeInOutCubic } from './easing-patterns';
+import type { FunctionArgs } from '@vueuse/core'
+import { easeInOutCubic } from './easing-patterns'
 
 export const on = function (
   element: Element | HTMLElement | Document | Window,
@@ -8,9 +8,9 @@ export const on = function (
   useCapture = false,
 ): void {
   if (element && event && handler) {
-    element.addEventListener(event, handler, useCapture);
+    element.addEventListener(event, handler, useCapture)
   }
-};
+}
 
 export const off = function (
   element: Element | HTMLElement | Document | Window,
@@ -19,40 +19,40 @@ export const off = function (
   useCapture = false,
 ): void {
   if (element && event && handler) {
-    element.removeEventListener(event, handler, useCapture);
+    element.removeEventListener(event, handler, useCapture)
   }
-};
+}
 
 export const once = function (el: HTMLElement, event: string, fn: EventListener): void {
   const listener = function (this, ...args: unknown[]) {
     if (fn) {
-      fn.apply(this, args);
+      fn.apply(this, args)
     }
-    off(el, event, listener);
-  };
-  on(el, event, listener);
-};
+    off(el, event, listener)
+  }
+  on(el, event, listener)
+}
 
 export function hasClass(ele: Element, cls: string) {
-  return ele.className.match(new RegExp('(\\s|^)' + cls + '(\\s|$)'));
+  return ele.className.match(new RegExp('(\\s|^)' + cls + '(\\s|$)'))
 }
 
 export function addClass(ele: Element, cls: string) {
-  if (!hasClass(ele, cls)) ele.className += ' ' + cls;
+  if (!hasClass(ele, cls)) ele.className += ' ' + cls
 }
 
 export function removeClass(ele: Element, cls: string) {
   if (hasClass(ele, cls)) {
-    const reg = new RegExp('(\\s|^)' + cls + '(\\s|$)');
-    ele.className = ele.className.replace(reg, ' ');
+    const reg = new RegExp('(\\s|^)' + cls + '(\\s|$)')
+    ele.className = ele.className.replace(reg, ' ')
   }
 }
 
 export function toggleClass(ele: Element, cls: string, flag: boolean) {
   if (flag) {
-    addClass(ele, cls);
+    addClass(ele, cls)
   } else {
-    removeClass(ele, cls);
+    removeClass(ele, cls)
   }
 }
 
@@ -61,60 +61,60 @@ export function getScrollOffset() {
     return {
       x: window.pageXOffset,
       y: window.pageYOffset,
-    };
+    }
   } else {
     return {
       x: document.body.scrollLeft + document.documentElement.scrollLeft,
       y: document.body.scrollTop + document.documentElement.scrollTop,
-    };
+    }
   }
 }
 
 export function isElementViewport(el: Element) {
-  const rect = el.getBoundingClientRect();
-  const windowHeight = getWindowWidth();
-  const windowWidth = getWindowHeight();
+  const rect = el.getBoundingClientRect()
+  const windowHeight = getWindowWidth()
+  const windowWidth = getWindowHeight()
 
-  const vertInView = rect.top <= windowHeight && rect.top + rect.height >= 0;
-  const horInView = rect.left <= windowWidth && rect.left + rect.width >= 0;
+  const vertInView = rect.top <= windowHeight && rect.top + rect.height >= 0
+  const horInView = rect.left <= windowWidth && rect.left + rect.width >= 0
 
-  return vertInView && horInView;
+  return vertInView && horInView
 }
 
 export function getViewportOffset() {
   return {
     width: getWindowWidth(),
     height: getWindowHeight(),
-  };
+  }
 }
 
 export function getWindowWidth() {
-  return window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
+  return window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth
 }
 
 export function getWindowHeight() {
-  return window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight;
+  return window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight
 }
 
 export function getXPath(element) {
   // 如果元素有id属性,直接返回//*[@id="xPath"]
   if (element.id) {
-    return '//*[@id="' + element.id + '"]';
+    return '//*[@id="' + element.id + '"]'
   }
   // 向上查找到body,结束查找, 返回结果
   if (element == document.body) {
-    return '/html/' + element.tagName.toLowerCase();
+    return '/html/' + element.tagName.toLowerCase()
   }
   // 默认第一个元素的索引为1
-  let currentIndex = 1;
-  const siblings = element.parentNode.childNodes;
+  let currentIndex = 1
+  const siblings = element.parentNode.childNodes
   for (const sibling of siblings) {
     if (sibling == element) {
       // 确定了当前元素在兄弟节点中的索引后, 向上查找
-      return getXPath(element.parentNode) + '/' + element.tagName.toLowerCase() + '[' + currentIndex + ']';
+      return getXPath(element.parentNode) + '/' + element.tagName.toLowerCase() + '[' + currentIndex + ']'
     } else if (sibling.nodeType == 1 && sibling.tagName == element.tagName) {
       // 继续寻找当前元素在兄弟节点中的索引
-      currentIndex++;
+      currentIndex++
     }
   }
 }
@@ -157,31 +157,31 @@ export function getXPath(element) {
 // )
 
 export function scrollToTop(el) {
-  const beginTime = Date.now();
-  const beginValue = el.scrollTop;
-  const rAF = window.requestAnimationFrame || ((func) => setTimeout(func, 16));
+  const beginTime = Date.now()
+  const beginValue = el.scrollTop
+  const rAF = window.requestAnimationFrame || ((func) => setTimeout(func, 16))
   const frameFunc = () => {
-    const progress = (Date.now() - beginTime) / 500;
+    const progress = (Date.now() - beginTime) / 500
     if (progress < 1) {
-      el.scrollTop = beginValue * (1 - easeInOutCubic(progress));
-      rAF(frameFunc);
+      el.scrollTop = beginValue * (1 - easeInOutCubic(progress))
+      rAF(frameFunc)
     } else {
-      el.scrollTop = 0;
+      el.scrollTop = 0
     }
-  };
-  rAF(frameFunc);
+  }
+  rAF(frameFunc)
 }
 
 export function useRafThrottle<T extends FunctionArgs>(fn: T): T {
-  let locked = false;
+  let locked = false
   // @ts-ignore
   return function (...args: any[]) {
-    if (locked) return;
-    locked = true;
+    if (locked) return
+    locked = true
     window.requestAnimationFrame(() => {
       // @ts-ignore
-      fn.apply(this, args);
-      locked = false;
-    });
-  };
+      fn.apply(this, args)
+      locked = false
+    })
+  }
 }

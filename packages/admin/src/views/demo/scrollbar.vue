@@ -15,7 +15,7 @@
 </template>
 
 <script setup lang="ts">
-import { Scrollbar } from '@/components/Scrollbar';
+import { Scrollbar } from '@/components/Scrollbar'
 
 function scroll(e) {
   // console.log(e)
