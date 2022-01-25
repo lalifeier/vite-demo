@@ -41,16 +41,19 @@ export default ({ command, mode }: ConfigEnv): UserConfig => {
       port: VITE_PORT,
       proxy: configProxy(VITE_PROXY),
     },
+    esbuild: {
+      pure: VITE_DROP_CONSOLE ? ['console.log', 'debugger'] : [],
+    },
     build: {
       sourcemap: true,
       target: 'es2015',
       outDir: OUTPUT_DIR,
-      terserOptions: {
-        compress: {
-          keep_infinity: true,
-          drop_console: VITE_DROP_CONSOLE,
-        },
-      },
+      // terserOptions: {
+      //   compress: {
+      //     keep_infinity: true,
+      //     drop_console: VITE_DROP_CONSOLE,
+      //   },
+      // },
       brotliSize: false,
       chunkSizeWarningLimit: 2048,
       rollupOptions: {
