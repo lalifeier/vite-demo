@@ -1,7 +1,23 @@
+tasks:
+  - before: npm i -g pnpm
+    init: pnpm install
+    command: pnpm dev
+
 ports:
   - port: 3000
     onOpen: open-preview
+    visibility: private
+  - port: 5000
+    onOpen: open-browser
+    visibility: public
 
-tasks:
-  - init: pnpm install
-    command: pnpm
+vscode:
+  extensions:
+    - johnsoncodehk.volar
+    - dbaeumer.vscode-eslint
+    - stylelint.vscode-stylelint
+    - esbenp.prettier-vscode
+    - lokalise.i18n-ally
+    - mikestead.dotenv
+    - antfu.iconify
+    - heybourn.headwind
