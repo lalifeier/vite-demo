@@ -45,7 +45,7 @@ export default ({ command, mode }: ConfigEnv): UserConfig => {
       pure: VITE_DROP_CONSOLE ? ['console.log', 'debugger'] : [],
     },
     build: {
-      sourcemap: true,
+      // sourcemap: true,
       target: 'es2015',
       outDir: OUTPUT_DIR,
       // terserOptions: {
@@ -63,6 +63,10 @@ export default ({ command, mode }: ConfigEnv): UserConfig => {
         //     vue: 'Vue',
         //   }),
         // ],
+        // manualChunks: {
+        //   vue: ['vue', 'vue-router', 'pinia', '@vue/shared'],
+        //   echarts: ['echarts'],
+        // },
       },
     },
     css: {

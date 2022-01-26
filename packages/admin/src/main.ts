@@ -13,7 +13,6 @@ import 'vite-plugin-svg-icons/register'
 import { createApp } from 'vue'
 import { worker } from '../mock/browser'
 import { setupPlugin } from './plugins'
-import './tailwind.css'
 
 if (!isDev) {
   worker.start({
