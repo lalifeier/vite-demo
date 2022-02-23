@@ -61,13 +61,13 @@ export const useUserStore = defineStore({
         const data = await login(params)
         const { access_token, refresh_token } = data
         this.setToken(access_token, refresh_token)
-        const userInfo = await this.getUserInfo()
+        const userInfo = await this._getUserInfo()
         return userInfo
       } catch (error) {
         return Promise.reject(error)
       }
     },
-    async getUserInfo() {
+    async _getUserInfo() {
       const userInfo = await getUserInfo()
       const { role } = userInfo
       this.setUserInfo(userInfo)

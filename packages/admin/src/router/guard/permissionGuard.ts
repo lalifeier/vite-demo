@@ -1,11 +1,10 @@
 import { usePermissionStore } from '@/store/modules/permission'
-import { useUserStoreWithOut } from '@/store/modules/user'
 import type { Router, RouteRecordRaw } from 'vue-router'
 
 const whiteRouterList = ['/login']
 
 export function createPermissionGuard(router: Router) {
-  const userStore = useUserStoreWithOut()
+  // const userStore = useUserStoreWithOut()
   const permissionStore = usePermissionStore()
   router.beforeEach(async (to, _from, next) => {
     if (whiteRouterList.includes(to.path)) {
@@ -13,7 +12,7 @@ export function createPermissionGuard(router: Router) {
       return
     }
 
-    const token = userStore.getAccessToken
+    // const token = userStore.getAccessToken
 
     // if (!token) {
     //   next({ name: 'login', query: { redirect: to.fullPath } })

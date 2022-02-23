@@ -1,34 +1,22 @@
-import type { Plugin } from 'vite';
-import html from 'vite-plugin-html';
-import { GLOB_CONFIG_FILE_NAME, PKG_VERSION } from '../constants';
+import { createHtmlPlugin } from 'vite-plugin-html'
+import { GLOB_CONFIG_FILE_NAME, PKG_VERSION } from '../constants'
 
 export function configHtmlPlugin(env: ViteEnv, isBuild: boolean) {
-  const { VITE_GLOB_APP_TITLE, VITE_PUBLIC_PATH } = env;
+  const { VITE_GLOB_APP_TITLE, VITE_PUBLIC_PATH } = env
 
-  const path = VITE_PUBLIC_PATH.endsWith('/') ? VITE_PUBLIC_PATH : `${VITE_PUBLIC_PATH}/`;
+  const path = VITE_PUBLIC_PATH.endsWith('/') ? VITE_PUBLIC_PATH : `${VITE_PUBLIC_PATH}/`
 
   const getAppConfigSrc = () => {
-    return `${path || '/'}${GLOB_CONFIG_FILE_NAME}?v=${PKG_VERSION}-${new Date().getTime()}`;
-  };
+    return `${path || '/'}${GLOB_CONFIG_FILE_NAME}?v=${PKG_VERSION}-${new Date().getTime()}`
+  }
 
-  const htmlPlugin: Plugin[] = html({
+  return createHtmlPlugin({
     minify: isBuild,
     inject: {
       data: {
         title: VITE_GLOB_APP_TITLE,
+        injectScript: isBuild ? `<script src="${getAppConfigSrc()}"></script>` : '',
       },
-
-      tags: isBuild
-        ? [
-            {
-              tag: 'script',
-              attrs: {
-                src: getAppConfigSrc(),
-              },
-            },
-          ]
-        : [],
     },
-  });
-  return htmlPlugin;
+  })
 }
