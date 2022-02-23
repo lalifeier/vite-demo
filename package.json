@@ -74,32 +74,8 @@
       "path": "./node_modules/cz-conventional-changelog"
     }
   },
-  "turbo": {
-    "npmClient": "pnpm",
-    "pipeline": {
-      "build": {
-        "dependsOn": [
-          "^build"
-        ],
-        "outputs": [
-          "dist/**"
-        ]
-      },
-      "test": {
-        "dependsOn": [
-          "build"
-        ],
-        "outputs": []
-      },
-      "lint": {
-        "outputs": []
-      },
-      "dev": {
-        "cache": false
-      }
-    }
-  },
   "engines": {
     "node": ">=16.0.0"
-  }
+  },
+  "packageManager": "pnpm@6.23.2"
 }
