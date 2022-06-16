@@ -33,7 +33,7 @@ export default ({ command, mode }: ConfigEnv): UserConfig => {
       },
     },
     server: {
-      https: true,
+      https: false,
       host: true,
       fs: {
         strict: true,
